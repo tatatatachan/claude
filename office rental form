@@ -1,11 +1,12 @@
 /**
- * visions オフィス貸し出しフォーム（東京・大阪）を作成する
- * 使い方：script.google.com で「新しいプロジェクト」→ このコードを貼り付け → createOfficeForms を1回だけ実行
+ * visions のGoogleフォーム3つ（東京オフィス貸し出し・大阪オフィス貸し出し・ご紹介学生の登録）を作成する
+ * 使い方：script.google.com で「新しいプロジェクト」→ このコードを貼り付け → createAllForms を1回だけ実行
  * 作成されるもの（RA貢献シートと同じフォルダに入ります）：
  *   ・「visions 東京オフィス 貸し出しフォーム」＋回答シート
  *   ・「visions 大阪オフィス 貸し出しフォーム」＋回答シート
- * 実行後、ログに出る2つの「回答用URL」を、アライアンス一覧ページの担当者に教えてください。
- *   → 一覧ページの「東京／大阪オフィス貸し出しフォームを送る」ボタンに設定します。
+ *   ・「visions ご紹介学生の登録フォーム」＋回答シート
+ * 実行後、ログに出る3つの「回答用URL」を、アライアンス一覧ページの担当者に教えてください。
+ *   → 一覧ページの「東京／大阪オフィス貸し出しフォームを送る」「ご紹介学生の登録用フォームを送る」ボタンに設定します。
  *
  * 雛形のもとにした情報（SlackとGoogleドライブの検索から）
  *   ・大阪オフィス：ラウンジの貸し出し。常駐利用（週5日）、会議室は他と同様に予約、
@@ -43,6 +44,11 @@ const OFFICES = [
     note: '大阪オフィスのラウンジは、ご利用の目的や回数によって、ご利用条件・料金をご相談のうえ決めています。会議室は、ほかのご利用と同じく事前予約です。',
   },
 ];
+
+function createAllForms() {
+  createOfficeForms();
+  createIntroForm();
+}
 
 function createOfficeForms() {
   const folder = DriveApp.getFolderById(FOLDER_ID);
@@ -99,4 +105,28 @@ function createOfficeForm_(o) {
   const ss = SpreadsheetApp.create('visions ' + o.name + ' 貸し出しフォーム（回答）');
   form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
   return { form, ss };
+}
+
+function createIntroForm() {
+  const form = FormApp.create('visions ご紹介学生の登録フォーム');
+  form.setDescription('visionsにつなぎたい学生さんの登録フォームです。\nご入力いただいた情報は、visions運営チームが、ご紹介の確認と学生へのご連絡のためにのみ使います。\n所要時間：約2分')
+    .setCollectEmail(true)
+    .setLimitOneResponsePerUser(false)
+    .setConfirmationMessage('ご紹介ありがとうございます。visionsの担当者が内容を確認して、学生さんにご連絡します。');
+  form.addTextItem().setTitle('学生フルネーム').setRequired(true);
+  form.addTextItem().setTitle('ふりがな').setRequired(true);
+  form.addTextItem().setTitle('大学名').setRequired(true);
+  form.addTextItem().setTitle('学部・学科').setRequired(true);
+  form.addParagraphTextItem().setTitle('紹介理由').setHelpText('どんな学生さんか、なぜvisionsにつなぎたいかを教えてください').setRequired(true);
+  form.addCheckboxItem().setTitle('プライバシーについて')
+    .setHelpText('入力した学生さんの情報は、visions運営チームが、ご紹介の確認と学生さんへのご連絡のためにのみ使います。')
+    .setChoiceValues(['同意する']).setRequired(true);
+  const ss = SpreadsheetApp.create('visions ご紹介学生の登録フォーム（回答）');
+  form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  DriveApp.getFileById(form.getId()).moveTo(folder);
+  DriveApp.getFileById(ss.getId()).moveTo(folder);
+  Logger.log('ご紹介学生の登録フォーム 回答用URL（相手に送る）: ' + form.getPublishedUrl());
+  Logger.log('ご紹介学生の登録フォーム 編集URL: ' + form.getEditUrl());
+  Logger.log('ご紹介学生の登録フォーム 回答シートURL: ' + ss.getUrl());
 }
