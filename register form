@@ -1,0 +1,133 @@
+/**
+ * visions アライアンス登録フォームを作成する
+ * 使い方：script.google.com で「新しいプロジェクト」→ このコードを貼り付け → createAllianceForm を実行
+ * 作成されるもの：
+ *   ・Googleフォーム「visions アライアンス登録フォーム」
+ *   ・回答用スプレッドシート「visions アライアンス登録フォーム（回答）」
+ *   どちらも RA貢献シート と同じフォルダに入ります。
+ */
+const FOLDER_ID = '1xfEHiweIKE1qIgjpTuOnDy4sByKcnffh'; // RA貢献シートが入っているフォルダ
+
+const SOCIAL_THEMES = [
+  '自然との共生・循環型社会の創造',
+  '人生に寄り添い「生きる」に貢献',
+  '文化をつくる。伝える',
+  'はたらくことを、もっと豊かに',
+  '人の挑戦、自己実現を応援',
+  '技術の明日を拓き、常識を変える',
+  '暮らしに、新しい感性や楽しさを',
+  'インフラ・社会基盤を進化させる',
+  '子どもたちや学びの未来をひらく',
+  '食・農のこれからを追求する',
+  '非日常の感動体験を提供する',
+  '街をつくる。地域に貢献する',
+  '日本らしい価値を世界中へ',
+  '経営・経済から社会を元気に',
+  '世界各地の発展と幸せに貢献',
+];
+
+const CAREER_VIEWS = [
+  '自分の可能性に挑み続ける',
+  'アイディアを考える',
+  '美しい物・事・時を提供する',
+  '目の前の人の役に立つ',
+  '遊びごころを大切にする',
+  'たくさんの人と繋がる',
+  '多様な役割や経験ができる',
+  'チームで協力して進める',
+  'チームで達成感が味わえる',
+  '社会に影響力のある',
+  '高い目的・目標を追求する',
+  '戦略を立てる',
+  '組織をデザインする',
+  '仕組みを創造する',
+  '新しい知識を学び続ける',
+  '一つのことを積み重ねる',
+  '独自の分野を探究する',
+  '自主自立が尊重される',
+];
+
+function createAllianceForm() {
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+
+  const form = FormApp.create('visions アライアンス登録フォーム');
+  form
+    .setDescription(
+      'visionsとアライアンス・連携をしてくださる団体・企業さまの登録フォームです。\n' +
+      'いただいた情報は、visions運営チームがアライアンス先の管理とご連絡のためにのみ使用します。\n' +
+      '所要時間：約3分'
+    )
+    .setCollectEmail(true)
+    .setLimitOneResponsePerUser(false)
+    .setConfirmationMessage('ご登録ありがとうございます！visionsの担当者から、数日以内にご連絡します。');
+
+  // ── 基本情報
+  form.addSectionHeaderItem().setTitle('団体・企業について');
+  form.addTextItem().setTitle('団体名・企業名').setRequired(true);
+  form.addTextItem().setTitle('代表者・ご担当者のお名前').setRequired(true);
+  form.addTextItem().setTitle('大学名・所属（学生団体の場合）');
+  form.addMultipleChoiceItem()
+    .setTitle('団体の種類')
+    .setChoiceValues(['学生団体・サークル', 'NPO・一般社団法人', '企業', '大学・教育機関', '個人'])
+    .showOtherOption(true)
+    .setRequired(true);
+  form.addMultipleChoiceItem()
+    .setTitle('主な活動エリア')
+    .setChoiceValues(['東京・関東', '東海', '関西', '九州', '東北・北海道', 'オンライン・全国'])
+    .showOtherOption(true)
+    .setRequired(true);
+  form.addParagraphTextItem().setTitle('活動内容を教えてください').setRequired(true);
+  form.addTextItem()
+    .setTitle('Webサイト・SNSのURL')
+    .setValidation(FormApp.createTextValidation().requireTextIsUrl().build());
+  form.addTextItem().setTitle('メンバー数（おおよそ）');
+
+  // ── ソーシャルテーマ・キャリア観
+  form.addSectionHeaderItem()
+    .setTitle('ソーシャルテーマとキャリア観')
+    .setHelpText('visionsでは、社会の課題や未来を15の「ソーシャルテーマ」、はたらき方の価値観を「18のキャリア観」として整理しています。団体の活動にいちばん近いものを選んでください。');
+  form.addCheckboxItem()
+    .setTitle('団体の活動に近いソーシャルテーマ（2つまで）')
+    .setChoiceValues(SOCIAL_THEMES)
+    .setValidation(FormApp.createCheckboxValidation().requireSelectAtMost(2).build())
+    .setRequired(true);
+  form.addCheckboxItem()
+    .setTitle('団体のメンバーに多いキャリア観（2つまで）')
+    .setChoiceValues(CAREER_VIEWS)
+    .setValidation(FormApp.createCheckboxValidation().requireSelectAtMost(2).build())
+    .setRequired(true);
+
+  // ── visionsとの関わり
+  form.addSectionHeaderItem().setTitle('visionsとの関わり方');
+  form.addCheckboxItem()
+    .setTitle('visionsと一緒にやりたいこと')
+    .setChoiceValues([
+      'メンバー・知り合いの学生をvisionsに紹介したい（アライアンス契約）',
+      'イベントを共催したい',
+      'キャリアの授業・講座を開きたい',
+      '団体のブランディングを相談したい',
+      'まずは話を聞いてみたい',
+    ])
+    .showOtherOption(true)
+    .setRequired(true);
+  form.addTextItem().setTitle('visionsの担当者名（分かれば）');
+  form.addParagraphTextItem().setTitle('その他、伝えたいこと・質問');
+
+  form.addMultipleChoiceItem()
+    .setTitle('個人情報の取り扱いについて')
+    .setHelpText('ご入力いただいた情報は、visions運営チームがアライアンスの管理とご連絡のためにのみ使用します。')
+    .setChoiceValues(['同意する'])
+    .setRequired(true);
+
+  // ── 回答先スプレッドシート
+  const ss = SpreadsheetApp.create('visions アライアンス登録フォーム（回答）');
+  form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
+
+  // RA貢献シートと同じフォルダへ移動
+  DriveApp.getFileById(form.getId()).moveTo(folder);
+  DriveApp.getFileById(ss.getId()).moveTo(folder);
+
+  Logger.log('回答用URL（団体に送る）: ' + form.getPublishedUrl());
+  Logger.log('フォーム編集URL: ' + form.getEditUrl());
+  Logger.log('回答シートURL: ' + ss.getUrl());
+}
