@@ -1,0 +1,132 @@
+/**
+ * visions のGoogleフォーム3つ（東京オフィス貸し出し・大阪オフィス貸し出し・ご紹介学生の登録）を作成する
+ * 使い方：script.google.com で「新しいプロジェクト」→ このコードを貼り付け → createAllForms を1回だけ実行
+ * 作成されるもの（RA貢献シートと同じフォルダに入ります）：
+ *   ・「visions 東京オフィス 貸し出しフォーム」＋回答シート
+ *   ・「visions 大阪オフィス 貸し出しフォーム」＋回答シート
+ *   ・「visions ご紹介学生の登録フォーム」＋回答シート
+ * 実行後、ログに出る3つの「回答用URL」を、アライアンス一覧ページの担当者に教えてください。
+ *   → 一覧ページの「東京／大阪オフィス貸し出しフォームを送る」「ご紹介学生の登録用フォームを送る」ボタンに設定します。
+ *
+ * 雛形のもとにした情報（SlackとGoogleドライブの検索から）
+ *   ・大阪オフィス：ラウンジの貸し出し。常駐利用（週5日）、会議室は他と同様に予約、
+ *     プリンタは枚数で月締め請求、ストレージ・食器などの利用あり。料金はケースごとに相談。
+ *   ・東京オフィス：イベントの会場設営・照明・復旧のルールがある。飲食ルールあり。撮影は事前相談。
+ *   ・「Play visions! 貸し出しシート」（カード貸し出し）の項目の並びを参考にしています。
+ * 料金・利用ルールの細部は、運営で決めてから、フォームの説明文を直してください。
+ */
+const FOLDER_ID = '1xfEHiweIKE1qIgjpTuOnDy4sByKcnffh'; // RA貢献シートが入っているフォルダ
+
+const OFFICES = [
+  {
+    key: 'tokyo',
+    name: '東京オフィス',
+    spaces: ['執務室・席の利用', '会議室', 'マルチスペース（イベント・セッション）', 'バーカウンター', 'まだ決まっていない（相談したい）'],
+    extra: [
+      '会場設営・照明の調整が必要',
+      '備品（プロジェクター・スピーカー・マイクなど）を借りたい',
+      '飲食を伴う（軽食・昼食・懇親会）',
+      '撮影・取材が入る',
+    ],
+    note: '東京オフィスは、visionsの世界観を体感していただく場でもあります。イベント利用では、会場の設営・照明の調整・終了後の復旧（原状回復）をお願いしています。',
+  },
+  {
+    key: 'osaka',
+    name: '大阪オフィス',
+    spaces: ['ラウンジ（常駐・日常の利用）', '会議室', 'ラウンジ（イベント・勉強会）', 'まだ決まっていない（相談したい）'],
+    extra: [
+      '週に複数日、継続して利用したい（常駐的な利用）',
+      'プリンタを使いたい（枚数に応じて月ごとにご請求します）',
+      'ストレージ・食器などを使いたい',
+      '飲食を伴う',
+      '撮影・取材が入る',
+    ],
+    note: '大阪オフィスのラウンジは、ご利用の目的や回数によって、ご利用条件・料金をご相談のうえ決めています。会議室は、ほかのご利用と同じく事前予約です。',
+  },
+];
+
+function createAllForms() {
+  createOfficeForms();
+  createIntroForm();
+}
+
+function createOfficeForms() {
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  OFFICES.forEach(o => {
+    const r = createOfficeForm_(o);
+    DriveApp.getFileById(r.form.getId()).moveTo(folder);
+    DriveApp.getFileById(r.ss.getId()).moveTo(folder);
+    Logger.log(o.name + ' 回答用URL（相手に送る）: ' + r.form.getPublishedUrl());
+    Logger.log(o.name + ' フォーム編集URL: ' + r.form.getEditUrl());
+    Logger.log(o.name + ' 回答シートURL: ' + r.ss.getUrl());
+  });
+}
+
+function createOfficeForm_(o) {
+  const form = FormApp.create('visions ' + o.name + ' 貸し出しフォーム');
+  form.setDescription(
+      'visionsの' + o.name + 'のご利用（貸し出し）をご希望の方向けのフォームです。\n' + o.note + '\n' +
+      'お申し込み後、visionsの担当者が内容を確認し、数日以内にご連絡します（この時点では、利用は確定しません）。\n' +
+      '所要時間：約3分')
+    .setCollectEmail(true)
+    .setLimitOneResponsePerUser(false)
+    .setConfirmationMessage('お申し込みありがとうございます。visionsの担当者が内容を確認して、ご連絡します。');
+
+  form.addSectionHeaderItem().setTitle('ご利用者について');
+  form.addTextItem().setTitle('お名前（ご担当者）').setRequired(true);
+  form.addTextItem().setTitle('団体名・企業名・所属').setRequired(true);
+  form.addTextItem().setTitle('連絡先（電話番号・LINEなど）').setRequired(true);
+  form.addTextItem().setTitle('visionsの担当者名（分かれば）');
+  form.addMultipleChoiceItem().setTitle('visionsとの関係')
+    .setChoiceValues(['アライアンス契約あり', 'visionsパートナー', 'これから関わりたい団体', 'visionsの学生・メンバー', 'その他'])
+    .setRequired(true);
+
+  form.addSectionHeaderItem().setTitle('ご利用について');
+  form.addCheckboxItem().setTitle('使いたい場所').setChoiceValues(o.spaces).setRequired(true);
+  form.addParagraphTextItem().setTitle('ご利用の目的・内容').setHelpText('例：学生向けの勉強会、チームの定例会議、セッションの実施など').setRequired(true);
+  form.addDateItem().setTitle('ご利用の開始日（希望）').setRequired(true);
+  form.addDateItem().setTitle('ご利用の終了日（1日だけの場合は同じ日）');
+  form.addTextItem().setTitle('時間帯（希望）').setHelpText('例：13:00〜17:00（準備・片付けの時間を含めてください）').setRequired(true);
+  form.addMultipleChoiceItem().setTitle('ご利用の頻度')
+    .setChoiceValues(['1回だけ', '月に数回', '週に1〜2日', '週に3日以上（常駐的な利用）']).setRequired(true);
+  form.addTextItem().setTitle('ご利用人数（おおよそ）').setRequired(true);
+  form.addCheckboxItem().setTitle('あてはまるもの').setChoiceValues(o.extra);
+  form.addParagraphTextItem().setTitle('その他、伝えたいこと・質問');
+
+  form.addSectionHeaderItem().setTitle('ご確認').setHelpText('ご利用が決まった場合は、利用ルールをあらためてご案内します。');
+  form.addCheckboxItem().setTitle('以下に同意してください')
+    .setChoiceValues([
+      'visionsの利用ルール（施錠・飲食・荷物・騒音など）に従います',
+      '使った場所は、元の状態に戻して退出します',
+      '破損・紛失があった場合は、ご連絡します',
+      'ご入力いただいた情報が、visions運営チームのご連絡と管理のために使われることに同意します'])
+    .setRequired(true);
+
+  const ss = SpreadsheetApp.create('visions ' + o.name + ' 貸し出しフォーム（回答）');
+  form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
+  return { form, ss };
+}
+
+function createIntroForm() {
+  const form = FormApp.create('visions ご紹介学生の登録フォーム');
+  form.setDescription('visionsにつなぎたい学生さんの登録フォームです。\nご入力いただいた情報は、visions運営チームが、ご紹介の確認と学生へのご連絡のためにのみ使います。\n所要時間：約2分')
+    .setCollectEmail(true)
+    .setLimitOneResponsePerUser(false)
+    .setConfirmationMessage('ご紹介ありがとうございます。visionsの担当者が内容を確認して、学生さんにご連絡します。');
+  form.addTextItem().setTitle('学生フルネーム').setRequired(true);
+  form.addTextItem().setTitle('ふりがな').setRequired(true);
+  form.addTextItem().setTitle('大学名').setRequired(true);
+  form.addTextItem().setTitle('学部・学科').setRequired(true);
+  form.addParagraphTextItem().setTitle('紹介理由').setHelpText('どんな学生さんか、なぜvisionsにつなぎたいかを教えてください').setRequired(true);
+  form.addCheckboxItem().setTitle('プライバシーについて')
+    .setHelpText('入力した学生さんの情報は、visions運営チームが、ご紹介の確認と学生さんへのご連絡のためにのみ使います。')
+    .setChoiceValues(['同意する']).setRequired(true);
+  const ss = SpreadsheetApp.create('visions ご紹介学生の登録フォーム（回答）');
+  form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  DriveApp.getFileById(form.getId()).moveTo(folder);
+  DriveApp.getFileById(ss.getId()).moveTo(folder);
+  Logger.log('ご紹介学生の登録フォーム 回答用URL（相手に送る）: ' + form.getPublishedUrl());
+  Logger.log('ご紹介学生の登録フォーム 編集URL: ' + form.getEditUrl());
+  Logger.log('ご紹介学生の登録フォーム 回答シートURL: ' + ss.getUrl());
+}
