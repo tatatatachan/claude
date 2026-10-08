@@ -50,17 +50,27 @@ a{color:inherit;text-decoration:none}
 /* LOCAL LONG LIFE：「LONG」の O が横に ビヨーン と伸びて、N・G を押し出す（名前のとおり“長く”）。他の文字は静止 */
 .gl{position:absolute;display:block;pointer-events:none;will-change:transform}
 .gl img{display:block;width:100%;height:auto}
-/* 「O」は1枚の画像を9分割：左右の端（丸み）は固定、真ん中の帯だけが伸びる（部品に分けないのでズレない） */
+/* ロゴの遊び：弾まずスッと伸びてスッと戻る。9秒サイクルで LONG → LOCAL → LIFE の順に伸びる */
+.gx{box-sizing:border-box;border:solid transparent;border-width:0 var(--br) 0 var(--bl);width:var(--nw);height:var(--h);
+  border-image:var(--img) 0 var(--sr) 0 var(--sl) fill/0 var(--br) 0 var(--bl)/0 stretch}
 .gOB{width:19.792cqw;height:9.653cqw;box-sizing:border-box;border:solid transparent;border-width:0 8.333cqw;
-  border-image:url(assets/g11.png) 0 120 0 120 fill/0 8.333cqw/0 stretch;
-  transition:width .6s cubic-bezier(.3,1.9,.5,1);animation:stO 4.8s infinite .8s}
-.gS{transition:transform .6s cubic-bezier(.3,1.9,.5,1)}
-.gS img{animation:stS 4.8s infinite .8s}
-/* 伸びる量 e は最大20cqw（右のタグに届かない範囲）。N・G は e だけ押し出される */
-@keyframes stO{0%,50%,100%{width:19.792cqw}58%{width:39.792cqw}66%{width:22.8cqw}73%{width:30.8cqw}81%{width:20.8cqw}89%{width:23.8cqw}95%{width:19.792cqw}}
-@keyframes stS{0%,50%,100%{transform:translateX(0)}58%{transform:translateX(20cqw)}66%{transform:translateX(3cqw)}73%{transform:translateX(11cqw)}81%{transform:translateX(1cqw)}89%{transform:translateX(4cqw)}95%{transform:translateX(0)}}
-.hero__stage.pull .gOB{animation:none;width:39.792cqw}.hero__stage.pull .gS{transform:translateX(20cqw)}
-@media(prefers-reduced-motion:reduce){.gOB,.gS img{animation:none}.gOB,.gS{transition:none}}
+  border-image:url(assets/g11.png) 0 120 0 120 fill/0 8.333cqw/0 stretch;transition:width .7s ease-in-out;
+  animation:stO 9s ease-in-out infinite .6s}
+.gS{transition:transform .7s ease-in-out}.gS img{animation:stS 9s ease-in-out infinite .6s}
+.xL{animation:xL 9s ease-in-out infinite .6s}
+.xF{animation:xF 9s ease-in-out infinite .6s}
+.xE{animation:xE 9s ease-in-out infinite .6s,shE 9s ease-in-out infinite .6s}
+/* LONG：O が最大 +20cqw 伸びて N・G を押し出す（右のタグに届かない範囲） */
+@keyframes stO{0%,4%,32%,100%{width:19.792cqw}14%,22%{width:39.792cqw}}
+@keyframes stS{0%,4%,32%,100%{transform:translateX(0)}14%,22%{transform:translateX(20cqw)}}
+/* LOCAL：最後の L の足が右へ */
+@keyframes xL{0%,34%,57%,100%{width:var(--nw)}42%,49%{width:calc(var(--nw) + 9cqw)}}
+/* LIFE：F の腕が伸び、E は押されて動きながら自分の腕も伸ばす */
+@keyframes xF{0%,58%,80%,100%{width:var(--nw)}66%,72%{width:calc(var(--nw) + 6cqw)}}
+@keyframes xE{0%,61%,86%,100%{width:var(--nw)}70%,77%{width:calc(var(--nw) + 8cqw)}}
+@keyframes shE{0%,58%,80%,100%{transform:translateX(0)}66%,72%{transform:translateX(6cqw)}}
+.hero__stage.pull .gOB{animation:none;width:39.792cqw}.hero__stage.pull .gS{transform:translateX(20cqw)}.hero__stage.pull .gS img{animation:none}
+@media(prefers-reduced-motion:reduce){.gOB,.gS img,.xL,.xF,.xE{animation:none}.gOB,.gS{transition:none}}
 .hero__kv{width:100%;height:auto;display:block}
 .hero__bar{background:var(--ink);color:#fff}
 .hero__bar .inner{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between;padding:18px 0}
@@ -251,7 +261,7 @@ h1,h2,h3{text-wrap:balance}
 
 <!-- HERO：サムネイル（文字入り）をキービジュアルとしてそのまま使用 -->
 <div class="hero" id="top">
-  <div class="hero__stage"><img class="hero__kv" src="assets/hero-bg.jpg" alt="LOCAL LONG LIFE インターンシップ 12/12(土) @Workation + Cottage KARUIZAWA エフビー介護サービス" width="1440" height="960"><span class="gl" style="left:2.986%;top:5.625%;width:7.708%" aria-hidden="true"><img src="assets/g00.png" alt="" width="60" height="100"></span><span class="gl" style="left:11.25%;top:5.312%;width:10.417%" aria-hidden="true"><img src="assets/g01.png" alt="" width="60" height="100"></span><span class="gl" style="left:22.222%;top:5.312%;width:8.542%" aria-hidden="true"><img src="assets/g02.png" alt="" width="60" height="100"></span><span class="gl" style="left:31.667%;top:5.521%;width:10.139%" aria-hidden="true"><img src="assets/g03.png" alt="" width="60" height="100"></span><span class="gl" style="left:42.5%;top:5.625%;width:7.708%" aria-hidden="true"><img src="assets/g04.png" alt="" width="60" height="100"></span><span class="gl" style="left:54.028%;top:8.021%;width:1.389%" aria-hidden="true"><img src="assets/g05.png" alt="" width="60" height="100"></span><span class="gl" style="left:2.986%;top:21.458%;width:7.708%" aria-hidden="true"><img src="assets/g10.png" alt="" width="60" height="100"></span><span class="gl gOB" style="left:11.389%;top:20.417%" aria-hidden="true"></span><span class="gl gS" style="left:31.736%;top:21.458%;width:9.097%" aria-hidden="true"><img src="assets/g12.png" alt="" width="60" height="100"></span><span class="gl gS" style="left:41.528%;top:21.146%;width:8.681%" aria-hidden="true"><img src="assets/g13.png" alt="" width="60" height="100"></span><span class="gl" style="left:2.986%;top:37.292%;width:7.708%" aria-hidden="true"><img src="assets/g20.png" alt="" width="60" height="100"></span><span class="gl" style="left:12.014%;top:37.5%;width:2.708%" aria-hidden="true"><img src="assets/g21.png" alt="" width="60" height="100"></span><span class="gl" style="left:16.667%;top:37.604%;width:6.597%" aria-hidden="true"><img src="assets/g22.png" alt="" width="60" height="100"></span><span class="gl" style="left:23.889%;top:37.604%;width:7.153%" aria-hidden="true"><img src="assets/g23.png" alt="" width="60" height="100"></span><span class="gl" style="left:35.833%;top:41.562%;width:0.833%" aria-hidden="true"><img src="assets/g24.png" alt="" width="60" height="100"></span></div>
+  <div class="hero__stage"><img class="hero__kv" src="assets/hero-bg.jpg" alt="LOCAL LONG LIFE インターンシップ 12/12(土) @Workation + Cottage KARUIZAWA エフビー介護サービス" width="1440" height="960"><span class="gl" style="left:2.986%;top:5.625%;width:7.708%" aria-hidden="true"><img src="assets/g00.png" alt="" width="60" height="100"></span><span class="gl" style="left:11.25%;top:5.312%;width:10.417%" aria-hidden="true"><img src="assets/g01.png" alt="" width="60" height="100"></span><span class="gl" style="left:22.222%;top:5.312%;width:8.542%" aria-hidden="true"><img src="assets/g02.png" alt="" width="60" height="100"></span><span class="gl" style="left:31.667%;top:5.521%;width:10.139%" aria-hidden="true"><img src="assets/g03.png" alt="" width="60" height="100"></span><span class="gl gx xL" style="left:42.5%;top:5.625%;--nw:7.708cqw;--h:8.333cqw;--bl:2.778cqw;--br:0.694cqw;--sl:40;--sr:10;--img:url(assets/g04.png)" aria-hidden="true"></span><span class="gl" style="left:54.028%;top:8.021%;width:1.389%" aria-hidden="true"><img src="assets/g05.png" alt="" width="60" height="100"></span><span class="gl" style="left:2.986%;top:21.458%;width:7.708%" aria-hidden="true"><img src="assets/g10.png" alt="" width="60" height="100"></span><span class="gl gOB" style="left:11.389%;top:20.417%" aria-hidden="true"></span><span class="gl gS" style="left:31.736%;top:21.458%;width:9.097%" aria-hidden="true"><img src="assets/g12.png" alt="" width="60" height="100"></span><span class="gl gS" style="left:41.528%;top:21.146%;width:8.681%" aria-hidden="true"><img src="assets/g13.png" alt="" width="60" height="100"></span><span class="gl" style="left:2.986%;top:37.292%;width:7.708%" aria-hidden="true"><img src="assets/g20.png" alt="" width="60" height="100"></span><span class="gl" style="left:12.014%;top:37.5%;width:2.708%" aria-hidden="true"><img src="assets/g21.png" alt="" width="60" height="100"></span><span class="gl gx xF" style="left:16.667%;top:37.604%;--nw:6.597cqw;--h:8.333cqw;--bl:2.778cqw;--br:0.694cqw;--sl:40;--sr:10;--img:url(assets/g22.png)" aria-hidden="true"></span><span class="gl gx xE" style="left:23.889%;top:37.604%;--nw:7.153cqw;--h:8.264cqw;--bl:2.778cqw;--br:0.694cqw;--sl:40;--sr:10;--img:url(assets/g23.png)" aria-hidden="true"></span><span class="gl" style="left:35.833%;top:41.562%;width:0.833%" aria-hidden="true"><img src="assets/g24.png" alt="" width="60" height="100"></span></div>
   <div class="hero__bar">
     <div class="inner">
       <div class="hero__date">12/12<i>土</i></div>
