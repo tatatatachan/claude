@@ -51,22 +51,22 @@ a{color:inherit;text-decoration:none}
 .gl{position:absolute;display:block;pointer-events:none;will-change:transform}
 .gl img{display:block;width:100%;height:auto}
 /* ロゴ：LONG の「O」だけが「ローーーーング」と長く伸びる（LOCAL・LIFE は静止）。
-   ぐーーっと溜めて伸ばし（約1.6秒）、最大で少しホールド、スッと戻る。N・G は一緒に押し出される。右のタグには届かない範囲（最大 +29cqw） */
+   あくびが出るほどゆったり：約7秒かけて伸び、最大で約1.5秒止まり、約5秒かけて戻る（15秒で1周）。N・G は一緒に押し出される。右のタグには届かない範囲（最大 +29cqw） */
 .gOB{width:var(--ow);height:var(--oh);box-sizing:border-box;border:solid transparent;border-width:0 var(--oc);
   border-image:url(assets/g11h.png) 0 var(--op) 0 var(--op) fill/0 var(--oc)/0 stretch}
-.gS{transition:transform .6s cubic-bezier(.16,1,.3,1)}
-.gOB{animation:lo 5s infinite .6s}
-.gS img{animation:loS 5s infinite .6s}
+.gS{transition:transform 2.4s cubic-bezier(.37,0,.63,1)}
+.gOB{animation:lo 15s infinite .8s}
+.gS img{animation:loS 15s infinite .8s}
 @keyframes lo{
- 0%,8%{width:var(--ow);animation-timing-function:cubic-bezier(.3,0,.2,1)}
- 40%{width:calc(var(--ow) + 29cqw);animation-timing-function:linear}
- 58%{width:calc(var(--ow) + 29cqw);animation-timing-function:cubic-bezier(.6,0,.25,1)}
- 72%,100%{width:var(--ow)}}
+ 0%,6%{width:var(--ow);animation-timing-function:cubic-bezier(.37,0,.63,1)}
+ 52%{width:calc(var(--ow) + 29cqw);animation-timing-function:linear}
+ 62%{width:calc(var(--ow) + 29cqw);animation-timing-function:cubic-bezier(.37,0,.63,1)}
+ 96%,100%{width:var(--ow)}}
 @keyframes loS{
- 0%,8%{transform:translateX(0);animation-timing-function:cubic-bezier(.3,0,.2,1)}
- 40%{transform:translateX(29cqw);animation-timing-function:linear}
- 58%{transform:translateX(29cqw);animation-timing-function:cubic-bezier(.6,0,.25,1)}
- 72%,100%{transform:translateX(0)}}
+ 0%,6%{transform:translateX(0);animation-timing-function:cubic-bezier(.37,0,.63,1)}
+ 52%{transform:translateX(29cqw);animation-timing-function:linear}
+ 62%{transform:translateX(29cqw);animation-timing-function:cubic-bezier(.37,0,.63,1)}
+ 96%,100%{transform:translateX(0)}}
 .hero__stage.pull .gOB{animation:none;width:calc(var(--ow) + 29cqw)}.hero__stage.pull .gS{transform:translateX(29cqw)}.hero__stage.pull .gS img{animation:none}
 @media(prefers-reduced-motion:reduce){.gOB,.gS img{animation:none}.gOB,.gS{transition:none}}
 .hero__kv{width:100%;height:auto;display:block}
