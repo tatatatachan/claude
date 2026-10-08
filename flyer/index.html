@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOCAL LONG LIFE インターンシップ チラシ（A4）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Signika:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+/* A4 1枚チラシ（LPのデザイン：ミント×クリーム、手描きイラスト、山並み） */
+@page{size:210mm 297mm;margin:0}
+:root{
+  --mint:#55C5B0; --mint-d:#2f9d89; --mint-l:#DBF2E2; --mint-xl:#EEF8F1;
+  --cream:#FFFEF2; --ink:#323042; --ink-s:#6c6a7a; --orange:#F28A3C;
+  --font:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif;
+  --en:"Signika","Zen Maru Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfd3d0}
+body{font-family:var(--font);color:var(--ink);font-weight:500;line-height:1.7;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+img{display:block;max-width:100%}
+.sheet{position:relative;width:210mm;height:297mm;margin:0 auto;background:var(--cream);overflow:hidden;display:flex;flex-direction:column}
+@media screen{.sheet{margin:16px auto;box-shadow:0 6px 30px rgba(0,0,0,.25)}}
+@media print{html,body{background:none}.sheet{margin:0;box-shadow:none}}
+
+/* 1. key visual */
+.kv{flex:0 0 auto;height:135mm}
+.kv img{width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+
+/* 2. copy */
+.copy{flex:0 0 auto;position:relative;background:var(--mint-l);padding:4.6mm 12mm 3.2mm;text-align:center}
+.copy h2{font-size:6.4mm;font-weight:900;line-height:1.45;letter-spacing:.06em}
+.copy h2 em{font-style:normal;background:linear-gradient(transparent 62%,rgba(246,211,107,.9) 62%)}
+.copy p{margin-top:1.2mm;font-size:2.8mm;line-height:1.75;letter-spacing:.03em}
+.ridge{position:absolute;left:0;right:0;bottom:-.3mm;height:3.4mm;color:var(--cream)}
+.ridge svg{display:block;width:100%;height:100%}
+
+/* 3. points */
+.points{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:3.6mm;padding:2.6mm 12mm 0}
+.pt{background:#fff;border:.6mm solid var(--mint-l);border-radius:4.5mm;text-align:center;padding-bottom:2.4mm;overflow:hidden}
+.pt__img{height:14mm;background:var(--mint-xl);display:grid;place-items:center}
+.pt__img img{height:11.5mm;width:auto}
+.pt__no{display:inline-block;margin-top:1.5mm;font-family:var(--en);font-weight:700;font-size:2.5mm;letter-spacing:.14em;background:var(--mint);color:#fff;border-radius:99px;padding:0 3mm}
+.pt h3{font-size:3.3mm;font-weight:900;line-height:1.4;margin:.6mm 2mm 0}
+.pt p{font-size:2.3mm;line-height:1.55;margin:.8mm 2.6mm 0;text-align:left}
+
+/* 4. flow */
+.flow{flex:0 0 auto;margin:3.2mm 12mm 0;background:var(--mint);color:#fff;border-radius:4.5mm;padding:2.6mm 3.4mm 2.8mm}
+.flow__ttl{display:flex;align-items:baseline;gap:3mm;margin-bottom:1.6mm}
+.flow__ttl b{font-family:var(--en);font-size:4.4mm;font-weight:700;line-height:1}
+.flow__ttl span{font-size:2.8mm;font-weight:900}
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:1.6mm}
+.st{background:#fff;color:var(--ink);border-radius:2.4mm;padding:1.3mm 1.2mm 1.5mm;text-align:center;position:relative}
+.st time{display:block;font-family:var(--en);font-weight:700;font-size:3.2mm;color:var(--mint-d);line-height:1.2}
+.st b{display:block;font-size:2.55mm;font-weight:900;line-height:1.3;margin-top:.4mm}
+.st small{display:block;font-size:2mm;color:var(--ink-s);line-height:1.35;margin-top:.3mm}
+.st.w{background:#FFF3E6}.st.w time{color:var(--orange)}
+
+/* 5. info + entry */
+.foot{flex:1 1 auto;display:grid;grid-template-columns:1fr 62mm;gap:6mm;padding:3.4mm 12mm 0;position:relative;min-height:0}
+.info{align-self:start}
+.info dl>div{display:grid;grid-template-columns:14mm 1fr;gap:2.5mm;padding:1.1mm 0;border-bottom:.5mm dotted var(--mint);font-size:2.8mm;line-height:1.45}
+.info dl>div:first-child{border-top:.5mm dotted var(--mint)}
+.info dt{font-weight:900;color:var(--mint-d)}
+.info dd b{font-weight:900}
+.info dd small{font-size:2.1mm;color:var(--ink-s)}
+.entry{background:#fff;border:.7mm solid var(--ink);border-radius:4.5mm;padding:2.6mm 3mm;text-align:center;align-self:start}
+.entry__lead{font-size:3.2mm;font-weight:900;line-height:1.4}
+.entry__lead i{font-style:normal;color:var(--orange)}
+.qr{width:21mm;height:21mm;margin:1.8mm auto 1.2mm;border:.5mm dashed var(--ink-s);display:grid;place-items:center;font-size:2.4mm;color:var(--ink-s);line-height:1.4;background:var(--mint-xl)}
+.entry__url{font-size:2.2mm;color:var(--ink-s);line-height:1.5;word-break:break-all}
+.brand{display:flex;align-items:center;gap:3mm;margin-top:3mm}
+.brand img{height:6.4mm;width:auto}
+.brand span{font-size:2.1mm;color:var(--ink-s);line-height:1.4}
+.bar{flex:0 0 auto;height:3.2mm;background:var(--mint)}
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <!-- 1. キービジュアル（サムネイル） -->
+  <div class="kv"><img src="assets/hero.jpg" alt="LOCAL LONG LIFE インターンシップ 12/12(土) @Workation + Cottage KARUIZAWA"></div>
+
+  <!-- 2. コピー -->
+  <section class="copy">
+    <h2>50年後の自分を、<em>先に生きてみよう。</em></h2>
+    <p>高齢者体験ギアを身につけ、「おじいちゃんがこの家でずっと暮らせるプラン」を考える。<br>そのあとは視点を自分に向けて、これから先の長い人生をどう働き、どう暮らしたいかを描く1日。</p>
+    <div class="ridge"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 120V78c70-6 120-34 190-30s110 24 170 10 90-52 160-54 96 30 150 30 80-34 150-40 100 24 150 36 90-8 150-30 90-34 140-30 70 22 120 30c60 10 110 14 160 12V120z" fill="currentColor"/></svg></div>
+  </section>
+
+  <!-- 3. この1日で得られること -->
+  <section class="points">
+    <article class="pt"><div class="pt__img"><img src="assets/ill/line-chair.png" alt=""></div><span class="pt__no">01 FEEL</span><h3>2040年の現実を、<br>身体で知る</h3><p>重り・視野狭窄メガネなどの高齢者体験ギア、車椅子、ベッド体験で、段差の恐怖や圧迫感を五感で掴む。</p></article>
+    <article class="pt"><div class="pt__img"><img src="assets/ill/care.png" alt=""></div><span class="pt__no">02 THINK</span><h3>チームで「暮らしの<br>プラン」を提案する</h3><p>介護×福祉用具×住環境。実際に家へ福祉用具を設置しながらプランを作り、実演を交えて発表。</p></article>
+    <article class="pt"><div class="pt__img"><img src="assets/ill/runner.png" alt=""></div><span class="pt__no">03 DESIGN</span><h3>自分のキャリア軸を<br>言葉にする</h3><p>社員トークライブとメンターとの壁打ちで、価値観と仕事の魅力を掛け合わせたマイキャリアプランを作る。</p></article>
+  </section>
+
+  <!-- 4. 1日の流れ -->
+  <section class="flow">
+    <div class="flow__ttl"><b>1 Day Program</b><span>1日の流れ</span></div>
+    <div class="steps">
+      <div class="st"><time>9:30</time><b>集合</b><small>受付・アイスブレイク<br>ミッション説明</small></div>
+      <div class="st"><time>10:50</time><b>ご利用者の<br>目線になる</b><small>体験ギア・車椅子<br>ベッド体験</small></div>
+      <div class="st w"><time>12:30</time><b>WORK ①</b><small>暮らしのプランを<br>つくり、発表</small></div>
+      <div class="st"><time>14:00</time><b>市場価値と<br>トークライブ</b><small>2040年問題<br>この街の働き方</small></div>
+      <div class="st w"><time>15:25</time><b>WORK ②</b><small>マイキャリア<br>プランを描く</small></div>
+      <div class="st"><time>17:25</time><b>講評・解散</b><small>全体発表<br>アンケート</small></div>
+    </div>
+  </section>
+
+  <!-- 5. 開催概要 + 申込 -->
+  <section class="foot">
+    <div class="info">
+      <dl>
+        <div><dt>開催日</dt><dd><b>12月12日（土）</b> 9:30集合〜17:55終了</dd></div>
+        <div><dt>会場</dt><dd><b>Workation + Cottage KARUIZAWA</b>（長野県軽井沢町）</dd></div>
+        <div><dt>対象</dt><dd>大学1年生〜4年生（文理・学部不問）／動きやすい服装でお越しください</dd></div>
+        <div><dt>費用</dt><dd><b>参加無料／交通費補助あり</b><br><small>※補助の上限・条件は参加確定後にご案内します</small></dd></div>
+      </dl>
+
+        <div class="brand"><img src="assets/logo.png" alt="エフビー介護サービス"><span>主催：エフビー介護サービス<br>お問い合わせ：（連絡先を差し替え）</span></div>
+    </div>
+    <div class="entry">
+      <div class="entry__lead">軽井沢で、<br>未来のキャリア軸を<i>つくる1日。</i></div>
+      <div class="qr">申込フォームの<br>QRコード<br>（差し替え）</div>
+      <div class="entry__url">お申込みはこちら<br>https://（申込URLを差し替え）</div>
+    </div>
+  </section>
+
+  <div class="bar"></div>
+</main>
+</body>
+</html>
