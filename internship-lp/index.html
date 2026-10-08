@@ -46,12 +46,19 @@ a{color:inherit;text-decoration:none}
 
 /* hero */
 .hero{padding-top:50px;background:var(--mint)}
-.hero__stage{position:relative;overflow:hidden;line-height:0;touch-action:manipulation}
-/* LOCAL LONG LIFE：1文字ずつ下端を軸に「ビヨーン」と伸びて弾む（波のように左から右へ）／触れた文字も伸びる */
-.gl{position:absolute;display:block;transform-origin:50% 100%;transition:transform .55s cubic-bezier(.3,1.9,.5,1);will-change:transform;pointer-events:none}
-.gl img{display:block;width:100%;height:auto;transform-origin:50% 100%;animation:boing 4.8s infinite;animation-delay:var(--d)}
-@keyframes boing{0%,50%,100%{transform:scale(1,1)}58%{transform:scale(1.03,1.2)}66%{transform:scale(1,1.03)}73%{transform:scale(1.015,1.11)}81%{transform:scale(1,1.01)}89%{transform:scale(1,1.03)}}
-@media(prefers-reduced-motion:reduce){.gl img{animation:none}.gl{transition:none}}
+.hero__stage{position:relative;overflow:hidden;line-height:0;container-type:inline-size;touch-action:manipulation}
+/* LOCAL LONG LIFE：「LONG」の O が横に ビヨーン と伸びて、N・G を押し出す（名前のとおり“長く”）。他の文字は静止 */
+.gl{position:absolute;display:block;pointer-events:none;will-change:transform}
+.gl img{display:block;width:100%;height:auto}
+.gO{transform-origin:0 50%;transition:transform .6s cubic-bezier(.3,1.9,.5,1)}
+.gS{transition:transform .6s cubic-bezier(.3,1.9,.5,1)}
+.gO img{transform-origin:0 50%;animation:stO 4.8s infinite .8s}
+.gS img{animation:stS 4.8s infinite .8s}
+/* O の幅は画面幅の19.8%。伸びた分(s-1)×19.8cqw だけ N・G が右へ押し出される */
+@keyframes stO{0%,50%,100%{transform:scaleX(1)}58%{transform:scaleX(1.55)}66%{transform:scaleX(1.08)}73%{transform:scaleX(1.28)}81%{transform:scaleX(1.02)}89%{transform:scaleX(1.1)}95%{transform:scaleX(1)}}
+@keyframes stS{0%,50%,100%{transform:translateX(0)}58%{transform:translateX(10.9cqw)}66%{transform:translateX(1.6cqw)}73%{transform:translateX(5.5cqw)}81%{transform:translateX(.4cqw)}89%{transform:translateX(2cqw)}95%{transform:translateX(0)}}
+.hero__stage.pull .gO{transform:scaleX(1.55)}.hero__stage.pull .gS{transform:translateX(10.9cqw)}
+@media(prefers-reduced-motion:reduce){.gO img,.gS img{animation:none}.gO,.gS{transition:none}}
 .hero__kv{width:100%;height:auto;display:block}
 .hero__bar{background:var(--ink);color:#fff}
 .hero__bar .inner{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between;padding:18px 0}
@@ -242,7 +249,7 @@ h1,h2,h3{text-wrap:balance}
 
 <!-- HERO：サムネイル（文字入り）をキービジュアルとしてそのまま使用 -->
 <div class="hero" id="top">
-  <div class="hero__stage"><img class="hero__kv" src="assets/hero.jpg" alt="LOCAL LONG LIFE インターンシップ 12/12(土) @Workation + Cottage KARUIZAWA エフビー介護サービス" width="1440" height="960"><span class="gl" style="left:2.986%;top:5.625%;width:7.708%;--d:0.6s" aria-hidden="true"><img src="assets/g00.png" alt="" width="60" height="100"></span><span class="gl" style="left:11.25%;top:5.312%;width:10.417%;--d:0.675s" aria-hidden="true"><img src="assets/g01.png" alt="" width="60" height="100"></span><span class="gl" style="left:22.222%;top:5.312%;width:8.542%;--d:0.75s" aria-hidden="true"><img src="assets/g02.png" alt="" width="60" height="100"></span><span class="gl" style="left:31.667%;top:5.521%;width:10.139%;--d:0.825s" aria-hidden="true"><img src="assets/g03.png" alt="" width="60" height="100"></span><span class="gl" style="left:42.5%;top:5.625%;width:7.708%;--d:0.9s" aria-hidden="true"><img src="assets/g04.png" alt="" width="60" height="100"></span><span class="gl" style="left:54.028%;top:8.021%;width:1.389%;--d:0.975s" aria-hidden="true"><img src="assets/g05.png" alt="" width="60" height="100"></span><span class="gl" style="left:2.986%;top:21.458%;width:7.708%;--d:0.88s" aria-hidden="true"><img src="assets/g10.png" alt="" width="60" height="100"></span><span class="gl" style="left:11.389%;top:20.417%;width:19.792%;--d:0.955s" aria-hidden="true"><img src="assets/g11.png" alt="" width="60" height="100"></span><span class="gl" style="left:31.736%;top:21.458%;width:9.097%;--d:1.03s" aria-hidden="true"><img src="assets/g12.png" alt="" width="60" height="100"></span><span class="gl" style="left:41.528%;top:21.146%;width:8.681%;--d:1.105s" aria-hidden="true"><img src="assets/g13.png" alt="" width="60" height="100"></span><span class="gl" style="left:2.986%;top:37.292%;width:7.708%;--d:1.16s" aria-hidden="true"><img src="assets/g20.png" alt="" width="60" height="100"></span><span class="gl" style="left:12.014%;top:37.5%;width:2.708%;--d:1.235s" aria-hidden="true"><img src="assets/g21.png" alt="" width="60" height="100"></span><span class="gl" style="left:16.667%;top:37.604%;width:6.597%;--d:1.31s" aria-hidden="true"><img src="assets/g22.png" alt="" width="60" height="100"></span><span class="gl" style="left:23.889%;top:37.604%;width:7.153%;--d:1.385s" aria-hidden="true"><img src="assets/g23.png" alt="" width="60" height="100"></span><span class="gl" style="left:35.833%;top:41.562%;width:0.833%;--d:1.46s" aria-hidden="true"><img src="assets/g24.png" alt="" width="60" height="100"></span></div>
+  <div class="hero__stage"><img class="hero__kv" src="assets/hero-bg.jpg" alt="LOCAL LONG LIFE インターンシップ 12/12(土) @Workation + Cottage KARUIZAWA エフビー介護サービス" width="1440" height="960"><span class="gl" style="left:2.986%;top:5.625%;width:7.708%" aria-hidden="true"><img src="assets/g00.png" alt="" width="60" height="100"></span><span class="gl" style="left:11.25%;top:5.312%;width:10.417%" aria-hidden="true"><img src="assets/g01.png" alt="" width="60" height="100"></span><span class="gl" style="left:22.222%;top:5.312%;width:8.542%" aria-hidden="true"><img src="assets/g02.png" alt="" width="60" height="100"></span><span class="gl" style="left:31.667%;top:5.521%;width:10.139%" aria-hidden="true"><img src="assets/g03.png" alt="" width="60" height="100"></span><span class="gl" style="left:42.5%;top:5.625%;width:7.708%" aria-hidden="true"><img src="assets/g04.png" alt="" width="60" height="100"></span><span class="gl" style="left:54.028%;top:8.021%;width:1.389%" aria-hidden="true"><img src="assets/g05.png" alt="" width="60" height="100"></span><span class="gl" style="left:2.986%;top:21.458%;width:7.708%" aria-hidden="true"><img src="assets/g10.png" alt="" width="60" height="100"></span><span class="gl gO" style="left:11.389%;top:20.417%;width:19.792%" aria-hidden="true"><img src="assets/g11.png" alt="" width="60" height="100"></span><span class="gl gS" style="left:31.736%;top:21.458%;width:9.097%" aria-hidden="true"><img src="assets/g12.png" alt="" width="60" height="100"></span><span class="gl gS" style="left:41.528%;top:21.146%;width:8.681%" aria-hidden="true"><img src="assets/g13.png" alt="" width="60" height="100"></span><span class="gl" style="left:2.986%;top:37.292%;width:7.708%" aria-hidden="true"><img src="assets/g20.png" alt="" width="60" height="100"></span><span class="gl" style="left:12.014%;top:37.5%;width:2.708%" aria-hidden="true"><img src="assets/g21.png" alt="" width="60" height="100"></span><span class="gl" style="left:16.667%;top:37.604%;width:6.597%" aria-hidden="true"><img src="assets/g22.png" alt="" width="60" height="100"></span><span class="gl" style="left:23.889%;top:37.604%;width:7.153%" aria-hidden="true"><img src="assets/g23.png" alt="" width="60" height="100"></span><span class="gl" style="left:35.833%;top:41.562%;width:0.833%" aria-hidden="true"><img src="assets/g24.png" alt="" width="60" height="100"></span></div>
   <div class="hero__bar">
     <div class="inner">
       <div class="hero__date">12/12<i>土</i></div>
@@ -489,24 +496,14 @@ function openPoster(i){
 document.getElementById('posters').addEventListener('click',e=>{const b=e.target.closest('.pcard');if(b)openPoster(+b.dataset.i)});
 pm.addEventListener('click',e=>{if(e.target===pm||e.target.closest('.pm__x'))pm.close()});
 
-// ロゴ：触れた（近づけた）文字が「ビヨーン」と伸びる
+// ロゴ：LONG の行に触れている間、O をぐーっと伸ばしたままにする（離すとビヨーンと戻る）
 (function(){
   const st=document.querySelector('.hero__stage');if(!st||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  const gl=[...st.querySelectorAll('.gl')];
-  function go(e){
-    const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-    gl.forEach(g=>{
-      const cx=(parseFloat(g.style.left)+parseFloat(g.style.width)/2)/100,w=parseFloat(g.style.width)/100;
-      const d=Math.abs(x-cx),inY=y>0.04&&y<0.52;
-      const k=inY?Math.max(0,1-d/(w*1.5+0.04)):0;
-      g.style.transform=k>0.02?`scale(${1+k*0.03},${1+k*0.2})`:'';
-    });
-  }
-  function off(){gl.forEach(g=>g.style.transform='')}
-  st.addEventListener('pointermove',go);st.addEventListener('pointerdown',go);
-  st.addEventListener('pointerleave',off);st.addEventListener('pointerup',()=>setTimeout(off,260));
+  function on(e){const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;st.classList.toggle('pull',y>0.18&&y<0.38&&x<0.6)}
+  st.addEventListener('pointermove',on);st.addEventListener('pointerdown',on);
+  st.addEventListener('pointerleave',()=>st.classList.remove('pull'));
+  st.addEventListener('pointerup',()=>setTimeout(()=>st.classList.remove('pull'),300));
 })();
-
 bxApply(document.body);
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
