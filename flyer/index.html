@@ -83,21 +83,30 @@ img{display:block;max-width:100%}
 .entry__url{font-size:2.3mm;line-height:1.5}
 .bar{flex:0 0 auto;height:3.2mm;background:var(--mint);margin-top:3mm}
 
-/* 比較案B：表面の上部だけ「人の顔」を主役に */
-.kvb{position:relative;display:grid;grid-template-columns:1.05fr 1fr;background:var(--mint);color:#fff;overflow:hidden}
-.kvb__tx{position:relative;z-index:2;padding:9mm 4mm 6mm 12mm;display:flex;flex-direction:column}
-.kvb__tx small{font-family:var(--en);font-weight:700;font-size:3.1mm;letter-spacing:.14em;opacity:.95}
-.kvb__tx h1{margin-top:3mm;font-size:9.2mm;font-weight:900;line-height:1.4;letter-spacing:.02em;color:#fff}
-.kvb__tx h1 em{font-style:normal;background:linear-gradient(transparent 62%,rgba(50,48,66,.35) 62%)}
-.kvb__tx p{margin-top:3mm;font-size:3.2mm;font-weight:700;line-height:1.7}
-.kvb__d{margin-top:auto;font-family:var(--en);font-weight:700;font-size:15mm;line-height:1}
-.kvb__d i{font-style:normal;font-family:var(--font);font-size:5mm;background:var(--orange);border-radius:50%;display:inline-grid;place-items:center;width:8mm;height:8mm;margin-left:1.6mm;vertical-align:5.6mm}
-.kvb__pl{font-size:3.3mm;font-weight:900;margin-top:1mm}
-.kvb__ph{position:relative;background:url(assets/photo/f2.jpg) 56% 33%/175% auto no-repeat}
-.kvb__ph::after{content:"";position:absolute;left:-1px;top:0;bottom:0;width:14mm;background:linear-gradient(90deg,var(--mint),rgba(85,197,176,0))}
-.kvb__bd{position:absolute;right:9mm;bottom:9mm;z-index:3;width:30mm;height:30mm;border-radius:50%;background:#5DBB2F;color:#fff;display:grid;place-items:center;text-align:center;font-weight:900;font-size:4.1mm;line-height:1.3;transform:rotate(-8deg);box-shadow:0 1mm 3mm rgba(0,0,0,.25)}
-.kvb__bd small{display:block;font-size:2.3mm;font-weight:700;margin-top:1mm}
-.kv.kvb img.kvb__lg{position:absolute;right:11mm;top:7mm;z-index:3;height:7mm;width:auto;max-width:none;object-fit:contain;background:rgba(255,254,242,.92);padding:1.2mm 2.4mm;border-radius:99px}
+/* 比較案B：表面のヒーローだけ「人の顔」を主役に（B1=山並みの曲線で切り抜き／B2=全面写真） */
+.kvx{position:relative;color:#fff;overflow:hidden;background:var(--mint)}
+.kvx .kvs{position:absolute;inset:0;width:100%;height:100%;display:block}
+.kv.kvx img.kvx__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.06);transform-origin:30% 50%}
+.kvx__shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,34,38,.82) 0%,rgba(24,34,38,.55) 40%,rgba(24,34,38,0) 66%),linear-gradient(0deg,rgba(24,34,38,.5) 0%,rgba(24,34,38,0) 40%)}
+.kvx__tx{position:absolute;left:12mm;top:0;bottom:0;width:84mm;z-index:2;display:flex;flex-direction:column;padding:9mm 0 8mm}
+.kvx__lb{font-family:var(--en);font-weight:700;font-size:2.9mm;letter-spacing:.2em}
+.kvx__lb::after{content:"";display:block;width:12mm;height:.7mm;background:var(--orange);margin-top:2mm}
+.kvx h1{margin-top:4.5mm;font-size:9.8mm;font-weight:900;line-height:1.38;letter-spacing:.01em;color:#fff}
+.kvx h1 em{font-style:normal;background:linear-gradient(transparent 60%,rgba(246,211,107,.95) 60%);color:var(--ink);padding:0 .6mm}
+.kvx h1 em.w{color:#fff;background:linear-gradient(transparent 60%,rgba(50,48,66,.42) 60%)}
+.kvx__sub{margin-top:3.6mm;font-size:3.15mm;font-weight:700;line-height:1.7}
+.kvx__chips{display:flex;flex-wrap:wrap;gap:1.6mm;margin-top:3.4mm}
+.kvx__chips span{background:#fff;color:var(--mint-d);font-size:2.7mm;font-weight:900;border-radius:99px;padding:.5mm 3mm;line-height:1.7}
+.kvx__d{margin-top:auto;display:flex;align-items:flex-end;gap:2.4mm}
+.kvx__d b{font-family:var(--en);font-weight:700;font-size:17mm;line-height:.9;letter-spacing:.01em}
+.kvx__d i{font-style:normal;font-weight:900;font-size:4.4mm;background:var(--orange);border-radius:50%;display:grid;place-items:center;width:8.4mm;height:8.4mm;margin-bottom:1mm}
+.kvx__pl{margin-top:2.2mm;font-size:3.1mm;font-weight:900;line-height:1.5}
+.kvx__pl small{display:block;font-size:2.7mm;font-weight:700;opacity:.92}
+.kv.kvx img.kvx__lg{position:absolute;right:10mm;top:8mm;z-index:3;height:7mm;width:auto;max-width:none;object-fit:contain;background:rgba(255,254,242,.94);padding:1.2mm 2.6mm;border-radius:99px}
+.kvx__bd{position:absolute;z-index:3;width:29mm;height:29mm;border-radius:50%;background:#5DBB2F;color:#fff;display:grid;place-items:center;text-align:center;font-weight:900;font-size:4mm;line-height:1.3;transform:rotate(-8deg);box-shadow:0 1mm 3mm rgba(0,0,0,.28)}
+.kvx__bd small{display:block;font-size:2.3mm;font-weight:700;margin-top:1mm}
+.kvx.b1 .kvx__bd{left:84mm;bottom:9mm}
+.kvx.b2 .kvx__bd{right:10mm;top:20mm}
 
 /* ===== 裏面 ===== */
 .bk-head{flex:0 0 auto;position:relative;background:var(--mint);color:#fff;padding:7mm 12mm 8.4mm;display:flex;align-items:flex-end;justify-content:space-between;gap:6mm}
@@ -248,22 +257,28 @@ img{display:block;max-width:100%}
 </div>
 
 <script>
-// 比較案B：表面の上部（KV）だけ差し替えた版を、A案の複製から作る（画面表示のみ・印刷には出ない）
+// 比較案B1/B2：表面のヒーロー（KV）だけ差し替えた版を、A案の複製から作る（画面表示のみ・印刷には出ない）
 (function(){
-  const a=document.getElementById('frontA'), b=a.cloneNode(true);
-  b.id='frontB'; b.classList.add('alt');
-  b.querySelector('.label').textContent='FRONT B／比較案（人の顔を主役に・画面のみ）';
-  b.querySelector('.kv').outerHTML=`<div class="kv kvb">
-    <img class="kvb__lg" src="assets/logo.png" alt="エフビー介護サービス">
-    <div class="kvb__tx"><small>LOCAL LONG LIFE インターンシップ</small>
+  const A=document.getElementById('frontA');
+  const txt=`<div class="kvx__tx"><div class="kvx__lb">LOCAL LONG LIFE INTERNSHIP</div>
       <h1>AIに奪われない、<br><em>人間の価値</em>とは？</h1>
-      <p>長寿の国、長野発。<br>地方の成長産業でキャリア軸をつくる1日。<br>大学1〜4年生をご招待。</p>
-      <div><div class="kvb__d">12/12<i>土</i></div><div class="kvb__pl">@ Workation + Cottage KARUIZAWA</div></div>
-    </div>
-    <div class="kvb__ph" role="img" aria-label="笑顔の社員"></div>
-    <div class="kvb__bd"><span>軽井沢へ<br>ご招待！<small>交通費補助あり</small></span></div>
-  </div>`;
-  a.after(b);
+      <p class="kvx__sub">長寿の国、長野発。<br>地方の成長産業で、キャリア軸をつくる1日。</p>
+      <div class="kvx__chips"><span>大学1〜4年生</span><span>参加無料</span><span>交通費補助あり</span></div>
+      <div class="kvx__d"><b>12/12</b><i>土</i></div>
+      <div class="kvx__pl">@ Workation + Cottage KARUIZAWA<small>9:30 〜 18:00　軽井沢で開催</small></div></div>`;
+  const logo='<img class="kvx__lg" src="assets/logo.png" alt="エフビー介護サービス">';
+  const bd='<div class="kvx__bd"><span>軽井沢へ<br>ご招待！<small>交通費補助あり</small></span></div>';
+  const WAVE='M96 0 C86 18 104 34 94 54 C84 74 100 96 90 130 L210 130 L210 0 Z';
+  const RIM='M93 0 C83 18 101 34 91 54 C81 74 97 96 87 130 L210 130 L210 0 Z';
+  const KV={
+    b1:`<div class="kv kvx b1"><svg class="kvs" viewBox="0 0 210 130" preserveAspectRatio="none" aria-hidden="true"><defs><clipPath id="cw"><path d="${WAVE}"/></clipPath></defs><rect width="210" height="130" fill="#55C5B0"/><path d="${RIM}" fill="#DBF2E2"/><image href="assets/photo/f2w.jpg" x="36" y="0" width="208" height="130" preserveAspectRatio="xMidYMid slice" clip-path="url(#cw)"/></svg>${txt}${logo}${bd}</div>`,
+    b2:`<div class="kv kvx b2"><img class="kvx__bg" src="assets/photo/f2w.jpg" alt="笑顔の社員"><div class="kvx__shade"></div>${txt.replace('<h1>','<h1 class="w">').replace('<em>','<em>')}${logo}${bd}</div>`
+  };
+  [['b1','FRONT B-1／比較案（山並みの曲線で切り抜き・画面のみ）'],['b2','FRONT B-2／比較案（全面写真・画面のみ）']].reduce((prev,[k,label])=>{
+    const c=A.cloneNode(true); c.id='front'+k.toUpperCase(); c.classList.add('alt');
+    c.querySelector('.label').textContent=label; c.querySelector('.kv').outerHTML=KV[k];
+    prev.after(c); return c;
+  },A);
 })();
 
 // 画面幅に合わせて縮小（印刷時はCSS側で等倍）
