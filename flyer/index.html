@@ -6,7 +6,7 @@
 <title>Local Long Life Flyer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Signika:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 /* A4 両面チラシ v2（検証をふまえた修正案）
    表＝何の会社か・参加後に得るもの・締切／裏＝1日の流れ（4ブロック）・先輩の声・選考との関係
@@ -15,8 +15,8 @@
 :root{
   --mint:#55C5B0; --mint-d:#2f9d89; --mint-l:#DBF2E2; --mint-xl:#EEF8F1;
   --cream:#FFFEF2; --ink:#323042; --ink-s:#6c6a7a; --orange:#F28A3C;
-  --font:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif;
-  --en:"Signika","Zen Maru Gothic",sans-serif;
+  --font:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif;
+  --en:"Barlow Condensed","Zen Kaku Gothic New",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#cfd3d0}
@@ -89,21 +89,21 @@ img{display:block;max-width:100%}
 .kv.kvx img.kvx__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.06);transform-origin:30% 50%}
 .kvx__shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,34,38,.82) 0%,rgba(24,34,38,.55) 40%,rgba(24,34,38,0) 66%),linear-gradient(0deg,rgba(24,34,38,.5) 0%,rgba(24,34,38,0) 40%)}
 .kvx__tx{position:absolute;left:12mm;top:0;bottom:0;width:84mm;z-index:2;display:flex;flex-direction:column;padding:9mm 0 8mm}
-.kvx__lb{font-family:var(--en);font-weight:700;font-size:2.9mm;letter-spacing:.2em}
+.kvx__lb{font-family:var(--en);font-weight:600;font-size:3.3mm;letter-spacing:.28em}
 .kvx__lb::after{content:"";display:block;width:12mm;height:.7mm;background:var(--orange);margin-top:2mm}
-.kvx h1{margin-top:4.5mm;font-size:9.8mm;font-weight:900;line-height:1.38;letter-spacing:.01em;color:#fff}
+.kvx h1{margin-top:4.5mm;font-size:10.4mm;font-weight:900;line-height:1.34;letter-spacing:-.015em;color:#fff}
 .kvx h1 em{font-style:normal;background:linear-gradient(transparent 60%,rgba(246,211,107,.95) 60%);color:var(--ink);padding:0 .6mm}
 .kvx h1 em.w{color:#fff;background:linear-gradient(transparent 60%,rgba(50,48,66,.42) 60%)}
 .kvx__sub{margin-top:3.6mm;font-size:3.15mm;font-weight:700;line-height:1.7}
 .kvx__chips{display:flex;flex-wrap:wrap;gap:1.6mm;margin-top:3.4mm}
-.kvx__chips span{background:#fff;color:var(--mint-d);font-size:2.7mm;font-weight:900;border-radius:99px;padding:.5mm 3mm;line-height:1.7}
+.kvx__chips span{background:#fff;color:var(--ink);font-size:2.7mm;font-weight:700;border-radius:.8mm;padding:.5mm 2.6mm;line-height:1.7;letter-spacing:.04em}
 .kvx__d{margin-top:auto;display:flex;align-items:flex-end;gap:2.4mm}
-.kvx__d b{font-family:var(--en);font-weight:700;font-size:17mm;line-height:.9;letter-spacing:.01em}
-.kvx__d i{font-style:normal;font-weight:900;font-size:4.4mm;background:var(--orange);border-radius:50%;display:grid;place-items:center;width:8.4mm;height:8.4mm;margin-bottom:1mm}
+.kvx__d b{font-family:var(--en);font-weight:700;font-size:22mm;line-height:.82;letter-spacing:.01em}
+.kvx__d i{font-style:normal;font-weight:900;font-size:4.4mm;background:var(--orange);border-radius:1mm;display:grid;place-items:center;width:8mm;height:8mm;margin-bottom:.4mm}
 .kvx__pl{margin-top:2.2mm;font-size:3.1mm;font-weight:900;line-height:1.5}
 .kvx__pl small{display:block;font-size:2.7mm;font-weight:700;opacity:.92}
 .kv.kvx img.kvx__lg{position:absolute;right:10mm;top:8mm;z-index:3;height:7mm;width:auto;max-width:none;object-fit:contain;background:rgba(255,254,242,.94);padding:1.2mm 2.6mm;border-radius:99px}
-.kvx__bd{position:absolute;z-index:3;width:29mm;height:29mm;border-radius:50%;background:#5DBB2F;color:#fff;display:grid;place-items:center;text-align:center;font-weight:900;font-size:4mm;line-height:1.3;transform:rotate(-8deg);box-shadow:0 1mm 3mm rgba(0,0,0,.28)}
+.kvx__bd{position:absolute;z-index:3;width:29mm;height:29mm;border-radius:50%;background:#5DBB2F;color:#fff;display:grid;place-items:center;text-align:center;font-weight:900;font-size:4mm;line-height:1.3;transform:rotate(-5deg);box-shadow:0 1mm 3mm rgba(0,0,0,.28)}
 .kvx__bd small{display:block;font-size:2.3mm;font-weight:700;margin-top:1mm}
 .kvx.b1 .kvx__bd{left:84mm;bottom:9mm}
 .kvx.b2 .kvx__bd{right:10mm;top:20mm}
