@@ -51,12 +51,12 @@ a{color:inherit;text-decoration:none}
 .gl{position:absolute;display:block;pointer-events:none;will-change:transform}
 .gl img{display:block;width:100%;height:auto}
 /* ロゴ：LONG の「O」だけが「ローーーーング」と長く伸びる（LOCAL・LIFE は静止）。
-   あくびが出るほどゆったり：約7秒かけて伸び、最大で約1.5秒止まり、約5秒かけて戻る（15秒で1周）。N・G は一緒に押し出される。右のタグには届かない範囲（最大 +29cqw） */
+   ゆったり：約2.8秒かけて伸び、最大で約0.6秒止まり、約2秒かけて戻る（6秒で1周）。N・G は一緒に押し出される。右のタグには届かない範囲（最大 +29cqw） */
 .gOB{width:var(--ow);height:var(--oh);box-sizing:border-box;border:solid transparent;border-width:0 var(--oc);
   border-image:url(assets/g11h.png) 0 var(--op) 0 var(--op) fill/0 var(--oc)/0 stretch}
 .gS{transition:transform 2.4s cubic-bezier(.37,0,.63,1)}
-.gOB{animation:lo 15s infinite .8s}
-.gS img{animation:loS 15s infinite .8s}
+.gOB{animation:lo 6s infinite .6s}
+.gS img{animation:loS 6s infinite .6s}
 @keyframes lo{
  0%,6%{width:var(--ow);animation-timing-function:cubic-bezier(.37,0,.63,1)}
  52%{width:calc(var(--ow) + 29cqw);animation-timing-function:linear}
