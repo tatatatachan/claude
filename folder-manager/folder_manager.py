@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ダウンロードフォルダ自動管理 (macOS向け / 標準ライブラリのみ)
 
-  organize     種類・年月で仕分け + 先頭に日付を付与
+  organize     ~/Downloads/自動整理くん/ の中へ種類・年月で仕分け + 先頭に日付を付与
   archive      21日以上前のファイルを _アーカイブ へ移動 (削除はしない)
   new-project  企業名/日付_案件 の雛形フォルダを作成
   undo         直近の実行分の移動を元に戻す
@@ -16,6 +16,7 @@ from pathlib import Path
 
 DOWNLOADS = Path.home() / "Downloads"
 PROJECTS = Path.home() / "Documents" / "案件"
+ROOT = DOWNLOADS / "自動整理くん"  # 仕分け先はすべてこの中
 ARCHIVE_DAYS = 21
 LOG = Path.home() / ".folder_manager_log.jsonl"
 ARCHIVE_DIR = "_アーカイブ"
@@ -71,7 +72,7 @@ def cmd_organize(a):
             continue
         mtime = datetime.fromtimestamp(p.stat().st_mtime)
         name = p.name if DATE_PREFIX.match(p.name) else f"{mtime:%Y%m%d}_{p.name}"
-        move(p, DOWNLOADS / category(p) / f"{mtime:%Y-%m}" / name, a.apply)
+        move(p, ROOT / category(p) / f"{mtime:%Y-%m}" / name, a.apply)
         n += 1
     print(f"{n} 件")
 
@@ -81,12 +82,12 @@ def cmd_archive(a):
     cutoff = time.time() - a.days * 86400
     n = 0
     for cat in [*CATEGORIES, OTHER]:
-        base = DOWNLOADS / cat
+        base = ROOT / cat
         if not base.is_dir():
             continue
         for p in sorted(base.rglob("*")):
             if p.is_file() and not p.name.startswith(".") and p.stat().st_mtime < cutoff:
-                move(p, DOWNLOADS / ARCHIVE_DIR / p.relative_to(DOWNLOADS), a.apply)
+                move(p, ROOT / ARCHIVE_DIR / p.relative_to(ROOT), a.apply)
                 n += 1
     print(f"{n} 件")
 
