@@ -67,7 +67,8 @@ a{color:inherit}
 .entry{align-self:start;background:var(--mint-l);border-radius:5mm;padding:3.4mm 3mm;text-align:center}
 .entry__lead{font-size:3.3mm;font-weight:900;line-height:1.4}
 .entry__lead i{font-style:normal;color:var(--orange)}
-.qr{width:22mm;height:22mm;margin:2mm auto 1.4mm;border:.5mm dashed var(--mint-d);display:grid;place-items:center;font-size:2.3mm;color:var(--mint-d);line-height:1.4}
+.qr{width:24mm;height:24mm;margin:2mm auto 1.4mm;padding:1.8mm;background:#fff;border-radius:1.6mm}
+.qr img{width:100%;height:100%}
 .entry__url{font-size:2.3mm;color:var(--ink);line-height:1.5;word-break:break-all}
 .bar{flex:0 0 auto;height:3.2mm;background:var(--mint);margin-top:4mm}
 
@@ -127,7 +128,7 @@ a{color:inherit}
   <section class="foot">
     <div class="info">
       <dl>
-        <div><dt>開催日</dt><dd><b>12月12日（土）</b> 9:30集合〜17:55終了</dd></div>
+        <div><dt>開催日</dt><dd><b>12月12日（土）</b> 9:30集合〜18:00終了</dd></div>
         <div><dt>会場</dt><dd><b>Workation + Cottage KARUIZAWA</b>（長野県軽井沢町）</dd></div>
         <div><dt>対象</dt><dd>大学1年生〜4年生（文理・学部不問）</dd></div>
         <div><dt>費用</dt><dd><b>参加無料／交通費補助あり</b><br><small>※補助の上限・条件は参加確定後にご案内します</small></dd></div>
@@ -136,8 +137,8 @@ a{color:inherit}
     </div>
     <div class="entry">
       <div class="entry__lead">軽井沢で、<br>未来のキャリア軸を<i>つくる1日。</i></div>
-      <div class="qr">申込フォームの<br>QRコード<br>（差し替え）</div>
-      <div class="entry__url">お申込みはこちら<br>https://（申込URLを差し替え）</div>
+      <div class="qr"><img src="assets/qr-dummy.svg" alt="申込フォームのQRコード（ダミー）"></div>
+      <div class="entry__url">お申込みはこちら（QRはダミー）<br>https://（申込URLを差し替え）</div>
     </div>
   </section>
   <div class="bar"></div>
@@ -184,7 +185,7 @@ const TL=[
 ["15:25","16:25","マイキャリアプラン作成","WORK①で感じた仕事の魅力と自分の価値観を掛け合わせて作成。社員メンターが壁打ちで伴走。","WORK ②"],
 ["16:25","16:55","全体発表","メンターから、美点凝視とエフビーのキャリアが重なるポイントをフィードバック。"],
 ["16:55","17:25","講評＆アンケート","講評と、次回以降のご案内。"],
-["17:25","17:55","終了・片付け・解散",""]
+["17:25","18:00","終了・片付け・解散",""]
 ];
 document.getElementById('tl').innerHTML=TL.map(([s,e,t,d,w])=>`<div class="row${w?' w':''}"><time>${s}<small>〜${e}</small></time><div><b>${t}${w?`<i>${w}</i>`:''}</b>${d?`<p>${d}</p>`:''}</div></div>`).join('');
 
