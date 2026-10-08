@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """ダウンロードフォルダ自動管理 (macOS向け / 標準ライブラリのみ)
 
-  organize     ~/Downloads/自動整理くん/ の中へ種類・年月で仕分け + 先頭に日付を付与
+  organize     ~/Downloads/自動整理くん/ 直下に置いたファイルを種類・年月で仕分け
+               (Downloads直下は一切触らない) + 先頭に日付を付与
   archive      21日以上前のファイルを _アーカイブ へ移動 (削除はしない)
   new-project  企業名/日付_案件 の雛形フォルダを作成
   undo         直近の実行分の移動を元に戻す
@@ -67,7 +68,9 @@ def mode(a) -> str:
 def cmd_organize(a):
     print("[organize]" + mode(a))
     n = 0
-    for p in sorted(DOWNLOADS.iterdir()):
+    if not ROOT.is_dir():
+        sys.exit(f"{ROOT} がありません。先に作成してください")
+    for p in sorted(ROOT.iterdir()):
         if not p.is_file() or p.name.startswith(".") or p.suffix.lower() in SKIP_SUFFIX:
             continue
         mtime = datetime.fromtimestamp(p.stat().st_mtime)
