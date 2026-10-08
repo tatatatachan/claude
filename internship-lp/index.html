@@ -10,7 +10,7 @@
 <meta property="og:image" content="assets/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Signika:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Signika:wght@500;700&family=Zen+Kaku+Gothic+New:wght@700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 /* デザインベース：エフビー介護サービスの販促物（ミント×クリーム、手描き線画、長野の山並み、縦書きコピー、円形バッジ） */
 :root{
@@ -53,9 +53,12 @@ a{color:inherit;text-decoration:none}
 .hero__date i{font-style:normal;font-size:.34em;background:var(--orange);border-radius:50%;display:inline-grid;place-items:center;width:1.5em;height:1.5em;margin-left:.25em;vertical-align:.45em;font-family:var(--font)}
 .hero__place{font-size:14px;flex:1;min-width:220px}
 .hero__place b{font-size:16px}
+.hero__link{border-bottom:2px solid var(--mint)}.hero__link:hover{color:var(--mint)}
 .btn{display:inline-flex;align-items:center;gap:12px;background:var(--orange);color:#fff;font-weight:900;font-size:17px;padding:14px 38px;border-radius:999px;box-shadow:0 5px 0 #c26a22;transition:.2s}
 .btn:hover{transform:translateY(3px);box-shadow:0 2px 0 #c26a22}
 .btn::after{content:"→";font-family:var(--en)}
+.btn--w{background:#fff;color:var(--mint-d);box-shadow:0 5px 0 rgba(0,0,0,.18);margin-top:26px;position:relative;z-index:1}
+.btn--w:hover{box-shadow:0 2px 0 rgba(0,0,0,.18)}
 
 /* section base */
 section{position:relative;padding:80px 0 72px}
@@ -100,14 +103,41 @@ section{position:relative;padding:80px 0 72px}
 @media(max-width:640px){.fl{grid-template-columns:1fr;gap:14px}.fl__img{height:110px}}
 .flow .mt-bottom{color:var(--mint-l);margin-top:56px;margin-bottom:-1px}
 
-/* gallery */
+/* gallery : 営業職ポスター */
 .gallery{background:var(--mint-l);padding-top:40px}
-.gallery__lead{text-align:center;max-width:620px;margin:-16px auto 34px;font-size:14.5px}
-.gallery__row{display:flex;gap:16px;overflow-x:auto;padding:6px 16px 24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.gallery__lead{text-align:center;margin:-8px auto 38px;font-size:clamp(19px,3vw,27px);font-weight:900;line-height:1.8;letter-spacing:.06em}
+.gallery__lead .ph{display:inline-block}
+.gallery__hint{text-align:center;font-size:12.5px;color:var(--ink-s);margin:-18px 0 14px}
+.gallery__row{display:flex;gap:18px;overflow-x:auto;padding:6px 16px 26px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .gallery__row::-webkit-scrollbar{height:6px}.gallery__row::-webkit-scrollbar-thumb{background:var(--mint);border-radius:9px}
-.gallery__row img{flex:0 0 auto;height:min(460px,70vw);width:auto;border-radius:22px;scroll-snap-align:center;box-shadow:0 8px 0 rgba(85,197,176,.35)}
-.gallery__row img:first-child{margin-left:max(0px,calc(50vw - 540px))}
-.gallery__row img:last-child{margin-right:max(0px,calc(50vw - 540px))}
+.gallery__row>.pcard:first-child{margin-left:max(0px,calc(50vw - 540px))}
+.gallery__row>.pcard:last-child{margin-right:max(0px,calc(50vw - 540px))}
+.pcard{flex:0 0 auto;width:min(340px,76vw);scroll-snap-align:center;border:0;background:none;padding:0;cursor:zoom-in;font:inherit;text-align:left;transition:transform .3s}
+.pcard:hover{transform:translateY(-6px)}
+.pcard .poster{box-shadow:0 8px 0 rgba(85,197,176,.4)}
+.pcard__more{display:block;text-align:center;margin-top:16px;font-size:12.5px;font-weight:900;color:var(--mint-d)}
+.pcard__more::after{content:" ＋"}
+
+/* poster（PDFのレイアウトを再現：写真＋白帯＋ティールの縦書き） */
+.poster{position:relative;container-type:inline-size;aspect-ratio:1683.78/2383.94;background:#fff;overflow:hidden;border-radius:6px;line-height:1}
+.poster__ph{position:absolute;left:2.494%;right:2.494%;top:1.762%;bottom:1.762%;overflow:hidden}
+.poster__ph img{position:absolute;left:-3.19%;top:-2.17%;width:106.3%;height:104.35%;max-width:none;object-fit:cover}
+.poster__bar{position:absolute;background:#fff}
+.poster__t{position:absolute;writing-mode:vertical-rl;white-space:nowrap;line-height:1;color:#009B94;font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;transform:translateX(-50%);text-combine-upright:none}
+.poster__t.h{font-weight:900}.poster__t.b,.poster__t.n{font-weight:700}
+.poster__badge{position:absolute;left:2.61%;top:86.2%;width:16.93%;aspect-ratio:1;border-radius:50%;background:#00B1A9;display:grid;place-items:center}
+.poster__badge img{width:68%;height:auto}
+
+/* poster modal */
+.pm{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;overflow:auto}
+.pm::backdrop{background:rgba(50,48,66,.78)}
+.pm__in{display:grid;grid-template-columns:auto minmax(280px,420px);gap:28px;align-items:start;width:fit-content;max-width:calc(100% - 24px);margin:3vh auto;background:var(--cream);border-radius:28px;padding:24px;position:relative}
+.pm__poster{width:min(560px,calc(88vh * .7063),calc(100vw - 72px));cursor:default}
+.pm__txt h3{font-size:clamp(19px,2.4vw,23px);font-weight:900;line-height:1.6;color:var(--mint-d);margin-bottom:14px}
+.pm__txt p{font-size:14.5px;line-height:2;margin-bottom:.9em}
+.pm__name{margin-top:18px;font-size:13px;font-weight:900;color:var(--ink-s);border-top:3px dotted var(--mint);padding-top:12px}
+.pm__x{position:absolute;right:12px;top:10px;width:40px;height:40px;border-radius:50%;border:0;background:var(--mint);color:#fff;font-size:22px;line-height:1;cursor:pointer;z-index:2}
+@media(max-width:760px){.pm__in{grid-template-columns:1fr;padding:16px;gap:18px;border-radius:22px}.pm__poster{width:100%}}
 
 /* mission */
 .mission{background:var(--cream);text-align:center;overflow:hidden}
@@ -203,7 +233,7 @@ section{position:relative;padding:80px 0 72px}
   <div class="hero__bar">
     <div class="inner">
       <div class="hero__date">12/12<i>土</i></div>
-      <div class="hero__place"><b>@ Workation + Cottage KARUIZAWA</b><br>大学1〜4年生をご招待・交通費補助あり</div>
+      <div class="hero__place"><a href="https://www.mt-hr.com/cottage-karuizawa/" target="_blank" rel="noopener" class="hero__link"><b>@ Workation + Cottage KARUIZAWA</b></a><br>大学1〜4年生をご招待・交通費補助あり</div>
       <a class="btn" href="#entry">参加する</a>
     </div>
   </div>
@@ -254,21 +284,23 @@ section{position:relative;padding:80px 0 72px}
   <div class="mt mt-bottom"><svg><use href="#ridge"/></svg></div>
 </section>
 
-<!-- GALLERY：現場の写真（販促物のフォト） -->
+<!-- GALLERY：営業職ポスター（PDFのポスターを文字入りで再現） -->
 <section class="gallery" id="gallery">
   <div class="inner">
-    <div class="sec-ttl rv"><span class="en">Our Field</span><span class="ja">エフビーの現場</span></div>
-    <p class="gallery__lead rv">福祉用具のレンタル・販売、住宅改修。ご利用者の「暮らし」を支える仕事は、こんな現場で行われています。</p>
+    <div class="sec-ttl rv"><span class="en">Our Field</span><span class="ja">営業職</span></div>
+    <p class="gallery__lead rv"><span class="ph">あなたの人生経験が</span><br><span class="ph">誰かの人生の支えになる。</span></p>
+    <p class="gallery__hint rv">ポスターをタップすると、大きく読めます</p>
   </div>
-  <div class="gallery__row rv">
-    <img src="assets/photo/p1.jpg" alt="福祉用具の梱包を確認する社員">
-    <img src="assets/photo/p2.jpg" alt="倉庫で笑顔の社員">
-    <img src="assets/photo/p3.jpg" alt="営業所の前に立つ社員">
-    <img src="assets/photo/p4.jpg" alt="運転中の社員">
-    <img src="assets/photo/p5.jpg" alt="事務所で働く社員">
-    <img src="assets/photo/p6.jpg" alt="福祉用具の準備をする社員">
-  </div>
+  <div class="gallery__row rv" id="posters"></div>
 </section>
+
+<dialog class="pm" id="pm" aria-label="先輩社員のポスター">
+  <div class="pm__in">
+    <button class="pm__x" type="button" aria-label="閉じる">×</button>
+    <div class="pm__poster" id="pmPoster"></div>
+    <div class="pm__txt" id="pmTxt"></div>
+  </div>
+</dialog>
 
 <!-- MISSION -->
 <section class="mission" id="mission">
@@ -296,7 +328,7 @@ section{position:relative;padding:80px 0 72px}
     <div class="sec-ttl rv"><span class="en">Information</span><span class="ja">開催概要</span></div>
     <dl class="rv">
       <div><dt>開催日</dt><dd>12月12日（土）　9:30 集合 〜 17:55 終了</dd></div>
-      <div><dt>会場</dt><dd>Workation + Cottage KARUIZAWA（長野県軽井沢町）<br><span class="note">※詳細な住所・アクセスは参加確定後にご案内します</span></dd></div>
+      <div><dt>会場</dt><dd><a href="https://www.mt-hr.com/cottage-karuizawa/" target="_blank" rel="noopener" style="border-bottom:2px solid var(--mint);font-weight:700">Workation + Cottage KARUIZAWA</a>（長野県軽井沢町）<br><span class="note">※詳細な住所・アクセスは参加確定後にご案内します</span></dd></div>
       <div><dt>対象</dt><dd>大学1年生〜4年生（文理・学部不問）</dd></div>
       <div><dt>費用</dt><dd>参加無料／交通費補助あり<br><span class="note">※当日受付にて交通費精算を行います。補助の上限・条件は参加確定後にご案内します</span></dd></div>
       <div><dt>持ち物</dt><dd>筆記用具、動きやすい服装（体験ワークがあります）</dd></div>
@@ -311,6 +343,7 @@ section{position:relative;padding:80px 0 72px}
     <div class="venue__card rv">
       <h3>Workation + Cottage<br>KARUIZAWA</h3>
       <p>木々に囲まれた軽井沢のコテージが、この1日の「モデル空間」。深く息を吸い込んで、これからの働き方・暮らし方を考えます。</p>
+      <a class="btn btn--w" href="https://www.mt-hr.com/cottage-karuizawa/" target="_blank" rel="noopener">会場の詳細を見る</a>
       <img class="venue__van" src="assets/ill/van.png" alt="">
       <div class="venue__road"></div>
     </div>
@@ -362,6 +395,28 @@ document.getElementById('tt').innerHTML=TT.map(([s,e,t,d,w,tag])=>{
   const work=typeof tag==='string'&&tag.startsWith('WORK');
   return `<div class="tt__row rv${work||tag===true?' is-work':''}"><div class="tt__time">${s}<small>〜${e}</small></div><div class="tt__body"><h3>${t}${work?`<span class="tag">${tag}</span>`:''}</h3>${d?`<p>${d}</p>`:''}${w?`<span class="who">${w}</span>`:''}</div></div>`;
 }).join('');
+
+// ポスター（0e8eb3b1 営業職ポスターPDFの文字・白帯・座標を再現）
+const POSTERS=[{"n":1,"img":"assets/photo/p1.jpg","alt":"福祉用具の梱包を確認する営業職の社員","bars":[[76.049,6.816,8.083,54.913],[39.744,20.323,2.376,14.799],[37.368,20.323,2.376,16.053],[34.993,20.323,2.376,18.394],[32.617,20.323,2.376,21.649],[30.241,20.323,2.376,17.58],[27.866,20.323,2.376,18.394],[25.49,20.323,2.376,26.75],[23.174,20.323,2.376,21.209],[20.798,20.323,2.376,23.788],[18.423,20.323,2.376,22.438],[16.047,20.323,2.376,15.634],[68.037,6.816,8.083,57.313],[11.973,33.952,2.037,13.121]],"lines":[{"k":"h","t":"一軒、一軒、オーダーメイド。","x":80.015,"y":7.346,"s":5.286},{"k":"h","t":"営業、という名の、相談員です。","x":71.934,"y":7.346,"s":5.286},{"k":"b","t":"商学部出身・福祉の知識ゼロから","x":40.993,"y":20.562,"s":1.247},{"k":"b","t":"スタートした私がたどり着いたのは","x":38.617,"y":20.562,"s":1.247},{"k":"b","t":"「ただ物を売る」だけではない福祉の営業。","x":36.241,"y":20.122,"s":1.247},{"k":"b","t":"福祉用具の提案は、お部屋の段差、車椅子の導線、","x":33.865,"y":20.562,"s":1.247},{"k":"b","t":"ご家族との関係性まで全てを汲み取り、","x":31.49,"y":20.562,"s":1.247},{"k":"b","t":"その人だけの最適な暮らしをつくる仕事。","x":29.114,"y":20.562,"s":1.247},{"k":"b","t":"だからこそ、提案は「一軒、一軒、オーダーメイド」になります。","x":26.739,"y":20.562,"s":1.247},{"k":"b","t":"ご利用者の二〇〇以上の人生に全力で寄り添い、","x":24.363,"y":20.562,"s":1.247},{"k":"b","t":"時には「そこまでやる？」と驚かれるほど深く向き合う。","x":21.987,"y":20.562,"s":1.247},{"k":"b","t":"だからこそ、ご家族から「担当があなたで良かった」","x":19.612,"y":20.562,"s":1.247},{"k":"b","t":"と言われた時の達成感は格別です。","x":17.236,"y":20.562,"s":1.247},{"k":"n","t":"新卒入社4年目　商学部出身　田子 茂虎","x":12.976,"y":34.279,"s":0.891}],"head":["一軒、一軒、オーダーメイド。","営業、という名の、相談員です。"],"body":["商学部出身・福祉の知識ゼロから","スタートした私がたどり着いたのは","「ただ物を売る」だけではない福祉の営業。","福祉用具の提案は、お部屋の段差、車椅子の導線、","ご家族との関係性まで全てを汲み取り、","その人だけの最適な暮らしをつくる仕事。","だからこそ、提案は「一軒、一軒、オーダーメイド」になります。","ご利用者の二〇〇以上の人生に全力で寄り添い、","時には「そこまでやる？」と驚かれるほど深く向き合う。","だからこそ、ご家族から「担当があなたで良かった」","と言われた時の達成感は格別です。"],"name":"新卒入社4年目　商学部出身　田子 茂虎"},{"n":2,"img":"assets/photo/p2.jpg","alt":"倉庫で笑顔の営業職の社員","bars":[[41.205,17.5,2.376,13.025],[38.829,17.5,2.376,22.673],[36.454,17.5,2.376,20.865],[34.078,17.5,2.376,17.689],[31.702,17.5,2.376,24.283],[29.327,17.5,2.376,19.921],[26.951,17.5,2.376,26.213],[24.635,17.5,2.376,25.546],[22.259,17.5,2.376,27.53],[82.784,17.5,8.083,42.732],[74.772,17.5,8.077,46.591],[18.191,31.268,2.031,13.809]],"lines":[{"k":"h","t":"地域に密着していても、","x":86.833,"y":17.804,"s":5.286},{"k":"h","t":"世界は無限に広がります。","x":78.753,"y":17.804,"s":5.286},{"k":"b","t":"学生時代の旅先で知ったのは","x":42.384,"y":17.738,"s":1.247},{"k":"b","t":"「人によって幸せや当たり前は全く違う」ということ。","x":40.008,"y":17.298,"s":1.247},{"k":"b","t":"ご利用者様やケアマネジャーさんと接する中で、","x":37.633,"y":17.738,"s":1.247},{"k":"b","t":"時に戸惑うようなご要望をいただいても","x":35.257,"y":17.738,"s":1.247},{"k":"b","t":"「この人たちはどんな気持ちで言っているんだろう？」と","x":32.881,"y":17.298,"s":1.247},{"k":"b","t":"一歩引いて受け止められるようになったのは、","x":30.505,"y":17.738,"s":1.247},{"k":"b","t":"いろんな価値観を許容し、自分の世界を広げてきたからこそ。","x":28.13,"y":17.738,"s":1.247},{"k":"b","t":"ガツガツ話す営業ではなく、人と誠心誠意向き合いながら、","x":25.755,"y":17.738,"s":1.247},{"k":"b","t":"人間的な成長を実感できる環境が、自分にはマッチしています。","x":23.379,"y":17.738,"s":1.247},{"k":"n","t":"新卒入社5年目　経済学部出身　野沢 友哉","x":19.189,"y":31.594,"s":0.891}],"head":["地域に密着していても、","世界は無限に広がります。"],"body":["学生時代の旅先で知ったのは","「人によって幸せや当たり前は全く違う」ということ。","ご利用者様やケアマネジャーさんと接する中で、","時に戸惑うようなご要望をいただいても","「この人たちはどんな気持ちで言っているんだろう？」と","一歩引いて受け止められるようになったのは、","いろんな価値観を許容し、自分の世界を広げてきたからこそ。","ガツガツ話す営業ではなく、人と誠心誠意向き合いながら、","人間的な成長を実感できる環境が、自分にはマッチしています。"],"name":"新卒入社5年目　経済学部出身　野沢 友哉"},{"n":3,"img":"assets/photo/p3.jpg","alt":"営業所の前に立つ営業職の社員","bars":[[32.884,25.701,2.376,35.047],[30.509,25.701,2.376,31.305],[28.133,25.701,2.376,26.213],[25.758,25.701,2.376,35.047],[23.382,25.701,2.376,33.273],[21.006,25.701,2.376,27.53],[18.631,25.701,2.376,33.084],[81.477,25.701,8.083,50.937],[73.466,25.701,8.077,45.97],[65.383,25.701,8.083,47.946],[14.562,45.505,2.037,15.244]],"lines":[{"k":"h","t":"営業として訪ねているのに、","x":85.588,"y":26.297,"s":5.286},{"k":"h","t":"自分の「おばあちゃん」に","x":77.509,"y":26.297,"s":5.286},{"k":"h","t":"会いに行く感覚なんです。","x":69.429,"y":26.297,"s":5.286},{"k":"b","t":"広島の島育ちで、周りはみんな家族や友達みたいなあたたかい環境で育ちました。","x":34.024,"y":26.131,"s":1.247},{"k":"b","t":"だからこそ、ご利用者様との間にヘンな壁を作らないのが私のスタイル。","x":31.648,"y":26.131,"s":1.247},{"k":"b","t":"点検でお邪魔すると、「あんたが来るから用意しといたよ」と","x":29.272,"y":26.131,"s":1.247},{"k":"b","t":"ぶどうやコーヒーでおもてなししてくれる一〇〇歳近くのおばあちゃんがいます。","x":26.896,"y":26.131,"s":1.247},{"k":"b","t":"こちらがサービスを提供する側なのに、気づけば私の方がパワーをもらって、","x":24.521,"y":26.131,"s":1.247},{"k":"b","t":"心の寄り所にさせてもらっている。ビジネスの「営業」を超えて、","x":22.145,"y":26.131,"s":1.247},{"k":"b","t":"一人の人間として深くあたたかくつながれる。それが、一番のやりがいです。","x":19.77,"y":26.131,"s":1.247},{"k":"n","t":"新卒入社6年目　社会福祉学部出身　小柳 あずさ","x":15.561,"y":45.831,"s":0.891}],"head":["営業として訪ねているのに、","自分の「おばあちゃん」に","会いに行く感覚なんです。"],"body":["広島の島育ちで、周りはみんな家族や友達みたいなあたたかい環境で育ちました。","だからこそ、ご利用者様との間にヘンな壁を作らないのが私のスタイル。","点検でお邪魔すると、「あんたが来るから用意しといたよ」と","ぶどうやコーヒーでおもてなししてくれる一〇〇歳近くのおばあちゃんがいます。","こちらがサービスを提供する側なのに、気づけば私の方がパワーをもらって、","心の寄り所にさせてもらっている。ビジネスの「営業」を超えて、","一人の人間として深くあたたかくつながれる。それが、一番のやりがいです。"],"name":"新卒入社6年目　社会福祉学部出身　小柳 あずさ"},{"n":4,"img":"assets/photo/p4.jpg","alt":"運転中の営業職の社員","bars":[[36.834,8.335,2.376,22.882],[15.531,8.335,2.376,23.776],[34.458,8.335,2.376,12.135],[32.083,8.335,2.376,16.464],[29.707,8.335,2.376,13.725],[27.331,8.335,2.376,14.686],[24.956,8.335,2.376,17.228],[22.58,8.335,2.376,22.882],[20.27,8.335,2.376,12.349],[17.894,8.335,2.376,21.112],[81.513,8.117,8.083,39.72],[73.501,8.117,8.083,39.72],[11.456,18.386,2.037,13.725]],"lines":[{"k":"h","t":"物を納めた先に待つ、","x":85.701,"y":8.71,"s":5.286},{"k":"h","t":"物語を大切にしたい。","x":77.622,"y":8.71,"s":5.286},{"k":"b","t":"靴や家具の選び方、棚上の賞状、畑の野菜の並べ方。","x":38.098,"y":8.762,"s":1.247},{"k":"b","t":"ご自宅には、ご利用者様の","x":35.722,"y":8.762,"s":1.247},{"k":"b","t":"人生の歩みがすべて詰まっています。","x":33.346,"y":8.762,"s":1.247},{"k":"b","t":"サッカーのパスで身につけた、","x":30.971,"y":8.762,"s":1.247},{"k":"b","t":"ピッチ全体を見渡す「観察力」が、","x":28.595,"y":8.762,"s":1.247},{"k":"b","t":"このとき、活きているように思います。","x":26.219,"y":8.762,"s":1.247},{"k":"b","t":"深く理解して、暮らしを整える提案をするからこそ、","x":23.844,"y":8.762,"s":1.247},{"k":"b","t":"「ご飯食べていきなよ。」と、","x":21.468,"y":8.322,"s":1.247},{"k":"b","t":"家族のように誘っていただける信頼が生まれる。","x":19.092,"y":8.762,"s":1.247},{"k":"b","t":"そんな、心を通わせる喜びが、この仕事にはあります。","x":16.717,"y":8.762,"s":1.247},{"k":"n","t":"新卒入社9年目　心理学部出身　大隈 貴文","x":12.457,"y":18.713,"s":0.891}],"head":["物を納めた先に待つ、","物語を大切にしたい。"],"body":["靴や家具の選び方、棚上の賞状、畑の野菜の並べ方。","ご自宅には、ご利用者様の","人生の歩みがすべて詰まっています。","サッカーのパスで身につけた、","ピッチ全体を見渡す「観察力」が、","このとき、活きているように思います。","深く理解して、暮らしを整える提案をするからこそ、","「ご飯食べていきなよ。」と、","家族のように誘っていただける信頼が生まれる。","そんな、心を通わせる喜びが、この仕事にはあります。"],"name":"新卒入社9年目　心理学部出身　大隈 貴文"},{"n":5,"img":"assets/photo/p5.jpg","alt":"事務所で働く社員","bars":[[31.697,14.501,2.376,17.526],[29.321,14.501,2.376,15.521],[26.945,14.501,2.376,20.131],[24.57,14.501,2.376,25.319],[22.194,14.501,2.376,12.958],[19.819,14.501,2.376,23.381],[17.443,14.501,2.376,29.338],[15.067,14.501,2.376,24.044],[85.023,4.589,8.083,47.946],[77.011,4.589,8.083,60.312],[68.928,4.589,8.083,39.636],[10.993,29.267,2.037,14.573]],"lines":[{"k":"h","t":"「福祉×営業」のその先に、","x":88.988,"y":3.425,"s":5.286},{"k":"h","t":"人間とは？組織とは？を学べる","x":80.908,"y":5.296,"s":5.286},{"k":"h","t":"キャリアがあります。","x":72.827,"y":5.296,"s":5.286},{"k":"b","t":"ひとりでも多くの日常を叶えるために、","x":32.829,"y":15.008,"s":1.247},{"k":"b","t":"組織を動かすリーダーになりたい。","x":30.453,"y":15.008,"s":1.247},{"k":"b","t":"入社十三年目。新卒で飛び込んだこの業界で、","x":28.077,"y":15.008,"s":1.247},{"k":"b","t":"私は主任、副所長、そして所長へと駆け上がってきました。","x":25.702,"y":15.008,"s":1.247},{"k":"b","t":"ただ数字を追うのではなく、","x":23.326,"y":15.008,"s":1.247},{"k":"b","t":"ご利用者様の「想い」をチーム一丸となって形にする。","x":20.95,"y":15.008,"s":1.247},{"k":"b","t":"そのために、私は経営の視点と、現場で培った人間力を掛け合わせ、","x":18.575,"y":15.008,"s":1.247},{"k":"b","t":"どこまでも深く、福祉の可能性を追求し続けています。","x":16.2,"y":15.008,"s":1.247},{"k":"n","t":"新卒入社14年目　社会福祉学部出身　松沢 駿","x":11.996,"y":29.596,"s":0.891}],"head":["「福祉×営業」のその先に、","人間とは？組織とは？を学べる","キャリアがあります。"],"body":["ひとりでも多くの日常を叶えるために、","組織を動かすリーダーになりたい。","入社十三年目。新卒で飛び込んだこの業界で、","私は主任、副所長、そして所長へと駆け上がってきました。","ただ数字を追うのではなく、","ご利用者様の「想い」をチーム一丸となって形にする。","そのために、私は経営の視点と、現場で培った人間力を掛け合わせ、","どこまでも深く、福祉の可能性を追求し続けています。"],"name":"新卒入社14年目　社会福祉学部出身　松沢 駿"},{"n":6,"img":"assets/photo/p6.jpg","alt":"福祉用具の準備をする社員","bars":[[53.76,4.925,8.077,40.911],[45.742,4.925,8.083,58.248],[37.665,4.925,8.077,58.248],[31.893,4.912,2.376,23.381],[29.517,4.912,2.376,21.196],[27.141,4.912,2.376,26.314],[24.766,4.912,2.376,29.338],[22.39,4.912,2.376,27.278],[20.014,4.912,2.376,30.978],[15.94,20.646,2.037,15.244]],"lines":[{"k":"h","t":"仕事の最中に、なぜか","x":57.831,"y":5.178,"s":5.286},{"k":"h","t":"「ありがとう」と野菜をいただく。","x":49.751,"y":3.307,"s":5.286},{"k":"h","t":"これが、僕らのミラクルな仕事。","x":41.669,"y":5.178,"s":5.286},{"k":"b","t":"福祉用具相談員は、ただ物を売る仕事ではありません。","x":33.017,"y":5.115,"s":1.247},{"k":"b","t":"ご利用者様の人生に触れ、心を通わせ、共に歩む。","x":30.642,"y":5.115,"s":1.247},{"k":"b","t":"そんなアナログで人間らしい文化が、この現場にはあります。","x":28.266,"y":5.115,"s":1.247},{"k":"b","t":"業務全体のデジタル化など効率的な仕事環境も推進する当社ですが、","x":25.89,"y":5.115,"s":1.247},{"k":"b","t":"その目的は、人と人が深くつながる、贅沢な余白をつくること。","x":23.515,"y":5.115,"s":1.247},{"k":"b","t":"効率化の先にある小さな奇跡を、私たちと一緒に増やしていきませんか。","x":21.139,"y":5.115,"s":1.247},{"k":"n","t":"中途入社4年目　経営情報学部出身　木村 達朗","x":16.942,"y":20.975,"s":0.891}],"head":["仕事の最中に、なぜか","「ありがとう」と野菜をいただく。","これが、僕らのミラクルな仕事。"],"body":["福祉用具相談員は、ただ物を売る仕事ではありません。","ご利用者様の人生に触れ、心を通わせ、共に歩む。","そんなアナログで人間らしい文化が、この現場にはあります。","業務全体のデジタル化など効率的な仕事環境も推進する当社ですが、","その目的は、人と人が深くつながる、贅沢な余白をつくること。","効率化の先にある小さな奇跡を、私たちと一緒に増やしていきませんか。"],"name":"中途入社4年目　経営情報学部出身　木村 達朗"}];
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function posterHTML(p){
+  const bars=p.bars.map(b=>`<i class="poster__bar" style="left:${b[0]}%;top:${b[1]}%;width:${b[2]}%;height:${b[3]}%"></i>`).join('');
+  const ts=p.lines.map(l=>`<span class="poster__t ${l.k}" style="left:${l.x}%;top:${l.y}%;font-size:${l.s}cqw">${esc(l.t)}</span>`).join('');
+  return `<div class="poster"><div class="poster__ph"><img src="${p.img}" alt="${p.alt}" width="720" height="1016"></div>${bars}<div class="poster__badge"><img src="assets/logo-mark-white.png" alt="" width="79" height="39"></div>${ts}</div>`;
+}
+const pm=document.getElementById('pm');
+document.getElementById('posters').innerHTML=POSTERS.map((p,i)=>`<button class="pcard" type="button" data-i="${i}" aria-label="${esc(p.head.join(''))}（${esc(p.name)}）を拡大">${posterHTML(p)}<span class="pcard__more">${esc(p.name.split('　').pop())}さんの話を読む</span></button>`).join('');
+function openPoster(i){
+  const p=POSTERS[i];
+  document.getElementById('pmPoster').innerHTML=posterHTML(p);
+  const paras=[];let cur='';
+  p.body.forEach(t=>{cur+=t;if(/。$/.test(t)){paras.push(cur);cur=''}});
+  if(cur)paras.push(cur);
+  document.getElementById('pmTxt').innerHTML=`<h3>${p.head.map(esc).join('<br>')}</h3>${paras.map(t=>`<p>${esc(t)}</p>`).join('')}<div class="pm__name">${esc(p.name)}</div>`;
+  pm.showModal();
+}
+document.getElementById('posters').addEventListener('click',e=>{const b=e.target.closest('.pcard');if(b)openPoster(+b.dataset.i)});
+pm.addEventListener('click',e=>{if(e.target===pm||e.target.closest('.pm__x'))pm.close()});
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
