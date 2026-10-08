@@ -17,19 +17,20 @@ SPDシートの空欄を埋めるときの「発想の引き出し」。案件�
 |---|---|
 | 理念・MVV・スローガン・ブランドストーリー | `references/corporate-br.md` |
 | ロゴ・色・世界観・ブランドパーソナリティ・ガイドライン | `references/vi.md` |
-| 商品・サービスのブランド化、ファン化、顧客体験 | `references/customer-br.md` |
+| 商品・サービスのブランド化、ファン化、顧客体験（ワークブックの問いを含む） | `references/customer-br.md` |
 | 理念浸透、組織、制度、研修、サーベイ | `references/inner-br.md` |
-| 採用、学生・若手との接点、visionsを使った施策 | `references/visions.md` |
+| 採用コンセプト、採用シナリオ、インターン、説明会、リクルーター | `references/recruit-br.md` |
+| visionsを使った採用施策、学生・若手との接点 | `references/visions.md` |
 | どの領域でも使える発想の切り口 | `references/ideation-lenses.md` |
 
 ## SPD各欄との対応（早見）
 - **VISION（案件の志）** → corporate-br の「SEEDS×NEEDS」「ミッションの意義の深さ」
-- **顕在・潜在課題** → customer-br の4つの観点、inner-br の「現状把握」、visions の「採用課題の型」
+- **顕在・潜在課題** → customer-br の4つの観点、inner-br の「現状把握」、recruit-br の「現状診断チェックポイント」、visions の「採用課題の型」
 - **ターゲット・ペルソナ／メリット** → customer-br の「ブランドパートナー」、visions の志向性
-- **コンセプト／世界観／ワンワード** → corporate-br のスローガン、vi の「ブランドパーソナリティ」、`ideation-lenses.md`
+- **コンセプト／世界観／ワンワード** → recruit-br の「Before→After」、corporate-br のスローガン、vi の「ブランドパーソナリティ」、`ideation-lenses.md`
 - **表現（ビジュアル・コンテンツ）** → vi のツール、customer-br の「ブランド体感」、visions のイベント・コンテンツ事例
 
 ## 出典と取り扱い
-- 出典は、Driveの「26年度 1_必修科目_汎用企画書」配下の講座資料（コーポレートBR / VI / インナーBR）、「06_カスタマーブランディング」の CustomerBR_2026_ver2.0、「08_visions」の visionsご紹介資料_case study、および社内の打ち合わせ文字起こし。
+- 出典は、Driveの「26年度 1_必修科目_汎用企画書」配下の講座資料（コーポレートBR / VI / インナーBR）、「06_カスタマーブランディング」の CustomerBR_2026_ver2.0、「08_visions」の visionsご紹介資料_case study、「07_採用ブランディング」の 2401pd03_pd_rcbr、「ワーク資料：象徴ブランド開発」の CustomerBranding_flame、および社内の打ち合わせ文字起こし。
 - **料金、クライアント固有の数値、社外秘（「外に出さない」と明記された事例）は、ここに書いていない。** 提案で使うときは、元資料を確認し、持ち出してよいかを人が判断する。
 - 参照ファイルの内容は「考え方の型」であり、そのまま案にしない。案件ごとの事実（ヒアリング・リサーチ）に当てて使う。
