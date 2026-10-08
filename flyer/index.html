@@ -45,15 +45,16 @@ a{color:inherit}
 .copy p{margin-top:1.8mm;font-size:3mm;line-height:1.8;letter-spacing:.03em}
 .ridge{position:absolute;left:0;right:0;bottom:-.3mm;height:4.4mm;color:var(--cream)}
 .ridge svg{display:block;width:100%;height:100%}
-.points{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;padding:3.4mm 12mm 0}
-.pt{background:#fff;border:.6mm solid var(--mint-l);border-radius:5mm;text-align:center;padding-bottom:3mm;overflow:hidden}
-.pt__img{height:19mm;background:var(--mint-xl);display:grid;place-items:center}
-.pt__img img{height:15mm;width:auto}
+.points{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;padding:4.2mm 12mm 0}
+.pt{text-align:center}
+.pt+.pt{border-left:.5mm dotted var(--mint);padding-left:4mm}
+.pt__img{height:21mm;display:grid;place-items:center}
+.pt__img img{height:19mm;width:auto}
 .pt__no{display:inline-block;margin-top:2mm;font-family:var(--en);font-weight:700;font-size:2.5mm;letter-spacing:.14em;background:var(--mint);color:#fff;border-radius:99px;padding:0 3mm}
 .pt h3{font-size:3.6mm;font-weight:900;line-height:1.4;margin:1mm 2mm 0}
-.pt p{font-size:2.5mm;line-height:1.6;margin:1mm 3mm 0;text-align:left}
-.tease{margin:3.2mm 12mm 0;text-align:center;font-size:2.9mm;font-weight:900;color:var(--mint-d)}
-.tease span{display:inline-block;background:var(--mint-l);border-radius:99px;padding:.8mm 5mm}
+.pt p{font-size:2.6mm;line-height:1.65;margin:1.2mm 0 0;text-align:left}
+.tease{margin:3.6mm 12mm 0;text-align:center;font-size:2.9mm;font-weight:900;color:var(--mint-d)}
+.tease span{display:inline-block}
 .foot{flex:1 1 auto;display:grid;grid-template-columns:1fr 62mm;gap:6mm;padding:3.6mm 12mm 0;min-height:0}
 .info dl>div{display:grid;grid-template-columns:14mm 1fr;gap:2.5mm;padding:1.4mm 0;border-bottom:.5mm dotted var(--mint);font-size:2.9mm;line-height:1.5}
 .info dl>div:first-child{border-top:.5mm dotted var(--mint)}
@@ -63,11 +64,11 @@ a{color:inherit}
 .brand{display:flex;align-items:center;gap:3mm;margin-top:3mm}
 .brand img{height:6.6mm;width:auto}
 .brand span{font-size:2.15mm;color:var(--ink-s);line-height:1.4}
-.entry{align-self:start;background:#fff;border:.7mm solid var(--ink);border-radius:5mm;padding:3mm;text-align:center}
+.entry{align-self:start;background:var(--mint-l);border-radius:5mm;padding:3.4mm 3mm;text-align:center}
 .entry__lead{font-size:3.3mm;font-weight:900;line-height:1.4}
 .entry__lead i{font-style:normal;color:var(--orange)}
-.qr{width:22mm;height:22mm;margin:2mm auto 1.4mm;border:.5mm dashed var(--ink-s);display:grid;place-items:center;font-size:2.3mm;color:var(--ink-s);line-height:1.4;background:var(--mint-xl)}
-.entry__url{font-size:2.3mm;color:var(--ink-s);line-height:1.5;word-break:break-all}
+.qr{width:22mm;height:22mm;margin:2mm auto 1.4mm;border:.5mm dashed var(--mint-d);display:grid;place-items:center;font-size:2.3mm;color:var(--mint-d);line-height:1.4}
+.entry__url{font-size:2.3mm;color:var(--ink);line-height:1.5;word-break:break-all}
 .bar{flex:0 0 auto;height:3.2mm;background:var(--mint);margin-top:4mm}
 
 /* ===== 裏面 ===== */
@@ -76,9 +77,10 @@ a{color:inherit}
 .bk-head h2 small{display:block;font-family:var(--font);font-size:3.6mm;font-weight:900;margin-top:2mm;letter-spacing:.1em}
 .bk-head p{font-size:3mm;line-height:1.7;text-align:right;font-weight:700}
 .bk-head .ridge{color:var(--cream);height:5mm}
-.mission{flex:0 0 auto;margin:5mm 12mm 0;background:#fff;border:.8mm solid var(--ink);border-radius:6mm;padding:3.4mm 6mm;text-align:center;position:relative}
+.mission{flex:0 0 auto;margin:6mm 12mm 0;text-align:center}
 .mission small{display:block;font-family:var(--en);font-weight:700;font-size:2.5mm;letter-spacing:.22em;color:var(--orange)}
-.mission p{font-size:4.9mm;font-weight:900;line-height:1.55}
+.mission p{font-size:5mm;font-weight:900;line-height:1.7;margin-top:1mm}
+.mission p span{background:linear-gradient(transparent 62%,rgba(246,211,107,.9) 62%)}
 .tl{flex:0 0 auto;position:relative;margin:7mm 12mm 0}
 .tl::before{content:"";position:absolute;left:25.2mm;top:2mm;bottom:2mm;width:.6mm;background:repeating-linear-gradient(var(--mint) 0 1.6mm,transparent 1.6mm 2.8mm)}
 .row{display:grid;grid-template-columns:23mm 1fr;gap:6mm;position:relative;padding:0 0 5.2mm}
@@ -151,7 +153,7 @@ a{color:inherit}
     <div class="ridge"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 120V78c70-6 120-34 190-30s110 24 170 10 90-52 160-54 96 30 150 30 80-34 150-40 100 24 150 36 90-8 150-30 90-34 140-30 70 22 120 30c60 10 110 14 160 12V120z" fill="currentColor"/></svg></div>
   </header>
 
-  <div class="mission"><small>MISSION</small><p>この家で、ご利用者さんが暮らせるプランを提案してください。</p></div>
+  <div class="mission"><small>MISSION</small><p><span>この家で、ご利用者さんが暮らせるプランを提案してください。</span></p></div>
 
   <section class="tl" id="tl"></section>
 
