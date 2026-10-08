@@ -1,0 +1,8 @@
+{
+  "projects_root": "~/Library/CloudStorage/GoogleDrive-あなたのメール/マイドライブ/案件",
+  "archive_days": 21,
+  "companies": {
+    "A社": ["エーシャ", "株式会社A"],
+    "B社": []
+  }
+}
