@@ -229,6 +229,17 @@ button.cmp{font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;di
 .quick b{display:block;font-family:var(--f-display);font-size:15px}
 .src-note{font-size:12.5px;color:var(--ink-soft);margin-top:18px}
 @media(max-width:860px){.stick{position:static}}
+
+/* v5: 案件キャパ管理の信号 */
+:root{--sg-b:#2f7fc2;--sg-y:#b98200;--sg-r:#d0392b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sg-b:#7ab8f0;--sg-y:#f0c24a;--sg-r:#ff8a7c}}
+:root[data-theme="dark"]{--sg-b:#7ab8f0;--sg-y:#f0c24a;--sg-r:#ff8a7c}
+.sg{display:inline-flex;align-items:center;gap:4px;margin-left:6px;font-size:10.5px;font-weight:700;white-space:nowrap}
+.sg::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.sg.b{color:var(--sg-b)}.sg.y{color:var(--sg-y)}.sg.r{color:var(--sg-r)}
+.find{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:6px}
+.find div{border-left:4px solid var(--teal-deep);padding-left:12px;font-size:13.5px}
+.find b{display:block;font-family:var(--f-display);font-size:15px;margin-bottom:2px}
 </style>
 
 <header class="hero">
@@ -334,13 +345,13 @@ button.cmp{font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;di
   <div class="steps">
     <div class="step"><div class="lab">D → C</div><h3>提案する</h3>
       <p>提案前から、提案済みへ。相手の言葉で課題を一文にして出します。</p>
-      <ul><li>課題を相手の言葉で一文にできる</li><li>誰に出すかが決まっている</li><li>提案日がカレンダーに入っている</li></ul></div>
+      <ul><li>課題を相手の言葉で一文にできる</li><li>誰に出すかが決まっている</li><li>提案日がカレンダーに入っている</li><li>制作とCAのバディを仮で決めた</li></ul></div>
     <div class="step"><div class="lab">C → B</div><h3>確度を上げる</h3>
       <p>期中に入るか分からない状態から、入る確度が高い状態へ。手応えの証拠を渡します。</p>
-      <ul><li>決裁者に会った</li><li>予算枠と稟議の時期を聞いた</li><li>最初の一歩を2案（小・大）で出した</li></ul></div>
+      <ul><li>決裁者に会った</li><li>予算枠と稟議の時期を聞いた</li><li>最初の一歩を2案（小・大）で出した</li><li>バディが提案前の内容を見ている</li></ul></div>
     <div class="step"><div class="lab">B → A</div><h3>口約束をもらう</h3>
       <p>金額と計上月を口頭で確定します。柴田・柳井への価値分けもここで決めます。</p>
-      <ul><li>2案のどちらかを選んでもらった</li><li>計上月を確認した</li><li>制作とCAの座組みを決めた</li></ul></div>
+      <ul><li>2案のどちらかを選んでもらった</li><li>計上月を確認した</li><li>制作とCAの座組みと価値分けを決めた</li><li>進行管理はバディに渡した</li></ul></div>
     <div class="step"><div class="lab">A → 受注</div><h3>契約する</h3>
       <p>契約書と日程を送り、締結まで見届けます。受注するとお弁当箱に入ります。</p>
       <ul><li>契約書と見積を送った</li><li>ヒアリング日程を置いた</li><li>価値分け表を作った</li></ul></div>
@@ -358,18 +369,25 @@ button.cmp{font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;di
     <tbody>
       <tr><td>ジャパンハート<br>医療者の採用ブランディング</td><td>依頼あり。8月にキャリア広告のデザインを進行中</td><td><span class="wk">10/12週</span> 提案書を出す</td><td>「寄付者の願いを形にする」キャリア広告の実績を材料に、医療者の採用へ広げる。柳井が制作</td><td>11月</td></tr>
       <tr><td>S-GROOVE<br>アドバイザリー（下期施策）</td><td>評価制度・キャリア実現シートの納期が7/31で止まっている</td><td><span class="wk">10/19週</span> 納品物の確認と、下期施策の提案日を入れる</td><td>評価制度の運用で出た課題を1枚にして、下期施策の優先順位を一緒に決める</td><td>11〜12月</td></tr>
-      <tr><td>鹿島南共同発電<br>インナー（表彰制度）</td><td>象徴インターンシップを9〜12月で実施中</td><td><span class="wk">10/19週</span> 参加者の声を集める</td><td>学生の反応から、社内の誇り、表彰制度へつなぐ。象徴ISの手応えを証拠にする。柳井が制作</td><td>12月</td></tr>
-      <tr><td>鹿島南共同発電<br>VI（MI＆VI策定）</td><td>採用ピッチ資料を10/7に送付予定</td><td><span class="wk">10/26週</span> ピッチ資料の反応を聞いて、VIを提案</td><td>MIの次としてVIを出す。志企業図鑑の完成物を見せて、見た目の統一を課題にする</td><td>12〜1月</td></tr>
-      <tr><td>川崎重工業<br>カタログ（常用）</td><td>個別契約書の締結が10/6のタスク。カタログは黄信号</td><td><span class="wk">10/19週</span> 契約締結後に年間提案の場をつくる</td><td>保守運用（A）とDEI（B）にカタログを束ね、年間の3本として出す。柳井がカタログ制作</td><td>12〜2月</td></tr>
+      <tr><td>鹿島南共同発電<br>インナー（表彰制度）</td><td>象徴インターンシップを9〜12月で実施中（キャパ管理では黄信号）。表彰制度の行は登録済み</td><td><span class="wk">10/19週</span> 参加者の声を集める</td><td>先に象徴ISを黄信号から青信号へ戻す。学生の反応から、社内の誇り、表彰制度へつなぐ。柳井が制作</td><td>12月</td></tr>
+      <tr><td>鹿島南共同発電<br>VI（MI＆VI策定）</td><td>MI&VI策定の行は登録済み（対応中・青）。採用ピッチ資料を10/7に送付予定</td><td><span class="wk">10/26週</span> ピッチ資料の反応を聞いて、VIを提案</td><td>MIの次としてVIを出す。志企業図鑑の完成物を見せて、見た目の統一を課題にする</td><td>12〜1月</td></tr>
+      <tr><td>川崎重工業<br>カタログ（常用）</td><td>個別契約書の締結が10/6のタスク。カタログ（常用）はキャパ管理で黄信号</td><td><span class="wk">10/19週</span> 契約締結後に年間提案の場をつくる</td><td>保守運用（A）とDEI（B）にカタログを束ね、年間の3本として出す。柳井がカタログ制作</td><td>12〜2月</td></tr>
       <tr><td>パワーソリューションズ<br>会社案内</td><td>会社案内の刷新を12月開始で検討中。振り返り資料は10/6に共有</td><td><span class="wk">10/26週</span> 業者紹介の相談に提案で応える</td><td>振り返り資料で成果を見せ、会社案内は12月着手に間に合う日程で出す。visions（B）と同じ席で話す</td><td>11〜12月</td></tr>
       <tr><td>コニカミノルタ<br>採用BR 再提案</td><td>保留</td><td><span class="wk">11/2週</span> 再提案の窓口を決める</td><td>経営・事業の言葉から入り、採用につなぐ。保留の理由を聞き直す</td><td>12月〜</td></tr>
       <tr><td>日本光電<br>リピート（次の施策）</td><td>母集団形成がB（1月）。Instagram・連携施策の話が出ていた</td><td><span class="wk">10/26週</span> 次の施策を1枚で出す</td><td>母集団形成の結果を見せて、Instagram・アライアンス連携を次の一歩にする</td><td>11〜1月</td></tr>
       <tr><td>一家ホールディングス<br>リピート</td><td>稟議待ち</td><td><span class="wk">10/19週</span> 稟議の後押し資料を送る</td><td>前回の成果を1枚にして、稟議に使える形で渡す。時期と決裁者を聞く</td><td>11〜1月</td></tr>
       <tr><td>清峰金属工業<br>visions college</td><td>10/31の工場見学①が山場（リード10・接点5）</td><td><span class="wk">10/26週</span> 見学の声を集める準備</td><td>工場見学の参加者の声を材料に、2〜3月のカレッジを設計して出す。柴田がCA</td><td>1月</td></tr>
-      <tr><td>エフビー介護サービス<br>面接カルテ・大学開拓</td><td>採用パンフレットがC（3月）。大学開拓と面接カルテは黄信号</td><td><span class="wk">11/2週</span> 年間伴走の追加提案</td><td>長野県立大・佐久大・信州大の28卒の動きを入口に、年間伴走へ。柴田がCA</td><td>11月</td></tr>
+      <tr><td>エフビー介護サービス<br>面接カルテ・大学開拓</td><td>採用パンフレットがC（3月）。キャパ管理では「中村先生・鈴木先生と話す」が赤信号（急ぎ・注力）、大学開拓と面接カルテが黄信号</td><td><span class="wk">10/12週</span> 赤信号の話し合いを先に済ませる。<span class="wk">11/2週</span> 年間伴走の追加提案</td><td>先に赤信号を青に戻し、納品の信頼を取り戻してから出す。長野県立大・佐久大・信州大の28卒の動きを入口に、年間伴走へ。柴田がCA</td><td>11月</td></tr>
       <tr><td>久世ほか<br>ユーザー・企業紹介</td><td>Dヨミのまま</td><td><span class="wk">10月中</span> 初回の場をつくる</td><td>紹介元に、課題が出そうな場を先に聞く。最初は提案ではなく話を聞く場にする</td><td>1〜3月</td></tr>
     </tbody></table></div>
-  <p class="src-note">出典：HAPPY SHEET-26「齋藤柴田T(下期)」「ヨミの定義」、お弁当箱_マスタ、Notion「2026下期｜チーム粗利を稼ぎきるプロセス」、Slackの各案件チャンネルと自分宛てのメモ（2026年4月〜10月）。週と提案内容は、これらから置いた案です。金額が入っていない案件は、提案の段階で見積を作ります。</p>
+  <h3 class="sub-h">Notionの案件キャパ管理を読んでわかったこと</h3>
+  <div class="find">
+    <div><b>入っていないもの</b>ヨミ、受注月、売上、案件粗利、価値分け先、次のアクションが、対応中の案件ほぼ全件で空欄です。畑の数字はHAPPYにあり、キャパ管理にはまだありません。</div>
+    <div><b>入っているもの</b>案件ごとの信号（赤・黄・青）、区分（PRODUCE・制作・採用伴走）、顧客です。LPの厨房は、この信号を使うのがいちばん自然です。畑のカードの横に出る信号は、名前が一致した案件だけです。</div>
+    <div><b>まず行を足す</b>Dヨミ12件のうち、S-GROOVE（下期施策）、パワーソリューションズ（会社案内）、鹿島南（表彰制度・MI&VI策定）、川崎重工業（カタログ常用）、清峰（visions college）、エフビー（大学開拓・面接カルテ）は行があります。ジャパンハート、コニカミノルタ、日本光電のリピート、一家ホールディングス、久世ほかは、行を新しく足す必要があります。</div>
+    <div><b>評価会議のフィードバック</b>進行管理を一人で抱えず、案件には必ずバディをつけて早めに渡す。齋藤はプロデューサーとして入口づくりに専念する、という方針です。上の4ステップに、バディの条件を入れました。</div>
+  </div>
+  <p class="src-note">出典：HAPPY SHEET-26「齋藤柴田T(下期)」「ヨミの定義」、お弁当箱_マスタ、Notion「案件キャパ管理」「2026下期｜チーム粗利を稼ぎきるプロセス」「下期達成プラン」「2026年10月にやること」「評価会議まとめ」、Slackの各案件チャンネルと自分宛てのメモ（2026年4月〜10月）。週と提案内容は、これらから置いた案です。金額が入っていない案件は、提案の段階で見積を作ります。</p>
 </div></section>
 
 <section><div class="wrap">
@@ -413,14 +431,14 @@ var DATA = {
   ],
   // s: 0=D 1=C 2=B 3=A 4=受注(制作中) 5=納品済み。齋藤はHAPPY「齋藤柴田T(下期)」2026/10/06時点。nx＝次の一手
   deals: [
-    {p:0,c:'川崎重工業',n:'ANSWERS ヒストリーページ',a:6.8,s:4},
-    {p:0,c:'清峰金属工業',n:'採用ピッチ資料',a:60,s:4},
+    {p:0,c:'川崎重工業',n:'ANSWERS ヒストリーページ',sg:'b',a:6.8,s:4},
+    {p:0,c:'清峰金属工業',n:'採用ピッチ資料',sg:'b',a:60,s:4},
     {p:0,c:'川崎重工業',n:'ガスタービンパンフレット',a:15,s:4},
-    {p:0,c:'郵船商事',n:'サイト改修',a:15,s:4},
-    {p:0,c:'鹿島南共同発電',n:'象徴インターンシップ開発',a:180,s:3},
+    {p:0,c:'郵船商事',n:'サイト改修',sg:'b',a:15,s:4},
+    {p:0,c:'鹿島南共同発電',n:'象徴インターンシップ開発',sg:'y',a:180,s:3},
     {p:0,c:'鹿島南共同発電',n:'志企業図鑑・採用ピッチ（後金）',a:34,s:3},
     {p:0,c:'川崎重工業',n:'ANSWERS 保守運用',a:50,s:3},
-    {p:0,c:'清峰金属工業',n:'ビジョンストーリー・工場マップ',a:20,s:3},
+    {p:0,c:'清峰金属工業',n:'ビジョンストーリー・工場マップ',sg:'y',a:20,s:3},
     {p:0,c:'郵船商事',n:'動画制作',a:16,s:3},
     {p:0,c:'パワーソリューションズ',n:'visions（インターン＆採用BR）',a:200,s:2},
     {p:0,c:'川崎重工業',n:'DEI',a:50,s:2},
@@ -430,13 +448,13 @@ var DATA = {
     {p:0,c:'S-GROOVE',n:'アドバイザリー（下期施策）',a:0,s:0,nx:'下期施策の提案日を入れる'},
     {p:0,c:'鹿島南共同発電',n:'インナー（表彰制度）',a:0,s:0,nx:'象徴ISの参加者の声を集める'},
     {p:0,c:'鹿島南共同発電',n:'VI（MI＆VI策定）',a:0,s:0,nx:'ピッチ資料の後にVIを提案'},
-    {p:0,c:'川崎重工業',n:'カタログ（常用）',a:0,s:0,nx:'契約締結後に年間提案の場'},
+    {p:0,c:'川崎重工業',n:'カタログ（常用）',sg:'y',a:0,s:0,nx:'契約締結後に年間提案の場'},
     {p:0,c:'パワーソリューションズ',n:'会社案内',a:0,s:0,nx:'12月着手に間に合う提案'},
     {p:0,c:'コニカミノルタ',n:'採用BR 再提案',a:0,s:0,nx:'経営・事業から採用へつなぐ'},
     {p:0,c:'日本光電',n:'リピート（次の施策）',a:0,s:0,nx:'Instagram・連携施策を提案'},
     {p:0,c:'一家ホールディングス',n:'リピート',a:0,s:0,nx:'稟議の後押し資料'},
     {p:0,c:'清峰金属工業',n:'visions college',a:0,s:0,nx:'10/31 工場見学の声を設計へ'},
-    {p:0,c:'エフビー介護サービス',n:'面接カルテ・大学開拓（年間伴走）',a:0,s:0,nx:'年間伴走の追加提案'},
+    {p:0,c:'エフビー介護サービス',n:'面接カルテ・大学開拓（年間伴走）',sg:'y',a:0,s:0,nx:'年間伴走の追加提案'},
     {p:0,c:'久世ほか',n:'ユーザー・企業紹介',a:0,s:0,nx:'10月中に初回の場'},
 
     {p:1,c:'光村図書',n:'研修',a:50,s:4},
@@ -459,7 +477,7 @@ var STAGES = [
 var NEXT = ['提案する','確度を上げる','口約束をもらう','契約する','納品する'];
 var FOODS = ['onigiri','egg','karaage','broc','tomato','octo','salmon','carrot','corn'];
 var state, fresh = {}, cur = 0, movedId = -1;
-function init(){ state = DATA.deals.map(function(d,i){return {p:d.p,c:d.c,n:d.n,a:d.a,s:d.s,nx:d.nx||'',tmp:d.tmp||0,id:i}}); fresh = {}; movedId = -1; }
+function init(){ state = DATA.deals.map(function(d,i){return {p:d.p,c:d.c,n:d.n,a:d.a,s:d.s,nx:d.nx||'',tmp:d.tmp||0,sg:d.sg||'',id:i}}); fresh = {}; movedId = -1; }
 function esc(t){return String(t).replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
 function r1(x){return Math.round(x*10)/10}
 function round(x){return Math.round(x+1e-9)}
@@ -494,7 +512,9 @@ function card(d){
   var amt = d.a>0 ? '<span class="amt">'+r1(d.a)+'</span>' : '<span class="amt none">金額未入力</span>';
   var btn = d.s<5 ? '<button class="adv" type="button" data-id="'+d.id+'" aria-label="'+esc(d.c+' '+d.n)+'を'+NEXT[d.s]+'">'+NEXT[d.s]+' ▸</button>' : '';
   var nx = d.nx ? '<span class="nx">次：'+esc(d.nx)+'</span>' : (d.tmp ? '<span class="nx">段階は仮置き</span>' : '');
-  return '<div class="deal'+(d.id===movedId?' pop':'')+'" style="--d:-'+((d.id%7)*.5).toFixed(1)+'s">'+plant(d.s)+'<span class="cl">'+esc(d.c)+'</span><span class="nm">'+esc(d.n)+'</span>'+nx+'<div class="row">'+amt+btn+'</div></div>';
+  var sgl = {b:'青信号',y:'黄信号',r:'赤信号'};
+  var sgb = d.sg ? '<span class="sg '+d.sg+'" title="案件キャパ管理の信号">'+sgl[d.sg]+'</span>' : '';
+  return '<div class="deal'+(d.id===movedId?' pop':'')+'" style="--d:-'+((d.id%7)*.5).toFixed(1)+'s">'+plant(d.s)+'<span class="cl">'+esc(d.c)+sgb+'</span><span class="nm">'+esc(d.n)+'</span>'+nx+'<div class="row">'+amt+btn+'</div></div>';
 }
 function sums(p){
   var sol=0,bk=0,field=0;
