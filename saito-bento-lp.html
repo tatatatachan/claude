@@ -189,6 +189,46 @@ a{color:var(--teal-deep)}
 .bento{background:repeating-linear-gradient(92deg,rgba(255,255,255,.07) 0 3px,transparent 3px 11px),var(--rim)}
 .cmp{background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.35),transparent 55%),var(--bento-in)}
 .fly svg{filter:drop-shadow(0 6px 4px rgba(90,55,20,.3))}
+
+/* v4: ヨミの動き・人の切り替え・育成プラン */
+.deal{animation:none}
+.deal.pop{animation:pop .45s ease both}
+.deal .nx{grid-column:1/3;font-size:11px;color:var(--teal-deep);font-weight:700;line-height:1.4}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font:inherit;font-family:var(--f-display);font-weight:900;font-size:14px;border:0;background:transparent;color:var(--ink-soft);padding:4px 16px;border-radius:99px;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--teal-deep);color:var(--card)}
+.tab:focus-visible,.cmp:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+button.cmp{font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;display:block;width:100%}
+.cmp.sel{box-shadow:inset 0 3px 0 rgba(0,0,0,.08),0 0 0 4px var(--orange)}
+.cmp header{pointer-events:none}
+.pn{margin:0 0 10px;min-height:0}
+.pn:empty{display:none}
+.grid{grid-template-columns:repeat(auto-fill,minmax(27px,1fr));gap:4px}
+.stick{margin-bottom:14px}
+.stick .bento-wrap{gap:8px}
+.gauges{margin-bottom:8px}
+.lane.f,.lane.k{align-content:start}
+.done{margin-top:14px}
+.deal.pop svg{animation:grow .6s ease both}
+@keyframes grow{from{transform:scale(.6)}to{transform:scale(1)}}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;margin-bottom:30px}
+.step{border-top:4px solid var(--teal-deep);padding-top:12px;min-width:0}
+.step .lab{font-family:var(--f-display);font-weight:900;font-size:13px;color:var(--orange);letter-spacing:.06em}
+.step h3{font-size:18px;font-weight:900;margin:4px 0 6px}
+.step p{font-size:13.5px;color:var(--ink-soft)}
+.step ul{margin:8px 0 0;padding-left:1.2em;font-size:13px}
+.step li{margin-bottom:2px}
+.sub-h{font-family:var(--f-display);font-weight:900;font-size:18px;margin:34px 0 10px}
+.plan-table{overflow-x:auto}
+.plan-table table{min-width:880px}
+.plan-table td:first-child{font-weight:700;min-width:11em}
+.wk{display:inline-block;background:var(--teal-deep);color:var(--card);border-radius:99px;padding:0 10px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.quick div{border-left:4px solid var(--orange);padding-left:12px;font-size:13.5px}
+.quick b{display:block;font-family:var(--f-display);font-size:15px}
+.src-note{font-size:12.5px;color:var(--ink-soft);margin-top:18px}
+@media(max-width:860px){.stick{position:static}}
 </style>
 
 <header class="hero">
@@ -256,33 +296,80 @@ a{color:var(--teal-deep)}
 <section><div class="wrap">
   <div class="sec-head">
     <div class="eyebrow">TRY IT</div>
-    <h2>案件を進めて、お弁当箱を埋める</h2>
-    <p>「進める」を押すと案件が一段階育ちます。厨房を通って納品まで進めると、下のお弁当箱が埋まります。数字は2026/10/06時点の齋藤分のHAPPY明細によるサンプルです。</p>
+    <h2>ヨミを育てて、お弁当箱を埋める</h2>
+    <p>上のお弁当箱は3人分です。名前かお弁当箱を押すと、その人の畑が下に出ます。ボタンでヨミを一段上げ、「契約する」で厨房に入ると、おかずが詰まります。齋藤の数字は2026/10/06時点のHAPPY明細です。</p>
   </div>
   <div class="board">
     <div class="tools">
-      <span class="note">金額の単位は万円。DヨミはHAPPYに金額の入力がありません。</span>
+      <div class="tabs" id="tabs" role="group" aria-label="人を選ぶ"></div>
       <span class="grp"><button class="btn" id="auto" type="button">▶ 自動で進める</button><button class="btn" id="reset" type="button">最初に戻す</button></span>
     </div>
     <div class="stick">
+      <div class="bento-wrap">
+        <div class="bento" id="bento" aria-label="お弁当箱"></div>
+        <div class="legend">
+          <span><i style="background:var(--bento-in);outline:1.5px solid var(--rim)"></i>納品済み（おかず）</span>
+          <span><i style="background:repeating-linear-gradient(45deg,var(--kitchen),var(--kitchen) 3px,transparent 3px,transparent 6px);outline:1.5px dashed var(--orange);outline-offset:-1px"></i>受注済み・制作中</span>
+          <span><i style="background:var(--empty)"></i>これから詰めるマス（1マス＝20万円）</span>
+        </div>
+      </div>
+    </div>
     <div class="gauges">
-      <div class="gauge"><div class="t"><span>お弁当箱（受注）</span><span class="v" id="gBooked">0</span></div><div class="meter"><i id="mBooked" style="width:0"></i></div><div class="note" id="nBooked"></div></div>
+      <div class="gauge"><div class="t"><span><b id="gName"></b>のお弁当箱（受注）</span><span class="v" id="gBooked">0</span></div><div class="meter"><i id="mBooked" style="width:0"></i></div><div class="note" id="nBooked"></div></div>
       <div class="gauge"><div class="t"><span>畑の広さ（B+C+D）</span><span class="v" id="gField">0</span></div><div class="meter o"><i id="mField" style="width:0"></i></div><div class="note" id="nField"></div></div>
     </div>
-
-    <div class="bento-wrap">
-      <div class="bento" id="bento" aria-label="お弁当箱"></div>
-      <div class="legend">
-        <span><i style="background:var(--bento-in);outline:1.5px solid var(--rim)"></i>納品済み（おかず）</span>
-        <span><i style="background:repeating-linear-gradient(45deg,var(--kitchen),var(--kitchen) 3px,transparent 3px,transparent 6px);outline:1.5px dashed var(--orange);outline-offset:-1px"></i>受注済み・制作中</span>
-        <span><i style="background:repeating-linear-gradient(45deg,var(--empty),var(--empty) 3px,transparent 3px,transparent 6px);outline:1.5px dashed var(--ink-soft);outline-offset:-1px"></i>お弁当箱マスタ上の受注（HAPPYへ転記待ち）</span>
-        <span><i style="background:var(--empty)"></i>これから詰めるマス（1マス＝20万円）</span>
-      </div>
-      <div class="done" id="done" aria-live="polite"></div>
-    </div>
-    </div>
+    <p class="note pn" id="pnote"></p>
     <div class="lanes" id="lanes"></div>
+    <div class="done" id="done" aria-live="polite"></div>
   </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">D YOMI PLAN</div>
+    <h2>Dヨミを、C・Bへ上げる設計</h2>
+    <p>齋藤の下期は、畑があと約1,100万円足りません（残り×2.5の目安に対して、B+C+D が400万円）。10月は受注より仕込みに使い、Dヨミの候補12件すべてに「次の一手」と日付を入れます。</p>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="lab">D → C</div><h3>提案する</h3>
+      <p>提案前から、提案済みへ。相手の言葉で課題を一文にして出します。</p>
+      <ul><li>課題を相手の言葉で一文にできる</li><li>誰に出すかが決まっている</li><li>提案日がカレンダーに入っている</li></ul></div>
+    <div class="step"><div class="lab">C → B</div><h3>確度を上げる</h3>
+      <p>期中に入るか分からない状態から、入る確度が高い状態へ。手応えの証拠を渡します。</p>
+      <ul><li>決裁者に会った</li><li>予算枠と稟議の時期を聞いた</li><li>最初の一歩を2案（小・大）で出した</li></ul></div>
+    <div class="step"><div class="lab">B → A</div><h3>口約束をもらう</h3>
+      <p>金額と計上月を口頭で確定します。柴田・柳井への価値分けもここで決めます。</p>
+      <ul><li>2案のどちらかを選んでもらった</li><li>計上月を確認した</li><li>制作とCAの座組みを決めた</li></ul></div>
+    <div class="step"><div class="lab">A → 受注</div><h3>契約する</h3>
+      <p>契約書と日程を送り、締結まで見届けます。受注するとお弁当箱に入ります。</p>
+      <ul><li>契約書と見積を送った</li><li>ヒアリング日程を置いた</li><li>価値分け表を作った</li></ul></div>
+  </div>
+
+  <div class="quick">
+    <div><b>先に受注へ変える3件</b>川崎重工業の個別契約書の締結、郵船商事の契約書とヒアリング日程の送付、鹿島南共同発電の志企業図鑑・採用ピッチ資料の後金（受注月は10月）。</div>
+    <div><b>毎週の動き</b>月曜のお弁当レビューでDヨミを更新し、各行に「次の一手と日付」を書いてカレンダーに入れます。4月に自分で決めたルーティンを、下期は12件の畑に当てます。</div>
+    <div><b>狙う形</b>お弁当箱マスタの理想形に合わせ、ベンティ（約200万円）を6本。まず6本分の候補を、11〜12月にBヨミ以上へ上げます。</div>
+  </div>
+
+  <h3 class="sub-h">Dヨミ12件の次の一手</h3>
+  <div class="table-scroll plan-table"><table>
+    <thead><tr><th>候補</th><th>いま</th><th>次の一手（D→C）</th><th>C→Bのストーリー</th><th>狙う受注月</th></tr></thead>
+    <tbody>
+      <tr><td>ジャパンハート<br>医療者の採用ブランディング</td><td>依頼あり。8月にキャリア広告のデザインを進行中</td><td><span class="wk">10/12週</span> 提案書を出す</td><td>「寄付者の願いを形にする」キャリア広告の実績を材料に、医療者の採用へ広げる。柳井が制作</td><td>11月</td></tr>
+      <tr><td>S-GROOVE<br>アドバイザリー（下期施策）</td><td>評価制度・キャリア実現シートの納期が7/31で止まっている</td><td><span class="wk">10/19週</span> 納品物の確認と、下期施策の提案日を入れる</td><td>評価制度の運用で出た課題を1枚にして、下期施策の優先順位を一緒に決める</td><td>11〜12月</td></tr>
+      <tr><td>鹿島南共同発電<br>インナー（表彰制度）</td><td>象徴インターンシップを9〜12月で実施中</td><td><span class="wk">10/19週</span> 参加者の声を集める</td><td>学生の反応から、社内の誇り、表彰制度へつなぐ。象徴ISの手応えを証拠にする。柳井が制作</td><td>12月</td></tr>
+      <tr><td>鹿島南共同発電<br>VI（MI＆VI策定）</td><td>採用ピッチ資料を10/7に送付予定</td><td><span class="wk">10/26週</span> ピッチ資料の反応を聞いて、VIを提案</td><td>MIの次としてVIを出す。志企業図鑑の完成物を見せて、見た目の統一を課題にする</td><td>12〜1月</td></tr>
+      <tr><td>川崎重工業<br>カタログ（常用）</td><td>個別契約書の締結が10/6のタスク。カタログは黄信号</td><td><span class="wk">10/19週</span> 契約締結後に年間提案の場をつくる</td><td>保守運用（A）とDEI（B）にカタログを束ね、年間の3本として出す。柳井がカタログ制作</td><td>12〜2月</td></tr>
+      <tr><td>パワーソリューションズ<br>会社案内</td><td>会社案内の刷新を12月開始で検討中。振り返り資料は10/6に共有</td><td><span class="wk">10/26週</span> 業者紹介の相談に提案で応える</td><td>振り返り資料で成果を見せ、会社案内は12月着手に間に合う日程で出す。visions（B）と同じ席で話す</td><td>11〜12月</td></tr>
+      <tr><td>コニカミノルタ<br>採用BR 再提案</td><td>保留</td><td><span class="wk">11/2週</span> 再提案の窓口を決める</td><td>経営・事業の言葉から入り、採用につなぐ。保留の理由を聞き直す</td><td>12月〜</td></tr>
+      <tr><td>日本光電<br>リピート（次の施策）</td><td>母集団形成がB（1月）。Instagram・連携施策の話が出ていた</td><td><span class="wk">10/26週</span> 次の施策を1枚で出す</td><td>母集団形成の結果を見せて、Instagram・アライアンス連携を次の一歩にする</td><td>11〜1月</td></tr>
+      <tr><td>一家ホールディングス<br>リピート</td><td>稟議待ち</td><td><span class="wk">10/19週</span> 稟議の後押し資料を送る</td><td>前回の成果を1枚にして、稟議に使える形で渡す。時期と決裁者を聞く</td><td>11〜1月</td></tr>
+      <tr><td>清峰金属工業<br>visions college</td><td>10/31の工場見学①が山場（リード10・接点5）</td><td><span class="wk">10/26週</span> 見学の声を集める準備</td><td>工場見学の参加者の声を材料に、2〜3月のカレッジを設計して出す。柴田がCA</td><td>1月</td></tr>
+      <tr><td>エフビー介護サービス<br>面接カルテ・大学開拓</td><td>採用パンフレットがC（3月）。大学開拓と面接カルテは黄信号</td><td><span class="wk">11/2週</span> 年間伴走の追加提案</td><td>長野県立大・佐久大・信州大の28卒の動きを入口に、年間伴走へ。柴田がCA</td><td>11月</td></tr>
+      <tr><td>久世ほか<br>ユーザー・企業紹介</td><td>Dヨミのまま</td><td><span class="wk">10月中</span> 初回の場をつくる</td><td>紹介元に、課題が出そうな場を先に聞く。最初は提案ではなく話を聞く場にする</td><td>1〜3月</td></tr>
+    </tbody></table></div>
+  <p class="src-note">出典：HAPPY SHEET-26「齋藤柴田T(下期)」「ヨミの定義」、お弁当箱_マスタ、Notion「2026下期｜チーム粗利を稼ぎきるプロセス」、Slackの各案件チャンネルと自分宛てのメモ（2026年4月〜10月）。週と提案内容は、これらから置いた案です。金額が入っていない案件は、提案の段階で見積を作ります。</p>
 </div></section>
 
 <section><div class="wrap">
@@ -305,57 +392,77 @@ a{color:var(--teal-deep)}
   <div class="table-scroll"><table>
     <thead><tr><th>シートの値</th><th>絵での見え方</th><th>ルール</th></tr></thead>
     <tbody>
-      <tr><td>ヨミ D / C / B / A</td><td>種 / 芽 / 育つ / 実り</td><td>ヨミを上げると植物が育つ</td></tr>
-      <tr><td>ヨミ＝受注</td><td>厨房に入り、弁当箱に点線のマスが入る</td><td>金額÷20万円でマス数</td></tr>
+      <tr><td>ヨミ D / C / B / A</td><td>種 / 芽 / 育つ / 実り</td><td>D 提案前、C 提案済で確度不明、B 提案済で確度高、A 口約束で金額と時期が確定</td></tr>
+      <tr><td>受注（契約書締結済）</td><td>厨房に入り、弁当箱に点線のマスが入る</td><td>金額÷20万円でマス数</td></tr>
       <tr><td>PRODUCE表＝納品済み</td><td>点線のマスが、おかずに変わる</td><td>納品まで終えた案件だけ</td></tr>
       <tr><td>必要な畑</td><td>畑の広さのゲージ</td><td>（目標−受注）×2.5 が目安</td></tr>
     </tbody></table></div>
 </div></section>
 </main>
 
-<footer><div class="wrap">表示中の数字は2026/10/06時点のサンプルです。柴田・柳井はHAPPY上の受注＋Aが0のため、お弁当箱マスタの値（50万・55万）を転記待ちとして表示しています。柴田の目標はチーム表の730で表示しています（本人シートは670）。 <a href="https://docs.google.com/spreadsheets/d/1DxHc5HFvruiFzmH2HxJHaYd6V7w6QldW049ONmc93go/edit" target="_blank" rel="noopener">お弁当箱_マスタ</a></div></footer>
+<footer><div class="wrap">表示中の数字は2026/10/06〜10/08時点のサンプルです。目標は、本人の弁当シート（柴田670・柳井322）で表示しています。齋藤下期シートでは柴田730・柳井310、HAPPYでは柴田730・柳井330で、シートごとに食い違っています。柴田・柳井の受注済みはお弁当箱マスタの値（50万・63万）で、HAPPY上は0のままです。 <a href="https://docs.google.com/spreadsheets/d/1DxHc5HFvruiFzmH2HxJHaYd6V7w6QldW049ONmc93go/edit" target="_blank" rel="noopener">お弁当箱_マスタ</a></div></footer>
 
 <script>
-// 実データに差し替えるときは、この DATA だけを入れ替える
+// 実データに差し替えるときは、この DATA だけを入れ替える（p＝人の番号、s＝段階）
 var DATA = {
   unit: 20,
   people: [
-    {name:'齋藤',  target:850, wait:0},
-    {name:'柴田こころ', target:730, wait:50},
-    {name:'柳井', target:310, wait:55}
+    {name:'齋藤',      target:850},
+    {name:'柴田こころ', target:670, field:2370, note:'案件ごとの内訳がシートに未入力です。畑はお弁当箱マスタの B+C+D 合計 2,370万円で表示しています。'},
+    {name:'柳井',      target:322, note:'柳井のヨミの段階はHAPPYに入力がありません。三井不動産・名古屋市BP事務局・ディーセントワークラボは、段階を仮に置いています。'}
   ],
-  // stage: 0=D 1=C 2=B 3=A 4=受注(制作中) 5=納品済み。HAPPY「齋藤柴田T(下期)」10/6時点の齋藤分
+  // s: 0=D 1=C 2=B 3=A 4=受注(制作中) 5=納品済み。齋藤はHAPPY「齋藤柴田T(下期)」2026/10/06時点。nx＝次の一手
   deals: [
-    {c:'川崎重工業', n:'ANSWERS ヒストリーページ', a:6.8, s:4},
-    {c:'清峰金属工業', n:'採用ピッチ資料', a:60, s:4},
-    {c:'川崎重工業', n:'ガスタービンパンフレット', a:15, s:4},
-    {c:'郵船商事', n:'サイト改修', a:15, s:4},
-    {c:'鹿島南共同発電', n:'象徴インターンシップ開発', a:180, s:3},
-    {c:'鹿島南共同発電', n:'志企業図鑑・採用ピッチ（後金）', a:34, s:3},
-    {c:'川崎重工業', n:'ANSWERS 保守運用', a:50, s:3},
-    {c:'清峰金属工業', n:'ビジョンストーリー・工場マップ', a:20, s:3},
-    {c:'郵船商事', n:'動画制作', a:16, s:3},
-    {c:'パワーソリューションズ', n:'visions（インターン＆採用BR）', a:200, s:2},
-    {c:'川崎重工業', n:'DEI', a:50, s:2},
-    {c:'日本光電', n:'visions（母集団形成）', a:40, s:2},
-    {c:'エフビー介護サービス', n:'採用パンフレット（10P）', a:150, s:1},
-    {c:'ジャパンハート', n:'医療者の採用ブランディング', a:0, s:0},
-    {c:'S-GROOVE', n:'アドバイザリー（下期施策）', a:0, s:0},
-    {c:'鹿島南共同発電', n:'インナー（表彰制度）', a:0, s:0}
+    {p:0,c:'川崎重工業',n:'ANSWERS ヒストリーページ',a:6.8,s:4},
+    {p:0,c:'清峰金属工業',n:'採用ピッチ資料',a:60,s:4},
+    {p:0,c:'川崎重工業',n:'ガスタービンパンフレット',a:15,s:4},
+    {p:0,c:'郵船商事',n:'サイト改修',a:15,s:4},
+    {p:0,c:'鹿島南共同発電',n:'象徴インターンシップ開発',a:180,s:3},
+    {p:0,c:'鹿島南共同発電',n:'志企業図鑑・採用ピッチ（後金）',a:34,s:3},
+    {p:0,c:'川崎重工業',n:'ANSWERS 保守運用',a:50,s:3},
+    {p:0,c:'清峰金属工業',n:'ビジョンストーリー・工場マップ',a:20,s:3},
+    {p:0,c:'郵船商事',n:'動画制作',a:16,s:3},
+    {p:0,c:'パワーソリューションズ',n:'visions（インターン＆採用BR）',a:200,s:2},
+    {p:0,c:'川崎重工業',n:'DEI',a:50,s:2},
+    {p:0,c:'日本光電',n:'visions（母集団形成）',a:40,s:2},
+    {p:0,c:'エフビー介護サービス',n:'採用パンフレット（10P）',a:150,s:1},
+    {p:0,c:'ジャパンハート',n:'医療者の採用ブランディング',a:0,s:0,nx:'10月に提案'},
+    {p:0,c:'S-GROOVE',n:'アドバイザリー（下期施策）',a:0,s:0,nx:'下期施策の提案日を入れる'},
+    {p:0,c:'鹿島南共同発電',n:'インナー（表彰制度）',a:0,s:0,nx:'象徴ISの参加者の声を集める'},
+    {p:0,c:'鹿島南共同発電',n:'VI（MI＆VI策定）',a:0,s:0,nx:'ピッチ資料の後にVIを提案'},
+    {p:0,c:'川崎重工業',n:'カタログ（常用）',a:0,s:0,nx:'契約締結後に年間提案の場'},
+    {p:0,c:'パワーソリューションズ',n:'会社案内',a:0,s:0,nx:'12月着手に間に合う提案'},
+    {p:0,c:'コニカミノルタ',n:'採用BR 再提案',a:0,s:0,nx:'経営・事業から採用へつなぐ'},
+    {p:0,c:'日本光電',n:'リピート（次の施策）',a:0,s:0,nx:'Instagram・連携施策を提案'},
+    {p:0,c:'一家ホールディングス',n:'リピート',a:0,s:0,nx:'稟議の後押し資料'},
+    {p:0,c:'清峰金属工業',n:'visions college',a:0,s:0,nx:'10/31 工場見学の声を設計へ'},
+    {p:0,c:'エフビー介護サービス',n:'面接カルテ・大学開拓（年間伴走）',a:0,s:0,nx:'年間伴走の追加提案'},
+    {p:0,c:'久世ほか',n:'ユーザー・企業紹介',a:0,s:0,nx:'10月中に初回の場'},
+
+    {p:1,c:'光村図書',n:'研修',a:50,s:4},
+
+    {p:2,c:'（内訳未入力）',n:'受注済みの合計',a:63,s:4},
+    {p:2,c:'三井不動産',n:'人パンフ',a:0,s:2,tmp:1},
+    {p:2,c:'三井不動産',n:'業務職サイト',a:0,s:2,tmp:1},
+    {p:2,c:'三井不動産',n:'想いの撮影',a:0,s:2,tmp:1},
+    {p:2,c:'名古屋市',n:'BP事務局',a:0,s:1,tmp:1},
+    {p:2,c:'ディーセントワークラボ',n:'キャリア広告',a:0,s:1,tmp:1}
   ]
 };
 var STAGES = [
-  {k:'D', t:'D ヨミ', s:'種をまいた'},
-  {k:'C', t:'C ヨミ', s:'芽が出た'},
-  {k:'B', t:'B ヨミ', s:'育っている'},
-  {k:'A', t:'A ヨミ', s:'実った'},
-  {k:'K', t:'制作中', s:'受注 · PRODUCE表'}
+  {t:'D ヨミ', s:'提案前（ニーズだけ把握）'},
+  {t:'C ヨミ', s:'提案済・確度が不明確'},
+  {t:'B ヨミ', s:'提案済・期中受注の確度が高い'},
+  {t:'A ヨミ', s:'口約束で金額と時期が確定'},
+  {t:'制作中', s:'契約書締結済 · PRODUCE表'}
 ];
-var NEXT = ['育てる','育てる','育てる','受注する','納品する'];
+var NEXT = ['提案する','確度を上げる','口約束をもらう','契約する','納品する'];
 var FOODS = ['onigiri','egg','karaage','broc','tomato','octo','salmon','carrot','corn'];
-var state, fresh = {};
-function init(){ state = DATA.deals.map(function(d,i){return {c:d.c,n:d.n,a:d.a,s:d.s,id:i}}); fresh = {}; }
+var state, fresh = {}, cur = 0, movedId = -1;
+function init(){ state = DATA.deals.map(function(d,i){return {p:d.p,c:d.c,n:d.n,a:d.a,s:d.s,nx:d.nx||'',tmp:d.tmp||0,id:i}}); fresh = {}; movedId = -1; }
 function esc(t){return String(t).replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+function r1(x){return Math.round(x*10)/10}
+function round(x){return Math.round(x+1e-9)}
 
 function plant(s){
   var g='<svg viewBox="0 0 48 48" aria-hidden="true">';
@@ -382,94 +489,109 @@ function food(k){
   return '<svg viewBox="0 0 24 24" aria-hidden="true">'+m[k]+'</svg>';
 }
 
-function card(d){
-  var amt = d.a>0 ? '<span class="amt">'+d.a+'</span>' : '<span class="amt none">金額未入力</span>';
-  var btn = d.s<5 ? '<button class="adv" type="button" data-id="'+d.id+'" aria-label="'+esc(d.c+' '+d.n)+'を'+NEXT[d.s]+'">'+NEXT[d.s]+' ▸</button>' : '';
-  return '<div class="deal" style="--d:-'+((d.id%7)*.5).toFixed(1)+'s">'+plant(d.s)+'<span class="cl">'+esc(d.c)+'</span><span class="nm">'+esc(d.n)+'</span><div class="row">'+amt+btn+'</div></div>';
-}
 
-function round(x){return Math.round(x+1e-9)}
+function card(d){
+  var amt = d.a>0 ? '<span class="amt">'+r1(d.a)+'</span>' : '<span class="amt none">金額未入力</span>';
+  var btn = d.s<5 ? '<button class="adv" type="button" data-id="'+d.id+'" aria-label="'+esc(d.c+' '+d.n)+'を'+NEXT[d.s]+'">'+NEXT[d.s]+' ▸</button>' : '';
+  var nx = d.nx ? '<span class="nx">次：'+esc(d.nx)+'</span>' : (d.tmp ? '<span class="nx">段階は仮置き</span>' : '');
+  return '<div class="deal'+(d.id===movedId?' pop':'')+'" style="--d:-'+((d.id%7)*.5).toFixed(1)+'s">'+plant(d.s)+'<span class="cl">'+esc(d.c)+'</span><span class="nm">'+esc(d.n)+'</span>'+nx+'<div class="row">'+amt+btn+'</div></div>';
+}
+function sums(p){
+  var sol=0,bk=0,field=0;
+  state.forEach(function(x){ if(x.p!==p) return; if(x.s==5) sol+=x.a; if(x.s>=4) bk+=x.a; if(x.s<=2) field+=x.a; });
+  return {sol:sol, bk:bk, field:field + (DATA.people[p].field||0)};
+}
+function counts(p){ var m=sums(p), u=DATA.unit; var nS=round(m.sol/u); return {nS:nS, nT:Math.max(nS,round(m.bk/u))}; }
+
 function render(){
+  var P = DATA.people[cur], u = DATA.unit;
+  // tabs
+  document.getElementById('tabs').innerHTML = DATA.people.map(function(p,i){
+    return '<button type="button" class="tab" data-p="'+i+'" aria-pressed="'+(i==cur)+'">'+p.name+'</button>';
+  }).join('');
+  // lanes (選択中の人だけ)
   var html = '<div class="band">畑 · HAPPPY SHEET</div><div class="band k">厨房</div>';
   STAGES.forEach(function(st,i){
-    var list = state.filter(function(d){return d.s==i});
+    var list = state.filter(function(d){return d.p===cur && d.s==i});
     var sum = list.reduce(function(a,d){return a+d.a},0);
-    var head = '<h3>'+st.t+'<small>'+list.length+'件 · '+(Math.round(sum*10)/10)+'</small></h3><div class="sub">'+st.s+'</div>';
+    var head = '<h3>'+st.t+'<small>'+list.length+'件 · '+r1(sum)+'</small></h3><div class="sub">'+st.s+'</div>';
     if(i==4){ head = '<svg class="pot" viewBox="0 0 70 40" aria-hidden="true"><g class="steam"><path d="M24 14 q-5 -5 0 -9" stroke="var(--orange)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g class="steam"><path d="M42 14 q-5 -5 0 -9" stroke="var(--orange)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="8" y="16" width="54" height="7" rx="3.5" fill="#a7b0c0"/><path d="M12 23 h46 v7 a8 8 0 0 1 -8 8 h-30 a8 8 0 0 1 -8 -8z" fill="#8a94a6"/></svg>'+head; }
     html += '<div class="lane '+(i==4?'k':'f')+'">'+head+list.map(card).join('')+'</div>';
   });
   document.getElementById('lanes').innerHTML = html;
+  document.getElementById('pnote').textContent = P.note || '';
 
-  // bento
-  var u = DATA.unit, me = DATA.people[0];
-  var sol = state.filter(function(d){return d.s==5}).reduce(function(a,d){return a+d.a},0);
-  var cook = state.filter(function(d){return d.s==4}).reduce(function(a,d){return a+d.a},0);
-  var booked = sol+cook;
-  var cols = DATA.people.map(function(p){return Math.max(1,Math.ceil(p.target/u))}).map(function(n){return n+'fr'}).join(' ');
+  // bento（3人分）
+  var cols = DATA.people.map(function(p){return Math.max(1,Math.ceil(p.target/u))+'fr'}).join(' ');
   var out = '';
   DATA.people.forEach(function(p,pi){
-    var total = Math.ceil(p.target/u), nS=0,nC=0,nW=0;
-    if(pi==0){ nS = round(sol/u); nC = round(booked/u)-nS; }
-    else { nW = round(p.wait/u); }
-    var cells='', k=0;
+    var total = Math.ceil(p.target/u), c = counts(pi), m = sums(pi);
+    var cells='';
     for(var i=0;i<total;i++){
       var cls='cell', inner='';
-      if(i<nS){cls+=' solid'+(fresh[i]?' fresh':''); inner=food(FOODS[i%FOODS.length]);}
-      else if(i<nS+nC){cls+=' cook'; inner=food(FOODS[i%FOODS.length]);}
-      else if(i<nS+nC+nW){cls+=' wait'; inner='';}
+      if(i<c.nS){ cls+=' solid'+(fresh[pi+':'+i]?' fresh':''); inner=food(FOODS[i%FOODS.length]); }
+      else if(i<c.nT){ cls+=' cook'; inner=food(FOODS[i%FOODS.length]); }
       cells += '<div class="'+cls+'" style="--d:'+((i%9)*.3).toFixed(1)+'s">'+inner+'</div>';
     }
-    var amount = pi==0 ? booked : p.wait;
-    out += '<div class="cmp"><header><b>'+p.name+'</b><span>'+(Math.round(amount*10)/10)+' / '+p.target+'万円</span></header><div class="grid">'+cells+'</div></div>';
+    out += '<button type="button" class="cmp'+(pi==cur?' sel':'')+'" data-p="'+pi+'" aria-label="'+p.name+'のお弁当"><header><b>'+p.name+'</b><span>'+r1(m.bk)+' / '+p.target+'万円</span></header><div class="grid">'+cells+'</div></button>';
   });
   var b = document.getElementById('bento');
   b.style.setProperty('--cols', cols);
   b.innerHTML = out;
 
-  // gauges
-  var gap = Math.max(0, me.target - booked), need = gap*2.5;
-  var field = state.filter(function(d){return d.s<=2}).reduce(function(a,d){return a+d.a},0);
-  document.getElementById('gBooked').textContent = (Math.round(booked*10)/10)+' / '+me.target;
-  document.getElementById('mBooked').style.width = Math.min(100,booked/me.target*100)+'%';
-  document.getElementById('nBooked').textContent = '齋藤。残り '+(Math.round(gap*10)/10)+'万円、およそ '+Math.ceil(gap/u)+' マス。';
-  document.getElementById('gField').textContent = (Math.round(field*10)/10)+' / '+Math.round(need);
-  document.getElementById('mField').style.width = Math.min(100,need? field/need*100 : 100)+'%';
-  document.getElementById('nField').textContent = '必要な畑は残り×2.5で約'+Math.round(need)+'万円。あと約'+Math.max(0,Math.round(need-field))+'万円分を仕込みます。';
+  // gauges（選択中の人）
+  var m = sums(cur), gap = Math.max(0, P.target - m.bk), need = gap*2.5;
+  document.getElementById('gName').textContent = P.name;
+  document.getElementById('gBooked').textContent = r1(m.bk)+' / '+P.target;
+  document.getElementById('mBooked').style.width = Math.min(100,m.bk/P.target*100)+'%';
+  document.getElementById('nBooked').textContent = '残り '+r1(gap)+'万円、およそ '+Math.ceil(gap/u)+' マス。';
+  document.getElementById('gField').textContent = r1(m.field)+' / '+Math.round(need);
+  document.getElementById('mField').style.width = Math.min(100,need? m.field/need*100 : 100)+'%';
+  document.getElementById('nField').textContent = '必要な畑は 残り×2.5 で約'+Math.round(need)+'万円。あと約'+Math.max(0,Math.round(need-m.field))+'万円分を仕込みます。';
 
-  var dn = state.filter(function(d){return d.s==5});
-  document.getElementById('done').innerHTML = dn.length ? dn.map(function(d){return '<span>'+esc(d.c)+' '+esc(d.n)+'</span>'}).join('') : '';
+  var dn = state.filter(function(d){return d.p===cur && d.s==5});
+  document.getElementById('done').innerHTML = dn.map(function(d){return '<span>'+esc(d.c)+' '+esc(d.n)+'</span>'}).join('');
+  movedId = -1;
 }
-function cellsOf(){ var sol=0,bk=0; state.forEach(function(x){ if(x.s==5) sol+=x.a; if(x.s>=4) bk+=x.a; }); return {sol:round(sol/DATA.unit), tot:round(bk/DATA.unit)}; }
+
 function advance(id){
   var d = state[id]; if(!d || d.s>=5) return;
   var btn = document.querySelector('.adv[data-id="'+id+'"]');
   var from = btn ? btn.getBoundingClientRect() : null;
-  var before = cellsOf();
-  d.s++; fresh = {};
-  var after = cellsOf();
-  if(d.s==5){ for(var i=before.sol;i<after.sol;i++) fresh[i]=1; }
+  var pi = d.p, before = counts(pi);
+  d.s++; fresh = {}; movedId = id;
+  var after = counts(pi);
+  for(var i=before.nS;i<after.nS;i++) fresh[pi+':'+i]=1;
   render();
   if(d.s==4 && from && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var cells = document.querySelectorAll('#bento .cmp:first-child .cell');
-    for(var n=before.tot;n<after.tot && n<cells.length;n++){
+    var cells = document.querySelectorAll('#bento .cmp[data-p="'+pi+'"] .cell');
+    for(var n=before.nT;n<after.nT && n<cells.length;n++){
       (function(n){
         var to = cells[n].getBoundingClientRect();
+        if(to.bottom<0 || to.top>innerHeight) return;
         var el = document.createElement('div'); el.className='fly'; el.innerHTML = food(FOODS[n%FOODS.length]);
         document.body.appendChild(el);
         var x0=from.left, y0=from.top, x1=to.left+to.width/2-17, y1=to.top+to.height/2-17;
         var a = el.animate([
           {transform:'translate('+x0+'px,'+y0+'px) scale(1)',opacity:1},
-          {transform:'translate('+((x0+x1)/2)+'px,'+(Math.min(y0,y1)-60)+'px) scale(1.5)',opacity:1,offset:.5},
+          {transform:'translate('+((x0+x1)/2)+'px,'+(Math.min(y0,y1)-50)+'px) scale(1.5)',opacity:1,offset:.5},
           {transform:'translate('+x1+'px,'+y1+'px) scale(.9)',opacity:1}
-        ],{duration:900+((n-before.tot)%6)*70,easing:'cubic-bezier(.4,0,.2,1)'});
-        a.onfinish=function(){ el.remove(); var c=document.querySelectorAll('#bento .cmp:first-child .cell')[n]; if(c){ c.classList.add('fresh'); } };
+        ],{duration:850+((n-before.nT)%6)*70,easing:'cubic-bezier(.4,0,.2,1)'});
+        a.onfinish=function(){ el.remove(); var c=document.querySelectorAll('#bento .cmp[data-p="'+pi+'"] .cell')[n]; if(c){ c.classList.add('fresh'); } };
       })(n);
     }
   }
 }
+function select(p){ cur = p; render(); }
 document.getElementById('lanes').addEventListener('click', function(e){
   var t = e.target.closest('.adv'); if(!t) return;
   advance(+t.getAttribute('data-id'));
+});
+document.getElementById('tabs').addEventListener('click', function(e){
+  var t = e.target.closest('.tab'); if(t) select(+t.getAttribute('data-p'));
+});
+document.getElementById('bento').addEventListener('click', function(e){
+  var t = e.target.closest('.cmp'); if(t) select(+t.getAttribute('data-p'));
 });
 var timer=null, autoBtn=document.getElementById('auto');
 function stopAuto(){ if(timer){clearInterval(timer); timer=null;} autoBtn.classList.remove('on'); autoBtn.textContent='▶ 自動で進める'; }
@@ -477,10 +599,10 @@ autoBtn.addEventListener('click', function(){
   if(timer){ stopAuto(); return; }
   autoBtn.classList.add('on'); autoBtn.textContent='■ 止める';
   timer=setInterval(function(){
-    var open = state.filter(function(d){return d.s<5});
+    var open = state.filter(function(d){return d.p===cur && d.s<5});
     if(!open.length){ stopAuto(); return; }
     // 実った・調理中の案件を優先して進めると、お弁当箱が埋まる様子が見えやすい
-    var pri = open.filter(function(d){return d.s>=3 && d.a>0});
+    var pri = open.filter(function(d){return d.s>=3});
     var pool = pri.length && Math.random()<.7 ? pri : open;
     advance(pool[Math.floor(Math.random()*pool.length)].id);
   }, 1300);
@@ -488,3 +610,4 @@ autoBtn.addEventListener('click', function(){
 document.getElementById('reset').addEventListener('click', function(){ stopAuto(); init(); render(); });
 init(); render();
 </script>
+
