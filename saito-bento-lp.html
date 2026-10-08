@@ -146,9 +146,45 @@ tr:last-child td{border-bottom:0}
 footer{padding-block:12px 56px;color:var(--ink-soft);font-size:12.5px}
 a{color:var(--teal-deep)}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* v2: 枠を減らし、お弁当箱を主役に */
+.board{background:transparent;padding:0;box-shadow:none;border-radius:0}
+.pt,.src{background:transparent;box-shadow:none;padding:0}
+.pt .art{height:170px}
+.pt h3{margin-top:14px}
+.src{padding:0 4px;border-top:3px solid var(--teal-deep);padding-top:14px;border-radius:0}
+.table-scroll{background:transparent;padding:0}
+.lane.f,.lane.k{background:transparent;padding:6px 4px;min-height:0}
+.lane.f{border-bottom:10px solid var(--grass);border-radius:0 0 12px 12px}
+.lane.k{border-bottom:10px solid var(--kitchen);border-radius:0 0 12px 12px}
+.deal{background:transparent;box-shadow:none;padding:6px 0;border-bottom:1px dashed var(--line);border-radius:0}
+.gauges{margin-top:6px}
+.gauge{background:transparent;padding:4px 2px}
+.stick{display:grid;gap:10px;margin-bottom:26px}
+.stick .gauges{order:2}
+.stick .bento-wrap{order:1;margin-top:0}
+@media(min-width:861px){.stick{position:sticky;top:calc(env(safe-area-inset-top,0px) + 6px);z-index:5;background:var(--mint);padding-block:8px 10px;box-shadow:0 10px 12px -8px var(--mint)}}
+.bento{padding:16px;border-radius:34px}
+.cmp{padding:10px 12px 12px}
+.grid{grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:5px}
+.cell{border-radius:9px}
+/* motion */
+.deal svg{transform-origin:50% 92%;animation:sway 3.4s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.cell.solid svg{animation:bob 2.8s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2px) rotate(4deg)}}
+.cloud{position:absolute;fill:#fff;opacity:.28;animation:drift 38s linear infinite}
+.cloud.b{animation-duration:55s;animation-delay:-20s;opacity:.2}
+@keyframes drift{from{transform:translateX(-160px)}to{transform:translateX(110vw)}}
+.fly{position:fixed;left:0;top:0;width:34px;height:34px;z-index:50;pointer-events:none}
+.fly svg{width:100%;height:100%;filter:drop-shadow(0 4px 3px rgba(0,0,0,.2))}
+.btn.on{background:var(--orange);border-color:var(--orange);color:#fff}
+.tools .grp{display:flex;gap:8px;flex-wrap:wrap}
 </style>
 
 <header class="hero">
+  <svg class="cloud" style="top:30px;left:0" width="120" height="40" viewBox="0 0 120 40" aria-hidden="true"><ellipse cx="60" cy="26" rx="52" ry="12"/><ellipse cx="44" cy="18" rx="24" ry="14"/><ellipse cx="76" cy="16" rx="20" ry="12"/></svg>
+  <svg class="cloud b" style="top:96px;left:0" width="90" height="30" viewBox="0 0 120 40" aria-hidden="true"><ellipse cx="60" cy="26" rx="52" ry="12"/><ellipse cx="44" cy="18" rx="24" ry="14"/><ellipse cx="76" cy="16" rx="20" ry="12"/></svg>
   <svg class="hero-art" viewBox="0 0 460 200" aria-hidden="true">
     <path d="M30 200 L130 60 L190 120 L270 20 L370 140 L400 110 L460 200Z" fill="#fff" opacity=".22"/>
     <path d="M200 200 L290 90 L350 160 L400 100 L460 200Z" fill="#fff" opacity=".18"/>
@@ -217,10 +253,9 @@ a{color:var(--teal-deep)}
   <div class="board">
     <div class="tools">
       <span class="note">金額の単位は万円。DヨミはHAPPYに金額の入力がありません。</span>
-      <button class="btn" id="reset" type="button">最初の状態に戻す</button>
+      <span class="grp"><button class="btn" id="auto" type="button">▶ 自動で進める</button><button class="btn" id="reset" type="button">最初に戻す</button></span>
     </div>
-    <div class="lanes" id="lanes"></div>
-
+    <div class="stick">
     <div class="gauges">
       <div class="gauge"><div class="t"><span>お弁当箱（受注）</span><span class="v" id="gBooked">0</span></div><div class="meter"><i id="mBooked" style="width:0"></i></div><div class="note" id="nBooked"></div></div>
       <div class="gauge"><div class="t"><span>畑の広さ（B+C+D）</span><span class="v" id="gField">0</span></div><div class="meter o"><i id="mField" style="width:0"></i></div><div class="note" id="nField"></div></div>
@@ -236,6 +271,8 @@ a{color:var(--teal-deep)}
       </div>
       <div class="done" id="done" aria-live="polite"></div>
     </div>
+    </div>
+    <div class="lanes" id="lanes"></div>
   </div>
 </div></section>
 
@@ -336,7 +373,7 @@ function food(k){
 function card(d){
   var amt = d.a>0 ? '<span class="amt">'+d.a+'</span>' : '<span class="amt none">金額未入力</span>';
   var btn = d.s<5 ? '<button class="adv" type="button" data-id="'+d.id+'" aria-label="'+esc(d.c+' '+d.n)+'を'+NEXT[d.s]+'">'+NEXT[d.s]+' ▸</button>' : '';
-  return '<div class="deal">'+plant(d.s)+'<span class="cl">'+esc(d.c)+'</span><span class="nm">'+esc(d.n)+'</span><div class="row">'+amt+btn+'</div></div>';
+  return '<div class="deal" style="--d:-'+((d.id%7)*.5).toFixed(1)+'s">'+plant(d.s)+'<span class="cl">'+esc(d.c)+'</span><span class="nm">'+esc(d.n)+'</span><div class="row">'+amt+btn+'</div></div>';
 }
 
 function round(x){return Math.round(x+1e-9)}
@@ -368,7 +405,7 @@ function render(){
       if(i<nS){cls+=' solid'+(fresh[i]?' fresh':''); inner=food(FOODS[i%FOODS.length]);}
       else if(i<nS+nC){cls+=' cook'; inner=food(FOODS[i%FOODS.length]);}
       else if(i<nS+nC+nW){cls+=' wait'; inner='';}
-      cells += '<div class="'+cls+'">'+inner+'</div>';
+      cells += '<div class="'+cls+'" style="--d:'+((i%9)*.3).toFixed(1)+'s">'+inner+'</div>';
     }
     var amount = pi==0 ? booked : p.wait;
     out += '<div class="cmp"><header><b>'+p.name+'</b><span>'+(Math.round(amount*10)/10)+' / '+p.target+'万円</span></header><div class="grid">'+cells+'</div></div>';
@@ -390,20 +427,52 @@ function render(){
   var dn = state.filter(function(d){return d.s==5});
   document.getElementById('done').innerHTML = dn.length ? dn.map(function(d){return '<span>'+esc(d.c)+' '+esc(d.n)+'</span>'}).join('') : '';
 }
+function cellsOf(){ var sol=0,bk=0; state.forEach(function(x){ if(x.s==5) sol+=x.a; if(x.s>=4) bk+=x.a; }); return {sol:round(sol/DATA.unit), tot:round(bk/DATA.unit)}; }
+function advance(id){
+  var d = state[id]; if(!d || d.s>=5) return;
+  var btn = document.querySelector('.adv[data-id="'+id+'"]');
+  var from = btn ? btn.getBoundingClientRect() : null;
+  var before = cellsOf();
+  d.s++; fresh = {};
+  var after = cellsOf();
+  if(d.s==5){ for(var i=before.sol;i<after.sol;i++) fresh[i]=1; }
+  render();
+  if(d.s==4 && from && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var cells = document.querySelectorAll('#bento .cmp:first-child .cell');
+    for(var n=before.tot;n<after.tot && n<cells.length;n++){
+      (function(n){
+        var to = cells[n].getBoundingClientRect();
+        var el = document.createElement('div'); el.className='fly'; el.innerHTML = food(FOODS[n%FOODS.length]);
+        document.body.appendChild(el);
+        var x0=from.left, y0=from.top, x1=to.left+to.width/2-17, y1=to.top+to.height/2-17;
+        var a = el.animate([
+          {transform:'translate('+x0+'px,'+y0+'px) scale(1)',opacity:1},
+          {transform:'translate('+((x0+x1)/2)+'px,'+(Math.min(y0,y1)-60)+'px) scale(1.5)',opacity:1,offset:.5},
+          {transform:'translate('+x1+'px,'+y1+'px) scale(.9)',opacity:1}
+        ],{duration:900+((n-before.tot)%6)*70,easing:'cubic-bezier(.4,0,.2,1)'});
+        a.onfinish=function(){ el.remove(); var c=document.querySelectorAll('#bento .cmp:first-child .cell')[n]; if(c){ c.classList.add('fresh'); } };
+      })(n);
+    }
+  }
+}
 document.getElementById('lanes').addEventListener('click', function(e){
   var t = e.target.closest('.adv'); if(!t) return;
-  var d = state[+t.getAttribute('data-id')];
-  if(d.s<5){
-    d.s++;
-    fresh = {};
-    if(d.s==5){
-      var sol = state.filter(function(x){return x.s==5}).reduce(function(a,x){return a+x.a},0);
-      var n = round(sol/DATA.unit), prev = round((sol-d.a)/DATA.unit);
-      for(var i=prev;i<n;i++) fresh[i]=1;
-    }
-    render();
-  }
+  advance(+t.getAttribute('data-id'));
 });
-document.getElementById('reset').addEventListener('click', function(){ init(); render(); });
+var timer=null, autoBtn=document.getElementById('auto');
+function stopAuto(){ if(timer){clearInterval(timer); timer=null;} autoBtn.classList.remove('on'); autoBtn.textContent='▶ 自動で進める'; }
+autoBtn.addEventListener('click', function(){
+  if(timer){ stopAuto(); return; }
+  autoBtn.classList.add('on'); autoBtn.textContent='■ 止める';
+  timer=setInterval(function(){
+    var open = state.filter(function(d){return d.s<5});
+    if(!open.length){ stopAuto(); return; }
+    // 実った・調理中の案件を優先して進めると、お弁当箱が埋まる様子が見えやすい
+    var pri = open.filter(function(d){return d.s>=3 && d.a>0});
+    var pool = pri.length && Math.random()<.7 ? pri : open;
+    advance(pool[Math.floor(Math.random()*pool.length)].id);
+  }, 1300);
+});
+document.getElementById('reset').addEventListener('click', function(){ stopAuto(); init(); render(); });
 init(); render();
 </script>
