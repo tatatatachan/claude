@@ -116,7 +116,7 @@ section{position:relative;padding:80px 0 72px}
 .mission__q small{display:block;font-family:var(--en);color:var(--orange);font-weight:700;letter-spacing:.22em;margin-bottom:8px}
 .mission__q p{font-size:clamp(20px,3.4vw,29px);font-weight:900;line-height:1.7}
 .mission__ill{display:block;width:150px;margin:28px 0 0 6%}
-.mission__sub{max-width:640px;margin:18px auto 0;font-size:14.5px}
+.mission__sub{max-width:none;margin:18px auto 0;font-size:15px;line-height:2.1;letter-spacing:.04em}
 @media(max-width:640px){.mission__ill{margin:26px auto 0}}
 
 /* timetable */
@@ -157,7 +157,7 @@ section{position:relative;padding:80px 0 72px}
 /* entry */
 .entry{background:var(--mint-l);text-align:center;padding-bottom:0;overflow:hidden}
 .entry h2{font-size:clamp(25px,4.4vw,38px);font-weight:900;line-height:1.6}
-.entry p{margin:16px auto 32px;max-width:560px}
+.entry p{margin:16px auto 32px;max-width:none;line-height:2.1;letter-spacing:.04em}
 .entry small{display:block;margin-top:16px;font-size:12px;color:var(--ink-s)}
 .entry__ill{display:flex;justify-content:center;gap:clamp(8px,3vw,40px);align-items:flex-end;margin-top:44px}
 .entry__ill img{height:clamp(90px,16vw,160px);width:auto}
@@ -165,6 +165,9 @@ section{position:relative;padding:80px 0 72px}
 /* footer */
 .ft{background:var(--ink);color:#e9e7f0;text-align:center;padding:44px 16px;font-size:13px}
 .ft b{display:block;font-size:16px;color:#fff;margin-bottom:6px}
+
+.ph{display:inline-block}
+@media(max-width:560px){.mission__q{padding:28px 18px}.mission__q p{font-size:19px}.mission__sub br,.entry p br{display:none}.mission__sub,.entry p{text-wrap:balance;font-size:14.5px}}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
@@ -272,10 +275,10 @@ section{position:relative;padding:80px 0 72px}
   <div class="inner">
     <div class="sec-ttl rv"><span class="en">Mission</span><span class="ja">当日のミッション</span></div>
     <div class="mission__wrap rv">
-      <div class="mission__q"><small>MISSION</small><p>この家で、ご利用者さんが<br>暮らせるプランを提案してください。</p></div>
+      <div class="mission__q"><small>MISSION</small><p><span class="ph">この家で、</span><span class="ph">ご利用者さんが</span><br><span class="ph">暮らせるプランを</span><span class="ph">提案してください。</span></p></div>
       <img class="mission__ill" src="assets/ill/wheelchair-run.png" alt="">
     </div>
-    <p class="mission__sub rv">正解はありません。体感したリアルな課題から、あなたたちのチームだけの答えをつくってください。</p>
+    <p class="mission__sub rv"><span class="ph">正解はありません。</span><span class="ph">体感したリアルな課題から、</span><br><span class="ph">あなたたちのチームだけの</span><span class="ph">答えをつくってください。</span></p>
   </div>
 </section>
 
@@ -319,7 +322,7 @@ section{position:relative;padding:80px 0 72px}
   <span class="spark" style="left:12%;top:70px"></span><span class="spark" style="right:10%;top:150px"></span>
   <div class="inner">
     <h2 class="rv">長野の空気を吸いに、<br>軽井沢へ来ませんか。</h2>
-    <p class="rv">将来がまだぼんやりしている1・2年生も、進路を決める前に視野を広げたい3・4年生も歓迎です。</p>
+    <p class="rv"><span class="ph">将来がまだぼんやりしている</span><span class="ph">1・2年生も、</span><br><span class="ph">進路を決める前に</span><span class="ph">視野を広げたい</span><span class="ph">3・4年生も歓迎です。</span></p>
     <a class="btn rv" href="#" id="cta" rel="noopener">12/12 インターンに申し込む</a>
     <small>※申込フォームのURLは公開前に差し替えてください（index.html 内 #cta）</small>
     <div class="entry__ill rv">
