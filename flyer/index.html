@@ -8,7 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Signika:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-/* A4 両面チラシ（LPのデザイン：ミント×クリーム、手描きイラスト、山並み） 表＝訴求／裏＝1日の流れ */
+/* A4 両面チラシ v2（検証をふまえた修正案）
+   表＝何の会社か・参加後に得るもの・締切／裏＝1日の流れ（4ブロック）・先輩の声・選考との関係
+   オレンジ文字（.tbd）は未確定の仮記載。印刷前に確定情報へ差し替え */
 @page{size:210mm 297mm;margin:0}
 :root{
   --mint:#55C5B0; --mint-d:#2f9d89; --mint-l:#DBF2E2; --mint-xl:#EEF8F1;
@@ -20,110 +22,155 @@
 html,body{background:#cfd3d0}
 body{font-family:var(--font);color:var(--ink);font-weight:500;line-height:1.7;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 img{display:block;max-width:100%}
-a{color:inherit}
+.tbd{color:var(--orange);font-weight:900}
 
-/* 画面表示：2面を並べ、画面幅に合わせて縮小（印刷時は等倍で2ページ） */
-.stage{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;padding:20px 12px}
+/* 画面表示：面を並べ、画面幅に合わせて縮小（印刷時は等倍・表と裏の2ページ） */
+.stage{display:flex;flex-wrap:wrap;justify-content:center;gap:34px 24px;padding:26px 12px}
 .side{width:calc(210mm * var(--z,1));height:calc(297mm * var(--z,1));position:relative}
 .side>.sheet{transform:scale(var(--z,1));transform-origin:top left}
-.label{position:absolute;left:0;top:-18px;font:700 11px/1 var(--en);letter-spacing:.14em;color:#4d5a55}
+.label{position:absolute;left:0;top:-19px;font:700 11px/1 var(--en);letter-spacing:.14em;color:#4d5a55}
 .sheet{position:relative;width:210mm;height:297mm;background:var(--cream);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 30px rgba(0,0,0,.25)}
 @media print{
   html,body{background:none}
   .stage{display:block;padding:0}
   .side{width:210mm;height:297mm;break-after:page}
   .side>.sheet{transform:none;box-shadow:none}
-  .label{display:none}
+  .label,.side.alt{display:none}
 }
 
 /* ===== 表面 ===== */
-.kv{flex:0 0 auto;height:140mm}
-.kv img{width:100%;height:100%;object-fit:cover}
-.copy{flex:0 0 auto;position:relative;background:var(--mint-l);padding:6mm 12mm 4.4mm;text-align:center}
-.copy h2{font-size:7mm;font-weight:900;line-height:1.45;letter-spacing:.06em}
+.kv{flex:0 0 auto;height:130mm}
+.kv img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+
+.copy{flex:0 0 auto;position:relative;background:var(--mint-l);padding:5mm 12mm 6.4mm;text-align:center}
+.copy h2{font-size:6.6mm;font-weight:900;line-height:1.45;letter-spacing:.05em}
 .copy h2 em{font-style:normal;background:linear-gradient(transparent 62%,rgba(246,211,107,.9) 62%)}
-.copy p{margin-top:1.8mm;font-size:3mm;line-height:1.8;letter-spacing:.03em}
+.copy .ind{margin-top:1.4mm;font-size:3.05mm;font-weight:700;line-height:1.7}
+.copy .ind b{color:var(--mint-d);font-weight:900}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:3mm}
+.stat{padding:0 3mm}
+.stat+.stat{border-left:.5mm dotted var(--mint-d)}
+.stat big{display:block;font-family:var(--en);font-weight:700;font-size:8mm;line-height:1;color:var(--mint-d)}
+.stat big small{font-size:3.4mm;margin-left:.8mm;font-family:var(--font);font-weight:900}
+.stat span{display:block;margin-top:.8mm;font-size:2.7mm;font-weight:700;line-height:1.45}
 .ridge{position:absolute;left:0;right:0;bottom:-.3mm;height:4.4mm;color:var(--cream)}
 .ridge svg{display:block;width:100%;height:100%}
-.points{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;padding:4.2mm 12mm 0}
+
+.points{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;padding:3.4mm 12mm 0}
 .pt{text-align:center}
 .pt+.pt{border-left:.5mm dotted var(--mint);padding-left:4mm}
-.pt__img{height:21mm;display:grid;place-items:center}
-.pt__img img{height:19mm;width:auto}
-.pt__no{display:inline-block;margin-top:2mm;font-family:var(--en);font-weight:700;font-size:2.5mm;letter-spacing:.14em;background:var(--mint);color:#fff;border-radius:99px;padding:0 3mm}
-.pt h3{font-size:3.6mm;font-weight:900;line-height:1.4;margin:1mm 2mm 0}
-.pt p{font-size:2.6mm;line-height:1.65;margin:1.2mm 0 0;text-align:left}
-.tease{margin:3.6mm 12mm 0;text-align:center;font-size:2.9mm;font-weight:900;color:var(--mint-d)}
-.tease span{display:inline-block}
-.foot{flex:1 1 auto;display:grid;grid-template-columns:1fr 62mm;gap:6mm;padding:3.6mm 12mm 0;min-height:0}
-.info dl>div{display:grid;grid-template-columns:14mm 1fr;gap:2.5mm;padding:1.4mm 0;border-bottom:.5mm dotted var(--mint);font-size:2.9mm;line-height:1.5}
+.pt__img{height:16mm;display:grid;place-items:center}
+.pt__img img{height:15mm;width:auto}
+.pt__no{display:inline-block;margin-top:1.2mm;font-family:var(--en);font-weight:700;font-size:2.4mm;letter-spacing:.14em;background:var(--mint);color:#fff;border-radius:99px;padding:0 3mm}
+.pt h3{font-size:3.5mm;font-weight:900;line-height:1.4;margin:.8mm 0 0}
+.pt p{font-size:2.5mm;line-height:1.6;margin:.8mm 0 0;text-align:left}
+.tease{margin:2.6mm 12mm 0;text-align:center;font-size:2.8mm;font-weight:900;color:var(--mint-d)}
+
+.foot{flex:1 1 auto;display:grid;grid-template-columns:1fr 60mm;gap:6mm;padding:3mm 12mm 0;min-height:0}
+.info dl>div{display:grid;grid-template-columns:14mm 1fr;gap:2.5mm;padding:1.2mm 0;border-bottom:.5mm dotted var(--mint);font-size:2.85mm;line-height:1.5}
 .info dl>div:first-child{border-top:.5mm dotted var(--mint)}
 .info dt{font-weight:900;color:var(--mint-d)}
 .info dd b{font-weight:900}
-.info dd small{font-size:2.15mm;color:var(--ink-s)}
-.brand{display:flex;align-items:center;gap:3mm;margin-top:3mm}
-.brand img{height:6.6mm;width:auto}
-.brand span{font-size:2.15mm;color:var(--ink-s);line-height:1.4}
-.entry{align-self:start;background:var(--mint-l);border-radius:5mm;padding:3.4mm 3mm;text-align:center}
-.entry__lead{font-size:3.3mm;font-weight:900;line-height:1.4}
+.info dd small{display:block;font-size:2.1mm;color:var(--ink-s);line-height:1.45}
+.brand{display:flex;align-items:center;gap:3mm;margin-top:2.4mm}
+.brand img{height:6.4mm;width:auto}
+.brand span{font-size:2.1mm;color:var(--ink-s);line-height:1.4}
+.entry{align-self:start;background:var(--mint-l);border-radius:5mm;padding:3mm;text-align:center}
+.entry__lead{font-size:3.2mm;font-weight:900;line-height:1.4}
 .entry__lead i{font-style:normal;color:var(--orange)}
-.qr{width:24mm;height:24mm;margin:2mm auto 1.4mm;padding:1.8mm;background:#fff;border-radius:1.6mm}
+.qr{width:24mm;height:24mm;margin:2mm auto 1.2mm;padding:1.8mm;background:#fff;border-radius:1.6mm}
 .qr img{width:100%;height:100%}
-.entry__url{font-size:2.3mm;color:var(--ink);line-height:1.5;word-break:break-all}
-.bar{flex:0 0 auto;height:3.2mm;background:var(--mint);margin-top:4mm}
+.entry__url{font-size:2.3mm;line-height:1.5}
+.bar{flex:0 0 auto;height:3.2mm;background:var(--mint);margin-top:3mm}
+
+/* 比較案B：表面の上部だけ「人の顔」を主役に */
+.kvb{position:relative;display:grid;grid-template-columns:1.05fr 1fr;background:var(--mint);color:#fff;overflow:hidden}
+.kvb__tx{position:relative;z-index:2;padding:9mm 4mm 6mm 12mm;display:flex;flex-direction:column}
+.kvb__tx small{font-family:var(--en);font-weight:700;font-size:3.1mm;letter-spacing:.14em;opacity:.95}
+.kvb__tx h1{margin-top:3mm;font-size:9.2mm;font-weight:900;line-height:1.4;letter-spacing:.02em;color:#fff}
+.kvb__tx h1 em{font-style:normal;background:linear-gradient(transparent 62%,rgba(50,48,66,.35) 62%)}
+.kvb__tx p{margin-top:3mm;font-size:3.2mm;font-weight:700;line-height:1.7}
+.kvb__d{margin-top:auto;font-family:var(--en);font-weight:700;font-size:15mm;line-height:1}
+.kvb__d i{font-style:normal;font-family:var(--font);font-size:5mm;background:var(--orange);border-radius:50%;display:inline-grid;place-items:center;width:8mm;height:8mm;margin-left:1.6mm;vertical-align:5.6mm}
+.kvb__pl{font-size:3.3mm;font-weight:900;margin-top:1mm}
+.kvb__ph{position:relative;background:url(assets/photo/f2.jpg) 56% 33%/175% auto no-repeat}
+.kvb__ph::after{content:"";position:absolute;left:-1px;top:0;bottom:0;width:14mm;background:linear-gradient(90deg,var(--mint),rgba(85,197,176,0))}
+.kvb__bd{position:absolute;right:9mm;bottom:9mm;z-index:3;width:30mm;height:30mm;border-radius:50%;background:#5DBB2F;color:#fff;display:grid;place-items:center;text-align:center;font-weight:900;font-size:4.1mm;line-height:1.3;transform:rotate(-8deg);box-shadow:0 1mm 3mm rgba(0,0,0,.25)}
+.kvb__bd small{display:block;font-size:2.3mm;font-weight:700;margin-top:1mm}
+.kv.kvb img.kvb__lg{position:absolute;right:11mm;top:7mm;z-index:3;height:7mm;width:auto;max-width:none;object-fit:contain;background:rgba(255,254,242,.92);padding:1.2mm 2.4mm;border-radius:99px}
 
 /* ===== 裏面 ===== */
-.bk-head{flex:0 0 auto;position:relative;background:var(--mint);color:#fff;padding:8mm 12mm 9mm;display:flex;align-items:flex-end;justify-content:space-between;gap:6mm}
-.bk-head h2{font-family:var(--en);font-size:11mm;font-weight:700;line-height:1}
-.bk-head h2 small{display:block;font-family:var(--font);font-size:3.6mm;font-weight:900;margin-top:2mm;letter-spacing:.1em}
-.bk-head p{font-size:3mm;line-height:1.7;text-align:right;font-weight:700}
-.bk-head .ridge{color:var(--cream);height:5mm}
-.mission{flex:0 0 auto;margin:6mm 12mm 0;text-align:center}
-.mission small{display:block;font-family:var(--en);font-weight:700;font-size:2.5mm;letter-spacing:.22em;color:var(--orange)}
-.mission p{font-size:5mm;font-weight:900;line-height:1.7;margin-top:1mm}
+.bk-head{flex:0 0 auto;position:relative;background:var(--mint);color:#fff;padding:7mm 12mm 8.4mm;display:flex;align-items:flex-end;justify-content:space-between;gap:6mm}
+.bk-head h2{font-family:var(--en);font-size:10.5mm;font-weight:700;line-height:1}
+.bk-head h2 small{display:block;font-family:var(--font);font-size:3.5mm;font-weight:900;margin-top:1.6mm;letter-spacing:.1em}
+.bk-head p{font-size:2.9mm;line-height:1.7;text-align:right;font-weight:700}
+.bk-head .ridge{color:var(--cream);height:4.6mm}
+.mission{flex:0 0 auto;margin:5mm 12mm 0;text-align:center}
+.mission small{display:block;font-family:var(--en);font-weight:700;font-size:2.4mm;letter-spacing:.22em;color:var(--orange)}
+.mission p{font-size:4.7mm;font-weight:900;line-height:1.7;margin-top:.6mm}
 .mission p span{background:linear-gradient(transparent 62%,rgba(246,211,107,.9) 62%)}
-.tl{flex:0 0 auto;position:relative;margin:7mm 12mm 0}
-.tl::before{content:"";position:absolute;left:25.2mm;top:2mm;bottom:2mm;width:.6mm;background:repeating-linear-gradient(var(--mint) 0 1.6mm,transparent 1.6mm 2.8mm)}
-.row{display:grid;grid-template-columns:23mm 1fr;gap:6mm;position:relative;padding:0 0 5.2mm}
-.row::before{content:"";position:absolute;left:23.9mm;top:1.7mm;width:3.2mm;height:3.2mm;border-radius:50%;background:#fff;border:.7mm solid var(--mint)}
-.row.w::before{background:var(--orange);border-color:var(--orange)}
-.row time{font-family:var(--en);font-weight:700;font-size:3.9mm;color:var(--mint-d);text-align:right;line-height:1.5}
-.row time small{display:block;font-size:2.5mm;color:var(--ink-s);margin-top:-.6mm}
-.row b{display:block;font-size:4mm;font-weight:900;line-height:1.45}
-.row b i{font-style:normal;font-family:var(--en);font-size:2.2mm;background:var(--orange);color:#fff;padding:.2mm 2mm;border-radius:99px;margin-left:2mm;vertical-align:.3mm}
-.row p{font-size:3mm;line-height:1.6;color:#4d4b5c}
-.row.w b{color:#c26a22}
-.deco{position:absolute;right:11mm;bottom:2mm}
-.bk-foot{flex:1 1 auto;display:grid;grid-template-columns:1fr 46mm;gap:6mm;margin:1mm 12mm 0;align-items:end;min-height:0}
-.venue{background:var(--mint-l);border-radius:5mm;padding:3.6mm 5mm 3.8mm}
-.venue h3{font-family:var(--en);font-size:4.4mm;font-weight:700;line-height:1.25;color:var(--mint-d)}
-.venue p{font-size:2.55mm;line-height:1.65;margin-top:1mm}
-.venue p b{font-weight:900}
-.venue .u{font-size:2.35mm;color:var(--ink-s);word-break:break-all}
+
+.prog{flex:0 0 auto;margin:4mm 12mm 0}
+.pg{display:grid;grid-template-columns:33mm 1fr;gap:5mm;padding:3mm 0;border-bottom:.5mm dotted var(--mint);align-items:start}
+.pg:first-child{border-top:.5mm dotted var(--mint)}
+.pg time{font-family:var(--en);font-weight:700;color:var(--mint-d);font-size:4.2mm;line-height:1.25;text-align:right}
+.pg time small{display:block;font-size:2.3mm;color:var(--ink-s);margin-top:.6mm;letter-spacing:.06em}
+.pg b{display:block;font-size:3.8mm;font-weight:900;line-height:1.45}
+.pg b i{font-style:normal;font-family:var(--en);font-size:2.2mm;background:var(--orange);color:#fff;padding:.2mm 2mm;border-radius:99px;margin-left:2mm;vertical-align:.4mm}
+.pg p{font-size:2.8mm;line-height:1.6;color:#4d4b5c;margin-top:.4mm}
+.pg.w b{color:#c26a22}
+
+.voices{flex:0 0 auto;margin:5.4mm 12mm 0}
+.voices h3{display:flex;align-items:baseline;gap:3mm;font-size:3.2mm;font-weight:900;color:var(--mint-d);margin-bottom:2.4mm}
+.voices h3 b{font-family:var(--en);font-size:5mm;font-weight:700;line-height:1}
+.vs{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+.v .ph{height:62mm;border-radius:4mm;background-repeat:no-repeat;background-color:var(--mint-l)}
+.v blockquote{margin-top:2.4mm;font-size:3.4mm;font-weight:900;line-height:1.5;color:var(--ink)}
+.v cite{display:block;margin-top:1.2mm;font-style:normal;font-size:2.3mm;color:var(--ink-s);line-height:1.45}
+.v .ph.a{background-image:url(assets/photo/f1.jpg);background-size:190% auto;background-position:58% 36%}
+.v .ph.b{background-image:url(assets/photo/f2.jpg);background-size:190% auto;background-position:64% 50%}
+.v .ph.c{background-image:url(assets/photo/f3.jpg);background-size:230% auto;background-position:60% 50%}
+
+.for{flex:0 0 auto;margin:5mm 12mm 0}
+.for h3{display:flex;align-items:baseline;gap:3mm;font-size:3.2mm;font-weight:900;color:var(--mint-d);margin-bottom:2mm}
+.for h3 b{font-family:var(--en);font-size:5mm;font-weight:700;line-height:1}
+.for ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.8mm 6mm}
+.for li{position:relative;padding-left:6mm;font-size:3.1mm;font-weight:700;line-height:1.55}
+.for li::before{content:"✓";position:absolute;left:0;top:0;width:4.4mm;height:4.4mm;border-radius:50%;background:var(--mint);color:#fff;font-size:2.8mm;line-height:4.4mm;text-align:center;font-weight:900}
+.bk-foot{flex:1 1 auto;display:grid;grid-template-columns:1fr 36mm;gap:6mm;margin:3.6mm 12mm 0;align-items:end;min-height:0}
+.faq dl>div{display:grid;grid-template-columns:20mm 1fr;gap:2.5mm;padding:1.1mm 0;border-bottom:.5mm dotted var(--mint);font-size:2.7mm;line-height:1.5}
+.faq dl>div:first-child{border-top:.5mm dotted var(--mint)}
+.faq dt{font-weight:900;color:var(--mint-d)}
+.faq .u{color:var(--ink-s);font-size:2.3mm;word-break:break-all}
 .illus{display:flex;justify-content:flex-end;align-items:flex-end}
-.illus img{height:25mm;width:auto}
+.illus img{height:24mm;width:auto}
 </style>
 </head>
 <body>
 <div class="stage" id="stage">
 
-<!-- ================= 表面 ================= -->
-<div class="side"><span class="label">FRONT／表面</span>
+<!-- ================= 表面（A案） ================= -->
+<div class="side" id="frontA"><span class="label">FRONT／表面（A案：現行KVを活かす）</span>
 <main class="sheet">
   <div class="kv"><img src="assets/hero.jpg" alt="LOCAL LONG LIFE インターンシップ 12/12(土) @Workation + Cottage KARUIZAWA"></div>
 
   <section class="copy">
     <h2>50年後の自分を、<em>先に生きてみよう。</em></h2>
-    <p>高齢者体験ギアを身につけ、「おじいちゃんがこの家でずっと暮らせるプラン」を考える。<br>そのあとは視点を自分に向けて、これから先の長い人生をどう働き、どう暮らしたいかを描く1日。</p>
+    <p class="ind"><b>介護 × 福祉用具</b>の現場で、2040年の暮らしを考える。<br>体験して、チームで提案して、自分の「働く軸」をつくる1日。</p>
+    <div class="stats">
+      <div class="stat"><big>1<small>日完結</small></big><span>9:30〜18:00<br>文理・学年不問</span></div>
+      <div class="stat"><big>0<small>円</small></big><span>参加無料<br>交通費補助あり</span></div>
+      <div class="stat"><big>1:1</big><span>社員メンターが<br>壁打ちで伴走</span></div>
+    </div>
     <div class="ridge"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 120V78c70-6 120-34 190-30s110 24 170 10 90-52 160-54 96 30 150 30 80-34 150-40 100 24 150 36 90-8 150-30 90-34 140-30 70 22 120 30c60 10 110 14 160 12V120z" fill="currentColor"/></svg></div>
   </section>
 
   <section class="points">
-    <article class="pt"><div class="pt__img"><img src="assets/ill/line-chair.png" alt=""></div><span class="pt__no">01 FEEL</span><h3>2040年の現実を、<br>身体で知る</h3><p>重り・視野狭窄メガネなどの高齢者体験ギア、車椅子、ベッド体験で、段差の恐怖や圧迫感を五感で掴む。</p></article>
-    <article class="pt"><div class="pt__img"><img src="assets/ill/care.png" alt=""></div><span class="pt__no">02 THINK</span><h3>チームで「暮らしの<br>プラン」を提案する</h3><p>介護×福祉用具×住環境。実際に家へ福祉用具を設置しながらプランを作り、実演を交えて発表。</p></article>
-    <article class="pt"><div class="pt__img"><img src="assets/ill/runner.png" alt=""></div><span class="pt__no">03 DESIGN</span><h3>自分のキャリア軸を<br>言葉にする</h3><p>社員トークライブとメンターとの壁打ちで、価値観と仕事の魅力を掛け合わせたマイキャリアプランを作る。</p></article>
+    <article class="pt"><div class="pt__img"><img src="assets/ill/line-chair.png" alt=""></div><span class="pt__no">01 FEEL</span><h3>2040年の暮らしの課題が、<br>身体でわかる</h3><p>高齢者体験ギア・車椅子・ベッドで、段差の恐怖や見下ろされる圧迫感を体感する。</p></article>
+    <article class="pt"><div class="pt__img"><img src="assets/ill/care.png" alt=""></div><span class="pt__no">02 THINK</span><h3>「暮らしのプラン」を、<br>チームで形にできる</h3><p>家に福祉用具を設置しながら提案を作り、実演を交えて発表。プロの視点でフィードバック。</p></article>
+    <article class="pt"><div class="pt__img"><img src="assets/ill/runner.png" alt=""></div><span class="pt__no">03 DESIGN</span><h3>自分の「働く軸」が、<br>言葉になる</h3><p>先輩のトークと、メンターとの壁打ちで、価値観と仕事を掛け合わせたキャリアプランを描く。</p></article>
   </section>
-  <p class="tease"><span>当日のタイムテーブルは、裏面をご覧ください →</span></p>
+  <p class="tease">当日の流れ・先輩の声は、裏面をご覧ください →</p>
 
   <section class="foot">
     <div class="info">
@@ -131,14 +178,15 @@ a{color:inherit}
         <div><dt>開催日</dt><dd><b>12月12日（土）</b> 9:30集合〜18:00終了</dd></div>
         <div><dt>会場</dt><dd><b>Workation + Cottage KARUIZAWA</b>（長野県軽井沢町）</dd></div>
         <div><dt>対象</dt><dd>大学1年生〜4年生（文理・学部不問）</dd></div>
-        <div><dt>費用</dt><dd><b>参加無料／交通費補助あり</b><br><small>※補助の上限・条件は参加確定後にご案内します</small></dd></div>
+        <div><dt>費用</dt><dd><b>参加無料／交通費補助あり</b><small>※補助の上限・条件は参加確定後にご案内します</small></dd></div>
+        <div><dt>申込</dt><dd><span class="tbd">締切：○月○日（仮）／定員：○名（仮）</span></dd></div>
       </dl>
-      <div class="brand"><img src="assets/logo.png" alt="エフビー介護サービス"><span>主催：エフビー介護サービス<br>お問い合わせ：（連絡先を差し替え）</span></div>
+      <div class="brand"><img src="assets/logo.png" alt="エフビー介護サービス"><span>主催：エフビー介護サービス<br>お問い合わせ：<span class="tbd">（連絡先を差し替え）</span></span></div>
     </div>
     <div class="entry">
       <div class="entry__lead">軽井沢で、<br>未来のキャリア軸を<i>つくる1日。</i></div>
       <div class="qr"><img src="assets/qr-dummy.svg" alt="申込フォームのQRコード（ダミー）"></div>
-      <div class="entry__url">お申込みはこちら（QRはダミー）<br>https://（申込URLを差し替え）</div>
+      <div class="entry__url">お申込みはこちら（QRはダミー）<br><span class="tbd">https://（申込URLを差し替え）</span></div>
     </div>
   </section>
   <div class="bar"></div>
@@ -146,7 +194,7 @@ a{color:inherit}
 </div>
 
 <!-- ================= 裏面 ================= -->
-<div class="side"><span class="label">BACK／裏面</span>
+<div class="side" id="back"><span class="label">BACK／裏面</span>
 <main class="sheet">
   <header class="bk-head">
     <h2>1 Day Program<small>1日の流れ</small></h2>
@@ -156,12 +204,39 @@ a{color:inherit}
 
   <div class="mission"><small>MISSION</small><p><span>この家で、ご利用者さんが暮らせるプランを提案してください。</span></p></div>
 
-  <section class="tl" id="tl"></section>
+  <section class="prog">
+    <div class="pg"><time>9:30<small>〜 11:30</small></time><div><b>ご利用者の目線になる</b><p>集合・ミッション発表のあと、高齢者体験ギア（重り・視野狭窄メガネ）、車椅子、ベッドで「段差の恐怖」「手すりのない不安」を体感。</p></div></div>
+    <div class="pg w"><time>11:30<small>〜 14:00</small></time><div><b>暮らしのプランをつくる<i>WORK ①</i></b><p>昼食・社員交流のあと、チームで「この家でずっと暮らせるプラン」を作成・発表。現場社員が「プロの視点」でフィードバック。</p></div></div>
+    <div class="pg"><time>14:00<small>〜 15:25</small></time><div><b>市場価値と、この街の働き方</b><p>2040年問題とAI時代に高まる提案力（感情労働）の価値。社員トークライブ「この街での暮らしと働き方」と質疑応答。</p></div></div>
+    <div class="pg w"><time>15:25<small>〜 18:00</small></time><div><b>マイキャリアプランを描く<i>WORK ②</i></b><p>社員メンターが壁打ちで伴走。全体発表・講評・アンケートを経て、18:00解散。</p></div></div>
+  </section>
+
+  <section class="voices">
+    <h3><b>Voice</b>先輩の声</h3>
+    <div class="vs">
+      <figure class="v"><div class="ph a" role="img" aria-label="福祉用具の梱包を確認する社員"></div><blockquote>「営業、という名の、相談員です。」</blockquote><cite>新卒入社4年目・商学部出身<br>田子 茂虎さん</cite></figure>
+      <figure class="v"><div class="ph b" role="img" aria-label="笑顔の社員"></div><blockquote>「地域に密着していても、世界は無限に広がります。」</blockquote><cite>新卒入社5年目・経済学部出身<br>野沢 友哉さん</cite></figure>
+      <figure class="v"><div class="ph c" role="img" aria-label="営業所の前に立つ社員"></div><blockquote>「自分の『おばあちゃん』に会いに行く感覚なんです。」</blockquote><cite>新卒入社6年目・社会福祉学部出身<br>小柳 あずささん</cite></figure>
+    </div>
+  </section>
+
+  <section class="for">
+    <h3><b>For You</b>こんな人におすすめ</h3>
+    <ul>
+      <li>将来がまだぼんやりしている1・2年生</li>
+      <li>進路を決める前に視野を広げたい3・4年生</li>
+      <li>介護・福祉は未経験だけど、人の役に立つ仕事に興味がある</li>
+      <li>AI時代に「人にしかできない仕事」を考えたい</li>
+    </ul>
+  </section>
 
   <section class="bk-foot">
-    <div class="venue">
-      <h3>Workation + Cottage KARUIZAWA</h3>
-      <p><b>木々に囲まれた軽井沢のコテージが、この1日の「モデル空間」。</b><br>会場の詳細：<span class="u">https://www.mt-hr.com/cottage-karuizawa/</span><br>持ち物：筆記用具／動きやすい服装でお越しください（体験ワークがあります）</p>
+    <div class="faq">
+      <dl>
+        <div><dt>選考との関係</dt><dd><b>参加内容は採用選考には利用しません</b> <span class="tbd">（要確認）</span></dd></div>
+        <div><dt>服装・持ち物</dt><dd>動きやすい服装／筆記用具（体験ワークがあります）</dd></div>
+        <div><dt>会場の詳細</dt><dd><span class="u">https://www.mt-hr.com/cottage-karuizawa/</span></dd></div>
+      </dl>
     </div>
     <div class="illus"><img src="assets/ill/wheelchair-run.png" alt=""></div>
   </section>
@@ -172,26 +247,27 @@ a{color:inherit}
 </div>
 
 <script>
-// 1日の流れ（スプレッドシート「体験系」より。休憩は割愛）
-const TL=[
-["9:30","10:30","集合・アイスブレイク","受付・交通費精算、チームでの自己紹介、社員との雑談タイム。"],
-["10:30","10:50","オープニング・ミッション説明","2040年問題とエフビー介護サービスの事業。当日のミッションを発表。"],
-["10:50","11:30","ご利用者目線になる時間","高齢者体験ギア（重り・視野狭窄メガネ）、車椅子操作、ベッド体験で、段差の恐怖や手すりがない不安を体感。"],
-["11:30","12:30","昼食・社員交流","昼食を囲みながら、先輩社員や他の参加者と交流。"],
-["12:30","13:30","暮らしのプランの策定","介護×福祉用具の統合提案。「この家でずっと暮らせるプラン」をチームで作成し、実演を交えて発表。","WORK ①"],
-["13:30","14:00","事例解説＆プロの視点","実際の現場事例をもとに、現場社員が「プロの視点」をフィードバック。"],
-["14:00","14:30","市場価値と成長戦略","2040年問題、エフビー介護サービスの成長、AI時代に高まる提案力（感情労働）の価値。"],
-["14:45","15:25","トークライブ","社員トークライブ「この街での暮らしと働き方」と質疑応答。"],
-["15:25","16:25","マイキャリアプラン作成","WORK①で感じた仕事の魅力と自分の価値観を掛け合わせて作成。社員メンターが壁打ちで伴走。","WORK ②"],
-["16:25","16:55","全体発表","メンターから、美点凝視とエフビーのキャリアが重なるポイントをフィードバック。"],
-["16:55","17:25","講評＆アンケート","講評と、次回以降のご案内。"],
-["17:25","18:00","終了・片付け・解散",""]
-];
-document.getElementById('tl').innerHTML=TL.map(([s,e,t,d,w])=>`<div class="row${w?' w':''}"><time>${s}<small>〜${e}</small></time><div><b>${t}${w?`<i>${w}</i>`:''}</b>${d?`<p>${d}</p>`:''}</div></div>`).join('');
+// 比較案B：表面の上部（KV）だけ差し替えた版を、A案の複製から作る（画面表示のみ・印刷には出ない）
+(function(){
+  const a=document.getElementById('frontA'), b=a.cloneNode(true);
+  b.id='frontB'; b.classList.add('alt');
+  b.querySelector('.label').textContent='FRONT B／比較案（人の顔を主役に・画面のみ）';
+  b.querySelector('.kv').outerHTML=`<div class="kv kvb">
+    <img class="kvb__lg" src="assets/logo.png" alt="エフビー介護サービス">
+    <div class="kvb__tx"><small>LOCAL LONG LIFE インターンシップ</small>
+      <h1>AIに奪われない、<br><em>人間の価値</em>とは？</h1>
+      <p>長寿の国、長野発。<br>地方の成長産業でキャリア軸をつくる1日。<br>大学1〜4年生をご招待。</p>
+      <div><div class="kvb__d">12/12<i>土</i></div><div class="kvb__pl">@ Workation + Cottage KARUIZAWA</div></div>
+    </div>
+    <div class="kvb__ph" role="img" aria-label="笑顔の社員"></div>
+    <div class="kvb__bd"><span>軽井沢へ<br>ご招待！<small>交通費補助あり</small></span></div>
+  </div>`;
+  a.after(b);
+})();
 
 // 画面幅に合わせて縮小（印刷時はCSS側で等倍）
 function fit(){
-  const mm=96/25.4, w=210*mm, avail=Math.min(innerWidth-24,(innerWidth>=2*w+70)?w:innerWidth-24);
+  const mm=96/25.4, w=210*mm, avail=Math.min(w,innerWidth-24);
   document.documentElement.style.setProperty('--z',Math.min(1,avail/w));
 }
 addEventListener('resize',fit);fit();
