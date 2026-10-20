@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hoshizaki Tone Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=BIZ+UDPMincho&family=IBM+Plex+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ice:#F0F9FF; --ice-200:#C2E6FA; --sky:#00A0E9; --deep:#004767; --ink:#111111;
+  --body:#3d4b5f; --sub:#64748b; --line:#E2EEF4; --bg:#ffffff; --surface:#F4F7F9;
+  --beak:#F59E0B;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--ice:#0f2230;--ice-200:#16384d;--sky:#38bdf8;--deep:#7dd3fc;--ink:#eeeeee;--body:#cbd5e1;--sub:#a3a3a3;--line:#2a3b47;--bg:#161718;--surface:#1b1c1d;--beak:#fbbf24}
+}
+:root[data-theme="dark"]{--ice:#0f2230;--ice-200:#16384d;--sky:#38bdf8;--deep:#7dd3fc;--ink:#eeeeee;--body:#cbd5e1;--sub:#a3a3a3;--line:#2a3b47;--bg:#161718;--surface:#1b1c1d;--beak:#fbbf24}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--body);font:16px/1.9 "IBM Plex Sans JP","Hiragino Sans","Noto Sans JP",sans-serif;letter-spacing:.02em}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+header{background:var(--ice);border-bottom:1px solid var(--line);padding:64px 0 48px}
+.en{font-family:Barlow,sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:13px;font-weight:600;color:var(--sky)}
+h1{font-size:32px;line-height:1.4;color:var(--ink);margin:8px 0 16px}
+h2{font-size:26px;color:var(--ink);margin:0 0 8px}
+h3{font-size:18px;color:var(--ink);margin:0 0 8px}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.lead{max-width:680px}
+.mincho{font-family:"BIZ UDPMincho",serif}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:24px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:24px}
+.card p{margin:0;font-size:15px;line-height:1.8}
+.sw{height:72px;border-radius:8px;margin-bottom:12px;border:1px solid var(--line)}
+code,.mono{font-family:Barlow,monospace;font-size:13px;color:var(--sub)}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-top:16px}
+th,td{border-bottom:1px solid var(--line);padding:12px 8px;text-align:left;vertical-align:top}
+th{color:var(--ink);font-weight:500;width:26%}
+.tag{display:inline-block;font:600 12px Barlow,sans-serif;letter-spacing:.08em;padding:2px 10px;border-radius:9999px;background:var(--ice-200);color:var(--deep);margin-right:6px}
+
+/* ---- slide samples (16:9) ---- */
+.slides{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:24px}
+.slide{aspect-ratio:16/9;border-radius:12px;border:1px solid var(--line);overflow:hidden;position:relative;padding:5% 6%;container-type:inline-size;display:flex;flex-direction:column;justify-content:center}
+.slide .k{font:600 3cqw Barlow,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.slide .t{font-size:7cqw;line-height:1.35;font-weight:700;margin:2cqw 0}
+.slide .s{font-size:3.2cqw;line-height:1.8}
+.s1{background:var(--deep);color:#fff}.s1 .k{color:var(--ice-200)}
+.s2{background:var(--bg);color:var(--body)}.s2 .k{color:var(--sky)}.s2 .t{color:var(--ink)}
+.s3{background:var(--ice);color:var(--body)}.s3 .k{color:var(--sky)}.s3 .t{color:var(--ink)}
+.s3 .bubble{margin-top:1.5cqw;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:1.2cqw 2.4cqw;font-size:2.6cqw;line-height:1.5}
+.ice-bg{position:absolute;right:-4cqw;bottom:-6cqw;width:34cqw;opacity:.9}
+.peng{position:absolute;right:5cqw;bottom:4cqw;width:12cqw}
+.rule{height:3px;width:12cqw;background:var(--sky);margin:1cqw 0 0}
+.dos{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+li{margin:4px 0}
+footer{padding:32px 0;font-size:13px;color:var(--sub)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="en">Hoshizaki × Melta — Tone &amp; Manner</div>
+  <h1>静かに、止まらない。<br>氷のように澄んで、ペンギンのように愛嬌がある。</h1>
+  <p class="lead">ホシザキのサイトを分解し、melta UIの「声を張らずに伝わる」設計原則と掛け合わせた、インターン／採用スライド用の世界観ガイドです。</p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="en">01 — Concept</div>
+  <h2>世界観のコンセプト：「Quiet Cool（静かな冷たさ、あたたかな愛嬌）」</h2>
+  <p class="lead">ホシザキのコピーは「止まらない。止めない。」。24時間365日、飲食の現場を支え続ける使命感を、大声ではなく<strong>静かな確かさ</strong>で語ります。melta の “Quiet Precision（静かだが精密）” と相性が良く、そこに<strong>ペンギン</strong>（ホシザキのマーク）の、小さな愛嬌をひとさじ加えます。</p>
+  <div class="grid">
+    <div class="card"><h3>Ice（氷）</h3><p>澄んだ余白、淡い氷色の面、細い罫線。情報は静かに整える。</p></div>
+    <div class="card"><h3>Penguin（ペンギン）</h3><p>白とネイビーの2トーン。丸みと小さな動き、ひと言のユーモアで親しみを出す。</p></div>
+    <div class="card"><h3>Craft（手触り）</h3><p>学生に届けたい「発想するモノづくり」。実物の写真・手描きの図解で手触りを残す。</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="en">02 — Decomposition</div>
+  <h2>ホシザキ公式サイトの分解</h2>
+  <p class="mono">hoshizaki.co.jp のHTML／CSSから確認した値</p>
+  <table>
+    <tr><th>カラー</th><td>スカイブルー <code>#00A0E9</code>（主役）、ディープ <code>#004767</code>、淡い氷色 <code>#C2E6FA</code> / <code>#E2EEF4</code> / <code>#F0F9FF</code>、黒 <code>#111111</code>、グレー <code>#F5F5F5</code> <code>#CCC</code> <code>#666</code>。白地が大半で、青は要所のみ</td></tr>
+    <tr><th>書体</th><td>欧文 <b>Barlow</b>、和文 <b>IBM Plex Sans JP</b>。見出しの一部に <b>BIZ UDPMincho</b>（明朝）で品位を足している</td></tr>
+    <tr><th>角・形</th><td>角丸は <code>4px</code> が主（<code>2px</code> / <code>8px</code> / 円形も少量）。シャープで誠実な印象</td></tr>
+    <tr><th>写真</th><td>食の現場（食事する高齢の女性、工場の検査、子ども、ワインを注ぐ人、氷の上の鮮魚）。製品ではなく“使われる場面”が主役</td></tr>
+    <tr><th>構成</th><td>ヒーロー → 12製品グリッド → SUPPORT（3つの番号付きカード）→ TOPICS → 関連情報。番号と英字ラベルで整理</td></tr>
+    <tr><th>コピー</th><td>「ホシザキは、止まらない。止めない。」「24時間365日、1日も欠かさず動かし続けること」。短文・断定・誠実</td></tr>
+    <tr><th>ペンギン</th><td>ペンギンマーク、ペンギンアイランドギャラリー、PENGUIN EYES。ブランド全体にペンギンが息づいている</td></tr>
+  </table>
+</div></section>
+
+<section><div class="wrap">
+  <div class="en">03 — Principles</div>
+  <h2>melta から借りる設計原則</h2>
+  <div class="grid">
+    <div class="card"><h3>3色まで</h3><p>1スライドに使う色は3色まで。背景・面・文字の3層で構成する。</p></div>
+    <div class="card"><h3>4pxグリッド</h3><p>余白は4／8／12／16／24／32／48／64。詰め込まず、呼吸させる。</p></div>
+    <div class="card"><h3>12pxのカード</h3><p>角丸12px、薄い罫線、影は使わないか最小限。影の強いものはノイズ。</p></div>
+    <div class="card"><h3>色だけに頼らない</h3><p>情報は色＋アイコン＋テキストで。コントラストは4.5:1以上。</p></div>
+    <div class="card"><h3>行間は広く</h3><p>本文は行間180〜200%・字間2%。日本語の長文を読みやすく。</p></div>
+    <div class="card"><h3>黒子で、たまに微笑む</h3><p>装飾は控えめ。ペンギンは“ここぞ”の場面でだけ登場。</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="en">04 — Tokens</div>
+  <h2>掛け合わせたトークン</h2>
+  <div class="grid">
+    <div class="card"><div class="sw" style="background:#004767"></div><h3>Deep Penguin</h3><code>#004767</code><p>ペンギンの背中。表紙・見出し・強調。</p></div>
+    <div class="card"><div class="sw" style="background:#00A0E9"></div><h3>Sky</h3><code>#00A0E9</code><p>アクセント。リンク・数字・罫線。使いすぎない。</p></div>
+    <div class="card"><div class="sw" style="background:#C2E6FA"></div><h3>Ice</h3><code>#C2E6FA</code><p>氷の面。ラベル・ハイライト・図形。</p></div>
+    <div class="card"><div class="sw" style="background:#F0F9FF"></div><h3>Snow</h3><code>#F0F9FF</code><p>淡い背景。セクションの切り替わり。</p></div>
+    <div class="card"><div class="sw" style="background:#111111"></div><h3>Ink</h3><code>#111111</code><p>見出し。本文は <code>#3d4b5f</code>（meltaの本文色）。</p></div>
+    <div class="card"><div class="sw" style="background:#F59E0B"></div><h3>Beak（くちばし）</h3><code>#F59E0B</code><p><b>提案色</b>（公式サイトにはない）。ペンギンの“くちばし”として、1スライドに1点だけ。</p></div>
+  </div>
+  <table>
+    <tr><th>書体</th><td>欧文 Barlow ／ 和文 IBM Plex Sans JP（Hiragino Sans 代替）。コピーの一行だけ BIZ UDPMincho で「声」を出す</td></tr>
+    <tr><th>サイズ</th><td>見出し 32 / 26 / 22 ／ 本文 18 ／ 補助 13〜15（meltaのスケール）</td></tr>
+    <tr><th>角丸</th><td>カード 12px ／ ボタン・ラベル 4〜8px ／ タグは full（ホシザキは4px基調のため、スライドでは <b>8px</b> を折衷）</td></tr>
+  </table>
+</div></section>
+
+<section><div class="wrap">
+  <div class="en">05 — Motif</div>
+  <h2>ペンギンのモチーフ・ルール</h2>
+  <div class="dos">
+    <div class="card"><h3>Do</h3><ul><li>白×ネイビーの2トーン配色を、面の切り替えに使う</li><li>氷のキューブ（角丸の四角）を図形として使う</li><li>ペンギンは小さく、章扉や締めのスライドに1羽だけ</li><li>コピーは短く、断定で。ユーモアは一言だけ</li></ul></div>
+    <div class="card"><h3>Don't</h3><ul><li>キャラクター化しすぎない（学生は“子どもっぽい”に敏感）</li><li>ホシザキ公式ロゴを装飾に使わない。ペンギンマークは正規素材のみ使用</li><li>青を全面に塗らない（面積の10%以下）</li><li>影やグラデーションを多用しない</li></ul></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="en">06 — Slide Samples</div>
+  <h2>スライドのサンプル（16:9）</h2>
+  <p class="mono">ペンギンは仮のシンプルな図形。実制作では正規のペンギンマークに差し替えてください。</p>
+  <div class="slides">
+    <!-- cover -->
+    <div class="slide s1">
+      <div class="k">Hoshizaki Internship 2027</div>
+      <div class="t mincho">常識の先で、<br>つくろう。</div>
+      <div class="rule"></div>
+      <div class="s" style="margin-top:2cqw">発想するモノづくりを、手で確かめる1day。</div>
+      <svg class="ice-bg" viewBox="0 0 120 120" aria-hidden="true"><rect x="10" y="40" width="60" height="60" rx="8" fill="#C2E6FA" opacity=".25"/><rect x="50" y="15" width="55" height="55" rx="8" fill="#00A0E9" opacity=".35"/></svg>
+      <svg class="peng" viewBox="0 0 60 80" aria-hidden="true"><ellipse cx="30" cy="46" rx="22" ry="30" fill="#0e266a" stroke="#C2E6FA" stroke-width="2"/><ellipse cx="30" cy="52" rx="14" ry="22" fill="#fff"/><circle cx="22" cy="28" r="2.4" fill="#fff"/><circle cx="38" cy="28" r="2.4" fill="#fff"/><path d="M26 33 L34 33 L30 40 Z" fill="#F59E0B"/></svg>
+    </div>
+    <!-- content -->
+    <div class="slide s2">
+      <div class="k">01 — Our Business</div>
+      <div class="t">氷は、お店の“はじまり”。</div>
+      <div class="s">国内シェア59.1%の製氷機。<br>毎日、全国の飲食店で止まらずに動いています。</div>
+      <div style="display:flex;gap:2cqw;margin-top:2.5cqw">
+        <div style="flex:1;background:var(--ice);border:1px solid var(--line);border-radius:8px;padding:2cqw 3cqw"><span class="mono" style="font-size:2.6cqw">製氷機</span><div style="font:700 6cqw Barlow;color:var(--sky);line-height:1.2">59.1%</div></div>
+        <div style="flex:1;background:var(--ice);border:1px solid var(--line);border-radius:8px;padding:2cqw 3cqw"><span class="mono" style="font-size:2.6cqw">業務用冷蔵庫</span><div style="font:700 6cqw Barlow;color:var(--sky);line-height:1.2">46.4%</div></div>
+        <div style="flex:1;background:var(--ice);border:1px solid var(--line);border-radius:8px;padding:2cqw 3cqw"><span class="mono" style="font-size:2.6cqw">海外売上比率</span><div style="font:700 6cqw Barlow;color:var(--sky);line-height:1.2">53%</div></div>
+      </div>
+    </div>
+    <!-- persona / voice -->
+    <div class="slide s3">
+      <div class="k">Persona A</div>
+      <div class="t" style="font-size:5cqw;margin:1cqw 0">「大手で、ネジの決まった加工を<br>ずっとやるのかな。」</div>
+      <div class="bubble"><span class="tag">不安</span>分業の中で、自分の設計が製品に残らないかもしれない。</div>
+      <div class="bubble" style="border-color:var(--sky)"><span class="tag">ホシザキの答え</span>企画から保守まで、自分の発想が形になる。</div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">配色・書体・角丸は公式サイトのCSSから抽出。くちばし色（#F59E0B）は提案色です。Melta UI: melta.tsubotax.com ／ ホシザキ: hoshizaki.co.jp</div></footer>
+</body>
+</html>
