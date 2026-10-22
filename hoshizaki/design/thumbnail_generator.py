@@ -101,16 +101,19 @@ def thumb2():
     s+=blob(cx,cy,rx,ry,ICE,31,stroke=ICE,sw=3,op=0.55,jit=0.05,n=12)
     s+=blob(cx-10,cy-6,rx-26,ry-24,'#D8F0FA',32,op=0.85,jit=0.05,n=12)
     s+=blob(cx-90,cy-70,rx-190,ry-140,W,33,op=0.55,jit=0.06,n=10)
-    s+=blob(cx+40,cy+90,rx-250,ry-210,ICE,34,op=0.25,jit=0.08,n=9)
     s+=f'<path d="M{cx-rx+60} {cy-30} Q{cx-rx+70} {cy-180} {cx-240} {cy-220}" fill="none" stroke="{W}" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>'
-    for r in (36,68,100): s+=f'<ellipse cx="1130" cy="640" rx="{r*1.6:.0f}" ry="{r*0.5:.0f}" fill="none" stroke="{B}" stroke-width="4" stroke-opacity="0.45"/>'
-    s+=f'<path d="M680 590 Q840 270 1120 600" fill="none" stroke="{D}" stroke-width="5" stroke-dasharray="4 16" stroke-linecap="round"/>'
-    s+=peng(680,610,1.9)
-    s+=f'<g transform="translate(940 360) rotate(24)">{peng(0,0,1.0,flip=True,arm_up=True)}</g>'
-    s+=text_on_ellipse('冷ませ！',120,math.radians(190),cx,cy,rx,ry,34,D,sw=3,sp=0.06)
-    s+=text_on_ellipse('FIRST PENGUIN',34,math.radians(258),cx,cy,rx,ry,30,B,sw=0,sp=0.22)
-    s+=text_on_ellipse('世界の隅々まで。',78,math.radians(-56),cx,cy,rx,ry,52,D,sw=3,sp=0.05)
-    for i,tx in enumerate(['暑くても、そこに飛び込む','ファーストペンギン','東南アジア・アフリカ','第1回　2026.__.__','7〜10名　年3回']):
+    # city skyline inside
+    bl=[(620,520,70,150),(700,470,60,200),(770,540,80,130),(860,430,70,240),(940,500,90,170),(1040,450,60,220),(1110,530,80,140),(1200,490,60,180)]
+    for x,y,w,h in bl:
+        s+=f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{W}" fill-opacity="0.75" stroke="{ICE}" stroke-width="3"/>'
+        for k in range(3): s+=f'<rect x="{x+10}" y="{y+16+k*34}" width="{w-20}" height="12" fill="{ICE}" fill-opacity="0.8"/>'
+    s+=f'<path d="M650 700 Q720 560 800 640 T1000 600 T1190 520" fill="none" stroke="{D}" stroke-width="5" stroke-dasharray="4 16" stroke-linecap="round"/>'
+    s+=peng(690,712,1.7)
+    s+=f'<circle cx="636" cy="622" r="26" fill="{I}" fill-opacity="0.7" stroke="{D}" stroke-width="6"/><path d="M618 642 L590 678" stroke="{D}" stroke-width="9" stroke-linecap="round"/>'
+    s+=f'<path d="M1190 520 C1150 470 1150 430 1190 430 C1230 430 1230 470 1190 520 Z" fill="{A}" stroke="{D}" stroke-width="4"/><circle cx="1190" cy="452" r="9" fill="{W}"/>'
+    s+=text_on_ellipse('冷たい技術で、',84,math.radians(182),cx,cy,rx,ry,34,D,sw=2.5,sp=0.04)
+    s+=text_on_ellipse('世の中の課題を解け。',62,math.radians(-52),cx,cy,rx,ry,52,D,sw=2,sp=0.04)
+    for i,tx in enumerate(['名古屋を探検して、','ホシザキの技術で解ける','課題を見つける。','第1回　2026.__.__','7〜10名　年3回']):
         p,_=text_path(tx,60,610+i*58,42,D,sw=1.5); s+=p
     p,_=text_path('ホシザキ　象徴インターンシップ',60,70,44,B,sw=1.5); s+=p
     return wrap(s,'象徴インターンのサムネイル（仮）')

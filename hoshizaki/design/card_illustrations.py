@@ -68,6 +68,13 @@ def bubble(x,y,w,h,inner='',tail='l'):
     t=f'<path d="M{x+16} {y+h-2} L{x+6} {y+h+14} L{x+30} {y+h-2}" fill="{W}" {st(3)}/>' if tail=='l' else f'<path d="M{x+w-16} {y+h-2} L{x+w-6} {y+h+14} L{x+w-30} {y+h-2}" fill="{W}" {st(3)}/>'
     return t+f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="12" fill="{W}" {st(3)}/>'+f'<rect x="{x+3}" y="{y+h-6}" width="{w-6}" height="8" fill="{W}"/>'+inner
 
+def star(cx,cy,r,fill,n=5,ri=0.5):
+    d=''
+    for i in range(n*2):
+        rr=r if i%2==0 else r*ri; a=math.pi*i/n-math.pi/2
+        d+=('M' if i==0 else 'L')+f'{cx+rr*math.cos(a):.1f} {cy+rr*math.sin(a):.1f} '
+    return f'<path d="{d}Z" fill="{fill}" {st(2.5)}/>'
+
 SC={}
 # ---------- IS1
 def man1():
@@ -176,3 +183,42 @@ def tech_iot():
     phone=f'<rect x="228" y="26" width="56" height="96" rx="9" fill="{W}" {st(3.5)}/><rect x="236" y="38" width="40" height="64" rx="3" fill="{T}" {st(2.5)}/><path d="M240 92 L250 76 L258 84 L270 58" fill="none" stroke="{A}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'
     return svg(x+unit+arcs+phone,'#C2E6FA')
 SC=dict(man1=man1,man2=man2,man3=man3,wait1=wait1,wait2=wait2,policy1=policy1,policy2=policy2,inc1=inc1,inc2=inc2,inc3=inc3,cA=cA,cB=cB,q=q,need=need,crisis=crisis,lim_power=lim_power,lim_water=lim_water,lim_budget=lim_budget,tech_ref=tech_ref,tech_iot=tech_iot)
+
+# ---------- IS2 v2 (technology cards)
+def t_ice():
+    x=rays(160,150,16,W,0.5)+ground(124)
+    unit=icemaker(70,30,100,94)
+    cubes=cube(206,100,18)+cube(240,84,18)+cube(224,60,14)
+    return svg(x+unit+snow(120,60,14)+cubes,'#C2E6FA')
+def t_freeze():
+    x=rays(160,150,16,W,0.5)+ground(124)
+    fish=f'<path d="M96 76 Q130 40 170 76 Q130 112 96 76 Z" fill="{I}" {st(3.5)}/><path d="M170 76 L196 56 L196 96 Z" fill="{I}" {st(3.5)}/><circle cx="116" cy="70" r="4" fill="{D}"/>'
+    dash=''.join(f'<path d="M{34+i*0} {50+i*20} H{70-i*6}" stroke="{D}" stroke-width="4" stroke-linecap="round"/>' for i in range(3))
+    return svg(x+fish+snow(236,60,20)+snow(262,100,14)+dash,'#C2E6FA')
+def t_micro():
+    x=rays(160,150,16,W,0.5)+ground(124)
+    box=f'<rect x="60" y="34" width="140" height="88" rx="8" fill="{W}" {st(3.5)}/><rect x="72" y="46" width="76" height="64" rx="4" fill="{I}" {st(3)}/><rect x="160" y="50" width="28" height="12" rx="3" fill="{T}" {st(2.5)}/><circle cx="174" cy="86" r="8" fill="{A}" {st(2.5)}/>'
+    waves=''.join(f'<path d="M{84+i*18} 70 Q{92+i*18} 58 {100+i*18} 70 T{116+i*18} 70" fill="none" stroke="{B}" stroke-width="3.5" stroke-linecap="round"/>' for i in range(0,2))
+    return svg(x+box+waves+cube(100,86,12)+f'<path d="M222 90 Q250 60 282 84" fill="none" stroke="{D}" stroke-width="3" stroke-dasharray="3 7" stroke-linecap="round"/>'+f'<path d="M232 108 q16 -22 36 0 z" fill="{A}" {st(3)}/>','#C2E6FA')
+def t_electro():
+    x=rays(160,150,16,W,0.5)+ground(124)
+    drop=f'<path d="M96 24 Q64 62 64 80 Q64 106 96 106 Q128 106 128 80 Q128 62 96 24 Z" fill="{S}" {st(3.5)}/><path d="M78 80 Q78 94 90 96" fill="none" stroke="{W}" stroke-width="5" stroke-linecap="round"/>'
+    spark=star(150,50,12,A,n=4,ri=0.3)+star(172,84,8,A,n=4,ri=0.3)
+    veg=f'<path d="M222 122 V84" {st(4)}/><path d="M222 100 Q190 90 196 62 Q224 66 222 100 Z" fill="{B}" {st(3)}/><path d="M222 88 Q256 82 252 54 Q224 58 222 88 Z" fill="{S}" {st(3)}/><circle cx="266" cy="106" r="12" fill="{A}" {st(3)}/>'
+    return svg(x+drop+spark+veg,'#C2E6FA')
+def t_chill():
+    x=rays(160,150,16,W,0.5)+ground(124)
+    pot=f'<path d="M70 62 H190 V108 Q190 120 178 120 H82 Q70 120 70 108 Z" fill="{W}" {st(3.5)}/><path d="M58 62 H202" {st(4)}/><path d="M100 50 Q108 36 100 24 M130 50 Q138 36 130 24 M160 50 Q168 36 160 24" fill="none" stroke="{B}" stroke-width="3.5" stroke-linecap="round"/>'
+    arrow=f'<path d="M214 40 V96" stroke="{D}" stroke-width="6" stroke-linecap="round"/><path d="M200 82 L214 100 L228 82" fill="none" stroke="{D}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'
+    return svg(x+pot+arrow+snow(262,70,16)+snow(268,110,10),'#C2E6FA')
+def s_hospital():
+    x=sun(270,32,16)+ground(124,'#BFE5F7')
+    bld=f'<rect x="40" y="36" width="130" height="88" fill="{W}" {st(3.5)}/>'+''.join(f'<rect x="{54+i*30}" y="{50+j*28}" width="18" height="16" fill="{I}" {st(2.5)}/>' for i in range(4) for j in range(2))+f'<rect x="92" y="96" width="26" height="28" fill="{S}" {st(3)}/><rect x="96" y="22" width="30" height="14" fill="{W}" {st(3)}/><path d="M111 24 V34 M106 29 H116" stroke="{B}" stroke-width="4"/>'
+    tray=f'<rect x="196" y="82" width="96" height="34" rx="6" fill="{W}" {st(3.5)}/><circle cx="222" cy="98" r="11" fill="{I}" {st(3)}/><circle cx="260" cy="98" r="11" fill="{A}" {st(3)}/>'
+    return svg(x+bld+tray,'#E3F3FC')
+def s_stall():
+    x=sun(60,36,20)+ground(124,'#FDE9B8')
+    stall=f'<rect x="96" y="56" width="132" height="14" fill="{W}" {st(3)}/>'+''.join(f'<rect x="{96+i*33}" y="56" width="33" height="14" fill="{A if i%2==0 else W}" {st(2.5)}/>' for i in range(4))+f'<path d="M104 70 V122 M220 70 V122" {st(4)}/><rect x="112" y="98" width="100" height="24" rx="3" fill="{W}" {st(3)}/>'
+    cup=f'<path d="M244 64 H282 L276 112 H250 Z" fill="{W}" {st(3.5)}/><path d="M248 82 H278 L276 112 H250 Z" fill="{I}"/>'+cube(252,72,8)+f'<path d="M270 64 L278 40" {st(3.5)}/>'
+    return svg(x+stall+cup,'#FEF3C7')
+SC.update(t_ice=t_ice,t_freeze=t_freeze,t_micro=t_micro,t_electro=t_electro,t_chill=t_chill,s_hospital=s_hospital,s_stall=s_stall)
