@@ -78,6 +78,16 @@ def text(sl,x,y,w,h,paras,anchor='top',align='l',name='テキスト',rot=0):
             if pp['spc']: rPr.set('spc',str(int(pp['spc']*100)))
     tb.rotation=rot; tb.name=name; return tb
 
+_CAST=[(('selfie',84),('boy',84)),(('elder',92),('care',66)),(('runners',60),('picnic',74),('boy',80)),(('van',62),('boy',84)),(('runner',84),('selfie',80)),(('care',70),('elder',90),('boy',76))]
+_cn=[0]
+def _cast(sl,title):
+    cast=_CAST[_cn[0]%len(_CAST)]; _cn[0]+=1
+    x=max(1260,M+len(title)*44+40); base=152
+    for nm,h in cast:
+        im=Image.open('ill/'+nm+'.png'); w=h*im.width/im.height
+        if x+w>W-60: break
+        p=sl.shapes.add_picture('ill/'+nm+'.png',px(x),px(base-h),px(w),px(h)); p.name='イラスト_'+nm; x+=w+22
+
 def new_slide(tag,title,sub=None,notes=''):
     sl=prs.slides.add_slide(prs.slide_layouts[6])
     shape(sl,MSO_SHAPE.RECTANGLE,0,0,W,H,BG,None,name='背景')
@@ -88,6 +98,7 @@ def new_slide(tag,title,sub=None,notes=''):
     text(sl,M,32,900,26,para(tag,19,'EAF8F4',True,spc=3),name='小見出し')
     text(sl,M,60,1300,60,para(title,44,'FFFFFF',True,lh=1.2),name='タイトル')
     if sub: text(sl,M,118,1200,28,para(sub,20,'EAF8F4',lh=1.3),name='サブタイトル')
+    _cast(sl,title)
     if notes: sl.notes_slide.notes_text_frame.text=notes
     return sl
 def note(sl,t): text(sl,M,B0+26,1300,22,para(t,15,GRAY,lh=1.3),name='注記')
