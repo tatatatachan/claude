@@ -2,6 +2,7 @@
 """共育実習 図解デッキ — single clean build with a strict layout system.
 Canvas 1730x973 px (true 16:9). Margins 88. Exact line spacing everywhere."""
 import math
+from PIL import Image
 from pptx import Presentation
 from pptx.util import Emu, Pt
 from pptx.dml.color import RGBColor
@@ -182,23 +183,30 @@ def s_vision():
       para('介護や老後の話は、なんだか暗い。そんなイメージを、一緒にひっくり返したい。',27,'FFFFFF',True,lh=1.75)],name='実習ステートメント')
     return sl
 
-def s_story():
-    sl=new_slide('ブランドストーリー','介護のイメージを、一緒にひっくり返したい',notes='採用コンセプト FUN LIFE! FUN LOCAL! をもとにした、ブランドストーリーの叩き台。')
-    px_=M; pw=700; ph=B0-T0
-    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,px_,T0,pw,ph,BAND,None,rad=28,name='コンセプト面')
-    text(sl,px_+56,T0+48,pw-112,30,para('CARE PRACTICE',20,'EAF8F4',True,lh=1.3,spc=6),name='コンセプト小見出し')
-    text(sl,px_+56,T0+96,pw-90,300,[para('FUN LIFE!',92,'FFFFFF',True,lh=1.1),para('FUN LOCAL!',92,'FCE08E',True,lh=1.1)],name='コンセプト')
-    text(sl,px_+56,T0+ph-150,pw-112,100,para('生きがい、持ち寄る。地域の未来。',32,'FFFFFF',True,lh=1.4),name='コンセプト文')
-    rx=M+pw+90; rw=W-M-rx; y=T0+10
-    items=[('きっかけ','介護や老後の話は、なんだか暗い。','そんなイメージが、若い世代を遠ざけてきました。',GRAY),
-           ('想い','生きがいを、みんなで持ち寄る。','子どもから高齢者まで、地域の人が集う場をつくります。',TEAL2),
-           ('めざす姿','介護を、身近なテーマに。','特別なものではなく、地域みんなで考えるものへ。共育実習は、その入口です。',ORG)]
-    hline(sl,rx+27,y+40,rx+27,y+2*220+40,LINE,3,name='縦線')
-    for i,(lab,h,d,c) in enumerate(items):
-        yy=y+i*220
-        dot(sl,rx+27,yy+40,54,c,'点'); text(sl,rx+0,yy+12,54,56,para(str(i+1),26,'FFFFFF',True,lh=1.1),align='c',anchor='middle',name='番号')
-        text(sl,rx+90,yy,rw-90,200,[para(lab,22,c if c!=GRAY else SUB,True,lh=1.3,spc=2),para(h,34,INK,True,after=6,lh=1.35),para(d,23,SUB,lh=1.6)],name=f'ストーリー_{lab}')
-    note(sl,'※ 採用コンセプト「FUN LIFE! FUN LOCAL!」と、プロジェクトのミッションの言葉をもとにした叩き台です。')
+def s_agenda():
+    sl=new_slide('アジェンダ','このあと、お伝えすること')
+    pw=700; ph=B0-T0
+    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,M,T0,pw,ph,BAND,None,rad=28,name='コンセプト面')
+    text(sl,M+56,T0+48,pw-112,30,para('CARE PRACTICE',20,'EAF8F4',True,lh=1.3,spc=6),name='コンセプト小見出し')
+    text(sl,M+56,T0+96,pw-90,300,[para('FUN LIFE!',92,'FFFFFF',True,lh=1.1),para('FUN LOCAL!',92,'FCE08E',True,lh=1.1)],name='コンセプト')
+    text(sl,M+56,T0+400,pw-112,60,para('生きがい、持ち寄る。地域の未来。',32,'FFFFFF',True,lh=1.4),name='コンセプト文')
+    def pic(name,x,y,h,al='l'):
+        im=Image.open('ill/'+name+'.png'); w=h*im.width/im.height
+        if w>200: h=h*200/w; w=200; y=y+0
+        p=sl.shapes.add_picture('ill/'+name+'.png',px(x if al=='l' else x-w),px(y),px(w),px(h)); p.name='イラスト_'+name; return w
+    pic('picnic',M+60,T0+ph-190,150); pic('runners',M+pw-60-230,T0+ph-170,125)
+    rx=M+pw+70; rw=W-M-rx; rh=ph/5
+    items=[('共育実習が目指すこと','ビジョンと、みんなで育つ共創モデル','P.2–4',TEAL2,'selfie'),
+           ('いま、なぜ福祉人材か','人口の変化と、介護の需要、福祉の価値','P.5–7',TEAL2,'elder'),
+           ('エフビー介護サービスを知る','介護の考え方、沿革、事業の展開と成長','P.8–12',ORG,'van'),
+           ('実習で得られること','他社との違い、プログラム、受け入れ体制','P.13–16',ORG,'care'),
+           ('実習のひろがり','ブランドの育ち方と、応募までの流れ','P.17–18',TEAL2,'boy')]
+    for i,(h,d,pg,c,im) in enumerate(items):
+        y=T0+i*rh
+        if i: hline(sl,rx,y,W-M,y,LINE,1.5,name='区切り')
+        dot(sl,rx+30,y+rh/2,56,c,'番号点'); text(sl,rx,y+rh/2-28,60,56,para(str(i+1),26,'FFFFFF',True,lh=1.1),align='c',anchor='middle',name=f'番号{i+1}')
+        text(sl,rx+88,y+14,rw-88-210,rh-28,[para(h,31,INK,True,after=2,lh=1.3),para(d,20,SUB,lh=1.45),para(pg,18,TEALD if c==TEAL2 else ORGD,True,lh=1.3)],anchor='middle',name=f'項目_{h}')
+        pic(im,W-M-10,y+14,rh-28,al='r')
     return sl
 
 # ====================== 3. 全体像 ======================
@@ -664,7 +672,7 @@ def s_area():
     note(sl,'※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
     return sl
 
-for f in (s_cover,s_vision,s_story,s_ring,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_loop,s_flow): f()
+for f in (s_cover,s_vision,s_agenda,s_ring,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_loop,s_flow): f()
 N=len(prs.slides)
 for k,sl in enumerate(prs.slides,1):
     if k==1: continue
