@@ -2,7 +2,8 @@ import math,random,re
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
-F=TTFont('/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf'); GS=F.getGlyphSet(); CM=F.getBestCmap(); UPM=F['head'].unitsPerEm; HM=F['hmtx']
+import os
+F=TTFont(os.path.join(os.path.dirname(os.path.abspath(__file__)),'DelaGothicOne-Regular.ttf')); GS=F.getGlyphSet(); CM=F.getBestCmap(); UPM=F['head'].unitsPerEm; HM=F['hmtx']
 D='#004767';DD='#0B2A6F';B='#0087C6';S='#00A0E9';I='#C2E6FA';W='#ffffff';A='#F59E0B';ICE='#9ED9F0';T='#E3F3FC'
 def glyph_d(ch,size,x,y):
     g=CM.get(ord(ch)); 
@@ -14,7 +15,7 @@ def text_path(txt,x,y,size,fill,sw=0,stroke=None,tr='',sp=0.0):
     d='';cx=x
     for ch in txt:
         p,adv=glyph_d(ch,size,cx,y); d+=p; cx+=adv+size*sp
-    stk=f' stroke="{stroke or fill}" stroke-width="{sw}" stroke-linejoin="round"' if sw else ''
+    stk=f' stroke="{stroke or fill}" stroke-width="{sw*0.3:.1f}" stroke-linejoin="round"' if sw else ''
     return f'<path d="{d}" fill="{fill}"{stk}'+(f' transform="{tr}"' if tr else '')+'/>', cx-x
 def text_width(txt,size,sp=0.0):
     w=0
@@ -36,7 +37,7 @@ def text_on_ellipse(txt,size,t0,cx,cy,rx,ry,gap,fill,sw=0,sp=0.1):
         tm=step(t,adv/2); x,y=pt(tm)
         x2,y2=pt(tm+0.01); ang=math.degrees(math.atan2(y2-y,x2-x))
         p,_=glyph_d(ch,size,-adv/2,0)
-        stk=f' stroke="{fill}" stroke-width="{sw}" stroke-linejoin="round"' if sw else ''
+        stk=f' stroke="{fill}" stroke-width="{sw*0.3:.1f}" stroke-linejoin="round"' if sw else ''
         out+=f'<path d="{p}" fill="{fill}"{stk} transform="translate({x:.1f} {y:.1f}) rotate({ang:.1f})"/>'
         t=step(t,adv+size*sp)
     return out
@@ -111,9 +112,9 @@ def thumb2():
     s+=peng(690,712,1.7)
     s+=f'<circle cx="636" cy="622" r="26" fill="{I}" fill-opacity="0.7" stroke="{D}" stroke-width="6"/><path d="M618 642 L590 678" stroke="{D}" stroke-width="9" stroke-linecap="round"/>'
     s+=f'<path d="M1190 520 C1150 470 1150 430 1190 430 C1230 430 1230 470 1190 520 Z" fill="{A}" stroke="{D}" stroke-width="4"/><circle cx="1190" cy="452" r="9" fill="{W}"/>'
-    s+=text_on_ellipse('冷たい技術で、',84,math.radians(182),cx,cy,rx,ry,34,D,sw=2.5,sp=0.04)
-    s+=text_on_ellipse('世の中の課題を解け。',62,math.radians(-52),cx,cy,rx,ry,52,D,sw=2,sp=0.04)
-    for i,tx in enumerate(['名古屋を探検して、','ホシザキの技術で解ける','課題を見つける。','第1回　2026.__.__','7〜10名　年3回']):
+    s+=text_on_ellipse('冷たっ！ウヒョー！',70,math.radians(180),cx,cy,rx,ry,34,D,sw=2.5,sp=0.04)
+    s+=text_on_ellipse('熱冷まし',70,math.radians(-44),cx,cy,rx,ry,52,D,sw=2,sp=0.04)
+    for i,tx in enumerate(['夏の名古屋を探検して、','冷たい技術で解ける','課題を見つける。','第1回　2026.__.__','7〜10名　夏に年3回']):
         p,_=text_path(tx,60,610+i*58,42,D,sw=1.5); s+=p
     p,_=text_path('ホシザキ　象徴インターンシップ',60,70,44,B,sw=1.5); s+=p
     return wrap(s,'象徴インターンのサムネイル（仮）')
