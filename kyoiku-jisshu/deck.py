@@ -257,33 +257,107 @@ def s_emotion():
     note(sl,'出典：visions college（エフビー介護サービス回、2026年2月24日）、長野大学×エフビー介護サービス 産学連携プロジェクト資料。')
     return sl
 
-# ====================== 5. 沿革（うねる帯） ======================
+POP_PRJ2=[12441, 12384, 12326, 12266, 12204, 12141, 12077, 12012, 11945, 11877, 11807, 11736, 11664, 11590, 11515, 11439, 11362, 11284, 11204, 11124, 11043, 10962, 10880, 10798, 10716, 10634, 10551, 10469, 10386, 10303, 10219, 10135, 10051, 9965, 9879, 9792, 9704, 9615, 9525, 9434, 9343, 9251, 9159, 9066, 8974, 8882, 8790, 8700]
+UN_POP={2075:8575,2080:8284,2085:8030,2090:7796,2095:7574,2100:7364}
+CARE5=[('2000',3.3),('2005',5.9),('2010',7.5),('2015',9.5),('2020',11.4)]
+
+def bubble(sl,x,y,w,h,tx,ty,fill,name='吹き出し',rad=0.22):
+    s=sl.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGULAR_CALLOUT,px(x),px(y),px(w),px(h))
+    s.fill.solid(); s.fill.fore_color.rgb=rgb(fill); s.line.fill.background()
+    s.adjustments[0]=(tx-(x+w/2))/w; s.adjustments[1]=(ty-(y+h/2))/h; s.adjustments[2]=rad
+    s.name=name; _fix(s); return s
+
+def _axis_style(ch,vmax,unit,fmt='#,##0',skip=None):
+    va=ch.value_axis; va.minimum_scale=0; va.maximum_scale=vmax; va.major_unit=unit; va.has_major_gridlines=True
+    va.major_gridlines.format.line.color.rgb=rgb('E8EFEC'); va.tick_labels.font.size=Pt(13); va.tick_labels.font.name=FONT
+    va.tick_labels.number_format=fmt; va.tick_labels.number_format_is_linked=False; va.format.line.fill.background()
+    ca=ch.category_axis; ca.tick_labels.font.size=Pt(13); ca.tick_labels.font.name=FONT; ca.format.line.color.rgb=rgb('C9D6D1')
+    if skip:
+        for tag in ('c:tickLblSkip','c:tickMarkSkip'):
+            el=ca._element.find(qn(tag))
+            if el is None: el=etree.SubElement(ca._element,qn(tag))
+            el.set('val',str(skip))
+
+# ====================== 人口の推移（〜2100年） ======================
+def s_pop():
+    sl=new_slide('時代の背景','日本の人口は、2008年をピークに減り続けていきます',notes='人口：1947〜2022年は実績（総務省統計局・人口統計資料集）、2023〜2070年は推計（社人研・令和5年推計 出生中位）、2075〜2100年は国連推計（5年ごと）。')
+    text(sl,M,T0-6,900,30,para('日本の総人口（万人）  第一次ベビーブーム（1947年）から2100年まで',20,SUB,lh=1.3),name='グラフ見出し')
+    yrs=list(range(1947,2101)); cd=CategoryChartData(); cd.categories=[str(y) for y in yrs]
+    act=POP_ACT+[None]*(len(yrs)-len(POP_ACT))
+    prj=[None]*len(POP_ACT)+POP_PRJ2+[None]*30
+    un=[None]*(len(POP_ACT)+len(POP_PRJ2))+[UN_POP.get(y) for y in range(2071,2101)]
+    cd.add_series('実績',act); cd.add_series('推計（社人研）',prj); cd.add_series('参考（国連・5年ごと）',un)
+    cx,cy,cw,chh=M-8,T0+30,CW+16,B0-T0-30
+    gf=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(cx),px(cy),px(cw),px(chh),cd); gf.name='総人口グラフ'; ch=gf.chart
+    from pptx.enum.chart import XL_LEGEND_POSITION
+    ch.has_legend=True; ch.legend.include_in_layout=False; ch.legend.font.size=Pt(14); ch.legend.font.name=FONT; ch.legend.position=XL_LEGEND_POSITION.BOTTOM
+    ch.has_title=False; pl=ch.plots[0]; pl.gap_width=15; pl.overlap=100
+    for ser,c in zip(pl.series,(TEAL2,ORG,'F7C9A0')): ser.format.fill.solid(); ser.format.fill.fore_color.rgb=rgb(c)
+    _axis_style(ch,18000,3000,skip=10)
+    px0=cx+84; pw=cw-84-14; xi=lambda y: px0+(y-1947+.5)*pw/len(yrs)
+    ytop=cy+14; yb=cy+chh-84; yv=lambda v: yb-(yb-ytop)*v/18000
+    bubble(sl,xi(2008)-250,T0+66,300,84,xi(2008),yv(12808)-6,TEAL2,'吹き出し_2008')
+    text(sl,xi(2008)-236,T0+72,272,72,[para('2008年がピーク',17,'EAF8F4',True,lh=1.3),para('1億2,808万人',28,'FFFFFF',True,lh=1.2)],anchor='middle',name='吹き出し文_2008')
+    bubble(sl,xi(2050)-130,T0+104,270,84,xi(2050),yv(10469)-6,ORG,'吹き出し_2050')
+    text(sl,xi(2050)-116,T0+110,244,72,[para('2050年',17,'FFF4EA',True,lh=1.3),para('約1億469万人',28,'FFFFFF',True,lh=1.2)],anchor='middle',name='吹き出し文_2050')
+    bubble(sl,xi(2100)-300,T0+176,290,84,xi(2100)-6,yv(7364)-6,'E9A56B','吹き出し_2100')
+    text(sl,xi(2100)-286,T0+182,262,72,[para('2100年',17,'FFF4EA',True,lh=1.3),para('約7,364万人',28,'FFFFFF',True,lh=1.2)],anchor='middle',name='吹き出し文_2100')
+    note(sl,'出典：総務省統計局／社人研 令和5年推計・出生中位（〜2070年）／国連 World Population Prospects（2075年〜、推計方法が異なる参考値）')
+    return sl
+
+# ====================== 介護の市場（5年ごと） ======================
+def s_market():
+    sl=new_slide('時代の背景','高齢者が増え、介護にかかる費用は2040年に向けて広がります',notes='介護費：社会保障費用統計 第8表「介護対策」（2000〜2020年度）、2025・2040年度は厚生労働省「2040年を見据えた社会保障の将来見通し」計画ベース。')
+    lw_=1010
+    text(sl,M,T0-6,lw_,30,para('介護にかかる給付費（兆円・年度）  5年ごとの比較',20,SUB,lh=1.3),name='グラフ見出し')
+    cats=[c for c,_ in CARE5]+['2025','2030','2035','2040']; cd=CategoryChartData(); cd.categories=cats
+    cd.add_series('実績',[v for _,v in CARE5]+[None]*4); cd.add_series('厚生労働省の見通し',[None]*5+[15.3,None,None,25.8])
+    gf=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(M-8),px(T0+30),px(lw_),px(B0-T0-30),cd); gf.name='介護費グラフ'; ch=gf.chart
+    from pptx.enum.chart import XL_LEGEND_POSITION
+    ch.has_legend=True; ch.legend.include_in_layout=False; ch.legend.font.size=Pt(14); ch.legend.font.name=FONT; ch.legend.position=XL_LEGEND_POSITION.TOP
+    ch.has_title=False; pl=ch.plots[0]; pl.gap_width=45; pl.overlap=100; pl.has_data_labels=True; dl=pl.data_labels
+    dl.font.size=Pt(20); dl.font.bold=True; dl.font.name=FONT; dl.number_format='0.0'; dl.number_format_is_linked=False; dl.position=XL_LABEL_POSITION.OUTSIDE_END
+    for ser,c in zip(pl.series,(TEAL2,ORG)): ser.format.fill.solid(); ser.format.fill.fore_color.rgb=rgb(c)
+    _axis_style(ch,30,10); ch.value_axis.visible=False; ch.value_axis.has_major_gridlines=False
+    ch.category_axis.tick_labels.font.size=Pt(18)
+    rx=M+lw_+50; rw=W-M-rx
+    bubble(sl,rx,T0+40,rw,150,rx+40,T0+250,TEAL2,'吹き出し_8倍',0.14)
+    text(sl,rx+34,T0+52,rw-68,126,[para('2000年度と比べて',18,'EAF8F4',True,lh=1.3),para('2040年度は約8倍',34,'FFFFFF',True,lh=1.25)],anchor='middle',name='吹き出し文_8倍')
+    ty=T0+300
+    for h,d,c in (('65歳以上の割合',['2020年 28.6%  →  2050年 37.1%','2100年には 約38.7%（国連推計）'],TEALD),('支える人は減っていく',['15〜64歳の人口は','2020年の7,509万人から減少が続きます'],ORGD)):
+        shape(sl,MSO_SHAPE.RECTANGLE,rx,ty+4,6,112,c,None,name='ライン')
+        text(sl,rx+24,ty,rw-24,124,[para(h,22,c,True,after=4,lh=1.3)]+[para(t,18,INK,lh=1.5) for t in d],name=f'補足_{h}')
+        ty+=160
+    note(sl,'出典：社人研『社会保障費用統計』（〜2020年度）／厚生労働省『2040年を見据えた社会保障の将来見通し』計画ベース。2030・2035年度は公表なし')
+    return sl
+
+# ====================== 沿革（西暦の目盛り） ======================
 def s_history():
-    sl=new_slide('沿革','福祉用具から、地域に根ざす介護の総合企業へ',notes='沿革。年次が資料で確認できた出来事のみ年を表示。')
-    yc=596; A=32; T=112; lam=1500
-    cl=lambda x: yc+A*math.sin(2*math.pi*(x/lam)+0.6)
-    N=160; top=[(W*i/N,cl(W*i/N)-T/2) for i in range(N+1)]; bot=[(W*(N-i)/N,cl(W*(N-i)/N)+T/2) for i in range(N+1)]
-    poly(sl,top+bot,'D9F0E9','沿革リボン')
-    for yr,x in (('2000',520),('2010',900),('2020',1200)):
-        text(sl,x-110,cl(x)-36,220,72,para(yr,60,TEAL2,True,lh=1.1),align='c',anchor='middle',name=f'年代_{yr}')
-    items=[
-     (230,True,'1987年4月','エフビー信州として設立',['フランスベッドの代理店が原点。','本社は長野県佐久市'],False),
-     (445,False,'2000年4月','福祉用具のレンタルを開始',['福祉用具の取り扱いの範囲を','広げていく'],False),
-     (660,True,'2002年10月','エフビー介護サービスへ商号変更',['介護サービスの会社として','歩みを進める'],False),
-     (875,False,'事業の広がり','居宅介護・小規模多機能へ',['自宅での生活の支援から、','住まい・通い訪問泊まりへ'],True),
-     (1090,True,'2019年','海外人材の受け入れ',['ベトナム・ミャンマー・','ネパール・フィリピンなど'],False),
-     (1305,False,'2022年4月','東証スタンダード市場に上場',['事業成長の加速へ'],False),
-     (1520,True,'現在','7種109拠点／1,250名',['信越・北関東に展開','（従業員数は2023年4月時点）'],False)]
-    cwid=340; chh=200
-    for i,(x,up,pl_,h,d,und) in enumerate(items):
-        cx0=min(max(x-cwid/2,M),W-M-cwid)
-        if up: y=T0-12; ry=cl(x)-T/2; hline(sl,x,y+chh,x,ry,TEAL2,2,name='接続線'); dot(sl,x,ry,14,TEAL2,'接続点')
-        else: y=B0-chh+12; ry=cl(x)+T/2; hline(sl,x,ry,x,y,TEAL2,2,name='接続線'); dot(sl,x,ry,14,TEAL2,'接続点')
-        card(sl,cx0,y,cwid,chh,name=f'カード_{h}')
-        pw_=(len(pl_)*18+36) if not und else 156
-        pill(sl,cx0+26,y+22,pw_,34,'EEF1F0' if und else PALE,'年タグ'); text(sl,cx0+26,y+22,pw_,34,para(pl_,17 if und else 19,GRAY if und else TEALD,True,lh=1.2),align='c',anchor='middle',name='年')
-        text(sl,cx0+26,y+70,cwid-52,chh-80,[para(h,21,INK,True,after=4,lh=1.35)]+[para(t,17,SUB,lh=1.45) for t in d],name=f'本文_{h}')
-    note(sl,'※ 出典：エフビー介護サービス 企業説明会資料、経営者ヒアリング、決算説明資料。')
+    sl=new_slide('沿革','福祉用具から、地域に根ざす介護の総合企業へ',notes='沿革。西暦は1年ごとの目盛り。')
+    Y0,Y1=1987,2026; X0,X1=130,1600; xy=lambda y:X0+(y-Y0)*(X1-X0)/(Y1-Y0); yc=520; bh=56; ev=(1987,2000,2002,2019,2022,2026)
+    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,X0-44,yc-bh/2,X1-X0+88,bh,PALE,None,rad=bh/2,name='年表の帯')
+    for y in range(Y0,Y1+1):
+        x=xy(y)
+        if y in ev: dot(sl,x,yc,bh-8,ORG if y!=2026 else ORGD,f'年_{y}'); text(sl,x-30,yc-14,60,28,para(str(y),14,'FFFFFF',True,lh=1.2),align='c',anchor='middle',name=f'年ラベル_{y}')
+        else: text(sl,x-20,yc-14,40,28,para(str(y),14,TEALD if y%5==0 else GRAY,y%5==0,lh=1.2),align='c',anchor='middle',name=f'年ラベル_{y}')
+    def block(y,up,head,lines,tag,al='l',w=330,hh=190,c=INK):
+        x=xy(y); top=yc-bh/2-28-hh if up else yc+bh/2+28
+        if up: hline(sl,x,top+hh+4,x,yc-bh/2,TEAL2,2,name='接続線')
+        else: hline(sl,x,yc+bh/2,x,top-4,TEAL2,2,name='接続線')
+        bx=x if al=='l' else x-w
+        text(sl,bx,top,w,hh,[para(tag,20,ORGD,True,lh=1.3),para(head,25,c,True,after=6,lh=1.35)]+[para(t,19,SUB,lh=1.5) for t in lines],anchor='bottom' if up else 'top',align=al,name=f'沿革_{y}')
+    block(1987,True,'エフビー信州として設立',['フランスベッドの代理店が原点。','本社は長野県佐久市'],'1987年4月')
+    block(2002,True,'エフビー介護サービスへ商号変更',['介護サービスの会社として','歩みを進める'],'2002年10月',w=420)
+    block(2022,True,'東証スタンダード市場に上場',['事業成長の加速へ'],'2022年4月',al='r',w=400)
+    block(2000,False,'福祉用具のレンタルを開始',['福祉用具の取り扱いの範囲を広げていく'],'2000年4月',w=440)
+    block(2019,False,'海外人材の受け入れ',['ベトナム・ミャンマー・ネパール・','フィリピンなど'],'2019年',al='r',w=420)
+    # range bar for business expansion
+    ry=yc+bh/2+262; x1,x2=xy(2003),xy(2018)
+    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,x1,ry,x2-x1,16,TEAL2,None,rad=8,name='期間バー')
+    text(sl,x1,ry+26,x2-x1+200,80,[para('2000年代〜　事業の広がり',20,TEALD,True,lh=1.3,after=2),para('居宅介護、小規模多機能へ。住まい・通い・訪問・泊まりで暮らしを支える',19,SUB,lh=1.45)],name='事業の広がり')
+    bubble(sl,W-M-310,yc+bh/2+150,310,136,xy(2026),yc+bh/2+6,ORG,'吹き出し_現在',0.14)
+    text(sl,W-M-284,yc+bh/2+160,260,116,[para('現在',19,'FFF4EA',True,lh=1.3),para('7種109拠点',30,'FFFFFF',True,lh=1.2),para('従業員 1,250名',20,'FFFFFF',lh=1.4)],anchor='middle',name='吹き出し文_現在')
+    note(sl,'※ 出典：エフビー介護サービス 企業説明会資料、経営者ヒアリング、決算説明資料（従業員数は2023年4月時点）。')
     return sl
 
 # ====================== 6. 小規模 × 多拠点 × 7つのサービス ======================
@@ -294,14 +368,14 @@ def s_scale():
     text(sl,M+48,T0+34,lw_-96,ph-50,[para('わたしたちのちょっとしたこだわり',19,'EAF8F4',True,after=10,lh=1.3,spc=2),
         para('大規模な施設ではなく、',38,'FFFFFF',True,lh=1.3),para('小規模な施設をメインに展開する。',38,'FFFFFF',True,after=12,lh=1.3),
         para('地域の文化・風土を取り入れた、きめ細やかなサービス。住み慣れた地元で、長く生活できる環境を。',19,'F0FBF8',lh=1.55)],name='こだわり本文')
-    rx=M+lw_+32; rw=CW-lw_-32; card(sl,rx,T0,rw,ph,name='拠点カード')
-    text(sl,rx+36,T0+26,rw-72,34,para('多拠点で、地域に根ざす',24,INK,True,lh=1.3),name='拠点見出し')
-    sw=(rw-72)/3
+    rx=M+lw_+60; rw=CW-lw_-60
+    text(sl,rx,T0+26,rw,34,para('多拠点で、地域に根ざす',24,INK,True,lh=1.3),name='拠点見出し')
+    sw=rw/3
     for i,(n,u,c) in enumerate([('109','拠点',TEALD),('7','種のサービス',TEALD),('5','県',ORGD)]):
-        x=rx+36+i*sw
+        x=rx+i*sw
         if i: hline(sl,x-14,T0+90,x-14,T0+188,LINE,1,name='区切り')
         text(sl,x,T0+78,sw-24,150,[para('',10,runs=[(n,{'size':72,'bold':True,'color':c})],lh=1.1,after=0),para(u,22,INK,True,lh=1.3,after=4)],name=f'数字_{u}')
-    text(sl,rx+36,T0+ph-60,rw-72,34,para('長野57・新潟15・埼玉15・群馬12・栃木10',20,SUB,lh=1.4),name='県別')
+    text(sl,rx,T0+ph-60,rw,34,para('長野57・新潟15・埼玉15・群馬12・栃木10',20,SUB,lh=1.4),name='県別')
     # services
     sy=T0+ph+34
     text(sl,M,sy,900,36,para('暮らし方に合わせて選べる、7つのサービス',28,INK,True,lh=1.3),name='サービス見出し')
@@ -311,7 +385,6 @@ def s_scale():
             ('住まいで暮らす','居住いただき、支援する','2E9E8A',[('有料老人ホーム','住まいで、暮らしを支援'),('グループホーム','少人数で暮らす、家庭的な雰囲気')])]
     for i,(h,s,c,items) in enumerate(groups):
         x=M+i*(gw+28)
-        card(sl,x,gy,gw,gh,fill='F8FBFA',name=f'カード_{h}')
         shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,x,gy,gw,84,c,None,rad=20,name=f'ヘッダー_{h}')
         shape(sl,MSO_SHAPE.RECTANGLE,x,gy+52,gw,32,c,None,name='ヘッダー下')
         text(sl,x+32,gy+12,gw-64,62,[para(h,24,'FFFFFF',True,lh=1.25),para(s,17,'FFFFFF',lh=1.3)],anchor='middle',name=f'見出し_{h}')
@@ -319,7 +392,100 @@ def s_scale():
         th=min(th,138)
         for j,(n,d) in enumerate(items):
             ty=gy+84+18+j*(th+12)
-            card(sl,x+20,ty,gw-40,th,rad=14,name=f'タイル_{n}')
+            hline(sl,x+20,ty+th+6,x+gw-20,ty+th+6,LINE,1,name='区切り')
+            dot(sl,x+20+26,ty+th/2,14,c,'ドット')
+            text(sl,x+20+50,ty+8,gw-40-70,th-16,[para(n,23,INK,True,lh=1.3),para(d,17,SUB,lh=1.4)],anchor='middle',name=f'サービス_{n}')
+    note(sl,'出典：企業説明会資料、経営者ヒアリング、実習サイトの掲載内容。サービスの分け方は暮らし方に合わせた整理です。')
+    return sl
+
+# ====================== 7. 売上の推移 ======================
+def s_market():
+    sl=new_slide('時代の背景','高齢者が増え、介護にかかる費用は2040年に向けて広がります',notes='介護費：社会保障費用統計 第8表「介護対策」（2000〜2020年度）、2025・2040年度は厚生労働省「2040年を見据えた社会保障の将来見通し」計画ベース。')
+    lw_=1010
+    text(sl,M,T0-6,lw_,30,para('介護にかかる給付費（兆円・年度）  5年ごとの比較',20,SUB,lh=1.3),name='グラフ見出し')
+    cats=[c for c,_ in CARE5]+['2025','2030','2035','2040']; cd=CategoryChartData(); cd.categories=cats
+    cd.add_series('実績',[v for _,v in CARE5]+[None]*4); cd.add_series('厚生労働省の見通し',[None]*5+[15.3,None,None,25.8])
+    gf=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(M-8),px(T0+30),px(lw_),px(B0-T0-30),cd); gf.name='介護費グラフ'; ch=gf.chart
+    from pptx.enum.chart import XL_LEGEND_POSITION
+    ch.has_legend=True; ch.legend.include_in_layout=False; ch.legend.font.size=Pt(14); ch.legend.font.name=FONT; ch.legend.position=XL_LEGEND_POSITION.TOP
+    ch.has_title=False; pl=ch.plots[0]; pl.gap_width=45; pl.overlap=100; pl.has_data_labels=True; dl=pl.data_labels
+    dl.font.size=Pt(20); dl.font.bold=True; dl.font.name=FONT; dl.number_format='0.0'; dl.number_format_is_linked=False; dl.position=XL_LABEL_POSITION.OUTSIDE_END
+    for ser,c in zip(pl.series,(TEAL2,ORG)): ser.format.fill.solid(); ser.format.fill.fore_color.rgb=rgb(c)
+    _axis_style(ch,30,10); ch.value_axis.visible=False; ch.value_axis.has_major_gridlines=False
+    ch.category_axis.tick_labels.font.size=Pt(18)
+    rx=M+lw_+50; rw=W-M-rx
+    bubble(sl,rx,T0+40,rw,150,rx+40,T0+250,TEAL2,'吹き出し_8倍',0.14)
+    text(sl,rx+34,T0+52,rw-68,126,[para('2000年度と比べて',18,'EAF8F4',True,lh=1.3),para('2040年度は約8倍',34,'FFFFFF',True,lh=1.25)],anchor='middle',name='吹き出し文_8倍')
+    ty=T0+300
+    for h,d,c in (('65歳以上の割合',['2020年 28.6%  →  2050年 37.1%','2100年には 約38.7%（国連推計）'],TEALD),('支える人は減っていく',['15〜64歳の人口は','2020年の7,509万人から減少が続きます'],ORGD)):
+        shape(sl,MSO_SHAPE.RECTANGLE,rx,ty+4,6,112,c,None,name='ライン')
+        text(sl,rx+24,ty,rw-24,124,[para(h,22,c,True,after=4,lh=1.3)]+[para(t,18,INK,lh=1.5) for t in d],name=f'補足_{h}')
+        ty+=160
+    note(sl,'出典：社人研『社会保障費用統計』（〜2020年度）／厚生労働省『2040年を見据えた社会保障の将来見通し』計画ベース。2030・2035年度は公表なし')
+    return sl
+
+# ====================== 沿革（西暦の目盛り） ======================
+def s_history():
+    sl=new_slide('沿革','福祉用具から、地域に根ざす介護の総合企業へ',notes='沿革。西暦は1年ごとの目盛り。')
+    Y0,Y1=1987,2026; X0,X1=130,1600; xy=lambda y:X0+(y-Y0)*(X1-X0)/(Y1-Y0); yc=520; bh=56; ev=(1987,2000,2002,2019,2022,2026)
+    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,X0-44,yc-bh/2,X1-X0+88,bh,PALE,None,rad=bh/2,name='年表の帯')
+    for y in range(Y0,Y1+1):
+        x=xy(y)
+        if y in ev: dot(sl,x,yc,bh-8,ORG if y!=2026 else ORGD,f'年_{y}'); text(sl,x-30,yc-14,60,28,para(str(y),14,'FFFFFF',True,lh=1.2),align='c',anchor='middle',name=f'年ラベル_{y}')
+        else: text(sl,x-20,yc-14,40,28,para(str(y),14,TEALD if y%5==0 else GRAY,y%5==0,lh=1.2),align='c',anchor='middle',name=f'年ラベル_{y}')
+    def block(y,up,head,lines,tag,al='l',w=330,hh=190,c=INK):
+        x=xy(y); top=yc-bh/2-28-hh if up else yc+bh/2+28
+        if up: hline(sl,x,top+hh+4,x,yc-bh/2,TEAL2,2,name='接続線')
+        else: hline(sl,x,yc+bh/2,x,top-4,TEAL2,2,name='接続線')
+        bx=x if al=='l' else x-w
+        text(sl,bx,top,w,hh,[para(tag,20,ORGD,True,lh=1.3),para(head,25,c,True,after=6,lh=1.35)]+[para(t,19,SUB,lh=1.5) for t in lines],anchor='bottom' if up else 'top',align=al,name=f'沿革_{y}')
+    block(1987,True,'エフビー信州として設立',['フランスベッドの代理店が原点。','本社は長野県佐久市'],'1987年4月')
+    block(2002,True,'エフビー介護サービスへ商号変更',['介護サービスの会社として','歩みを進める'],'2002年10月',w=420)
+    block(2022,True,'東証スタンダード市場に上場',['事業成長の加速へ'],'2022年4月',al='r',w=400)
+    block(2000,False,'福祉用具のレンタルを開始',['福祉用具の取り扱いの範囲を広げていく'],'2000年4月',w=440)
+    block(2019,False,'海外人材の受け入れ',['ベトナム・ミャンマー・ネパール・','フィリピンなど'],'2019年',al='r',w=420)
+    # range bar for business expansion
+    ry=yc+bh/2+262; x1,x2=xy(2003),xy(2018)
+    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,x1,ry,x2-x1,16,TEAL2,None,rad=8,name='期間バー')
+    text(sl,x1,ry+26,x2-x1+200,80,[para('2000年代〜　事業の広がり',20,TEALD,True,lh=1.3,after=2),para('居宅介護、小規模多機能へ。住まい・通い・訪問・泊まりで暮らしを支える',19,SUB,lh=1.45)],name='事業の広がり')
+    bubble(sl,W-M-310,yc+bh/2+150,310,136,xy(2026),yc+bh/2+6,ORG,'吹き出し_現在',0.14)
+    text(sl,W-M-284,yc+bh/2+160,260,116,[para('現在',19,'FFF4EA',True,lh=1.3),para('7種109拠点',30,'FFFFFF',True,lh=1.2),para('従業員 1,250名',20,'FFFFFF',lh=1.4)],anchor='middle',name='吹き出し文_現在')
+    note(sl,'※ 出典：エフビー介護サービス 企業説明会資料、経営者ヒアリング、決算説明資料（従業員数は2023年4月時点）。')
+    return sl
+
+# ====================== 6. 小規模 × 多拠点 × 7つのサービス ======================
+def s_scale():
+    sl=new_slide('事業の展開','小規模な施設を、地域ごとに。7つのサービスで暮らしを支える',notes='小規模・多拠点・サービスの見せ方。')
+    ph=262; lw_=760
+    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,M,T0,lw_,ph,TEAL,None,rad=24,name='こだわり')
+    text(sl,M+48,T0+34,lw_-96,ph-50,[para('わたしたちのちょっとしたこだわり',19,'EAF8F4',True,after=10,lh=1.3,spc=2),
+        para('大規模な施設ではなく、',38,'FFFFFF',True,lh=1.3),para('小規模な施設をメインに展開する。',38,'FFFFFF',True,after=12,lh=1.3),
+        para('地域の文化・風土を取り入れた、きめ細やかなサービス。住み慣れた地元で、長く生活できる環境を。',19,'F0FBF8',lh=1.55)],name='こだわり本文')
+    rx=M+lw_+60; rw=CW-lw_-60
+    text(sl,rx,T0+26,rw,34,para('多拠点で、地域に根ざす',24,INK,True,lh=1.3),name='拠点見出し')
+    sw=rw/3
+    for i,(n,u,c) in enumerate([('109','拠点',TEALD),('7','種のサービス',TEALD),('5','県',ORGD)]):
+        x=rx+i*sw
+        if i: hline(sl,x-14,T0+90,x-14,T0+188,LINE,1,name='区切り')
+        text(sl,x,T0+78,sw-24,150,[para('',10,runs=[(n,{'size':72,'bold':True,'color':c})],lh=1.1,after=0),para(u,22,INK,True,lh=1.3,after=4)],name=f'数字_{u}')
+    text(sl,rx,T0+ph-60,rw,34,para('長野57・新潟15・埼玉15・群馬12・栃木10',20,SUB,lh=1.4),name='県別')
+    # services
+    sy=T0+ph+34
+    text(sl,M,sy,900,36,para('暮らし方に合わせて選べる、7つのサービス',28,INK,True,lh=1.3),name='サービス見出し')
+    gy=sy+54; gh=B0-gy; gw=(CW-2*28)/3
+    groups=[('自宅で暮らし続ける','自宅での生活を支援',TEAL2,[('訪問介護','ご自宅で、生活を支援'),('訪問看護','ご自宅へ、看護を届ける')]),
+            ('通い・訪問・泊まりで支える','小規模多機能で、暮らしを支える',ORG,[('デイサービス','通いで過ごす'),('小規模多機能型','通い・訪問・泊まりを組み合わせて'),('看護小規模多機能型','看護も組み合わせて')]),
+            ('住まいで暮らす','居住いただき、支援する','2E9E8A',[('有料老人ホーム','住まいで、暮らしを支援'),('グループホーム','少人数で暮らす、家庭的な雰囲気')])]
+    for i,(h,s,c,items) in enumerate(groups):
+        x=M+i*(gw+28)
+        shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,x,gy,gw,84,c,None,rad=20,name=f'ヘッダー_{h}')
+        shape(sl,MSO_SHAPE.RECTANGLE,x,gy+52,gw,32,c,None,name='ヘッダー下')
+        text(sl,x+32,gy+12,gw-64,62,[para(h,24,'FFFFFF',True,lh=1.25),para(s,17,'FFFFFF',lh=1.3)],anchor='middle',name=f'見出し_{h}')
+        th=(gh-84-36-(len(items)-1)*12)/max(len(items),2) if len(items)<3 else (gh-84-36-24)/3
+        th=min(th,138)
+        for j,(n,d) in enumerate(items):
+            ty=gy+84+18+j*(th+12)
+            hline(sl,x+20,ty+th+6,x+gw-20,ty+th+6,LINE,1,name='区切り')
             dot(sl,x+20+26,ty+th/2,14,c,'ドット')
             text(sl,x+20+50,ty+8,gw-40-70,th-16,[para(n,23,INK,True,lh=1.3),para(d,17,SUB,lh=1.4)],anchor='middle',name=f'サービス_{n}')
     note(sl,'出典：企業説明会資料、経営者ヒアリング、実習サイトの掲載内容。サービスの分け方は暮らし方に合わせた整理です。')
@@ -328,14 +494,14 @@ def s_scale():
 # ====================== 7. 売上の推移 ======================
 def s_sales():
     sl=new_slide('事業の成長','事業は着実に成長。上場企業ならではの安心感',notes='売上推移（26期〜36期）。出典：企業説明会資料。')
-    lw_=1040; ph=B0-T0; card(sl,M,T0,lw_,ph,name='売上カード')
-    text(sl,M+40,T0+30,600,36,para('売上の推移（26期〜36期）',27,INK,True,lh=1.3),name='売上見出し')
+    lw_=1040; ph=B0-T0
+    text(sl,M,T0+4,600,36,para('売上の推移（26期〜36期）',27,INK,True,lh=1.3),name='売上見出し')
     # legend
-    lx=M+lw_-40-420
+    lx=M+lw_-420
     for k,(nm,c) in enumerate([('用具',TEAL2),('介護',ORG),('居宅','F2C14E')]):
-        x=lx+k*140; shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,x,T0+38,22,22,c,None,rad=5,name=f'凡例_{nm}')
-        text(sl,x+32,T0+34,100,30,para(nm,20,INK,True,lh=1.3),name=f'凡例文字_{nm}')
-    text(sl,M+40,T0+74,600,26,para('単位：百万円',16,SUB,lh=1.3),name='単位')
+        x=lx+k*140; shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,x,T0+10,22,22,c,None,rad=5,name=f'凡例_{nm}')
+        text(sl,x+32,T0+6,100,30,para(nm,20,INK,True,lh=1.3),name=f'凡例文字_{nm}')
+    text(sl,M,T0+46,600,26,para('単位：百万円',16,SUB,lh=1.3),name='単位')
     yo=[2137,2323,2431,2604,2791,3003,3229,3520,3800,3813,4324]
     kai=[1632,1835,2087,2407,2643,2918,3771,3970,4100,4740,5133]
     kyo=[74,86,100,109,118,123,150,177,190,223,303]
@@ -351,10 +517,10 @@ def s_sales():
         text(sl,x-14,base+12,bw+28,26,para(f'{26+i}期',17,SUB,True,lh=1.2),align='c',name=f'期_{26+i}')
     hline(sl,M+40,base,M+lw_-40,base,LINE,1.5,name='基準線')
     # callouts for first / last bar
-    for i,yr in ((0,'2013年'),(10,'2023年')):
-        x=x0+i*(bw+gap)+bw/2
-        pill(sl,x-48,T0+118,96,34,PALEO if i else PALE,'年'); text(sl,x-48,T0+118,96,34,para(yr,18,ORGD if i else TEALD,True,lh=1.2),align='c',anchor='middle',name=f'年_{yr}')
-    x2=M+lw_+32; w2=CW-lw_-32; card(sl,x2,T0,w2,ph,name='戦略カード')
+    bx=x0+10*(bw+gap)+bw/2
+    bubble(sl,bx-470,T0+84,360,96,bx-26,topy-40,ORG,'吹き出し_成長')
+    text(sl,bx-444,T0+92,310,80,[para('2013年 → 2023年',18,'FFF4EA',True,lh=1.3),para('10年で約2.5倍に成長',28,'FFFFFF',True,lh=1.25)],anchor='middle',name='吹き出し文_成長')
+    x2=M+lw_+60; w2=CW-lw_-60; hline(sl,x2-30,T0+10,x2-30,B0-10,LINE,1.5,name='区切り')
     text(sl,x2+36,T0+30,w2-72,36,para('これから目指すこと',26,INK,True,lh=1.3),name='戦略見出し')
     blocks=[('福祉用具事業',['福祉用具のラインナップの充実','より多くの方へのご提案'],TEAL2),('介護事業',['事業所の運営方法の見直し','新たな介護サービスへの挑戦','ニーズにあったきめ細やかなサービス'],TEAL2),('人と技術',['ICT・DXを進めながらも、介護には人の力が不可欠。業務効率化と質の高いサービスの両立を目指します'],ORG)]
     y=T0+100; hs=[150,226,150]; gp=(ph-100-24-sum(hs))/2
@@ -369,49 +535,6 @@ def s_sales():
 POP_ACT=[7810, 8000, 8177, 8320, 8454, 8581, 8698, 8824, 8928, 9017, 9093, 9177, 9264, 9342, 9429, 9518, 9616, 9718, 9828, 9904, 10020, 10133, 10254, 10372, 10514, 10760, 10910, 11057, 11194, 11309, 11416, 11519, 11616, 11706, 11790, 11873, 11954, 12030, 12105, 12166, 12224, 12274, 12320, 12361, 12410, 12457, 12494, 12526, 12557, 12586, 12616, 12647, 12667, 12693, 12732, 12749, 12769, 12779, 12777, 12790, 12803, 12808, 12803, 12806, 12783, 12759, 12741, 12724, 12710, 12704, 12692, 12675, 12656, 12615, 12550, 12495]
 POP_PRJ=[12441, 12384, 12326, 12266, 12204, 12141, 12077, 12012, 11945, 11877, 11807, 11736, 11664, 11590, 11515, 11439, 11362, 11284, 11204, 11124, 11043, 10962, 10880, 10798, 10716, 10634, 10551, 10469]
 CARE=[3.3, 4.2, 4.7, 5.2, 5.6, 5.9, 6.0, 6.4, 6.7, 7.1, 7.5, 7.9, 8.4, 8.8, 9.2, 9.5, 9.7, 10.1, 10.4, 10.7, 11.4, 11.2, 11.3]
-def s_market():
-    sl=new_slide('時代の背景','人口は減り、高齢者は増える。介護の需要は広がり続ける',notes='人口：1947〜2022年は実績（人口統計資料集）、2023〜2050年は推計（令和5年推計・出生中位）。介護費：社会保障費用統計 第8表「介護対策」。')
-    gap=28; h1=396; h2=B0-T0-h1-gap
-    # --- population (yearly bars 1947-2050) ---
-    card(sl,M,T0,CW,h1,name='人口カード')
-    text(sl,M+40,T0+26,760,36,para('日本の総人口の推移（1947年 → 2050年・毎年）',26,INK,True,lh=1.3),name='人口見出し')
-    text(sl,M+40,T0+64,760,26,para('第一次ベビーブーム（1947年〜）から、2050年までの総人口（万人）',17,SUB,lh=1.3),name='人口補足')
-    kx=M+CW-40-780
-    for i,(lab,v,c) in enumerate([('1947年','7,810万人',TEALD),('2008年（ピーク）','12,808万人',TEALD),('2050年','10,469万人',ORGD)]):
-        x=kx+i*272; text(sl,x,T0+22,260,76,[para(lab,16,SUB,True,lh=1.3),para(v,28,c,True,lh=1.25)],name=f'要点_{lab}')
-    cd=CategoryChartData(); yrs=[str(y) for y in range(1947,2051)]; cd.categories=yrs
-    cd.add_series('実績',POP_ACT+[None]*len(POP_PRJ)); cd.add_series('推計',[None]*len(POP_ACT)+POP_PRJ)
-    gf=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(M+24),px(T0+104),px(CW-48),px(h1-116),cd); gf.name='総人口グラフ'; ch=gf.chart
-    ch.has_legend=True; ch.legend.include_in_layout=False; ch.legend.font.size=Pt(13); ch.legend.font.name=FONT
-    from pptx.enum.chart import XL_LEGEND_POSITION
-    ch.legend.position=XL_LEGEND_POSITION.TOP
-    ch.has_title=False; pl=ch.plots[0]; pl.gap_width=18; pl.overlap=100
-    for ser,c in zip(pl.series,(TEAL2,ORG)): ser.format.fill.solid(); ser.format.fill.fore_color.rgb=rgb(c)
-    va=ch.value_axis; va.minimum_scale=0; va.maximum_scale=14000; va.major_unit=2000; va.has_major_gridlines=True
-    va.major_gridlines.format.line.color.rgb=rgb('E8EFEC'); va.tick_labels.font.size=Pt(12); va.tick_labels.font.name=FONT; va.tick_labels.number_format='#,##0'; va.tick_labels.number_format_is_linked=False; va.format.line.fill.background()
-    ca=ch.category_axis; ca.tick_labels.font.size=Pt(12); ca.tick_labels.font.name=FONT; ca.format.line.color.rgb=rgb('C9D6D1')
-    cax=ca._element
-    for tag,val in (('c:tickLblSkip','9'),('c:tickMarkSkip','9')):
-        el=cax.find(qn(tag))
-        if el is None: el=etree.SubElement(cax,qn(tag))
-        el.set('val',val)
-    # --- care cost (yearly bars 2000-2022 + 2040 outlook) ---
-    y2=T0+h1+gap; card(sl,M,y2,CW,h2,name='介護費カード')
-    text(sl,M+40,y2+24,760,36,para('介護の給付費の推移（2000年度 → 2022年度・毎年）',26,INK,True,lh=1.3),name='介護費見出し')
-    text(sl,M+40,y2+62,900,26,para('介護対策の社会保障給付費（兆円）。右端は、厚生労働省の2040年度の見通し',17,SUB,lh=1.3),name='介護費補足')
-    for i,(lab,v,c) in enumerate([('2000年度','3.3兆円',TEALD),('2022年度','11.3兆円',TEALD),('2040年度（見通し）','25.8兆円',ORGD)]):
-        x=kx+i*272; text(sl,x,y2+20,260,76,[para(lab,16,SUB,True,lh=1.3),para(v,28,c,True,lh=1.25)],name=f'介護要点_{lab}')
-    cd2=CategoryChartData(); cats=[str(y) for y in range(2000,2023)]+['2040']; cd2.categories=cats
-    cd2.add_series('実績',CARE+[None]); cd2.add_series('見通し',[None]*len(CARE)+[25.8])
-    gf2=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(M+24),px(y2+100),px(CW-48),px(h2-110),cd2); gf2.name='介護費グラフ'; c2=gf2.chart
-    c2.has_legend=False; c2.has_title=False; p2=c2.plots[0]; p2.gap_width=30; p2.overlap=100; p2.has_data_labels=True; d2=p2.data_labels
-    d2.font.size=Pt(11); d2.font.name=FONT; d2.number_format='0.0'; d2.number_format_is_linked=False; d2.position=XL_LABEL_POSITION.OUTSIDE_END
-    for ser,c in zip(p2.series,(TEAL2,ORG)): ser.format.fill.solid(); ser.format.fill.fore_color.rgb=rgb(c)
-    v2=c2.value_axis; v2.visible=False; v2.has_major_gridlines=False; v2.minimum_scale=0; v2.maximum_scale=29
-    a2=c2.category_axis; a2.tick_labels.font.size=Pt(11); a2.tick_labels.font.name=FONT; a2.format.line.color.rgb=rgb('C9D6D1')
-    note(sl,'※ 人口：総務省統計局・人口統計資料集（1947〜2022年）、国立社会保障・人口問題研究所『日本の将来推計人口（令和5年推計）』（2023〜2050年）。介護費：同研究所『社会保障費用統計』、厚生労働省『2040年を見据えた社会保障の将来見通し』。')
-    return sl
-
 # ====================== 8. 他社比較 ======================
 def s_compare():
     sl=new_slide('実習の魅力','ほかの法人と比べて見える、エフビーの実習の魅力',notes='')
@@ -590,7 +713,7 @@ def s_area():
     note(sl,'※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
     return sl
 
-for f in (s_ring,s_loop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area,s_overview): f()
+for f in (s_ring,s_loop,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area,s_overview): f()
 N=len(prs.slides)
 for k,sl in enumerate(prs.slides,1):
     text(sl,W-M-120,B0+24,120,22,para(f'{k} / {N}',15,GRAY,lh=1.3),align='r',name='ページ番号')
