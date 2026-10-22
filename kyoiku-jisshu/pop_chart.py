@@ -14,8 +14,11 @@ anc={2070:8700,**UN_POP}; ks=sorted(anc)
 def itp(y):
     a=max(k for k in ks if k<=y); b=min(k for k in ks if k>=y)
     return anc[a] if a==b else anc[a]+(anc[b]-anc[a])*(y-a)/(b-a)
-fm.fontManager.addfont('/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf')
-plt.rcParams['font.family']='IPAGothic'
+import sys
+SVG=len(sys.argv)>1 and sys.argv[1]=='svg'
+for _f in ('Regular','Bold'): fm.fontManager.addfont(f'fonts/NotoSansJP-{_f}.ttf')
+plt.rcParams['font.family']='Noto Sans JP'
+if SVG: plt.rcParams['svg.fonttype']='none'
 INK,SUB='#26323A','#5B6B73'; TEAL,ORG,ORGL='#3FB39D','#F28C3C','#F7C9A0'
 ya=list(range(1947,2023)); yp=list(range(2023,2071)); yu=list(range(2071,2101))
 fig,ax=plt.subplots(figsize=(17.3,8.2),dpi=150)
@@ -36,12 +39,17 @@ def bubble(x,y,w,h,tx,ty,col,small,big):
     p=FancyBboxPatch((fx(x),fy(y)),w/(X1-X0),h/Y1,boxstyle='round,pad=0,rounding_size=0.012',mutation_aspect=AR,
                      fc=col,ec='none',transform=ax.transAxes,zorder=5); ax.add_patch(p)
     ax.add_patch(Polygon([(x+w*0.30,y+60),(x+w*0.62,y+60),(tx,ty)],fc=col,ec='none',zorder=4))
-    ax.text(x+w*0.07,y+h*0.74,small,color='white',fontsize=17,va='center',zorder=6)
-    ax.text(x+w*0.07,y+h*0.34,big,color='white',fontsize=29,va='center',zorder=6)
+    ax.text(x+w*0.07,y+h*0.74,small,color='white',fontsize=17,fontweight='bold',va='center',zorder=6)
+    ax.text(x+w*0.07,y+h*0.34,big,color='white',fontsize=29,fontweight='bold',va='center',zorder=6)
 bubble(1970,14300,40,2900,2008,12950,'#3FB39D','2008年がピーク','1億2,808万人')
 bubble(2022,12900,40,2900,2050,10650,ORG,'2050年','約1億469万人')
 bubble(2064,9500,38,2900,2100,7650,'#E9A56B','2100年','約7,364万人')
 fig.text(0.012,0.965,'総人口（万人）',fontsize=16,color=SUB)
 ax.legend(loc='lower center',bbox_to_anchor=(0.5,-0.14),ncol=3,frameon=False,fontsize=15)
 fig.subplots_adjust(left=0.06,right=0.985,top=0.93,bottom=0.17)
-fig.savefig('総人口グラフ_1947-2100.png',facecolor='white')
+if SVG:
+    fig.savefig('総人口グラフ_1947-2100.svg',transparent=True)
+    t=open('総人口グラフ_1947-2100.svg',encoding='utf-8').read().replace("'Noto Sans JP'","'游ゴシック', 'Yu Gothic', YuGothic, 'Noto Sans JP'")
+    open('総人口グラフ_1947-2100.svg','w',encoding='utf-8').write(t)
+else:
+    fig.savefig('総人口グラフ_1947-2100.png',transparent=True)
