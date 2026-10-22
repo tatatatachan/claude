@@ -196,7 +196,7 @@ for sld in b.prs.slides:
         if n=='背景':
             shp.fill.solid(); shp.fill.fore_color.rgb=RGBColor.from_string('FFFFFF')
         elif n in ('小見出し','タイトル'):
-            col='2E9E8A' if n=='小見出し' else INK
+            col='EAF8F4' if n=='小見出し' else 'FFFFFF'
             for r in shp.text_frame.paragraphs[0].runs: r.font.color.rgb=RGBColor.from_string(col)
         elif shp.shape_type==MSO_SHAPE_TYPE.AUTO_SHAPE:
             try:
@@ -204,8 +204,17 @@ for sld in b.prs.slides:
             except Exception: white=False
             if white and (n=='中央円' or shp.auto_shape_type==MSO_SHAPE.ROUNDED_RECTANGLE):
                 shp.line.color.rgb=RGBColor.from_string('D5E3DD'); shp.line.width=Pt(1.25)
-    # thin accent under the title
-    ac=sld.shapes.add_shape(MSO_SHAPE.RECTANGLE,b.px(64),b.px(132),b.px(72),b.px(5)); b.fill(ac,'54C5AF'); b.noline(ac); ac.name='タイトル下線'
+    # mountain header (band + peaks), sent behind the texts
+    import math as _m
+    def poly(points,color,nm,pos):
+        fb=sld.shapes.build_freeform(b.px(points[0][0]),b.px(points[0][1])); fb.add_line_segments([(b.px(x),b.px(y)) for x,y in points[1:]],close=True)
+        s_=fb.convert_to_shape(); b.fill(s_,color); b.noline(s_); s_.name=nm
+        el=s_._element; el.getparent().remove(el); sld.shapes._spTree.insert(pos,el)
+    edge=lambda x:146-12*_m.sin(2*_m.pi*(1-x/1730))
+    band=[(0,0),(1730,0)]+[(1730-i*1730/240,edge(1730-i*1730/240)) for i in range(241)]
+    poly(band,'74C2B2','ヘッダー帯',3)
+    poly([(1180,134),(1342,50),(1475,134)],'8ACFC0','ヘッダー山1',4)
+    poly([(1400,134),(1545,84),(1690,134)],'8ACFC0','ヘッダー山2',5)
     for er in sld.shapes._spTree.iter(qn('a:effectRef')): er.set('idx','0')
 
 b.prs.save('共育実習_図解.pptx')
