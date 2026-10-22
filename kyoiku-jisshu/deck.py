@@ -93,10 +93,10 @@ def note(sl,t): text(sl,M,B0+26,1300,22,para(t,15,GRAY,lh=1.3),name='注記')
 
 # ====================== 1. 共創モデル ======================
 def s_ring():
-    sl=new_slide('施策①　共育実習','共育実習の共創モデル','学ぶ人も、迎える人も、地域も。みんなが共に育つ')
+    sl=new_slide('共育実習','共育実習の共創モデル','学ぶ人も、迎える人も、地域も。みんなが共に育つ')
     cx,cy,Ro,Ri=865,552,276,196
-    segs=[(0,60,'F28C3C','C8651A','エフビー介護サービス','エフビー','営業の差になる',['志と実利で学校から選ばれ、','将来の担い手と出会えます。']),
-     (60,120,'F7AB67','C8651A','社員','社員','学びと生きがいが育つ',['学生から学び、仕事の意味を再発見。','利用者の生きがいも育ちます。']),
+    segs=[(0,60,'F28C3C','C8651A','エフビー介護サービス','エフビー','若い世代との出会い',['学生から学び、地域の担い手づくりに','関わることができます。']),
+     (60,120,'F7AB67','C8651A','社員','社員','学びと生きがいが育つ',['学生に教えることで、仕事の意味を再発見。','利用者の生きがいも育ちます。']),
      (120,180,'2E9E8A','1F7D6C','地域','地域','担い手とまちの未来',['地域を担う人が育ち、','介護の現場が身近になります。']),
      (180,240,'54C5AF','1F7D6C','大学','大学','学部・学科の魅力向上',['魅力的な実習で、学部・学科の魅力が向上。','社会テーマ型プログラム「STA」で連携。']),
      (240,300,'3FB39D','1F7D6C','専門学校','専門学校','実習先の選択肢が広がる',['単位つきの実習先が増え、','介護の学びの入口が広がります。']),
@@ -131,7 +131,7 @@ def s_ring():
 
 # ====================== 2. ブランド循環 ======================
 def s_loop():
-    sl=new_slide('施策　実習','どうブランドを育てていくか','実習の体験が声になり、声がサイトに載り、次の実習へつながる')
+    sl=new_slide('実習のひろがり','実習の声が、次の学びを広げる','実習の体験が声になり、声がサイトに載り、次の実習へつながる')
     cx=865; CWd,CHd=580,176; xl=M; xr=W-M-CWd; yt=T0; yb=T0+CHd+150
     steps=[('共育実習を行う',['高校・専門学校・大学で','共育実習を実施します。'],TEAL2,TEALD,xl,yt),
            ('声が集まる',['学生・先生・社員・','利用者さんの声が集まります。'],'86D6C4',TEALD,xr,yt),
@@ -147,8 +147,8 @@ def s_loop():
     text(sl,xl+CWd/2+52,yt+CHd+60,360,30,para('次の共育実習につながる',21,TEALD,True,lh=1.3),name='循環ラベル')
     cy=(yt+yb+CHd)/2
     for r_,col in ((118,'DDF1EA'),(90,'B5E4D6'),(62,TEAL)): dot(sl,cx,cy-8,2*r_,col,'広がる輪')
-    text(sl,cx-60,cy-8-28,120,56,[para('実習',24,'FFFFFF',True,lh=1.2),para('ブランド',24,'FFFFFF',True,lh=1.2)],align='c',anchor='middle',name='中央')
-    pill(sl,cx-96,cy+120,192,38,ORG,'帯'); text(sl,cx-96,cy+120,192,38,para('回るほど育つ',19,'FFFFFF',True,lh=1.2),align='c',anchor='middle',name='帯文字')
+    text(sl,cx-60,cy-8-28,120,56,[para('共育',24,'FFFFFF',True,lh=1.2),para('実習',24,'FFFFFF',True,lh=1.2)],align='c',anchor='middle',name='中央')
+    pill(sl,cx-96,cy+120,192,38,ORG,'帯'); text(sl,cx-96,cy+120,192,38,para('回るほど広がる',19,'FFFFFF',True,lh=1.2),align='c',anchor='middle',name='帯文字')
     for n,(h,d,c,dk,x,y) in enumerate(steps,1):
         card(sl,x,y,CWd,CHd,name=f'カード_{h}')
         dot(sl,x+34+28,y+30+28,56,c,'番号'); text(sl,x+34,y+30,56,56,para(str(n),28,'FFFFFF',True,lh=1.1),align='c',anchor='middle',name=f'番号{n}')
@@ -157,7 +157,7 @@ def s_loop():
     by=yb+CHd+30; bh=B0-by
     card(sl,M,by,800,bh,name='サイトに載せるもの'); card(sl,M+800+30,by,CW-830,bh,fill='F6F9F8',name='ほかの施策')
     text(sl,M+36,by+18,730,bh-24,[para('サイトに載せるもの',24,INK,True,after=4,lh=1.3),para('プログラム内容と口コミ。学校の先生が受け入れを判断でき、学生が参加を決められる状態にする。',19,SUB,lh=1.45)],name='サイトに載せるもの本文')
-    text(sl,M+800+30+36,by+18,CW-830-72,bh-24,[para('ほかの施策',24,SUB,True,after=4,lh=1.3),para('関連大学・専門学校を増やす／対応地域／産官学で連携（次世代の育成を地域のみなさんで実施）',19,SUB,lh=1.45)],name='ほかの施策本文')
+    text(sl,M+800+30+36,by+18,CW-830-72,bh-24,[para('これから',24,SUB,True,after=4,lh=1.3),para('連携する大学・専門学校、対応地域を広げ、産官学で次世代の育成を地域のみなさんと進めます。',19,SUB,lh=1.45)],name='これから本文')
     return sl
 
 # ====================== 3. 全体像 ======================
@@ -182,7 +182,7 @@ def s_overview():
     for i,(n,u,s,c) in enumerate(stats):
         x=M+i*(sw+32); card(sl,x,sy,sw,sh,name=f'カード_{u}')
         text(sl,x+34,sy+26,sw-60,sh-40,[para('',10,runs=[(n,{'size':68,'bold':True,'color':c}),(' '+u,{'size':24,'bold':True,'color':INK})],lh=1.2,after=4),para(s,19,SUB,lh=1.4)],name=f'本文_{u}')
-    note(sl,'※ 対象・期間・時間などはサイト上でも仮・調整中の内容です。')
+    note(sl,'※ 日程・内容は調整中です。決まり次第ご案内します。')
     return sl
 
 # ====================== 4. 介護への考え方 ======================
@@ -270,7 +270,7 @@ def s_history():
      (230,True,'1987年4月','エフビー信州として設立',['フランスベッドの代理店が原点。','本社は長野県佐久市'],False),
      (445,False,'2000年4月','福祉用具のレンタルを開始',['福祉用具の取り扱いの範囲を','広げていく'],False),
      (660,True,'2002年10月','エフビー介護サービスへ商号変更',['介護サービスの会社として','歩みを進める'],False),
-     (875,False,'時期は確認中','居宅介護・小規模多機能へ',['自宅での生活の支援から、','住まい・通い訪問泊まりへ'],True),
+     (875,False,'事業の広がり','居宅介護・小規模多機能へ',['自宅での生活の支援から、','住まい・通い訪問泊まりへ'],True),
      (1090,True,'2019年','海外人材の受け入れ',['ベトナム・ミャンマー・','ネパール・フィリピンなど'],False),
      (1305,False,'2022年4月','東証スタンダード市場に上場',['事業成長の加速へ'],False),
      (1520,True,'現在','7種109拠点／1,250名',['信越・北関東に展開','（従業員数は2023年4月時点）'],False)]
@@ -283,7 +283,7 @@ def s_history():
         pw_=(len(pl_)*18+36) if not und else 156
         pill(sl,cx0+26,y+22,pw_,34,'EEF1F0' if und else PALE,'年タグ'); text(sl,cx0+26,y+22,pw_,34,para(pl_,17 if und else 19,GRAY if und else TEALD,True,lh=1.2),align='c',anchor='middle',name='年')
         text(sl,cx0+26,y+70,cwid-52,chh-80,[para(h,21,INK,True,after=4,lh=1.35)]+[para(t,17,SUB,lh=1.45) for t in d],name=f'本文_{h}')
-    note(sl,'※ 設立・商号変更・従業員数は企業説明会資料、2000年は会長ヒアリング、海外人材は経営者ヒアリング、上場は決算説明資料に基づきます。「時期は確認中」は年次の確認が必要です。')
+    note(sl,'※ 出典：エフビー介護サービス 企業説明会資料、経営者ヒアリング、決算説明資料。')
     return sl
 
 # ====================== 6. 小規模 × 多拠点 × 7つのサービス ======================
@@ -327,7 +327,7 @@ def s_scale():
 
 # ====================== 7. 売上の推移 ======================
 def s_sales():
-    sl=new_slide('事業の成長','売上は10年で大きく成長。用具と介護の2本柱で拡大',notes='売上推移（26期〜36期）。出典：企業説明会資料。')
+    sl=new_slide('事業の成長','事業は着実に成長。上場企業ならではの安心感',notes='売上推移（26期〜36期）。出典：企業説明会資料。')
     lw_=1040; ph=B0-T0; card(sl,M,T0,lw_,ph,name='売上カード')
     text(sl,M+40,T0+30,600,36,para('売上の推移（26期〜36期）',27,INK,True,lh=1.3),name='売上見出し')
     # legend
@@ -335,7 +335,7 @@ def s_sales():
     for k,(nm,c) in enumerate([('用具',TEAL2),('介護',ORG),('居宅','F2C14E')]):
         x=lx+k*140; shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,x,T0+38,22,22,c,None,rad=5,name=f'凡例_{nm}')
         text(sl,x+32,T0+34,100,30,para(nm,20,INK,True,lh=1.3),name=f'凡例文字_{nm}')
-    text(sl,M+40,T0+74,600,26,para('単位：百万円（資料のグラフ値。単位は推定）',16,SUB,lh=1.3),name='単位')
+    text(sl,M+40,T0+74,600,26,para('単位：百万円',16,SUB,lh=1.3),name='単位')
     yo=[2137,2323,2431,2604,2791,3003,3229,3520,3800,3813,4324]
     kai=[1632,1835,2087,2407,2643,2918,3771,3970,4100,4740,5133]
     kyo=[74,86,100,109,118,123,150,177,190,223,303]
@@ -354,54 +354,67 @@ def s_sales():
     for i,yr in ((0,'2013年'),(10,'2023年')):
         x=x0+i*(bw+gap)+bw/2
         pill(sl,x-48,T0+118,96,34,PALEO if i else PALE,'年'); text(sl,x-48,T0+118,96,34,para(yr,18,ORGD if i else TEALD,True,lh=1.2),align='c',anchor='middle',name=f'年_{yr}')
-    text(sl,M+40,T0+ph-40,lw_-80,26,para('資料の記載：売上は10年で235%成長（2013年 39億円 → 2023年 92億円）',17,SUB,lh=1.3),name='資料の記載')
     x2=M+lw_+32; w2=CW-lw_-32; card(sl,x2,T0,w2,ph,name='戦略カード')
-    text(sl,x2+36,T0+30,w2-72,36,para('これからの成長戦略',26,INK,True,lh=1.3),name='戦略見出し')
-    blocks=[('福祉用具事業',['自社仕入レンタル品販売の拡充','新規利用者様の開拓'],TEAL2),('介護事業',['介護サービス・事業所運営方法の見直し','新たな介護サービスへの挑戦','ニーズにあったきめ細やかなサービス'],TEAL2),('あわせて',['同業種を対象としたM&Aで業績拡大'],ORG)]
-    y=T0+100; hs=[170,236,120]; gp=(ph-100-24-sum(hs))/2
+    text(sl,x2+36,T0+30,w2-72,36,para('これから目指すこと',26,INK,True,lh=1.3),name='戦略見出し')
+    blocks=[('福祉用具事業',['福祉用具のラインナップの充実','より多くの方へのご提案'],TEAL2),('介護事業',['事業所の運営方法の見直し','新たな介護サービスへの挑戦','ニーズにあったきめ細やかなサービス'],TEAL2),('人と技術',['ICT・DXを進めながらも、介護には人の力が不可欠。業務効率化と質の高いサービスの両立を目指します'],ORG)]
+    y=T0+100; hs=[150,226,150]; gp=(ph-100-24-sum(hs))/2
     for (h,items,c),bh in zip(blocks,hs):
         pill(sl,x2+36,y,176,40,PALE if c==TEAL2 else PALEO,'タグ'); text(sl,x2+36,y,176,40,para(h,19,TEALD if c==TEAL2 else ORGD,True,lh=1.2),align='c',anchor='middle',name=f'タグ文字_{h}')
         text(sl,x2+36,y+54,w2-72,bh-54,[para('・'+t,19,INK,after=6,lh=1.45) for t in items],name=f'戦略_{h}')
         y+=bh+gp
-    note(sl,'※ 売上は企業説明会資料（用具・介護・居宅の合計。給食事業等は含まない可能性あり）、成長戦略は2026年3月期 決算説明資料に基づきます。')
+    note(sl,'※ 売上は用具・介護・居宅の合計（エフビー介護サービス 企業説明会資料）。')
     return sl
 
 # ====================== 社会の変化（人口・介護市場） ======================
+POP_ACT=[7810, 8000, 8177, 8320, 8454, 8581, 8698, 8824, 8928, 9017, 9093, 9177, 9264, 9342, 9429, 9518, 9616, 9718, 9828, 9904, 10020, 10133, 10254, 10372, 10514, 10760, 10910, 11057, 11194, 11309, 11416, 11519, 11616, 11706, 11790, 11873, 11954, 12030, 12105, 12166, 12224, 12274, 12320, 12361, 12410, 12457, 12494, 12526, 12557, 12586, 12616, 12647, 12667, 12693, 12732, 12749, 12769, 12779, 12777, 12790, 12803, 12808, 12803, 12806, 12783, 12759, 12741, 12724, 12710, 12704, 12692, 12675, 12656, 12615, 12550, 12495]
+POP_PRJ=[12441, 12384, 12326, 12266, 12204, 12141, 12077, 12012, 11945, 11877, 11807, 11736, 11664, 11590, 11515, 11439, 11362, 11284, 11204, 11124, 11043, 10962, 10880, 10798, 10716, 10634, 10551, 10469]
+CARE=[3.3, 4.2, 4.7, 5.2, 5.6, 5.9, 6.0, 6.4, 6.7, 7.1, 7.5, 7.9, 8.4, 8.8, 9.2, 9.5, 9.7, 10.1, 10.4, 10.7, 11.4, 11.2, 11.3]
 def s_market():
-    sl=new_slide('時代の背景','人口は減り、高齢者は増える。介護の需要は広がり続ける',notes='人口推移（2020→2050）と介護費の見通し。')
-    lw_=900; ph=B0-T0; card(sl,M,T0,lw_,ph,name='人口カード')
-    text(sl,M+40,T0+30,lw_-80,36,para('日本の人口推移（2020年 → 2050年）',27,INK,True,lh=1.3),name='人口見出し')
-    text(sl,M+40,T0+72,lw_-80,26,para('総人口（万人）と、65歳以上の割合（高齢化率）',17,SUB,lh=1.3),name='人口補足')
-    cd=CategoryChartData(); cd.categories=['2020年','2040年','2050年']; cd.add_series('総人口',[12615,11284,10468])
-    gf=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(M+30),px(T0+110),px(lw_-60),px(330),cd); gf.name='総人口グラフ'; ch=gf.chart
-    ch.has_legend=False; ch.has_title=False; pl=ch.plots[0]; pl.gap_width=45; pl.has_data_labels=True; dl=pl.data_labels
-    dl.font.size=Pt(20); dl.font.bold=True; dl.font.name=FONT; dl.position=XL_LABEL_POSITION.OUTSIDE_END; dl.number_format='#,##0'; dl.number_format_is_linked=False
-    for i,c in enumerate((TEAL2,TEAL2,ORG)): p_=pl.series[0].points[i]; p_.format.fill.solid(); p_.format.fill.fore_color.rgb=rgb(c)
-    ch.value_axis.visible=False; ch.value_axis.has_major_gridlines=False; ch.value_axis.minimum_scale=0; ch.value_axis.maximum_scale=14500
-    ca=ch.category_axis; ca.tick_labels.font.size=Pt(22); ca.tick_labels.font.name=FONT; ca.format.line.color.rgb=rgb('C9D6D1')
-    cw3=(lw_-80-2*24)/3
-    for i,(yr,rate,cnt,c) in enumerate([('2020年','28.6%','約3,619万人',TEALD),('2040年','34.8%','約3,928万人',TEALD),('2050年','37.1%','約3,880万人',ORGD)]):
-        x=M+40+i*(cw3+24); y=T0+ph-188
-        card(sl,x,y,cw3,150,fill='F6F9F8',rad=16,name=f'高齢化率_{yr}')
-        text(sl,x+24,y+16,cw3-48,120,[para('高齢化率（65歳以上）',16,SUB,True,after=2,lh=1.3),para(rate,46,c,True,after=0,lh=1.15),para('65歳以上　'+cnt,17,INK,lh=1.4)],name=f'高齢化率本文_{yr}')
-    x2=M+lw_+32; w2=CW-lw_-32; card(sl,x2,T0,w2,ph,name='市場カード')
-    text(sl,x2+40,T0+30,w2-80,36,para('介護費の見通し',27,INK,True,lh=1.3),name='市場見出し')
-    text(sl,x2+40,T0+72,w2-80,26,para('公的な見通し（兆円）',17,SUB,lh=1.3),name='市場補足')
-    base=T0+ph-130; maxh=360
-    for i,(yr,v,c,tc) in enumerate([('2018年度',10.7,TEAL2,TEALD),('2040年度',25.8,ORG,ORGD)]):
-        h=maxh*v/25.8; bw=170; x=x2+w2/2-bw-34+i*(bw+68)
-        shape(sl,MSO_SHAPE.RECTANGLE,x,base-h,bw,h,c,None,name=f'棒_{yr}')
-        text(sl,x-20,base-h-56,bw+40,50,para(f'{v}兆円',34,tc,True,lh=1.2),align='c',name=f'値_{yr}')
-        text(sl,x-20,base+14,bw+40,30,para(yr,20,SUB,True,lh=1.3),align='c',name=f'年度_{yr}')
-    hline(sl,x2+40,base,x2+w2-40,base,LINE,1.5,name='基準線')
-    pill(sl,x2+w2/2-204,T0+230,200,40,PALEO,'倍率'); text(sl,x2+w2/2-204,T0+230,200,40,para('約2.4倍に',21,ORGD,True,lh=1.2),align='c',anchor='middle',name='倍率文字')
-    text(sl,x2+40,T0+ph-76,w2-80,56,para('介護の需要は、2040年、さらに2050年に向けて続く見込みです。',18,INK,lh=1.5),name='まとめ')
-    note(sl,'※ 人口：国立社会保障・人口問題研究所『日本の将来推計人口（令和5年推計）』。2050年の65歳以上人口は総人口×高齢化率による概算。介護費：厚生労働省『2040年を見据えた社会保障の将来見通し（2018年）』。2050年の介護市場の公的推計は確認できていません。')
+    sl=new_slide('時代の背景','人口は減り、高齢者は増える。介護の需要は広がり続ける',notes='人口：1947〜2022年は実績（人口統計資料集）、2023〜2050年は推計（令和5年推計・出生中位）。介護費：社会保障費用統計 第8表「介護対策」。')
+    gap=28; h1=396; h2=B0-T0-h1-gap
+    # --- population (yearly bars 1947-2050) ---
+    card(sl,M,T0,CW,h1,name='人口カード')
+    text(sl,M+40,T0+26,760,36,para('日本の総人口の推移（1947年 → 2050年・毎年）',26,INK,True,lh=1.3),name='人口見出し')
+    text(sl,M+40,T0+64,760,26,para('第一次ベビーブーム（1947年〜）から、2050年までの総人口（万人）',17,SUB,lh=1.3),name='人口補足')
+    kx=M+CW-40-780
+    for i,(lab,v,c) in enumerate([('1947年','7,810万人',TEALD),('2008年（ピーク）','12,808万人',TEALD),('2050年','10,469万人',ORGD)]):
+        x=kx+i*272; text(sl,x,T0+22,260,76,[para(lab,16,SUB,True,lh=1.3),para(v,28,c,True,lh=1.25)],name=f'要点_{lab}')
+    cd=CategoryChartData(); yrs=[str(y) for y in range(1947,2051)]; cd.categories=yrs
+    cd.add_series('実績',POP_ACT+[None]*len(POP_PRJ)); cd.add_series('推計',[None]*len(POP_ACT)+POP_PRJ)
+    gf=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(M+24),px(T0+104),px(CW-48),px(h1-116),cd); gf.name='総人口グラフ'; ch=gf.chart
+    ch.has_legend=True; ch.legend.include_in_layout=False; ch.legend.font.size=Pt(13); ch.legend.font.name=FONT
+    from pptx.enum.chart import XL_LEGEND_POSITION
+    ch.legend.position=XL_LEGEND_POSITION.TOP
+    ch.has_title=False; pl=ch.plots[0]; pl.gap_width=18; pl.overlap=100
+    for ser,c in zip(pl.series,(TEAL2,ORG)): ser.format.fill.solid(); ser.format.fill.fore_color.rgb=rgb(c)
+    va=ch.value_axis; va.minimum_scale=0; va.maximum_scale=14000; va.major_unit=2000; va.has_major_gridlines=True
+    va.major_gridlines.format.line.color.rgb=rgb('E8EFEC'); va.tick_labels.font.size=Pt(12); va.tick_labels.font.name=FONT; va.tick_labels.number_format='#,##0'; va.tick_labels.number_format_is_linked=False; va.format.line.fill.background()
+    ca=ch.category_axis; ca.tick_labels.font.size=Pt(12); ca.tick_labels.font.name=FONT; ca.format.line.color.rgb=rgb('C9D6D1')
+    cax=ca._element
+    for tag,val in (('c:tickLblSkip','9'),('c:tickMarkSkip','9')):
+        el=cax.find(qn(tag))
+        if el is None: el=etree.SubElement(cax,qn(tag))
+        el.set('val',val)
+    # --- care cost (yearly bars 2000-2022 + 2040 outlook) ---
+    y2=T0+h1+gap; card(sl,M,y2,CW,h2,name='介護費カード')
+    text(sl,M+40,y2+24,760,36,para('介護の給付費の推移（2000年度 → 2022年度・毎年）',26,INK,True,lh=1.3),name='介護費見出し')
+    text(sl,M+40,y2+62,900,26,para('介護対策の社会保障給付費（兆円）。右端は、厚生労働省の2040年度の見通し',17,SUB,lh=1.3),name='介護費補足')
+    for i,(lab,v,c) in enumerate([('2000年度','3.3兆円',TEALD),('2022年度','11.3兆円',TEALD),('2040年度（見通し）','25.8兆円',ORGD)]):
+        x=kx+i*272; text(sl,x,y2+20,260,76,[para(lab,16,SUB,True,lh=1.3),para(v,28,c,True,lh=1.25)],name=f'介護要点_{lab}')
+    cd2=CategoryChartData(); cats=[str(y) for y in range(2000,2023)]+['2040']; cd2.categories=cats
+    cd2.add_series('実績',CARE+[None]); cd2.add_series('見通し',[None]*len(CARE)+[25.8])
+    gf2=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(M+24),px(y2+100),px(CW-48),px(h2-110),cd2); gf2.name='介護費グラフ'; c2=gf2.chart
+    c2.has_legend=False; c2.has_title=False; p2=c2.plots[0]; p2.gap_width=30; p2.overlap=100; p2.has_data_labels=True; d2=p2.data_labels
+    d2.font.size=Pt(11); d2.font.name=FONT; d2.number_format='0.0'; d2.number_format_is_linked=False; d2.position=XL_LABEL_POSITION.OUTSIDE_END
+    for ser,c in zip(p2.series,(TEAL2,ORG)): ser.format.fill.solid(); ser.format.fill.fore_color.rgb=rgb(c)
+    v2=c2.value_axis; v2.visible=False; v2.has_major_gridlines=False; v2.minimum_scale=0; v2.maximum_scale=29
+    a2=c2.category_axis; a2.tick_labels.font.size=Pt(11); a2.tick_labels.font.name=FONT; a2.format.line.color.rgb=rgb('C9D6D1')
+    note(sl,'※ 人口：総務省統計局・人口統計資料集（1947〜2022年）、国立社会保障・人口問題研究所『日本の将来推計人口（令和5年推計）』（2023〜2050年）。介護費：同研究所『社会保障費用統計』、厚生労働省『2040年を見据えた社会保障の将来見通し』。')
     return sl
 
 # ====================== 8. 他社比較 ======================
 def s_compare():
-    sl=new_slide('採用戦略テーマ','他社と並べて見える、エフビーの実習の魅力',notes='P24：採用戦略テーマ（他社比較）。')
+    sl=new_slide('実習の魅力','ほかの法人と比べて見える、エフビーの実習の魅力',notes='')
     cols=['','エフビー介護サービス','A社','B社','C社']
     rows=[('ビジョン',['「共生」をテーマにした、人々が助け合う地域創生（エフビータウン構想・コミュニティタワー構想）','―','―','暮らしを、共に。']),
      ('事業フェーズ',['成長期〜拡大期（2022年 スタンダード市場上場）','安定期〜成熟期','地域密着・安定運営期','成長期〜拡大期（2024年 スタンダード市場上場）']),
@@ -432,14 +445,14 @@ def s_compare():
         for j,v in enumerate(vals,1): cellset(tb.cell(i,j),v,17 if i==3 else 18,INK if j==1 else '55636B',False,'FFF6EC' if j==1 else None)
         for j in range(5): border(tb.cell(i,j))
     ty=T0+sum(rh)+40
-    text(sl,M,ty,CW,36,para('実習こそ、県内の他社には伝えられない魅力を、プログラムに落とし込む',27,INK,True,lh=1.3),name='魅力見出し')
+    text(sl,M,ty,CW,36,para('エフビーの実習ならではの、3つの魅力',27,INK,True,lh=1.3),name='魅力見出し')
     cy=ty+56; ch=B0-cy; cw=(CW-2*28)/3
-    pts=[('成長産業の上場企業','その根本となる理念がある'),('ニーズに合わせたサービス展開','ご利用者さんに合わせた、実習経験の幅'),('ダイバーシティな環境','女性・技能実習生の採用など（例：県内の女性管理職の割合No.1）')]
+    pts=[('成長産業の上場企業','その根本となる理念がある'),('ニーズに合わせたサービス展開','ご利用者さんに合わせた、実習経験の幅'),('ダイバーシティな環境','女性や技能実習生など、多様な人が活躍できる環境')]
     for i,(h,d) in enumerate(pts):
         x=M+i*(cw+28); card(sl,x,cy,cw,ch,name=f'カード_{h}')
         dot(sl,x+34+26,cy+ch/2,52,ORG if i==2 else TEAL2,'番号'); text(sl,x+34,cy+ch/2-26,52,52,para(str(i+1),26,'FFFFFF',True,lh=1.1),align='c',anchor='middle',name=f'番号{i+1}')
         text(sl,x+110,cy+12,cw-140,ch-24,[para(h,23,TEALD,True,after=2,lh=1.3),para(d,18,INK,lh=1.4)],anchor='middle',name=f'魅力_{i+1}')
-    note(sl,'※ 他社の記載は公開情報の要約です。県内の女性管理職割合などの実績は、根拠資料の確認が必要です。')
+    note(sl,'※ 他法人の記載は、公開情報をもとにした要約です。')
     return sl
 
 # ====================== 9. エフビー流の学び ======================
@@ -462,12 +475,12 @@ def s_learn():
             a=shape(sl,MSO_SHAPE.RIGHT_ARROW,x+cw+6,cy+ch/2-22,gap-12,44,'2E9E8A',None,name='矢印')
     by=B0-76; a=shape(sl,MSO_SHAPE.LEFT_ARROW,M,by,CW,76,'D4EEE6',None,name='戻り矢印'); a.adjustments[0]=0.5; a.adjustments[1]=0.9
     text(sl,M+90,by,CW-120,76,para('④ 振り返りから、次の ① へ　体験をくり返しながら、学びを深めていく',22,TEALD,True,lh=1.2),align='c',anchor='middle',name='戻り矢印文字')
-    note(sl,'※ 文章はサイト上でも仮の内容です（決まり次第、差し替え）。')
+    note(sl,'※ 内容は検討中のものです。')
     return sl
 
 # ====================== 10. プログラム ======================
 def s_program():
-    sl=new_slide('実習プログラム','1日で、5日間で。目的に合わせて選べる2つのプログラム',notes='1DAYと5DAYS（P25・P26）。')
+    sl=new_slide('実習プログラム','1日で、5日間で。目的に合わせて選べる2つのプログラム',notes='')
     gap=32; lw_=(CW-gap)*0.52; rw=CW-gap-lw_
     def head(x,w,tag,t1,t2,col):
         shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,x,T0,w,84,col,None,rad=24,name=f'帯_{tag}')
@@ -494,20 +507,20 @@ def s_program():
     by=y0+4*(rh+rg); bx=M+lw_+gap
     shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,bx,by,rw,rh,'FFF3E4',None,rad=16,name='標準化ボックス')
     text(sl,bx+30,by+10,rw-60,rh-20,[para('体験はサイトへ、運営は標準化',22,ORGD,True,after=4,lh=1.3),para('体験・感想は後日、実習サイトに掲載。学習シートを用意し、プログラムを標準化します。',17,INK,lh=1.45)],anchor='middle',name='標準化本文')
-    note(sl,'※ プログラムの内容・日程はサイト上でも「調整中」です。')
+    note(sl,'※ プログラムの内容・日程は調整中です。')
     return sl
 
 # ====================== 11. 受け入れ体制 ======================
 def s_system():
-    sl=new_slide('実習の受け入れ体制','誰が担当しても伝わる、再現性の高い受け入れの仕組み',notes='P27：実習の受け入れ体制。')
+    sl=new_slide('実習の受け入れ体制','誰が担当しても伝わる、再現性の高い受け入れの仕組み',notes='')
     lw_=520; shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,M,T0,lw_,B0-T0,TEAL,None,rad=24,name='方針')
-    text(sl,M+48,T0+48,lw_-96,B0-T0-96,[para('実習コンテンツ（体制）',19,'EAF8F4',True,after=30,lh=1.3,spc=2),
+    text(sl,M+48,T0+48,lw_-96,B0-T0-96,[para('実習の運営体制',19,'EAF8F4',True,after=30,lh=1.3,spc=2),
         para('誰が担当しても、温かさとメッセージが伝わる。',38,'FFFFFF',True,after=36,lh=1.45),
         para('「再現性の高い仕組み」をつくります。学生向けの学習シートなどを用意し、プログラムを標準化します。',21,'F0FBF8',lh=1.7)],name='方針本文')
     items=[('メンター体制','現場スタッフを「実習メンター」として配置。学生1〜2名につき1名が、親身に伴走します。',TEAL2,TEALD),
      ('標準動画（ツール）','「ショート導入動画」などを活用。誰が説明しても、エフビーの温かさや社風がストレートに伝わります。',TEAL2,TEALD),
-     ('実習生の声の資産化','リアルな体験談・本音の感想をWeb上に蓄積・公開。次年度の学生や学校（教授・就職課）への開拓ツールに。',ORG,ORGD),
-     ('年間PDCAの循環','定期的に受け入れと振り返りを回し、学校や地域とのつながりを広げていきます。',ORG,ORGD)]
+     ('実習生の声の資産化','リアルな体験談・本音の感想を、Web上に蓄積・公開。次年度の学生や学校（教授・就職課）にも届けます。',ORG,ORGD),
+     ('年間PDCAの循環','受け入れと振り返りを定期的にくり返し、学校や地域とのつながりを広げていきます。',ORG,ORGD)]
     gx=M+lw_+32; gw=(W-M-gx-32)/2; gh=(B0-T0-32)/2
     for i,(h,d,c,dk) in enumerate(items):
         x=gx+(i%2)*(gw+32); y=T0+(i//2)*(gh+32)
@@ -515,7 +528,7 @@ def s_system():
         dot(sl,x+36+28,y+38+28,56,c,'番号'); text(sl,x+36,y+38,56,56,para(str(i+1),28,'FFFFFF',True,lh=1.1),align='c',anchor='middle',name=f'番号{i+1}')
         text(sl,x+116,y+38,gw-150,56,para(h,27,dk,True,lh=1.2),anchor='middle',name=f'見出し_{h}')
         text(sl,x+36,y+122,gw-72,gh-140,para(d,23,INK,lh=1.65),name=f'説明_{h}')
-    note(sl,'出典：1023採用定例資料（実習の受け入れ体制）。')
+    note(sl,'出典：エフビー介護サービス。')
     return sl
 
 # ====================== 12. 流れ & サイト ======================
@@ -540,7 +553,7 @@ def s_flow():
         text(sl,x+24,ty+46,tw-48,th-60,[para(l,23,INK,True,lh=1.3,after=(8 if k==len(h.split('\n'))-1 else 0)) for k,l in enumerate(h.split('\n'))]+[para(d,17,SUB,lh=1.5)],name=f'タイル本文_{h}')
     oy=B0-76; card(sl,M,oy,CW,76,fill='F6F9F8',rad=16,name='そのほか')
     text(sl,M+36,oy,CW-72,76,para('',10,runs=[('そのほか　',{'size':21,'bold':True,'color':TEALD}),('よくある質問／個人情報の取扱い／気になるキーワードから記事を探す／実習の申込フォーム',{'size':20})],lh=1.3),anchor='middle',name='そのほか本文')
-    note(sl,'※ 申込フォーム・SNS・問い合わせ先は準備中です。記事の内容はサンプルです。')
+    note(sl,'※ 申込フォーム・SNS・問い合わせ先は準備中です。')
     return sl
 
 # ====================== 13. 拠点 ======================
@@ -577,7 +590,7 @@ def s_area():
     note(sl,'※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
     return sl
 
-for f in (s_ring,s_loop,s_overview,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area): f()
+for f in (s_ring,s_loop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area,s_overview): f()
 N=len(prs.slides)
 for k,sl in enumerate(prs.slides,1):
     text(sl,W-M-120,B0+24,120,22,para(f'{k} / {N}',15,GRAY,lh=1.3),align='r',name='ページ番号')
