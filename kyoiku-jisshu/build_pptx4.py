@@ -47,8 +47,8 @@ cols=[('自宅で暮らし続ける','自宅での生活を支援',['居宅介�
 for i,(h,s,items,c) in enumerate(cols):
     x=64+i*544; card(x,586,514,278)
     b.rect(x+30,610,8,60,c,MSO_SHAPE.ROUNDED_RECTANGLE,0.5).name='色バー'
-    b.text(x+54,606,440,34,h,24 if len(h)<12 else 22,TEALD if c!=ORG else ORGD,True,name=f'見出し_{h}')
-    b.text(x+54,642,440,30,s,19,SUB,name=f'補足_{h}')
+    b.text(x+36,606,460,34,h,24 if len(h)<12 else 22,TEALD if c!=ORG else ORGD,True,name=f'見出し_{h}')
+    b.text(x+36,642,460,30,s,19,SUB,name=f'補足_{h}')
     b.text(x+36,700,450,150,['・'+t for t in items],21,INK,ls=1.5,name=f'内容_{h}')
 note('※ このほか、デイサービス（通い）・訪問看護で7種。出典：企業説明会資料、経営者ヒアリング、実習サイトの掲載内容。')
 m3.post(sl); m3.finish(sl)
