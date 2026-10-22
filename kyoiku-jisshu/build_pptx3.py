@@ -188,7 +188,7 @@ finish(sl)
 from pptx.enum.shapes import MSO_SHAPE_TYPE
 from pptx.dml.color import RGBColor
 REMOVE={'ヘッダー帯','色バー','カード色バー','上端バー'}
-for sld in b.prs.slides:
+def post(sld):
     for shp in list(sld.shapes):
         n=shp.name
         if n in REMOVE:
@@ -217,5 +217,6 @@ for sld in b.prs.slides:
     poly([(1400,134),(1545,84),(1690,134)],'8ACFC0','ヘッダー山2',5)
     for er in sld.shapes._spTree.iter(qn('a:effectRef')): er.set('idx','0')
 
+for _s in b.prs.slides: post(_s)
 b.prs.save('共育実習_図解.pptx')
 print(len(b.prs.slides.__iter__.__self__._sldIdLst))
