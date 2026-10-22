@@ -161,7 +161,8 @@ def s_cover():
     hline(sl,124,500,300,500,'FCE08E',4,name='ライン')
     text(sl,120,540,820,160,[para('学ぶ人も、迎える人も、地域も。',38,'FFFFFF',True,lh=1.5),para('みんなが共に育つ、ケアの現場の実習。',38,'FFFFFF',True,lh=1.5)],name='キャッチ')
     text(sl,120,820,900,34,para('大学の先生・学生のみなさまへ',22,'EAF8F4',True,lh=1.3,spc=2),name='宛名')
-    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,1010,130,640,710,'A6DDD1',None,rad=40,name='イラスト枠（公式LINEバナーのイラストを配置）')
+    w_=860; h_=w_*490/1180
+    p=sl.shapes.add_picture('cover_illust.png',px(W-100-w_),px(150),px(w_),px(h_)); p.name='表紙イラスト（公式LINEバナーより）'
     return sl
 
 def s_vision():
@@ -327,8 +328,12 @@ def s_pop():
     yrs=list(range(1947,2101)); cd=CategoryChartData(); cd.categories=[str(y) for y in yrs]
     act=POP_ACT+[None]*(len(yrs)-len(POP_ACT))
     prj=[None]*len(POP_ACT)+POP_PRJ2+[None]*30
-    un=[None]*(len(POP_ACT)+len(POP_PRJ2))+[UN_POP.get(y) for y in range(2071,2101)]
-    cd.add_series('実績',act); cd.add_series('推計（社人研）',prj); cd.add_series('参考（国連・5年ごと）',un)
+    anc={2070:8700,**UN_POP}; ks=sorted(anc)
+    def _itp(y):
+        a=max(k for k in ks if k<=y); b=min(k for k in ks if k>=y)
+        return anc[a] if a==b else round(anc[a]+(anc[b]-anc[a])*(y-a)/(b-a))
+    un=[None]*(len(POP_ACT)+len(POP_PRJ2))+[_itp(y) for y in range(2071,2101)]
+    cd.add_series('実績',act); cd.add_series('推計（社人研）',prj); cd.add_series('参考（国連推計。5年ごとの値を結んだ年次）',un)
     cx,cy,cw,chh=M-8,T0+30,CW+16,B0-T0-30
     gf=sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED,px(cx),px(cy),px(cw),px(chh),cd); gf.name='総人口グラフ'; ch=gf.chart
     from pptx.enum.chart import XL_LEGEND_POSITION
@@ -344,7 +349,7 @@ def s_pop():
     text(sl,xi(2050)-116,T0+110,244,72,[para('2050年',17,'FFF4EA',True,lh=1.3),para('約1億469万人',28,'FFFFFF',True,lh=1.2)],anchor='middle',name='吹き出し文_2050')
     bubble(sl,xi(2100)-300,T0+176,290,84,xi(2100)-6,yv(7364)-6,'E9A56B','吹き出し_2100')
     text(sl,xi(2100)-286,T0+182,262,72,[para('2100年',17,'FFF4EA',True,lh=1.3),para('約7,364万人',28,'FFFFFF',True,lh=1.2)],anchor='middle',name='吹き出し文_2100')
-    note(sl,'出典：総務省統計局／社人研 令和5年推計・出生中位（〜2070年）／国連 World Population Prospects（2075年〜、推計方法が異なる参考値）')
+    note(sl,'出典：総務省統計局／社人研 令和5年推計・出生中位（〜2070年）／国連 World Population Prospects（2075年〜は5年ごとの値を直線で結んだ参考値）')
     return sl
 
 # ====================== 介護の市場（5年ごと） ======================
@@ -417,7 +422,6 @@ def s_scale():
         x=rx+i*sw
         if i: hline(sl,x-14,T0+90,x-14,T0+188,LINE,1,name='区切り')
         text(sl,x,T0+78,sw-24,150,[para('',10,runs=[(n,{'size':72,'bold':True,'color':c})],lh=1.1,after=0),para(u,22,INK,True,lh=1.3,after=4)],name=f'数字_{u}')
-    text(sl,rx,T0+ph-60,rw,34,para('長野57・新潟15・埼玉15・群馬12・栃木10',20,SUB,lh=1.4),name='県別')
     # services
     sy=T0+ph+34
     text(sl,M,sy,900,36,para('暮らし方に合わせて選べる、7つのサービス',28,INK,True,lh=1.3),name='サービス見出し')
@@ -662,7 +666,7 @@ def s_area():
     note(sl,'※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
     return sl
 
-for f in (s_cover,s_vision,s_story,s_ring,s_loop,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area): f()
+for f in (s_cover,s_vision,s_story,s_ring,s_loop,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow): f()
 N=len(prs.slides)
 for k,sl in enumerate(prs.slides,1):
     if k==1: continue
