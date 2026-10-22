@@ -185,9 +185,14 @@ def s_cover_mint():
     hline(sl,124,500,300,500,'FCE08E',4,name='ライン')
     text(sl,120,540,820,160,[para('学ぶ人も、迎える人も、地域も。',38,'FFFFFF',True,lh=1.5),para('みんなが共に育つ、ケアの現場の実習。',38,'FFFFFF',True,lh=1.5)],name='キャッチ')
     text(sl,120,820,900,34,para('大学の先生・学生のみなさまへ',22,'EAF8F4',True,lh=1.3,spc=2),name='宛名')
-    base=905
-    for nm,x,h in (('selfie',1040,250),('boy',1300,240),('elder',1440,300)):
-        im=Image.open('ill/'+nm+'.png'); _ill(sl,nm,x,base-h,h=h)
+    dot(sl,1500,270,330,'8ACFC0','太陽'); dot(sl,1500,270,200,'A6DDD1','太陽中')
+    for cx,cy,d,c in ((1110,250,26,'FCE08E'),(1250,170,16,'FFFFFF'),(1680,520,22,'FCE08E'),(1000,470,14,'F7AB67'),(1640,160,18,'F7AB67'),(1370,470,14,'FFFFFF'),(1560,600,12,'FCE08E')): dot(sl,cx,cy,d,c,'飾り')
+    _ill(sl,'van',1010,360,w=250)
+    _ill(sl,'picnic',1200,520,w=230)
+    _ill(sl,'care',1470,470,h=150)
+    base=905; x=770
+    for nm,h in (('runner',190),('selfie',215),('boy',205),('elder',235),('runners',130)):
+        x+=_ill(sl,nm,x,base-h,h=h)+8
     return sl
 
 def s_cover_b():
