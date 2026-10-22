@@ -84,11 +84,11 @@ def thumb1():
         s+=blob(cx,cy,130,72,fill,cy,tail)
         p,_=text_path(txt,0,0,52,tcol,sw=2.5); w=text_width(txt,52)
         s+=f'<g transform="translate({cx-w/2:.0f} {cy+18}) rotate(-6)">{p}</g>'
-    t1,_=text_path('新製品',0,0,230,DD,sw=14)
-    t2,_=text_path('リリース会議',0,0,140,DD,sw=10)
+    t1,_=text_path('製氷機',0,0,230,DD,sw=14)
+    t2,_=text_path('インターンシップ',0,0,112,DD,sw=10)
     s+=f'<g transform="translate(360 395) rotate(-6) skewX(-12)">{t1}</g>'
     s+=f'<g transform="translate(330 540) rotate(-6) skewX(-12)">{t2}</g>'
-    l,_=text_path('常設インターン',0,0,70,DD,sw=5)
+    l,_=text_path('ホシザキ　常設IS',0,0,66,DD,sw=5)
     s+=f'<g transform="translate(90 170) rotate(-8) skewX(-12)">{l}</g>'
     s+=star(1390,740,34,S,rot=0.3,n=5,ri=0.45)+star(1450,690,18,I,n=5,ri=0.45)
     s+=peng(1480,860,1.0,arm_up=True)
