@@ -664,7 +664,7 @@ def s_area():
     note(sl,'※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
     return sl
 
-for f in (s_cover,s_vision,s_story,s_ring,s_loop,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow): f()
+for f in (s_cover,s_vision,s_story,s_ring,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_loop,s_flow): f()
 N=len(prs.slides)
 for k,sl in enumerate(prs.slides,1):
     if k==1: continue
