@@ -9,6 +9,7 @@
   "order": [
     "cover",
     "agenda",
+    "summary",
     "target",
     "personas",
     "market",
@@ -47,6 +48,7 @@
     "is2-cardimg",
     "is2-timetable",
     "is3-design",
+    "is3-thumb",
     "is3-flow",
     "is3-ready",
     "next",
