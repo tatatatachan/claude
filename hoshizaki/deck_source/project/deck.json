@@ -31,17 +31,24 @@
     "is1-thumb",
     "is1-roles",
     "is1-team",
-    "is1-game",
-    "is1-cards",
+    "is1-race",
+    "is1-score",
+    "is1-shop",
+    "is1-measure",
     "is1-cardimg",
     "is1-timetable",
     "is2-design",
     "is2-thumb",
+    "is2-open",
     "is2-rules",
     "is2-pairs",
     "is2-items",
+    "is2-close",
     "is2-cardimg",
     "is2-timetable",
+    "is3-design",
+    "is3-flow",
+    "is3-ready",
     "next",
     "sources"
   ],
@@ -71,7 +78,7 @@
       "start": "seedsneeds"
     },
     "plan": {
-      "description": "2本のインターンの設計・カード・タイムテーブルと、次のステップ。",
+      "description": "2本のインターンと特別枠の設計・カード・タイムテーブル、次のステップ。",
       "start": "is1-design"
     },
     "is": {

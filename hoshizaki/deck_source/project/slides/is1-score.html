@@ -1,0 +1,36 @@
+<section id="is1-score" data-transition="fade" style="background:#F4F7F9;color:#3d4b5f;font-family:'IBM Plex Sans JP','Hiragino Sans',sans-serif;padding:52px 160px 100px 110px;display:flex;flex-direction:column;gap:16px">
+<div style="position:absolute;left:1824px;top:0px;width:96px;height:1080px;background:#004767"></div>
+<svg aria-label="ペンギンのマーク（仮）" width="60" height="80" viewBox="0 0 60 80" style="position:absolute;left:1842px;top:44px;width:60px;height:80px"><ellipse cx="30" cy="46" rx="22" ry="30" fill="#C2E6FA"/><ellipse cx="30" cy="52" rx="14" ry="22" fill="#ffffff"/><circle cx="22" cy="28" r="2.4" fill="#004767"/><circle cx="38" cy="28" r="2.4" fill="#004767"/><path d="M26 33 L34 33 L30 40 Z" fill="#F59E0B"/></svg>
+<p style="position:absolute;left:1824px;top:984px;width:96px;text-align:center;font-family:'BIZ UDPMincho','Hiragino Mincho ProN',serif;font-size:40px;color:#ffffff">26</p>
+<h2 style="font-size:52px;font-weight:700;line-height:1.3;color:#0087C6">① 採点ロジック：速さ・冷たさ・質</h2>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding-bottom:12px"><p style="font-size:44px;font-weight:700;line-height:1.35;color:#111111;text-align:center">お客様カードの重みで、勝ち方が変わる</p><p style="font-size:28px;line-height:1.6;text-align:center">同じ結果でも、標準ならA、急ぎならA、冷たさ命ならCが1位になる</p></div>
+<div style="padding:12px 20px;background:#ffffff;border-radius:8px;box-shadow:0 2px 10px rgba(0,71,103,0.10)">
+<table style="font-size:22px;line-height:1.35;color:#3d4b5f">
+<tr style="background:#004767"><th style="width:16%;color:#ffffff">得点</th><th style="width:34%;color:#ffffff">何を測るか</th><th style="width:26%;color:#ffffff">式（0〜100点）</th><th style="width:24%;color:#ffffff">目安</th></tr>
+<tr><td><b>速さ</b></td><td>氷がスタート箱を出て、ゴールの秤に載るまで（秒、ペナルティ込み）</td><td>100×(360−T)/(360−90)</td><td>90秒で100点、360秒で0点</td></tr>
+<tr style="background:#F4F7F9"><td><b>冷たさ（温度）</b></td><td>氷の芯（深さ5cm）の温度の上がり ΔT（℃）</td><td>100×(1−ΔT/6)</td><td>上がらなければ100点、6℃上昇で0点</td></tr>
+<tr><td><b>冷たさの質</b></td><td>残量50%、外観20%、持ち30%</td><td>100×(0.5×残量+0.2×外観+0.3×持ち)</td><td>残量＝到着重量／出発重量 0.92〜0.99 を0〜1に。持ち＝到着後5分の減少が少ないほど高い</td></tr>
+<tr style="background:#F4F7F9"><td><b>コスト</b></td><td>資材費 C（コイン）</td><td>100×(1000−C)/600</td><td>400以下で100点、1000で0点</td></tr>
+</table>
+</div>
+<div style="display:flex;gap:16px;align-items:flex-start"><div style="flex:2"><p style="font-size:26px;font-weight:700;color:#0087C6;padding-bottom:4px">お客様カードで重みが変わる</p><div style="padding:12px 20px;background:#ffffff;border-radius:8px;box-shadow:0 2px 10px rgba(0,71,103,0.10)">
+<table style="font-size:22px;line-height:1.35;color:#3d4b5f">
+<tr style="background:#004767"><th style="width:28%;color:#ffffff">お客様カード</th><th style="width:18%;color:#ffffff">速さ</th><th style="width:18%;color:#ffffff">温度</th><th style="width:18%;color:#ffffff">質</th><th style="width:18%;color:#ffffff">コスト</th></tr>
+<tr><td><b>標準</b></td><td>30</td><td>30</td><td>30</td><td>10</td></tr>
+<tr style="background:#F4F7F9"><td><b>急ぎ</b></td><td>50</td><td>20</td><td>20</td><td>10</td></tr>
+<tr><td><b>冷たさ命</b></td><td>20</td><td>50</td><td>20</td><td>10</td></tr>
+<tr style="background:#F4F7F9"><td><b>品質重視</b></td><td>20</td><td>20</td><td>50</td><td>10</td></tr>
+<tr><td><b>コスパ</b></td><td>25</td><td>25</td><td>25</td><td>25</td></tr>
+</table>
+</div></div><div style="flex:3"><p style="font-size:26px;font-weight:700;color:#0087C6;padding-bottom:4px">計算例（Bは−5のペナルティ込み）</p><div style="padding:12px 20px;background:#ffffff;border-radius:8px;box-shadow:0 2px 10px rgba(0,71,103,0.10)">
+<table style="font-size:22px;line-height:1.35;color:#3d4b5f">
+<tr style="background:#004767"><th style="width:10%;color:#ffffff">チーム</th><th style="width:12%;color:#ffffff">速さ</th><th style="width:12%;color:#ffffff">温度</th><th style="width:12%;color:#ffffff">質</th><th style="width:14%;color:#ffffff">コスト</th><th style="width:12%;color:#ffffff">標準</th><th style="width:12%;color:#ffffff">急ぎ</th><th style="width:16%;color:#ffffff">冷たさ命</th></tr>
+<tr><td><b>A</b></td><td>77.8</td><td>65.0</td><td>73.3</td><td>80.0</td><td>72.8</td><td>74.5</td><td>70.7</td></tr>
+<tr style="background:#F4F7F9"><td><b>B</b></td><td>87.0</td><td>43.3</td><td>54.0</td><td>100.0</td><td>60.3</td><td>68.0</td><td>54.9</td></tr>
+<tr><td><b>C</b></td><td>55.6</td><td>80.0</td><td>90.4</td><td>23.3</td><td>70.1</td><td>64.2</td><td>71.5</td></tr>
+<tr style="background:#F4F7F9"><td><b>D</b></td><td>68.5</td><td>56.7</td><td>67.5</td><td>66.7</td><td>64.5</td><td>65.8</td><td>62.2</td></tr>
+</table>
+</div></div></div>
+<p style="position:absolute;left:110px;top:1004px;width:1660px;text-align:right;font-size:24px;color:#3d4b5f">数値は案。試走で、T_MAX、ΔT_MAX、残量の範囲、持ちの上限を調整する</p>
+<aside>総合点は、4つの得点を、お客様カードの重みで足し合わせ、ペナルティを引いたものです。落下は−5点（最大−15）、走る・ルート違反は+10秒、素手で持つと−3点です。同点は、質、温度の順で決めます。計算の詳細は、spd/氷リレーレース_ロジック詳細.md にあります。</aside>
+</section>

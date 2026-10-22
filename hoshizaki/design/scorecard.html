@@ -1,0 +1,125 @@
+<title>氷リレーレース スコアカード</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;700&family=Barlow:wght@600;700&display=swap">
+<style>
+/* layout: 計測値を入れると、その場で得点と順位が出る1画面の採点表。上に設定、中央に表、下に順位 */
+:root{--bg:#F1F5F8;--fg:#0A2433;--sub:#4B6070;--line:#D5E1E9;--card:#ffffff;--accent:#0087C6;--deep:#001F33;--amber:#F59E0B;--field:#F7FAFC;--win:#E3F3FC;
+--display:'Dela Gothic One','Hiragino Sans','Yu Gothic',sans-serif;--body:'Zen Kaku Gothic New','Hiragino Sans','Yu Gothic',sans-serif;--num:'Barlow','Hiragino Sans',sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#07151F;--fg:#E8F2F8;--sub:#9DB4C3;--line:#1B3445;--card:#0D2230;--accent:#4DC3FF;--deep:#4DC3FF;--field:#0A1C29;--win:#10344A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#07151F;--fg:#E8F2F8;--sub:#9DB4C3;--line:#1B3445;--card:#0D2230;--accent:#4DC3FF;--deep:#4DC3FF;--field:#0A1C29;--win:#10344A;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.6;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+h1{margin:0;font:400 clamp(26px,4.4vw,42px)/1.2 var(--display);color:var(--deep)}
+.lead{margin:0;color:var(--sub);max-width:46em}
+.panel{background:var(--card);border:1px solid var(--line);padding:16px 18px;min-width:0}
+.panel h2{margin:0 0 10px;font-size:15px;letter-spacing:.06em;color:var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
+label{display:flex;flex-direction:column;gap:3px;font-size:13px;color:var(--sub)}
+select,input{font:inherit;font-size:15px;color:var(--fg);background:var(--field);border:1px solid var(--line);padding:6px 8px;min-width:0}
+input[type=number]{width:96px;font-family:var(--num);font-variant-numeric:tabular-nums}
+input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.weights{display:flex;gap:10px;flex-wrap:wrap;font-size:14px}
+.weights span{background:var(--win);padding:3px 10px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:900px;font-variant-numeric:tabular-nums}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;font-size:14px}
+th{font-size:12px;color:var(--sub);letter-spacing:.04em}
+td.num{font-family:var(--num);font-size:16px;text-align:right}
+td.team{font-family:var(--display);font-size:20px;color:var(--deep)}
+.rank{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.card.first{border:2px solid var(--amber)}
+.card .pos{font:400 14px var(--display);color:var(--accent)}
+.card .tot{font:700 44px/1 var(--num);color:var(--deep)}
+.card .name{font:400 22px var(--display)}
+.bars{display:flex;flex-direction:column;gap:3px;margin-top:6px}
+.bar{display:grid;grid-template-columns:4.2em 1fr 2.6em;gap:6px;align-items:center;font-size:12px;color:var(--sub)}
+.bar i{display:block;height:8px;background:var(--accent)}
+.bar b{font-family:var(--num);color:var(--fg);text-align:right}
+.note{font-size:13px;color:var(--sub)}
+details summary{cursor:pointer;font-weight:700;color:var(--accent)}
+.k{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
+</style>
+<div class="wrap">
+<header>
+<h1>氷リレーレース スコアカード</h1>
+<p class="lead">レース直後の計測値を入れると、速さ・冷たさ（温度）・冷たさの質・コストの得点と、お客様カードごとの総合点、順位が出ます。数値の設定は案で、試走で調整します。</p>
+</header>
+
+<section class="panel">
+<h2>お客様カード</h2>
+<div class="row">
+<label for="card">今回のカード<select id="card"><option>標準</option><option>急ぎ</option><option>冷たさ命</option><option>品質重視</option><option>コスパ</option></select></label>
+<div class="weights" id="weights" aria-live="polite"></div>
+</div>
+</section>
+
+<section class="panel">
+<h2>計測値</h2>
+<div class="tablewrap"><table id="tbl"><thead><tr><th>チーム</th><th>タイム（秒）</th><th>ペナ秒</th><th>出発の芯温度（℃）</th><th>到着の芯温度（℃）</th><th>出発重量（kg）</th><th>到着重量（kg）</th><th>欠点数（0〜5）</th><th>5分の減少（g）</th><th>資材費（コイン）</th><th>減点（点）</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p class="note">欠点は、割れ・欠け・濁り・濡れ・変形を各1点。減点は、氷の落下（−5点/回、最大−15）、素手で持つ（−3点/回）。</p>
+</section>
+
+<section>
+<div class="rank" id="rank" aria-live="polite"></div>
+</section>
+
+<details class="panel">
+<summary>得点の設定（試走で調整）</summary>
+<div class="k">
+<label for="tmin">最速の秒<input id="tmin" type="number" value="90"></label>
+<label for="tmax">0点の秒<input id="tmax" type="number" value="360"></label>
+<label for="dtmax">0点になる温度の上がり（℃）<input id="dtmax" type="number" step="0.5" value="6"></label>
+<label for="rlo">残量の下限（0点）<input id="rlo" type="number" step="0.01" value="0.92"></label>
+<label for="rhi">残量の上限（満点）<input id="rhi" type="number" step="0.01" value="0.99"></label>
+<label for="l5">持ち 0点の減少（g）<input id="l5" type="number" value="200"></label>
+<label for="cfull">コスト満点の資材費<input id="cfull" type="number" value="400"></label>
+<label for="czero">コスト0点の資材費<input id="czero" type="number" value="1000"></label>
+</div>
+<p class="note">冷たさの質 ＝ 100×(0.5×残量＋0.2×外観＋0.3×持ち)。外観 ＝ (5−欠点)/5。同点のときは、冷たさの質、次に冷たさ（温度）で決める。</p>
+</details>
+</div>
+<script>
+(function(){
+var W={'標準':[30,30,30,10],'急ぎ':[50,20,20,10],'冷たさ命':[20,50,20,10],'品質重視':[20,20,50,10],'コスパ':[25,25,25,25]};
+var NAMES=['A','B','C','D'];
+var SAMPLE=[[150,0,-15,-12.9,10,9.75,1,80,520,0],[125,0,-15,-11.6,10,9.62,2,120,380,5],[210,0,-15,-13.8,10,9.85,0,40,860,0],[175,0,-15,-12.4,10,9.70,1,95,600,0]];
+function $(id){return document.getElementById(id)}
+function clamp(x){return Math.max(0,Math.min(1,x))}
+var rows=$('rows');
+NAMES.forEach(function(n,i){
+  var tr=document.createElement('tr');
+  var h='<td class="team">'+n+'</td>';
+  SAMPLE[i].forEach(function(v,j){h+='<td><input id="f'+i+'_'+j+'" type="number" step="any" value="'+v+'" aria-label="'+n+' '+j+'"></td>'});
+  tr.innerHTML=h; rows.appendChild(tr);
+});
+function P(id){return parseFloat($(id).value)}
+function calc(i){
+  var f=function(j){return parseFloat($('f'+i+'_'+j).value)||0};
+  var T=f(0)+f(1), dT=f(3)-f(2), R=f(4)>0?f(5)/f(4):0, defects=f(6), L5=f(7), C=f(8), pen=f(9);
+  var St=100*clamp((P('tmax')-T)/(P('tmax')-P('tmin')));
+  var Sc=100*clamp(1-dT/P('dtmax'));
+  var qm=clamp((R-P('rlo'))/(P('rhi')-P('rlo'))), ql=clamp((5-defects)/5), qh=clamp(1-L5/P('l5'));
+  var Sq=100*(0.5*qm+0.2*ql+0.3*qh);
+  var Sd=100*clamp((P('czero')-C)/(P('czero')-P('cfull')));
+  var w=W[$('card').value];
+  var tot=(w[0]*St+w[1]*Sc+w[2]*Sq+w[3]*Sd)/100-pen;
+  return {n:NAMES[i],St:St,Sc:Sc,Sq:Sq,Sd:Sd,tot:tot,T:T,dT:dT,R:R};
+}
+function render(){
+  var w=W[$('card').value];
+  $('weights').innerHTML='<span>速さ '+w[0]+'</span><span>冷たさ（温度） '+w[1]+'</span><span>冷たさの質 '+w[2]+'</span><span>コスト '+w[3]+'</span>';
+  var res=NAMES.map(function(_,i){return calc(i)});
+  res.sort(function(a,b){return (b.tot-a.tot)||(b.Sq-a.Sq)||(b.Sc-a.Sc)});
+  var out='';
+  res.forEach(function(r,k){
+    function bar(l,v){return '<div class="bar"><span>'+l+'</span><i style="width:'+v.toFixed(0)+'%"></i><b>'+v.toFixed(1)+'</b></div>'}
+    out+='<div class="card'+(k==0?' first':'')+'"><span class="pos">'+(k+1)+'位</span><span class="name">チーム '+r.n+'</span><span class="tot">'+r.tot.toFixed(1)+'</span><span class="note">'+Math.floor(r.T/60)+'分'+String(Math.round(r.T%60)).padStart(2,'0')+'秒 ／ 上がり '+r.dT.toFixed(1)+'℃ ／ 残量 '+(r.R*100).toFixed(1)+'%</span><div class="bars">'+bar('速さ',r.St)+bar('温度',r.Sc)+bar('質',r.Sq)+bar('コスト',r.Sd)+'</div></div>';
+  });
+  $('rank').innerHTML=out;
+}
+document.addEventListener('input',render); document.addEventListener('change',render);
+render();
+window.__calc=calc;
+})();
+</script>
