@@ -17,48 +17,34 @@ band=fb.convert_to_shape(); fill(band,'54C5AF'); noline(band); band.name='ヘッ
 text(64,30,700,30,'施策　実習',20,'D9F6EE',True,spacing=4,name='小見出し')
 text(64,60,1200,70,'どうブランドを育てていくか',46,'FFFFFF',True,name='タイトル')
 
-steps=[ # a0,a1,color,dark,ring,head,desc,side,ly
- (270,360,'#3fb39d','1F7D6C','1 実習','共育実習を行う',['高校・専門学校・大学で','共育実習を実施します。'],'L',cy-122),
- (0,90,'#86d6c4','1F7D6C','2 声','声が集まる',['学生・先生・社員・','利用者さんの声が集まります。'],'R',cy-122),
- (90,180,'#f28c3c','C8651A','3 掲載','実習サイトに載せる',['プログラム内容と','口コミを掲載します。'],'R',cy+122),
- (180,270,'#2e9e8a','1F7D6C','4 行動','見て、動く',['学校は受け入れを判断し、','次の学生は参加を決めます。'],'L',cy+122),
+steps=[ # color, dark, head, desc, x, y
+ ('#3fb39d','1F7D6C','共育実習を行う',['高校・専門学校・大学で','共育実習を実施します。'],64,180),
+ ('#86d6c4','1F7D6C','声が集まる',['学生・先生・社員・','利用者さんの声が集まります。'],1146,180),
+ ('#f28c3c','C8651A','実習サイトに載せる',['プログラム内容と','口コミを掲載します。'],1146,516),
+ ('#2e9e8a','1F7D6C','見て、動く',['学校は受け入れを判断し、','次の学生は参加を決めます。'],64,516),
 ]
-c=sh.add_shape(MSO_SHAPE.OVAL,px(cx-136),px(cy-136),px(272),px(272)); fill(c,'FFFFFF'); noline(c); shadow(c); c.name='中央円'
-text(cx-120,cy-70,240,32,'実習ブランドが',25,'2E9E8A',True,PP_ALIGN.CENTER,spacing=1,name='中央ミニ見出し')
-text(cx-120,cy-38,240,66,'育つ循環',52,INK,True,PP_ALIGN.CENTER,name='中央タイトル')
-p=rect(cx-90,cy+40,180,38,'F28C3C',MSO_SHAPE.ROUNDED_RECTANGLE,0.5); p.name='帯'
-text(cx-90,cy+40,180,38,'1に戻って循環',19,'FFFFFF',True,PP_ALIGN.CENTER,MSO_ANCHOR.MIDDLE,name='帯文字')
-
-GAP=3; thick=(Ro-Ri)/(2*Ro)*100000
-CW,CH=500,160
-for (a0,a1,col,dark,ring,head,desc,side,ly) in steps:
-    s_=sh.add_shape(MSO_SHAPE.BLOCK_ARC,px(cx-Ro),px(cy-Ro),px(2*Ro),px(2*Ro)); fill(s_,col); noline(s_); s_.name=f'環_{head}'
-    av=s_._element.spPr.find(qn('a:prstGeom')).find(qn('a:avLst'))
-    for g in list(av): av.remove(g)
-    for n,v in (('adj1',((a0+GAP-90)%360)*60000),('adj2',((a1-GAP-90)%360)*60000),('adj3',thick)):
-        etree.SubElement(av,qn('a:gd'),name=n,fmla=f'val {int(v)}')
-    mid=(a0+a1)/2; rm=(Ro+Ri)/2
-    mx=cx+rm*math.sin(math.radians(mid)); my=cy-rm*math.cos(math.radians(mid))
-    rot=mid if (mid<=90 or mid>=270) else mid-180
-    text(mx-80,my-20,160,40,ring,28,'FFFFFF',True,PP_ALIGN.CENTER,MSO_ANCHOR.MIDDLE,spacing=2,rot=rot,name=f'環ラベル_{head}')
-    off=ly-cy; R=Ro+14; dx=math.sqrt(R*R-off*off)
-    left=side=='L'; x=64 if left else 1730-64-CW; y=ly-CH/2
-    ex=cx-dx if left else cx+dx; cedge=x+CW if left else x
-    ln=sh.add_connector(MSO_CONNECTOR.STRAIGHT,px(cedge),px(ly),px(ex),px(ly)); ln.line.color.rgb=b.rgb(col); ln.line.width=Pt(1.8); ln.name=f'接続線_{head}'
-    d=sh.add_shape(MSO_SHAPE.OVAL,px(ex-6),px(ly-6),px(12),px(12)); fill(d,col); noline(d)
-    card=rect(x,y,CW,CH,'FFFFFF',MSO_SHAPE.ROUNDED_RECTANGLE,0.14); shadow(card); card.name=f'カード_{head}'
+CW,CH=520,170
+def arrow(kind,x,y,w,h,col,name):
+    a=sh.add_shape(kind,px(x),px(y),px(w),px(h)); fill(a,col); noline(a); a.name=name
+    a.adjustments[0]=0.5; a.adjustments[1]=0.55; return a
+arrow(MSO_SHAPE.RIGHT_ARROW,600,238,530,64,'#3fb39d','矢印_1から2')
+arrow(MSO_SHAPE.DOWN_ARROW,1378,366,56,134,'#86d6c4','矢印_2から3')
+arrow(MSO_SHAPE.LEFT_ARROW,600,574,530,64,'#f28c3c','矢印_3から4')
+arrow(MSO_SHAPE.UP_ARROW,296,366,56,134,'#2e9e8a','矢印_4から1')
+text(372,414,460,30,'次の共育実習につながる',21,'1F7D6C',True,name='循環ラベル')
+for r_,col in ((112,'D3EEE4'),(86,'A9E0D0'),(60,'54C5AF')):
+    o=sh.add_shape(MSO_SHAPE.OVAL,px(cx-r_),px(418-r_),px(2*r_),px(2*r_)); fill(o,col); noline(o); o.name='広がる輪'
+text(cx-68,384,136,34,'実習',24,'FFFFFF',True,PP_ALIGN.CENTER,MSO_ANCHOR.MIDDLE,name='中央1')
+text(cx-68,414,136,34,'ブランド',24,'FFFFFF',True,PP_ALIGN.CENTER,MSO_ANCHOR.MIDDLE,name='中央2')
+pl=rect(cx-90,534,180,34,'F28C3C',MSO_SHAPE.ROUNDED_RECTANGLE,0.5); pl.name='帯'
+text(cx-90,534,180,34,'回るほど育つ',19,'FFFFFF',True,PP_ALIGN.CENTER,MSO_ANCHOR.MIDDLE,name='帯文字')
+for n,(col,dark,head,desc,x,y) in enumerate(steps,1):
+    card=rect(x,y,CW,CH,'FFFFFF',MSO_SHAPE.ROUNDED_RECTANGLE,0.12); shadow(card); card.name=f'カード_{head}'
     rect(x,y+30,8,CH-60,col,MSO_SHAPE.ROUNDED_RECTANGLE,0.5).name='カード色バー'
-    text(x+36,y+20,440,30,'STEP '+ring[0],18,b.SUB,True,spacing=2,name='STEP')
-    text(x+36,y+46,440,44,head,31,dark,True,name=f'要点_{head}')
-    text(x+36,y+96,440,54,desc,20,INK,ls=1.15,name=f'説明_{head}')
-rm=(Ro+Ri)/2
-for a in (0,90,180,270):
-    gx=cx+rm*math.sin(math.radians(a)); gy=cy-rm*math.cos(math.radians(a))
-    o=sh.add_shape(MSO_SHAPE.OVAL,px(gx-14),px(gy-14),px(28),px(28)); fill(o,'FFFFFF'); noline(o); o.name='循環マーク白'
-    t=math.radians(a); tx_,ty_=math.cos(t),math.sin(t); nx_,ny_=-ty_,tx_
-    tip=(gx+8*tx_,gy+8*ty_); b1=(gx-4*tx_+4*nx_,gy-4*ty_+4*ny_); b2=(gx-4*tx_-4*nx_,gy-4*ty_-4*ny_)
-    fb=sh.build_freeform(px(tip[0]),px(tip[1])); fb.add_line_segments([(px(b1[0]),px(b1[1])),(px(b2[0]),px(b2[1]))],close=True)
-    ch=fb.convert_to_shape(); fill(ch,'2E9E8A'); noline(ch); ch.name='循環マーク矢印'
+    bd=sh.add_shape(MSO_SHAPE.OVAL,px(x+32),px(y+26),px(52),px(52)); fill(bd,col); noline(bd); bd.name='番号'
+    text(x+32,y+26,52,52,str(n),28,'FFFFFF',True,PP_ALIGN.CENTER,MSO_ANCHOR.MIDDLE,name=f'番号文字{n}')
+    text(x+102,y+30,400,44,head,32,dark,True,anchor=MSO_ANCHOR.MIDDLE,name=f'要点_{head}')
+    text(x+36,y+96,470,60,desc,21,INK,ls=1.2,name=f'説明_{head}')
 
 # bottom boxes
 def box(x,w,title,lines,tc,bar,size,tcol):
