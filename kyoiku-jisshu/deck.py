@@ -154,15 +154,13 @@ def s_loop():
 
 def s_cover():
     sl=prs.slides.add_slide(prs.slide_layouts[6])
-    shape(sl,MSO_SHAPE.RECTANGLE,0,0,W,H,BAND,None,name='背景')
-    poly(sl,[(0,973),(0,760),(260,640),(430,740),(640,600),(900,973)],MTN,'山1')
-    text(sl,120,170,900,36,para('エフビー介護サービス',28,'EAF8F4',True,lh=1.3,spc=6),name='小見出し')
-    text(sl,120,230,900,260,para('共育実習',150,'FFFFFF',True,lh=1.15),name='タイトル')
-    hline(sl,124,500,300,500,'FCE08E',4,name='ライン')
-    text(sl,120,540,820,160,[para('学ぶ人も、迎える人も、地域も。',38,'FFFFFF',True,lh=1.5),para('みんなが共に育つ、ケアの現場の実習。',38,'FFFFFF',True,lh=1.5)],name='キャッチ')
-    text(sl,120,820,900,34,para('大学の先生・学生のみなさまへ',22,'EAF8F4',True,lh=1.3,spc=2),name='宛名')
-    w_=860; h_=w_*490/1180
-    p=sl.shapes.add_picture('cover_illust.png',px(W-100-w_),px(150),px(w_),px(h_)); p.name='表紙イラスト（公式LINEバナーより）'
+    shape(sl,MSO_SHAPE.RECTANGLE,0,0,W,H,'DAF3F0',None,name='背景')
+    w_=W; h_=w_*420/1190
+    p=sl.shapes.add_picture('cover_illust.png',0,px(H-h_),px(w_),px(h_)); p.name='表紙イラスト（公式LINEバナーより）'
+    text(sl,100,70,900,34,para('エフビー介護サービス',26,TEALD,True,lh=1.3,spc=6),name='小見出し')
+    text(sl,96,112,1000,200,para('共育実習',140,TEALD,True,lh=1.15),name='タイトル')
+    text(sl,100,300,1000,50,para('学ぶ人も、迎える人も、地域も。みんなが共に育つ、ケアの現場の実習。',30,INK,True,lh=1.4),name='キャッチ')
+    pill(sl,W-100-380,76,380,46,ORG,'宛名帯'); text(sl,W-100-380,76,380,46,para('大学の先生・学生のみなさまへ',20,'FFFFFF',True,lh=1.2),align='c',anchor='middle',name='宛名')
     return sl
 
 def s_vision():
