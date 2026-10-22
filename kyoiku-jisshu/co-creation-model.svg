@@ -1,61 +1,87 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1730" height="936" viewBox="0 0 1730 936" font-family="Hiragino Sans,Noto Sans JP,Noto Sans CJK JP,IPAPGothic,sans-serif">
-<rect width="1730" height="936" fill="#dcf1e1"/>
-<path d="M0,0H1730V140Q1300,180 865,140T0,160Z" fill="#54c5af"/>
-<text x="58" y="58" font-size="22" font-weight="700" letter-spacing="3" fill="#fff">施策①　共育実習</text>
-<text x="58" y="122" font-size="52" font-weight="800" fill="#fff">共育実習の共創モデル</text>
-<circle cx="865" cy="520" r="172" fill="#fff"/>
-<text x="865" y="468" text-anchor="middle" font-size="24" font-weight="700" fill="#2e9e8a">エフビー介護の</text>
-<text x="865" y="548" text-anchor="middle" font-size="76" font-weight="800" fill="#26323a">共育実習</text>
-<rect x="785" y="578" width="160" height="38" rx="19" fill="#f28c3c"/>
-<text x="865" y="605" text-anchor="middle" font-size="22" font-weight="800" letter-spacing="3" fill="#fff">共に育つ</text>
-<path d="M918.1,263.4 A262,262 0 0 1 1060.6,345.7" stroke="#f28c3c" stroke-width="96" stroke-linecap="round" fill="none"/>
-<path id="t0" d="M919.9,254.6 A271,271 0 0 1 1067.3,339.7" fill="none"/>
-<text font-size="30" font-weight="700" letter-spacing="3" fill="#fff"><textPath href="#t0" startOffset="50%" text-anchor="middle">エフビー</textPath></text>
-<line x1="1085.4" y1="288" x2="1216" y2="288" stroke="#f28c3c" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
-<rect x="1230" y="226" width="48" height="7" rx="3.5" fill="#f28c3c"/>
-<text x="1230" y="276" font-size="36" font-weight="800" fill="#26323a">エフビー介護サービス</text>
-<text x="1230" y="314" font-size="22" fill="#44525a">志と実利で営業の差になり、</text>
-<text x="1230" y="347" font-size="22" fill="#44525a">将来の担い手と出会えます。</text>
-<path d="M1113.7,437.7 A262,262 0 0 1 1113.7,602.3" stroke="#f6a45e" stroke-width="96" stroke-linecap="round" fill="none"/>
-<path id="t1" d="M1122.3,434.9 A271,271 0 0 1 1122.3,605.1" fill="none"/>
-<text font-size="30" font-weight="700" letter-spacing="3" fill="#fff"><textPath href="#t1" startOffset="50%" text-anchor="middle">社員</textPath></text>
-<line x1="1185.0" y1="520" x2="1216" y2="520" stroke="#f6a45e" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
-<rect x="1230" y="458" width="48" height="7" rx="3.5" fill="#f6a45e"/>
-<text x="1230" y="508" font-size="36" font-weight="800" fill="#26323a">社員</text>
-<text x="1230" y="546" font-size="22" fill="#44525a">学生から学び、仕事の意味を再発見。</text>
-<text x="1230" y="579" font-size="22" fill="#44525a">利用者の生きがいも育ちます。</text>
-<path d="M1060.6,694.3 A262,262 0 0 1 918.1,776.6" stroke="#2e9e8a" stroke-width="96" stroke-linecap="round" fill="none"/>
-<path id="t2" d="M916.3,767.7 A253,253 0 0 0 1053.9,688.3" fill="none"/>
-<text font-size="30" font-weight="700" letter-spacing="3" fill="#fff"><textPath href="#t2" startOffset="50%" text-anchor="middle">地域</textPath></text>
-<line x1="1085.4" y1="752" x2="1216" y2="752" stroke="#2e9e8a" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
-<rect x="1230" y="690" width="48" height="7" rx="3.5" fill="#2e9e8a"/>
-<text x="1230" y="740" font-size="36" font-weight="800" fill="#26323a">地域</text>
-<text x="1230" y="778" font-size="22" fill="#44525a">地域を担う人が育ち、</text>
-<text x="1230" y="811" font-size="22" fill="#44525a">介護の現場が身近になります。</text>
-<path d="M811.9,776.6 A262,262 0 0 1 669.4,694.3" stroke="#54c5af" stroke-width="96" stroke-linecap="round" fill="none"/>
-<path id="t3" d="M676.1,688.3 A253,253 0 0 0 813.7,767.7" fill="none"/>
-<text font-size="30" font-weight="700" letter-spacing="3" fill="#fff"><textPath href="#t3" startOffset="50%" text-anchor="middle">大学</textPath></text>
-<line x1="644.6" y1="752" x2="520" y2="752" stroke="#54c5af" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
-<rect x="56" y="690" width="48" height="7" rx="3.5" fill="#54c5af"/>
-<text x="56" y="740" font-size="36" font-weight="800" fill="#26323a">大学</text>
-<text x="56" y="778" font-size="22" fill="#44525a">魅力的な実習で学部・学科の魅力が向上。</text>
-<text x="56" y="811" font-size="22" fill="#44525a">社会テーマ型プログラム「STA」で連携。</text>
-<path d="M616.3,602.3 A262,262 0 0 1 616.3,437.7" stroke="#3fb39d" stroke-width="96" stroke-linecap="round" fill="none"/>
-<path id="t4" d="M607.7,605.1 A271,271 0 0 1 607.7,434.9" fill="none"/>
-<text font-size="30" font-weight="700" letter-spacing="3" fill="#fff"><textPath href="#t4" startOffset="50%" text-anchor="middle">専門</textPath></text>
-<line x1="545.0" y1="520" x2="520" y2="520" stroke="#3fb39d" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
-<rect x="56" y="458" width="48" height="7" rx="3.5" fill="#3fb39d"/>
-<text x="56" y="508" font-size="36" font-weight="800" fill="#26323a">専門学校</text>
-<text x="56" y="546" font-size="22" fill="#44525a">単位つきの実習先が増え、</text>
-<text x="56" y="579" font-size="22" fill="#44525a">介護の学びの入口が広がります。</text>
-<path d="M669.4,345.7 A262,262 0 0 1 811.9,263.4" stroke="#7fd3c1" stroke-width="96" stroke-linecap="round" fill="none"/>
-<path id="t5" d="M662.7,339.7 A271,271 0 0 1 810.1,254.6" fill="none"/>
-<text font-size="30" font-weight="700" letter-spacing="3" fill="#fff"><textPath href="#t5" startOffset="50%" text-anchor="middle">高校</textPath></text>
-<line x1="644.6" y1="288" x2="520" y2="288" stroke="#7fd3c1" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
-<rect x="56" y="226" width="48" height="7" rx="3.5" fill="#7fd3c1"/>
-<text x="56" y="276" font-size="36" font-weight="800" fill="#26323a">高校</text>
-<text x="56" y="314" font-size="22" fill="#44525a">単位つきで受け入れやすく、探究テーマと</text>
-<text x="56" y="347" font-size="22" fill="#44525a">面接で語れる実績が得られます。</text>
-<text x="865" y="890" text-anchor="middle" font-size="36" font-weight="800" fill="#26323a">学ぶ人も、迎える人も、地域も。みんなが共に育つ</text>
-<rect x="400" y="906" width="930" height="5" rx="2.5" fill="#f28c3c"/>
+<defs><filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#2e9e8a" flood-opacity="0.16"/></filter></defs>
+<rect width="1730" height="936" fill="#e4f5e8"/>
+<path d="M0,0H1730V132Q1300,172 865,132T0,152Z" fill="#54c5af"/>
+<text x="64" y="50" font-size="20" font-weight="700" letter-spacing="4" fill="#d9f6ee">施策①　共育実習</text>
+<text x="64" y="106" font-size="46" font-weight="800" fill="#fff">共育実習の共創モデル</text>
+<circle cx="865" cy="522" r="178" fill="#fff" filter="url(#sh)"/>
+<circle cx="865" cy="522" r="164" fill="none" stroke="#cfeee3" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>
+<text x="865" y="472" text-anchor="middle" font-size="23" font-weight="700" letter-spacing="2" fill="#2e9e8a">エフビー介護の</text>
+<text x="865" y="548" text-anchor="middle" font-size="68" font-weight="800" fill="#26323a">共育実習</text>
+<rect x="787" y="574" width="156" height="38" rx="19" fill="#f28c3c"/>
+<text x="865" y="601" text-anchor="middle" font-size="21" font-weight="800" letter-spacing="3" fill="#fff">共に育つ</text>
+<path d="M882.6,245.6 A277.0,277.0 0 0 1 1095.6,368.6 L1035.0,407.4 A205.0,205.0 0 0 0 879.3,317.5 Z" fill="#f28c3c" stroke="#f28c3c" stroke-width="10" stroke-linejoin="round"/>
+<path id="t0" d="M889.4,273.2 A250.0,250.0 0 0 1 1068.3,376.5" fill="none"/>
+<text font-size="24" font-weight="700" letter-spacing="2" fill="#fff"><textPath href="#t0" startOffset="50%" text-anchor="middle">エフビー</textPath></text>
+<line x1="1186" y1="286" x2="1043.7" y2="286" stroke="#f28c3c" stroke-width="2.5"/>
+<circle cx="1043.7" cy="286" r="6" fill="#f28c3c"/>
+<g filter="url(#sh)"><rect x="1186" y="201.0" width="480" height="170" rx="22" fill="#fff"/></g>
+<rect x="1186" y="229.0" width="8" height="114" rx="4" fill="#f28c3c"/>
+<text x="1222" y="247.0" font-size="21" font-weight="700" letter-spacing="1" fill="#5b6b73">エフビー介護サービス</text>
+<text x="1222" y="287.0" font-size="29" font-weight="800" fill="#c8651a">営業の差になる</text>
+<text x="1222" y="322.0" font-size="19" fill="#26323a">志と実利で学校から選ばれ、</text>
+<text x="1222" y="350.0" font-size="19" fill="#26323a">将来の担い手と出会えます。</text>
+<path d="M1113.2,399.0 A277.0,277.0 0 0 1 1113.2,645.0 L1049.2,611.9 A205.0,205.0 0 0 0 1049.2,432.1 Z" fill="#f7ab67" stroke="#f7ab67" stroke-width="10" stroke-linejoin="round"/>
+<path id="t1" d="M1092.7,418.7 A250.0,250.0 0 0 1 1092.7,625.3" fill="none"/>
+<text font-size="27" font-weight="700" letter-spacing="2" fill="#fff"><textPath href="#t1" startOffset="50%" text-anchor="middle">社員</textPath></text>
+<line x1="1186" y1="522" x2="1161.0" y2="522" stroke="#f7ab67" stroke-width="2.5"/>
+<circle cx="1161.0" cy="522" r="6" fill="#f7ab67"/>
+<g filter="url(#sh)"><rect x="1186" y="437.0" width="480" height="170" rx="22" fill="#fff"/></g>
+<rect x="1186" y="465.0" width="8" height="114" rx="4" fill="#f7ab67"/>
+<text x="1222" y="483.0" font-size="21" font-weight="700" letter-spacing="1" fill="#5b6b73">社員</text>
+<text x="1222" y="523.0" font-size="29" font-weight="800" fill="#c8651a">学びと生きがいが育つ</text>
+<text x="1222" y="558.0" font-size="19" fill="#26323a">学生から学び、仕事の意味を再発見。</text>
+<text x="1222" y="586.0" font-size="19" fill="#26323a">利用者の生きがいも育ちます。</text>
+<path d="M1095.6,675.4 A277.0,277.0 0 0 1 882.6,798.4 L879.3,726.5 A205.0,205.0 0 0 0 1035.0,636.6 Z" fill="#2e9e8a" stroke="#2e9e8a" stroke-width="10" stroke-linejoin="round"/>
+<path id="t2" d="M887.6,752.9 A232.0,232.0 0 0 0 1053.6,657.1" fill="none"/>
+<text font-size="27" font-weight="700" letter-spacing="2" fill="#fff"><textPath href="#t2" startOffset="50%" text-anchor="middle">地域</textPath></text>
+<line x1="1186" y1="758" x2="1043.7" y2="758" stroke="#2e9e8a" stroke-width="2.5"/>
+<circle cx="1043.7" cy="758" r="6" fill="#2e9e8a"/>
+<g filter="url(#sh)"><rect x="1186" y="673.0" width="480" height="170" rx="22" fill="#fff"/></g>
+<rect x="1186" y="701.0" width="8" height="114" rx="4" fill="#2e9e8a"/>
+<text x="1222" y="719.0" font-size="21" font-weight="700" letter-spacing="1" fill="#5b6b73">地域</text>
+<text x="1222" y="759.0" font-size="29" font-weight="800" fill="#1f7d6c">担い手とまちの未来</text>
+<text x="1222" y="794.0" font-size="19" fill="#26323a">地域を担う人が育ち、</text>
+<text x="1222" y="822.0" font-size="19" fill="#26323a">介護の現場が身近になります。</text>
+<path d="M847.4,798.4 A277.0,277.0 0 0 1 634.4,675.4 L695.0,636.6 A205.0,205.0 0 0 0 850.7,726.5 Z" fill="#54c5af" stroke="#54c5af" stroke-width="10" stroke-linejoin="round"/>
+<path id="t3" d="M676.4,657.1 A232.0,232.0 0 0 0 842.4,752.9" fill="none"/>
+<text font-size="27" font-weight="700" letter-spacing="2" fill="#fff"><textPath href="#t3" startOffset="50%" text-anchor="middle">大学</textPath></text>
+<line x1="544" y1="758" x2="686.3" y2="758" stroke="#54c5af" stroke-width="2.5"/>
+<circle cx="686.3" cy="758" r="6" fill="#54c5af"/>
+<g filter="url(#sh)"><rect x="64" y="673.0" width="480" height="170" rx="22" fill="#fff"/></g>
+<rect x="64" y="701.0" width="8" height="114" rx="4" fill="#54c5af"/>
+<text x="100" y="719.0" font-size="21" font-weight="700" letter-spacing="1" fill="#5b6b73">大学</text>
+<text x="100" y="759.0" font-size="29" font-weight="800" fill="#1f7d6c">学部・学科の魅力向上</text>
+<text x="100" y="794.0" font-size="19" fill="#26323a">魅力的な実習を提供。社会テーマ型</text>
+<text x="100" y="822.0" font-size="19" fill="#26323a">プログラム「STA」で連携します。</text>
+<path d="M616.8,645.0 A277.0,277.0 0 0 1 616.8,399.0 L680.8,432.1 A205.0,205.0 0 0 0 680.8,611.9 Z" fill="#3fb39d" stroke="#3fb39d" stroke-width="10" stroke-linejoin="round"/>
+<path id="t4" d="M637.3,625.3 A250.0,250.0 0 0 1 637.3,418.7" fill="none"/>
+<text font-size="24" font-weight="700" letter-spacing="2" fill="#fff"><textPath href="#t4" startOffset="50%" text-anchor="middle">専門学校</textPath></text>
+<line x1="544" y1="522" x2="569.0" y2="522" stroke="#3fb39d" stroke-width="2.5"/>
+<circle cx="569.0" cy="522" r="6" fill="#3fb39d"/>
+<g filter="url(#sh)"><rect x="64" y="437.0" width="480" height="170" rx="22" fill="#fff"/></g>
+<rect x="64" y="465.0" width="8" height="114" rx="4" fill="#3fb39d"/>
+<text x="100" y="483.0" font-size="21" font-weight="700" letter-spacing="1" fill="#5b6b73">専門学校</text>
+<text x="100" y="523.0" font-size="29" font-weight="800" fill="#1f7d6c">実習先の選択肢が広がる</text>
+<text x="100" y="558.0" font-size="19" fill="#26323a">単位つきの実習先が増え、</text>
+<text x="100" y="586.0" font-size="19" fill="#26323a">介護の学びの入口が広がります。</text>
+<path d="M634.4,368.6 A277.0,277.0 0 0 1 847.4,245.6 L850.7,317.5 A205.0,205.0 0 0 0 695.0,407.4 Z" fill="#86d6c4" stroke="#86d6c4" stroke-width="10" stroke-linejoin="round"/>
+<path id="t5" d="M661.7,376.5 A250.0,250.0 0 0 1 840.6,273.2" fill="none"/>
+<text font-size="27" font-weight="700" letter-spacing="2" fill="#fff"><textPath href="#t5" startOffset="50%" text-anchor="middle">高校</textPath></text>
+<line x1="544" y1="286" x2="686.3" y2="286" stroke="#86d6c4" stroke-width="2.5"/>
+<circle cx="686.3" cy="286" r="6" fill="#86d6c4"/>
+<g filter="url(#sh)"><rect x="64" y="201.0" width="480" height="170" rx="22" fill="#fff"/></g>
+<rect x="64" y="229.0" width="8" height="114" rx="4" fill="#86d6c4"/>
+<text x="100" y="247.0" font-size="21" font-weight="700" letter-spacing="1" fill="#5b6b73">高校</text>
+<text x="100" y="287.0" font-size="29" font-weight="800" fill="#1f7d6c">探究と進路に生きる実績</text>
+<text x="100" y="322.0" font-size="19" fill="#26323a">単位つきで受け入れやすく、探究テーマ</text>
+<text x="100" y="350.0" font-size="19" fill="#26323a">探しと面接で語れる実績になります。</text>
+<g transform="rotate(0 865 522)"><circle cx="865" cy="281.0" r="13" fill="#fff"/><path d="M861,275.0 L870,281.0 L861,287.0" fill="none" stroke="#2e9e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="rotate(60 865 522)"><circle cx="865" cy="281.0" r="13" fill="#fff"/><path d="M861,275.0 L870,281.0 L861,287.0" fill="none" stroke="#2e9e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="rotate(120 865 522)"><circle cx="865" cy="281.0" r="13" fill="#fff"/><path d="M861,275.0 L870,281.0 L861,287.0" fill="none" stroke="#2e9e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="rotate(180 865 522)"><circle cx="865" cy="281.0" r="13" fill="#fff"/><path d="M861,275.0 L870,281.0 L861,287.0" fill="none" stroke="#2e9e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="rotate(240 865 522)"><circle cx="865" cy="281.0" r="13" fill="#fff"/><path d="M861,275.0 L870,281.0 L861,287.0" fill="none" stroke="#2e9e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="rotate(300 865 522)"><circle cx="865" cy="281.0" r="13" fill="#fff"/><path d="M861,275.0 L870,281.0 L861,287.0" fill="none" stroke="#2e9e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="865" y="893" text-anchor="middle" font-size="32" font-weight="800" fill="#26323a">学ぶ人も、迎える人も、地域も。みんなが共に育つ</text>
+<rect x="440" y="908" width="850" height="4" rx="2" fill="#f28c3c"/>
 </svg>
