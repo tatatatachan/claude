@@ -174,6 +174,22 @@ def s_cover():
     text(sl,W-100-420,76,420,32,para('大学の先生・学生のみなさまへ',20,'E8C872',True,lh=1.3,spc=2),align='r',name='宛名')
     return sl
 
+def s_cover_mint():
+    """表紙：ミントの落ち着いた面に、イラストを少しだけ"""
+    sl=prs.slides.add_slide(prs.slide_layouts[6])
+    shape(sl,MSO_SHAPE.RECTANGLE,0,0,W,H,BAND,None,name='背景')
+    poly(sl,[(0,973),(0,760),(260,640),(430,740),(640,600),(900,973)],MTN,'山1')
+    poly(sl,[(1050,973),(1330,820),(1480,880),(1730,760),(1730,973)],MTN,'山2')
+    text(sl,120,170,900,36,para('エフビー介護サービス',28,'EAF8F4',True,lh=1.3,spc=6),name='小見出し')
+    text(sl,120,230,900,260,para('共育実習',150,'FFFFFF',True,lh=1.15),name='タイトル')
+    hline(sl,124,500,300,500,'FCE08E',4,name='ライン')
+    text(sl,120,540,820,160,[para('学ぶ人も、迎える人も、地域も。',38,'FFFFFF',True,lh=1.5),para('みんなが共に育つ、ケアの現場の実習。',38,'FFFFFF',True,lh=1.5)],name='キャッチ')
+    text(sl,120,820,900,34,para('大学の先生・学生のみなさまへ',22,'EAF8F4',True,lh=1.3,spc=2),name='宛名')
+    base=905
+    for nm,x,h in (('selfie',1040,250),('boy',1300,240),('elder',1440,300)):
+        im=Image.open('ill/'+nm+'.png'); _ill(sl,nm,x,base-h,h=h)
+    return sl
+
 def s_cover_b():
     """表紙 パターンB：やわらかな緑 × アーチの窓"""
     sl=prs.slides.add_slide(prs.slide_layouts[6])
@@ -226,11 +242,11 @@ def s_agenda():
         p=sl.shapes.add_picture('ill/'+name+'.png',px(x if al=='l' else x-w),px(y),px(w),px(h)); p.name='イラスト_'+name; return w
     pic('picnic',M+60,T0+ph-190,150); pic('runners',M+pw-60-230,T0+ph-170,125)
     rx=M+pw+70; rw=W-M-rx; rh=ph/5
-    items=[('共育実習が目指すこと','ビジョンと、みんなで育つ共創モデル','P.3–5',TEAL2,'selfie'),
-           ('いま、なぜ福祉人材か','人口の変化と、介護の需要、福祉の価値','P.6–8',TEAL2,'elder'),
-           ('エフビー介護サービスを知る','介護の考え方、沿革、事業の展開と成長','P.9–13',ORG,'van'),
-           ('実習で得られること','他社との違い、プログラム、受け入れ体制','P.14–17',ORG,'care'),
-           ('実習のひろがり','ブランドの育ち方と、応募までの流れ','P.18–19',TEAL2,'boy')]
+    items=[('共育実習が目指すこと','ビジョンと、みんなで育つ共創モデル','P.2–4',TEAL2,'selfie'),
+           ('いま、なぜ福祉人材か','人口の変化と、介護の需要、福祉の価値','P.5–7',TEAL2,'elder'),
+           ('エフビー介護サービスを知る','介護の考え方、沿革、事業の展開と成長','P.8–12',ORG,'van'),
+           ('実習で得られること','他社との違い、プログラム、受け入れ体制','P.13–16',ORG,'care'),
+           ('実習のひろがり','ブランドの育ち方と、応募までの流れ','P.17–18',TEAL2,'boy')]
     for i,(h,d,pg,c,im) in enumerate(items):
         y=T0+i*rh
         if i: hline(sl,rx,y,W-M,y,LINE,1.5,name='区切り')
@@ -702,7 +718,7 @@ def s_area():
     note(sl,'※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
     return sl
 
-for f in (s_cover,s_cover_b,s_vision,s_agenda,s_ring,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_loop,s_flow): f()
+for f in (s_cover_mint,s_vision,s_agenda,s_ring,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_loop,s_flow): f()
 N=len(prs.slides)
 for k,sl in enumerate(prs.slides,1):
     if k==1: continue
