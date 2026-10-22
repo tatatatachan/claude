@@ -1,0 +1,24 @@
+{
+  "v": 4,
+  "createdOnFiles": { "v": 1, "at": "2026-10-22T19:00:00Z" },
+  "lists": "css",
+  "title": "ホシザキ インターン企画 たたき台",
+  "order": ["cover", "agenda", "target", "personas", "market", "market-history", "forecast-market", "forecast-hoshizaki", "outlook", "ranking", "axis", "compete", "position", "strengths", "seedsneeds", "concept", "concept-options", "points", "timetable", "next", "sources"],
+  "sections": {
+    "intro": { "description": "10/23 社内MTG用。名大・名工大の機電系に向けた1Dayインターンの企画の流れ。", "start": "cover" },
+    "target": { "description": "ホシザキが求める人物像と、ターゲットの3タイプ。", "start": "target" },
+    "market": { "description": "業界の展望と市場の大きさ。", "start": "market" },
+    "student": { "description": "学生の業界・職種の志望順位と、キャリアの軸。", "start": "ranking" },
+    "compete": { "description": "競合分析と、そこから見えたホシザキの強み。", "start": "compete" },
+    "concept": { "description": "SEEDSとNEEDSの接点、CONCEPT、3つのポイント。", "start": "seedsneeds" },
+    "plan": { "description": "当日のタイムテーブルと次のステップ。", "start": "timetable" }
+  },
+  "faces": {
+    "barlow": { "family": "Barlow", "href": "https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&display=swap" },
+    "ibm-plex-sans-jp": { "family": "IBM Plex Sans JP", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" },
+    "biz-udpmincho": { "family": "BIZ UDPMincho", "href": "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&display=swap" }
+  },
+  "designSystems": [
+    { "title": "Hoshizaki", "namespace": "hoshizaki", "artifact": "https://claude.ai/artifact/2Ea7jSr4e8ByKcSxems2md", "version": "1792502328-30b6", "copiedAt": "2026-10-22T19:00:00Z" }
+  ]
+}
