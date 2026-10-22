@@ -152,16 +152,35 @@ def s_loop():
     text(sl,M+110,ay,CW-160,66,para('次の大学・次の学生へ。回るほど、実習への信頼が積み上がります',24,TEALD,True,lh=1.2),anchor='middle',name='循環文')
     return sl
 
+def s_cover():
+    sl=prs.slides.add_slide(prs.slide_layouts[6])
+    shape(sl,MSO_SHAPE.RECTANGLE,0,0,W,H,BAND,None,name='背景')
+    poly(sl,[(0,973),(0,760),(260,640),(430,740),(640,600),(900,973)],MTN,'山1')
+    text(sl,120,170,900,36,para('エフビー介護サービス',28,'EAF8F4',True,lh=1.3,spc=6),name='小見出し')
+    text(sl,120,230,900,260,para('共育実習',150,'FFFFFF',True,lh=1.15),name='タイトル')
+    hline(sl,124,500,300,500,'FCE08E',4,name='ライン')
+    text(sl,120,540,820,160,[para('学ぶ人も、迎える人も、地域も。',38,'FFFFFF',True,lh=1.5),para('みんなが共に育つ、ケアの現場の実習。',38,'FFFFFF',True,lh=1.5)],name='キャッチ')
+    text(sl,120,820,900,34,para('大学の先生・学生のみなさまへ',22,'EAF8F4',True,lh=1.3,spc=2),name='宛名')
+    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,1010,130,640,710,'A6DDD1',None,rad=40,name='イラスト枠（公式LINEバナーのイラストを配置）')
+    return sl
+
 def s_vision():
     sl=prs.slides.add_slide(prs.slide_layouts[6])
     shape(sl,MSO_SHAPE.RECTANGLE,0,0,W,H,BAND,None,name='背景')
-    poly(sl,[(900,973),(1180,690),(1330,800),(1500,600),(1730,820),(1730,973)],MTN,'山1')
-    poly(sl,[(1300,973),(1520,780),(1730,930),(1730,973)],'A6DDD1','山2')
-    text(sl,120,150,900,36,para('PROJECT VISION',26,'EAF8F4',True,lh=1.3,spc=8),name='小見出し')
-    text(sl,120,230,1500,320,[para('長寿の国、長野発、',84,'FFFFFF',True,lh=1.25),para('希望の地域モデルづくりへ',84,'FFFFFF',True,lh=1.25)],name='ビジョン')
-    hline(sl,124,610,300,610,'FCE08E',4,name='ライン')
-    text(sl,120,650,1180,200,[para('この地域が抱える課題は、日本の地域が、そして世界がこれから向き合う課題でもあります。',28,'F0FBF8',lh=1.7),para('長寿の国、長野を長年支えてきた企業だからこそ、つくれるモデルがある。',28,'F0FBF8',lh=1.7)],name='ビジョン本文')
-    text(sl,120,880,900,34,para('エフビー介護サービス  ×  共育実習',22,'EAF8F4',True,lh=1.3,spc=2),name='署名')
+    poly(sl,[(1100,973),(1330,760),(1450,850),(1580,700),(1730,860),(1730,973)],MTN,'山1')
+    text(sl,120,90,900,36,para('PROJECT VISION',24,'EAF8F4',True,lh=1.3,spc=8),name='小見出し')
+    text(sl,120,140,1500,200,[para('長寿の国、長野発、',68,'FFFFFF',True,lh=1.25),para('希望の地域モデルづくりへ',68,'FFFFFF',True,lh=1.25)],name='ビジョン')
+    hline(sl,124,380,300,380,'FCE08E',4,name='ライン')
+    P=lambda t,**k: para(t,29,'F0FBF8',lh=1.75,**k)
+    text(sl,120,420,1480,500,[
+      P('「実習」と聞いて、どんなイメージを持ちますか？大変そう？ 自分にはまだ早いかも？',after=2),
+      P('もし少しでも「やってみたい」と思うなら、ぜひ、私たちの現場に来てください。',after=22),
+      P('エフビー介護サービスの共育実習は、「教える・教わる」だけの実習ではありません。',after=2),
+      P('学生さんも、先生も、利用者さんも、社員も、みんなが「主役」になれる場所をつくっています。',after=2),
+      P('学生さんは現場から学び、社員は学生さんから、仕事の意味を学びなおす。',after=2),
+      P('そこに「迎える人」と「学ぶ人」の区別はなく、みんなが「ありがとう」を言い合います。',after=22),
+      P('そこで生まれた声は、次の学生へ、そして地域へ。共に育つ輪が、長野から広がっていきます。',after=2),
+      para('介護や老後の話は、なんだか暗い。そんなイメージを、一緒にひっくり返したい。',29,'FFFFFF',True,lh=1.75)],name='実習ステートメント')
     return sl
 
 def s_story():
@@ -643,7 +662,7 @@ def s_area():
     note(sl,'※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
     return sl
 
-for f in (s_vision,s_story,s_ring,s_loop,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area): f()
+for f in (s_cover,s_vision,s_story,s_ring,s_loop,s_pop,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area): f()
 N=len(prs.slides)
 for k,sl in enumerate(prs.slides,1):
     if k==1: continue
