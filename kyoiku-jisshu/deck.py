@@ -205,6 +205,58 @@ def s_philosophy():
     note(sl,'出典：エフビー介護サービス 企業説明会資料／経営者ヒアリング（2025年）。文言は要約しています。')
     return sl
 
+# ====================== なぜ、福祉が大切か ======================
+def s_why():
+    sl=new_slide('福祉人材のこれからの価値','なぜ、福祉が大切なのか',notes='長野大学×エフビー 産学連携プロジェクト資料（社会状況・やりがい）をもとに整理。')
+    lw_=540; shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,M,T0,lw_,B0-T0,TEAL,None,rad=24,name='問い')
+    text(sl,M+48,T0+48,lw_-96,B0-T0-96,[para('WHY WELFARE',18,'EAF8F4',True,after=26,lh=1.3,spc=4),
+        para('人を支える仕事が、地域の未来を支える。',40,'FFFFFF',True,after=32,lh=1.45),
+        para('2040年に向けて、支える人は減り、支えられる人は増えていきます。福祉は、社会を成り立たせる土台です。',21,'F0FBF8',after=22,lh=1.7),
+        para('それでも「福祉」が若者に選ばれにくいのは、仕事の価値が、まだ十分に伝わっていないから。',21,'F0FBF8',lh=1.7)],name='問い本文')
+    items=[('社会を支えるインフラだから','現役世代2.1人で1人の高齢者を支える構造（2020年）から、2040年には約1.6人で1人を支える構造へ。「支える人」と「支えられる人」のバランスが崩れ、社会インフラの持続可能性が問われています。',TEAL2,TEALD),
+           ('「生きてて良かった」を支える仕事だから','福祉は、残された命をいかに生きるかを支える仕事。人の命と生活を預かり、利用者さんの「最終ページ」に出てくる人物として、その人の生きがいに関わります。',ORG,ORGD),
+           ('地域の未来をつくる人を育てるから','「3K」というイメージを変え、福祉人材が福祉の枠を超えて活躍できる場へ。長寿の国・長野発の、希望の地域モデルをつくる起点になります。',TEAL2,TEALD)]
+    gx=M+lw_+32; gw=W-M-gx; gap=24; gh=(B0-T0-2*gap)/3
+    for i,(h,d,c,dk) in enumerate(items):
+        y=T0+i*(gh+gap); card(sl,gx,y,gw,gh,name=f'カード_{h}')
+        dot(sl,gx+36+30,y+gh/2,60,c,'番号'); text(sl,gx+36,y+gh/2-30,60,60,para(str(i+1),30,'FFFFFF',True,lh=1.1),align='c',anchor='middle',name=f'番号{i+1}')
+        text(sl,gx+130,y+22,gw-166,gh-44,[para(h,27,dk,True,after=10,lh=1.3),para(d,20,INK,lh=1.65)],anchor='middle',name=f'理由_{i+1}')
+    note(sl,'出典：エフビー介護サービス×長野大学 産学連携プロジェクト資料（2025年12月・2026年3月）、雫石部長ヒアリング。人口の数字は国立社会保障・人口問題研究所の推計に基づきます。')
+    return sl
+
+# ====================== 感情労働の価値 ======================
+def s_emotion():
+    sl=new_slide('感情労働','感情労働の価値：人の心を動かし、意欲を引き出す仕事',notes='visions college（エフビー介護サービス回）Chapter02「感情労働の未来」をもとに整理。')
+    gap=28; cw=(CW-2*gap)/3; h1=252
+    cols=[('肉体労働','体力を使って、対価を得る',None,TEAL2),('頭脳労働','アイデアなどを提供する',None,TEAL2),('感情労働','つねに自分の感情をコントロールし、相手に合わせた言葉や態度で応対する','介護・医療など「ひと」を相手にする仕事',ORG)]
+    for i,(h,d,tg,c) in enumerate(cols):
+        x=M+i*(cw+gap)
+        card(sl,x,T0,cw,h1,fill='FFF6EC' if c==ORG else BG,line=ORG if c==ORG else LINE,name=f'カード_{h}')
+        pill(sl,x+32,T0+28,110,36,PALEO if c==ORG else PALE,'タグ'); text(sl,x+32,T0+28,110,36,para(['TYPE 1','TYPE 2','TYPE 3'][i],16,ORGD if c==ORG else TEALD,True,lh=1.2),align='c',anchor='middle',name='番号タグ')
+        ps=[para(h,34,ORGD if c==ORG else TEALD,True,after=8,lh=1.25),para(d,21,INK,lh=1.6,after=6)]
+        if tg: ps.append(para(tg,18,ORGD,True,lh=1.4))
+        text(sl,x+32,T0+84,cw-64,h1-100,ps,name=f'本文_{h}')
+    y2=T0+h1+gap; h2=204; lw_=960
+    card(sl,M,y2,lw_,h2,name='従来これから')
+    text(sl,M+36,y2+24,400,32,para('働き方のとらえ方が、変わっていく',23,INK,True,lh=1.3),name='変化見出し')
+    def chips(y,label,items,hl=False):
+        text(sl,M+36,y,110,44,para(label,19,SUB,True,lh=1.2),anchor='middle',name=f'ラベル_{label}')
+        x=M+150
+        for t,c in items:
+            w=len(t)*21+44; pill(sl,x,y,w,44,PALEO if c=='o' else PALE,'チップ'); text(sl,x,y,w,44,para(t,19,ORGD if c=='o' else TEALD,True,lh=1.2),align='c',anchor='middle',name=f'チップ_{t}'); x+=w+14
+    chips(y2+78,'従来',[('頭脳労働（感情労働を含む）','t'),('肉体労働','t')])
+    chips(y2+138,'これから',[('頭脳労働','t'),('感情労働','o'),('肉体労働','t')])
+    rx=M+lw_+gap; rw=CW-lw_-gap
+    card(sl,rx,y2,rw,h2,fill='F6F9F8',name='定義')
+    text(sl,rx+32,y2+24,rw-64,h2-40,[para('感情労働とは',22,TEALD,True,after=8,lh=1.3),para('相手に感謝や安心の気持ちを喚起させるために行う、感情の管理。（A.R.ホックシールドが提唱）',19,INK,lh=1.6)],name='定義本文')
+    y3=y2+h2+gap; h3=B0-y3; qw=820
+    shape(sl,MSO_SHAPE.ROUNDED_RECTANGLE,M,y3,qw,h3,TEAL,None,rad=20,name='雫石部長')
+    text(sl,M+40,y3+20,qw-80,h3-30,[para('雫石部長（介護事業部）より',17,'EAF8F4',True,after=6,lh=1.3),para('介護は、感情労働。単に感情を使うのではなく、自分と相手の感情を管理する仕事です。',25,'FFFFFF',True,lh=1.55)],anchor='middle',name='引用')
+    sx=M+qw+gap; sw=CW-qw-gap; card(sl,sx,y3,sw,h3,name='まとめ')
+    text(sl,sx+36,y3+18,sw-72,h3-26,[para('・人の心を動かし、人の意欲を引き出す仕事',20,INK,after=6,lh=1.5),para('・お互いの感情を管理しながら行う、高度な技術',20,INK,after=6,lh=1.5),para('・これから社会に出る人にとって、どの仕事でも必須のスキル',20,INK,lh=1.5)],anchor='middle',name='まとめ本文')
+    note(sl,'出典：visions college（エフビー介護サービス回、2026年2月24日）、長野大学×エフビー介護サービス 産学連携プロジェクト資料。')
+    return sl
+
 # ====================== 5. 沿革（うねる帯） ======================
 def s_history():
     sl=new_slide('沿革','福祉用具から、地域に根ざす介護の総合企業へ',notes='沿革。年次が資料で確認できた出来事のみ年を表示。')
@@ -350,10 +402,10 @@ def s_market():
 # ====================== 8. 他社比較 ======================
 def s_compare():
     sl=new_slide('採用戦略テーマ','他社と並べて見える、エフビーの実習の魅力',notes='P24：採用戦略テーマ（他社比較）。')
-    cols=['','エフビー介護サービス','敬老園','医療法人・緑風会','アズパートナー']
+    cols=['','エフビー介護サービス','A社','B社','C社']
     rows=[('ビジョン',['「共生」をテーマにした、人々が助け合う地域創生（エフビータウン構想・コミュニティタワー構想）','―','―','暮らしを、共に。']),
      ('事業フェーズ',['成長期〜拡大期（2022年 スタンダード市場上場）','安定期〜成熟期','地域密着・安定運営期','成長期〜拡大期（2024年 スタンダード市場上場）']),
-     ('事業・特徴',['有料老人ホーム、グループホーム、デイ、訪問介護・看護、小規模多機能、福祉用具ほか','特養、ケアハウス、デイ、ショートステイ、居宅介護支援、地域包括支援センター','病院運営、老健、デイケア、グループホーム、訪問看護ほか。病院母体の医療＋介護連携','有料老人ホーム「アズハイム」シリーズ（首都圏中心）。都市型の有料老人ホーム特化']),
+     ('事業・特徴',['有料老人ホーム、グループホーム、デイ、訪問介護・看護、小規模多機能、福祉用具ほか','特養、ケアハウス、デイ、ショートステイ、居宅介護支援、地域包括支援センター','病院運営、老健、デイケア、グループホーム、訪問看護ほか。病院母体の医療＋介護連携','有料老人ホームをシリーズで運営（首都圏中心）。都市型の有料老人ホーム特化']),
      ('人・メンバー',['関わる人たちが、みんな優しく・温かい','「感謝の心を基にした関係」を築き、真心をもってサービスを提供できる人材','「利用者はもちろん、職員にとっても安心できる居場所」を重視','近年は毎年170名以上の新卒社員を受け入れ'])]
     rh=[44,92,76,128,96]; widths=[186,402,322,322,322]
     gs=sl.shapes.add_table(5,5,px(M),px(T0),px(sum(widths)),px(sum(rh))); gs.name='他社比較表'; tb=gs.table
@@ -525,7 +577,7 @@ def s_area():
     note(sl,'※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
     return sl
 
-for f in (s_ring,s_loop,s_overview,s_philosophy,s_market,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area): f()
+for f in (s_ring,s_loop,s_overview,s_market,s_why,s_philosophy,s_emotion,s_history,s_scale,s_sales,s_compare,s_learn,s_program,s_system,s_flow,s_area): f()
 N=len(prs.slides)
 for k,sl in enumerate(prs.slides,1):
     text(sl,W-M-120,B0+24,120,22,para(f'{k} / {N}',15,GRAY,lh=1.3),align='r',name='ページ番号')
