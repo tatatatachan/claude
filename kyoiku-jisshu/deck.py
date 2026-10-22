@@ -178,21 +178,28 @@ def s_cover_mint():
     """表紙：ミントの落ち着いた面に、イラストを少しだけ"""
     sl=prs.slides.add_slide(prs.slide_layouts[6])
     shape(sl,MSO_SHAPE.RECTANGLE,0,0,W,H,BAND,None,name='背景')
-    poly(sl,[(0,973),(0,760),(260,640),(430,740),(640,600),(900,973)],MTN,'山1')
-    poly(sl,[(1050,973),(1330,820),(1480,880),(1730,760),(1730,973)],MTN,'山2')
+    def ridge(pts,col,name,bottom=H):
+        out=[]
+        for (x0,y0),(x1,y1) in zip(pts,pts[1:]):
+            for t in range(0,12):
+                u=t/12; v=(1-math.cos(math.pi*u))/2; out.append((x0+(x1-x0)*u,y0+(y1-y0)*v))
+        out.append(pts[-1]); poly(sl,[(0,bottom)]+out+[(W,bottom)],col,name)
+    dot(sl,1380,330,300,'8ACFC0','太陽'); dot(sl,1380,330,180,'A6DDD1','太陽中')
+    ridge([(0,640),(170,540),(330,470),(520,590),(760,700),(980,745),(1200,670),(1400,520),(1580,430),(1730,540)],'8ACFC0','遠い山')
+    ridge([(0,780),(200,690),(430,745),(720,815),(1000,850),(1300,800),(1500,690),(1730,730)],'64B3A1','手前の山')
+    ridge([(0,905),(500,885),(900,862),(1300,870),(1730,835)],'E3F4F0','盆地の底')
     text(sl,120,170,900,36,para('エフビー介護サービス',28,'EAF8F4',True,lh=1.3,spc=6),name='小見出し')
     text(sl,120,230,900,260,para('共育実習',150,'FFFFFF',True,lh=1.15),name='タイトル')
     hline(sl,124,500,300,500,'FCE08E',4,name='ライン')
     text(sl,120,540,820,160,[para('学ぶ人も、迎える人も、地域も。',38,'FFFFFF',True,lh=1.5),para('みんなが共に育つ、ケアの現場の実習。',38,'FFFFFF',True,lh=1.5)],name='キャッチ')
     text(sl,120,820,900,34,para('大学の先生・学生のみなさまへ',22,'EAF8F4',True,lh=1.3,spc=2),name='宛名')
-    dot(sl,1500,270,330,'8ACFC0','太陽'); dot(sl,1500,270,200,'A6DDD1','太陽中')
-    for cx,cy,d,c in ((1110,250,26,'FCE08E'),(1250,170,16,'FFFFFF'),(1680,520,22,'FCE08E'),(1000,470,14,'F7AB67'),(1640,160,18,'F7AB67'),(1370,470,14,'FFFFFF'),(1560,600,12,'FCE08E')): dot(sl,cx,cy,d,c,'飾り')
-    _ill(sl,'van',1010,360,w=250)
-    _ill(sl,'picnic',1200,520,w=230)
-    _ill(sl,'care',1470,470,h=150)
-    base=905; x=770
-    for nm,h in (('runner',190),('selfie',215),('boy',205),('elder',235),('runners',130)):
-        x+=_ill(sl,nm,x,base-h,h=h)+8
+    for cx,cy,d,c in ((1110,250,26,'FCE08E'),(1250,170,16,'FFFFFF'),(1680,520,22,'FCE08E'),(1000,470,14,'F7AB67'),(1640,160,18,'F7AB67'),(1560,640,12,'FCE08E')): dot(sl,cx,cy,d,c,'飾り')
+    _ill(sl,'van',1280,555,w=190)
+    _ill(sl,'picnic',1470,640,w=180)
+    _ill(sl,'care',1010,590,h=125)
+    base=925; x=760
+    for nm,h in (('runner',180),('selfie',210),('boy',195),('elder',225),('runners',118)):
+        x+=_ill(sl,nm,x,base-h,h=h)+6
     return sl
 
 def s_cover_b():
@@ -343,7 +350,7 @@ def s_emotion():
         text(sl,M+36,y,110,44,para(label,19,SUB,True,lh=1.2),anchor='middle',name=f'ラベル_{label}')
         x=M+150
         for t,c in items:
-            w=len(t)*21+44; pill(sl,x,y,w,44,PALEO if c=='o' else PALE,'チップ'); text(sl,x,y,w,44,para(t,19,ORGD if c=='o' else TEALD,True,lh=1.2),align='c',anchor='middle',name=f'チップ_{t}'); x+=w+14
+            w=len(t)*21+44; pill(sl,x,y,w,44,PALEO if c=='o' else PALE,'チップ'); text(sl,x,y,w,44,para(t,19,ORGD if c=='o' else TEALD,True,lh=1.2),align='c',anchor='middle',name=f'チップ_{t}'); x+=w+6
     chips(y2+78,'従来',[('頭脳労働（感情労働を含む）','t'),('肉体労働','t')])
     chips(y2+138,'これから',[('頭脳労働','t'),('感情労働','o'),('肉体労働','t')])
     rx=M+lw_+gap; rw=CW-lw_-gap
