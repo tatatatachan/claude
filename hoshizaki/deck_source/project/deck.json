@@ -26,9 +26,11 @@
     "concept-options",
     "two-is",
     "points",
+    "tour",
     "is1-design",
     "is1-thumb",
     "is1-roles",
+    "is1-team",
     "is1-game",
     "is1-cards",
     "is1-cardimg",
@@ -73,7 +75,7 @@
       "start": "is1-design"
     },
     "is": {
-      "description": "2本立てのインターンと、共通の3つのポイント。",
+      "description": "2本立てのインターン、共通の3つのポイントと前座の工場見学。",
       "start": "two-is"
     }
   },
