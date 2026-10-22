@@ -183,5 +183,30 @@ for i,(pf,n,pl2) in enumerate(rows):
 note('※ 出典：エフビー介護サービス コーポレートサイト（360°ツアー）ほか、実習サイトの掲載内容。')
 finish(sl)
 
+
+# ---------- simple flat style (post-process all slides) ----------
+from pptx.enum.shapes import MSO_SHAPE_TYPE
+from pptx.dml.color import RGBColor
+REMOVE={'ヘッダー帯','色バー','カード色バー','上端バー'}
+for sld in b.prs.slides:
+    for shp in list(sld.shapes):
+        n=shp.name
+        if n in REMOVE:
+            shp._element.getparent().remove(shp._element); continue
+        if n=='背景':
+            shp.fill.solid(); shp.fill.fore_color.rgb=RGBColor.from_string('FFFFFF')
+        elif n in ('小見出し','タイトル'):
+            col='2E9E8A' if n=='小見出し' else INK
+            for r in shp.text_frame.paragraphs[0].runs: r.font.color.rgb=RGBColor.from_string(col)
+        elif shp.shape_type==MSO_SHAPE_TYPE.AUTO_SHAPE:
+            try:
+                white=shp.fill.type==1 and str(shp.fill.fore_color.rgb)=='FFFFFF'
+            except Exception: white=False
+            if white and (n=='中央円' or shp.auto_shape_type==MSO_SHAPE.ROUNDED_RECTANGLE):
+                shp.line.color.rgb=RGBColor.from_string('D5E3DD'); shp.line.width=Pt(1.25)
+    # thin accent under the title
+    ac=sld.shapes.add_shape(MSO_SHAPE.RECTANGLE,b.px(64),b.px(132),b.px(72),b.px(5)); b.fill(ac,'54C5AF'); b.noline(ac); ac.name='タイトル下線'
+    for er in sld.shapes._spTree.iter(qn('a:effectRef')): er.set('idx','0')
+
 b.prs.save('共育実習_図解.pptx')
 print(len(b.prs.slides.__iter__.__self__._sldIdLst))

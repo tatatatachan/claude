@@ -24,6 +24,7 @@ def fill(s,c):
     s.fill.solid(); s.fill.fore_color.rgb=rgb(c)
 def noline(s): s.line.fill.background()
 def shadow(s,color='2E9E8A',alpha=16,blur=16,dist=6):
+    return  # flat design: no shadows
     sp=s._element.spPr
     eff=etree.SubElement(sp,qn('a:effectLst'))
     o=etree.SubElement(eff,qn('a:outerShdw'),blurRad=str(int(blur*E)),dist=str(int(dist*E)),dir='5400000',algn='t',rotWithShape='0')
