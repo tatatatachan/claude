@@ -27,8 +27,14 @@
     "two-is",
     "points",
     "is1-design",
+    "is1-roles",
+    "is1-game",
+    "is1-cards",
     "is1-timetable",
     "is2-design",
+    "is2-rules",
+    "is2-pairs",
+    "is2-items",
     "is2-timetable",
     "next",
     "sources"
@@ -59,7 +65,7 @@
       "start": "seedsneeds"
     },
     "plan": {
-      "description": "2本の設計とタイムテーブル、次のステップ。",
+      "description": "2本のインターンの設計・カード・タイムテーブルと、次のステップ。",
       "start": "is1-design"
     },
     "is": {
