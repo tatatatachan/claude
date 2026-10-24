@@ -1,0 +1,7 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1280px;height:720px;overflow:hidden}
+body{font-family:'Zen Kaku Gothic New','IPAGothic',sans-serif;font-weight:900;position:relative;color:#111;background:#fff}
+.dela{font-family:'Dela Gothic One','Zen Kaku Gothic New',sans-serif;font-weight:400}
+.ph{position:absolute;background:linear-gradient(135deg,#6b6b6b,#2b2b2b);display:flex;align-items:center;justify-content:center;color:#ffffff66;font-size:28px;letter-spacing:.1em}
+.ph::after{content:"写真(差し替え)"}
+.tag{position:absolute;right:14px;top:10px;font-size:16px;color:#0008;font-weight:500;z-index:9}
