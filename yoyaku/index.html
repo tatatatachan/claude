@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>日程のご予約</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1f2430;--sub:#6b7280;--accent:#2563eb;--line:#e5e7eb;--ng:#c0c4cc}
+@media(prefers-color-scheme:dark){:root{--bg:#111318;--card:#1b1e26;--fg:#e8eaf0;--sub:#9aa1b0;--line:#2c313c;--ng:#4a4f5c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif}
+main{max-width:640px;margin:0 auto;padding:24px 16px 64px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+h1{font-size:1.4rem;margin:0 0 4px}h2{font-size:1rem;margin:0 0 12px}
+.sub{color:var(--sub);font-size:.9rem;white-space:pre-wrap}
+label{display:block;font-size:.85rem;color:var(--sub);margin:12px 0 4px}
+input,textarea,select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:12px 20px;width:100%;margin-top:16px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.sm{width:auto;padding:8px 14px;margin:0}
+.row{display:flex;gap:8px;align-items:flex-end}.row>*{flex:1}
+.day{margin-bottom:14px}.day b{display:block;margin-bottom:6px;font-size:.9rem}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{padding:8px 14px;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:8px}
+.slot.on{background:var(--accent);color:#fff}
+.slot:disabled{border-color:var(--ng);color:var(--ng);text-decoration:line-through;cursor:default}
+.chip{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:2px 10px;margin:2px;font-size:.85rem}
+.err{color:#dc2626;margin-top:12px}
+.ok{text-align:center;padding:32px 0}
+table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{border-bottom:1px solid var(--line);padding:6px;text-align:left}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main id="app">読み込み中…</main>
+<script>
+// Apps Script をウェブアプリとしてデプロイした URL（…/exec）に置き換える
+const API_URL = 'YOUR_APPS_SCRIPT_URL';
+
+const $ = s => document.querySelector(s);
+const app = $('#app');
+const qs = new URLSearchParams(location.search);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const WD = ['日','月','火','水','木','金','土'];
+const fmtDay = d => { const t = new Date(d + 'T00:00:00'); return `${t.getMonth()+1}月${t.getDate()}日（${WD[t.getDay()]}）`; };
+
+async function api(body) {
+  const r = body
+    ? await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body) })
+    : null;
+  return r.json();
+}
+async function apiGet(params) {
+  const r = await fetch(API_URL + '?' + new URLSearchParams(params));
+  return r.json();
+}
+
+/* ---------- 予約する側 ---------- */
+async function guestView(id) {
+  const key = qs.get('key');
+  let p;
+  try { p = await apiGet({ action: 'get', id, ...(key && { key }) }); }
+  catch { app.innerHTML = '<p class="err">読み込みに失敗しました。</p>'; return; }
+  if (p.error) { app.innerHTML = `<p class="err">${esc(p.error)}</p>`; return; }
+
+  const taken = new Set(p.taken);
+  const days = {};
+  p.slots.slice().sort().forEach(s => { const [d, t] = s.split(' '); (days[d] ||= []).push(t); });
+  let chosen = null;
+
+  app.innerHTML = `
+    <div class="card"><h1>${esc(p.title)}</h1>
+      <div class="sub">${esc(p.description)}</div>
+      <div class="sub">所要時間：${p.duration}分</div></div>
+    <div class="card"><h2>1. 日時を選ぶ</h2>
+      ${Object.keys(days).map(d => `<div class="day"><b>${fmtDay(d)}</b><div class="slots">
+        ${days[d].map(t => `<button class="slot" data-s="${d} ${t}" ${taken.has(d+' '+t)?'disabled':''}>${t}</button>`).join('')}
+      </div></div>`).join('')}</div>
+    <div class="card"><h2>2. ご連絡先</h2>
+      <label>お名前</label><input id="name" autocomplete="name">
+      <label>メールアドレス</label><input id="email" type="email" autocomplete="email">
+      <label>ご要望・メモ（任意）</label><textarea id="note" rows="3"></textarea>
+      <button class="btn" id="go" disabled>予約を確定する</button>
+      <div class="err" id="err"></div></div>
+    ${p.bookings ? `<div class="card"><h2>予約一覧（管理用）</h2><table>
+      <tr><th>日時</th><th>お名前</th><th>メール</th><th>メモ</th></tr>
+      ${p.bookings.map(b => `<tr><td>${esc(b.slot)}</td><td>${esc(b.name)}</td><td>${esc(b.email)}</td><td>${esc(b.note)}</td></tr>`).join('') || '<tr><td colspan=4>まだありません</td></tr>'}
+    </table></div>` : ''}`;
+
+  const upd = () => { $('#go').disabled = !(chosen && $('#name').value.trim() && $('#email').value.trim()); };
+  document.querySelectorAll('.slot').forEach(b => b.onclick = () => {
+    document.querySelectorAll('.slot').forEach(x => x.classList.remove('on'));
+    b.classList.add('on'); chosen = b.dataset.s; upd();
+  });
+  ['name', 'email'].forEach(i => $('#' + i).oninput = upd);
+  $('#go').onclick = async () => {
+    $('#go').disabled = true; $('#err').textContent = '';
+    const r = await api({ action: 'book', id, slot: chosen, name: $('#name').value.trim(),
+      email: $('#email').value.trim(), note: $('#note').value.trim() });
+    if (r.ok) {
+      app.innerHTML = `<div class="card ok"><h1>予約が完了しました</h1>
+        <p>${fmtDay(chosen.split(' ')[0])} ${chosen.split(' ')[1]} 〜<br>確認メール（カレンダー招待）をお送りしました。</p></div>`;
+    } else { $('#err').textContent = r.error || '失敗しました'; $('#go').disabled = false; }
+  };
+}
+
+/* ---------- 予約ページを作る側 ---------- */
+function adminView() {
+  const dates = new Set();
+  app.innerHTML = `
+    <div class="card"><h1>予約ページを作る</h1><div class="sub">候補日時を設定して、発行されたリンクを相手に送ってください。</div>
+      <label>タイトル</label><input id="title" placeholder="例：オンライン面談">
+      <label>説明（任意）</label><textarea id="desc" rows="2"></textarea>
+      <label>所要時間</label>
+      <select id="dur"><option>15</option><option>30</option><option selected>60</option><option>90</option><option>120</option></select></div>
+    <div class="card"><h2>候補日</h2>
+      <div class="row"><div><input type="date" id="d"></div><button class="btn sm" id="add">追加</button></div>
+      <div id="chips" style="margin-top:8px"></div>
+      <div class="row"><div><label>開始</label><input type="time" id="st" value="10:00"></div>
+        <div><label>終了</label><input type="time" id="en" value="18:00"></div></div>
+      <div class="sub">開始〜終了を所要時間ごとに区切った枠が、各候補日に作られます。</div>
+      <button class="btn" id="make">リンクを発行</button><div class="err" id="err"></div></div>
+    <div id="result"></div>`;
+  const draw = () => $('#chips').innerHTML = [...dates].sort().map(d =>
+    `<span class="chip">${fmtDay(d)} <a href="#" data-d="${d}">×</a></span>`).join('');
+  $('#add').onclick = () => { if ($('#d').value) { dates.add($('#d').value); draw(); } };
+  $('#chips').onclick = e => { if (e.target.dataset.d) { e.preventDefault(); dates.delete(e.target.dataset.d); draw(); } };
+  const mins = t => +t.slice(0, 2) * 60 + +t.slice(3);
+  const hm = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  $('#make').onclick = async () => {
+    const dur = +$('#dur').value, slots = [];
+    dates.forEach(d => { for (let m = mins($('#st').value); m + dur <= mins($('#en').value); m += dur) slots.push(d + ' ' + hm(m)); });
+    if (!$('#title').value.trim() || !slots.length) { $('#err').textContent = 'タイトルと候補日・時間帯を設定してください'; return; }
+    $('#make').disabled = true; $('#err').textContent = '';
+    const r = await api({ action: 'create', title: $('#title').value.trim(), description: $('#desc').value.trim(), duration: dur, slots });
+    $('#make').disabled = false;
+    if (r.error) { $('#err').textContent = r.error; return; }
+    const base = location.origin + location.pathname;
+    $('#result').innerHTML = `<div class="card"><h2>発行しました</h2>
+      <label>相手に送るリンク</label><input readonly value="${base}?id=${r.id}" onclick="this.select()">
+      <label>管理用リンク（予約一覧が見えます。あなただけが保管）</label><input readonly value="${base}?id=${r.id}&key=${r.adminKey}" onclick="this.select()"></div>`;
+  };
+}
+
+if (API_URL === 'YOUR_APPS_SCRIPT_URL') app.innerHTML = '<p class="err">index.html の API_URL を設定してください。</p>';
+else if (qs.get('id')) guestView(qs.get('id'));
+else adminView();
+</script>
+</body>
+</html>
