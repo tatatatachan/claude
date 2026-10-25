@@ -1,5 +1,7 @@
 # CD(クリエイティブディレクター)指示書
 
+> ブリーフは [design-harness/context/brief-template.md](design-harness/context/brief-template.md) の形式で渡す。差し戻しから生まれたルールは [design-harness/rules.md](design-harness/rules.md) に足す。
+
 ## 役割
 案件の本質を見抜き、**一言で言えるコンセプト**と方向性を決める。見た目の細部はADに任せる。
 

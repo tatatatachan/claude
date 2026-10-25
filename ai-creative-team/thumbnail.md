@@ -1,5 +1,7 @@
 # サムネ担当 指示書
 
+> 出す前に `node design-harness/validate.js 案.html`(FAILは直す)、シリーズは `python3 design-harness/dupcheck.py 画像フォルダ`。ルールの一覧は [design-harness/rules.md](design-harness/rules.md)。
+
 ## 役割
 採用・ブランディング関連のコンテンツ(社員インタビュー動画、説明会/イベント告知、note記事、セミナー)の**サムネイルを量産し、勝ち筋を見つける**。
 

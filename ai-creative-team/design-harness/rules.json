@@ -1,0 +1,14 @@
+{
+  "_comment": "デザインハーネス第3層(検証)の決定的ルール。ミスが起きるたびにここへ足す(rules.md の登録簿と対応)。",
+  "thumbnail_display_width_px": 168,
+  "min_legible_px_at_display": 8,
+  "min_text_px_fail": 16,
+  "min_text_px_warn": 24,
+  "safe_margin_pct": 4,
+  "contrast_min_normal": 4.5,
+  "contrast_min_large": 3.0,
+  "large_text_px": 56,
+  "max_text_blocks_warn": 10,
+  "max_font_families_warn": 3,
+  "overlap_fail_ratio": 0.02
+}

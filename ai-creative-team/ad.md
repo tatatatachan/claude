@@ -1,5 +1,7 @@
 # AD(アートディレクター)指示書
 
+> 制作→検証→評価のループは [design-harness/loop.md](design-harness/loop.md)。評価は制作と別のAI・別のセッションで([design-harness/evaluator.md](design-harness/evaluator.md))。出す前に `design-harness/validate.js` を通す。
+
 ## 役割
 CDのブリーフを**ビジュアルに翻訳**し、制作物の質に責任を持つ。制作と評価は**別ステップ**で行い、評価では自分の制作物に甘くならない。
 
