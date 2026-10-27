@@ -2,7 +2,7 @@
 
 ジェイピーネクスト株式会社（名古屋市中川区。粉体の空気輸送・真空輸送、マテハン、サニタリー、選別機器）の採用ブランディング提案に使う情報を、ここに集めています。
 ホシザキ案件（`hoshizaki/`）と同じ型で、市場・ターゲットのリサーチとSEEDSの整理を行いました。
-最終更新：2026-10-26
+最終更新：2026-10-27
 
 ## 案件の要点（Slack・8/4ヒアリング・提案デッキより）
 - 2025年にPARADOXで理念（MI）を策定し、11/21にリリース会。ブランドムービー納品済み。VI（ロゴ）策定が進行中（11月上旬ロゴ提案→12月上旬FIX）。新オフィス（リノベーション）も進行中。
@@ -21,9 +21,11 @@
 | `research/jpnext_research.xlsx` | 競合分析（5社比較）、競合候補リスト、ターゲットペルソナ、沿革、事業構成、採用市場データ、出典と要確認 |
 | `project/slack_digest.md` | Slackの時系列まとめ（#j25_ジェイピーネクスト_crbr、グループDM ほか）、関係者、予定、ファイルID |
 | `spd/SEEDS×NEEDS接点.md` | SPD 2ページ目の中央「接点」のたたき台（コンセプトの材料。決定はCD・Pr） |
+| `design/slide_design_rules.md` | スライドのデザインルール（ホシザキの型を、JPネクストの色・書体に置き換え）。`tokens.json` が色・書体の値、`apply_tokens.py` がGoogleスライドへの適用スクリプト |
 
 ## 元資料（Google Drive）
 - 本リサーチのGoogleスライド版（20枚）：`1hhH9yxBHlB4Cp5X8Y7jmxYK1fIuncAvq-RZ3GDBzEdY`（Drive「JPネクスト」フォルダ）
+- 同スライドのJPデザイン版（別ファイル。`design/` のルールを適用）：`1nlHoLUOfBTIsckTth8fGpPgEjQpIr6U3TdbQlHDZ7fM`
 - 10/28提案デッキ「1022_ジェイピーネクストさま_ご共有資料」：`1ZcbfrbjFC06m9d9nlF-pL8Io1rhVULnUX1vBkGBYyIY`
 - 8/4ヒアリング文字起こし（ファイル上は「9月7日」表記）：`1DVpJhuRtLCV2GzUD25FxOHFdAIlbMSuNFDZXocU-sbE`
 - 理念リリース研修資料（2025.11.21）：`1NihaxmOPoC4kAcM-jtJ8iX3NDB7b-YfT`
