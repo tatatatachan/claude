@@ -23,6 +23,7 @@
 | `spd/SEEDS×NEEDS接点.md` | SPD 2ページ目の中央「接点」のたたき台（コンセプトの材料。決定はCD・Pr） |
 
 ## 元資料（Google Drive）
+- 本リサーチのGoogleスライド版（20枚）：`1hhH9yxBHlB4Cp5X8Y7jmxYK1fIuncAvq-RZ3GDBzEdY`（Drive「JPネクスト」フォルダ）
 - 10/28提案デッキ「1022_ジェイピーネクストさま_ご共有資料」：`1ZcbfrbjFC06m9d9nlF-pL8Io1rhVULnUX1vBkGBYyIY`
 - 8/4ヒアリング文字起こし（ファイル上は「9月7日」表記）：`1DVpJhuRtLCV2GzUD25FxOHFdAIlbMSuNFDZXocU-sbE`
 - 理念リリース研修資料（2025.11.21）：`1NihaxmOPoC4kAcM-jtJ8iX3NDB7b-YfT`
