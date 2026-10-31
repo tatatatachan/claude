@@ -1,0 +1,762 @@
+# 広告ウヒョー 調査メモ (2026-10-31 時点)
+
+ラベル凡例: [確認済み]=一次情報(yt-dlp/oEmbed等)で確認 / [検索のみ]=検索結果・二次記事のみ / [見つからず] / [推論]
+注意: YouTubeの個別動画ページ(概要欄・投稿日・字幕)は bot確認(429/Sign in)で取得不可。回避はしていない。タイトルの一部は取得環境の言語設定で英訳表示されている(原題は日本語)。
+
+## 1. 番組概要
+- チャンネル名: 「広告ウヒョー!【公式】広告専門メディア」 [確認済み] 出典: https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=tiywEQQLivI&format=json (author_name)
+- URL: https://www.youtube.com/@koukoku_uhyo (channel ID: UCYG_0h5PYT1X7HVC3ZSm0iQ) [確認済み] 出典: oEmbed author_url / yt-dlp
+- 出演者: 福里真一(CMプランナー)、伊藤直樹(クリエイティブ集団PARTY代表・クリエイティブディレクター)、山田百音(広告営業・MC) [検索のみ] 出典: https://www.advertimes.com/?p=503836 (WebFetchで確認、検索要約)。#1のタイトルにも【福里真一&伊藤直樹&山田百音】とある [確認済み] https://www.youtube.com/watch?v=tiywEQQLivI
+  - 福里さんは想定どおりCMプランナーの福里真一氏。ただし他の回では大貫卓也・佐々木宏・TCC審査委員長等のゲスト回が多く、福里氏単独の番組ではなく3人体制。
+- 山田氏は2016年に広告代理店へ営業職入社、約3年前からMC [検索のみ] 出典: 上記検索結果要約(原典 https://markezine.jp/article/detail/49914?p=1 は403で未読)
+- MarkeZine Day 2025 Autumn に福里氏・山田氏が登壇(ゲスト三浦崇宏氏) [検索のみ] https://markezine.jp/article/detail/49914?p=1
+- 開始時期: [見つからず]。#1が最古の番号付き回であることのみ確認。投稿日は取得不可。山田氏「約3年前からMC」から2022年前後開始と [推論]
+- 配信頻度: 取得不可。番号付き回は #1〜#212超(#212の存在を検索で確認)、通常動画277本+ショート411本(2026-10-31時点) [確認済み] 出典: yt-dlp --flat-playlist (@koukoku_uhyo/videos, /shorts)。週1前後の高頻度 [推論]
+- 形式: トーク形式の解説番組(名作CM解説、年間広告ベストテン、クリエイターゲスト、TCC/ヤングカンヌ解説、お悩み相談、学生広告日本一決定戦など)+ショート動画 [確認済み](タイトルから)
+- 制作・主催: 「広告専門メディア」を名乗る。運営会社名は [見つからず]。「学生広告日本一決定戦」は番組が主催と明記 [確認済み] 出典: 動画 ryRiXwBAuiM https://www.youtube.com/watch?v=ryRiXwBAuiM
+- 登録者数・チャンネル説明文: 取得不可(aboutページはWebFetchで本文取得できず)
+
+## 2. 動画一覧
+- 全件(ID・再生数・タイトル)は下記「付録A」に記載。フラット取得のため投稿日は全件「取得不可」(NA)。再生数は概数(yt-dlp flat、取得時点)。
+- 再生数の上位例: g_HGgCBqyeE 72,230(言語学ラジオ コラボ) / q8aU7k64rcI 16,000(大貫卓也さん) / 173n6RGEBNI 15,492(大貫卓也 前編) / iAGuwyRbIMM 13,000(木村拓哉 ギャツビー) [確認済み]
+- 全動画URL形式: https://www.youtube.com/watch?v=<ID>
+
+## 3. 採用・就活・企業名の回 (タイトルベース。概要欄は取得不可のため、概要欄にしか出ない企業名は未確認)
+### 就活・新卒・採用そのものを扱う回 [確認済み: タイトルのみ]
+| ID | 再生数 | タイトル |
+|---|---|---|
+| eB-RFaKVoMA | 2000 | 【広告業界ガチ面接】就活生必見！広告会社のリアルな面接をサイバーエージェント人事役員ソヤマンさんが徹底解説！【総集編】 |
+| Ann3aisq6qY | 2700 | 【就活生必見！】広告業界の面接を名物人事役員ソヤマンさんがガチで解説！【後編】 |
+| Au11dI29LCM | 3500 | 【就活生必見！】広告業界の面接を山田百音がガチで体験！【前編】 |
+| ki_o6mID0dU | 2700 | 【新入社員のど直球質問】4月から広告会社に入社する新人が、広告クリエイターにガチ質問！ |
+| hZHcBytKJaM | 1700 | 【新入社員のど直球質問】「おもしろさと正しさ、広告にはどちらが必要？」ほか |
+| ixp42dMPVpk | 2300 | #100 AIとどう付き合う？ 若手クリエイター不安 就活生必見のお悩み相談会 |
+| uOz3mUZJyoo | 2100 | #101 6秒CMの作り方 就活生必見のお悩み相談会 |
+| UQFPYlqEdWQ / 6q6p_8Duskg | 3200 | #54 #55 学生さん質問大会(前後編) |
+| ryRiXwBAuiM ほか | - | 【学生広告日本一決定戦】シリーズ(オリエン〜本戦; cSHDx7uz1Kw, 8S16ocMhHJE, X7shaVz-uZY, ZormGjtlIGY, fEy2j_mrG9I, 9p938EZEP-I) |
+- ショートに 就活/新卒/26卒/27卒/28卒 タグ多数(例 L57RJ2vempk, AjLxLcLD-b4 [ソヤマン面接], 0klK1EvEbUA, gLh9QOusGyA, ccH1oV8MxG0, -JAmy6h2H4E, qup-X6S757w)。出典: yt-dlp /shorts。
+- 企業名: サイバーエージェント(ソヤマン面接回、ni0YDEVDJnU 極AIお台場スタジオ潜入 #102、若者トレンド調査、ヤングカンヌ若手企画のショート複数)。
+### 企業名がタイトルに出る広告作品回 [確認済み: タイトルのみ]
+- ドン・キホーテ: -V7JwxwRt40(ブルーノ・マーズ出演CM) / jwfKs2Trp2A(年間広告ベストテン2024 第3回「ブルーノ・マーズ」)、ショート yXzmupRZH9Q, ot9S4j0RZzs
+- ユニクロ: lDhoqL5UcBY(河合優実さんのCM特集内) / K6ceSBSsuG4(#59 GPT-4でユニクロエアリズムCM) / ショート Fj5XlJu-ZgY(ユニクロ「LifeとWear」佐々木宏) / u6CFeVnEIXc, V9JsPmnaY4A
+- リクルート: 7Ka8WPfglQM(中島信也さん回 第3回「Airペイ」)。※採用広告ではなくリクルートのCM。
+- 富士通: タイトル/ショートでは該当なし [見つからず]
+- サイボウズ: 該当なし [見つからず]
+- 「採用」「求人」を含むタイトル: 該当なし [見つからず]
+- 検索方法: yt-dlp --flat-playlist で全タイトルを grep(採用|求人|リクルート|新卒|就活|各社名 等)。ytsearch/oEmbedはタイトルのみ返し概要欄は返さない。
+
+## 4. 字幕・文字起こし・書き起こし記事
+- YouTube自動字幕: 取得不可(bot確認)。有無は未確認。
+- note等の書き起こし: 検索では [見つからず]。(検索クエリ「広告ウヒョー 書き起こし OR 文字起こし note」)
+- 記事(題名・URLのみ記録):
+  - Advertimes 記事(「ゾワワの神様」コラボ・番組紹介) https://www.advertimes.com/?p=503836 [検索のみ/本文一部確認]
+  - MarkeZine 記事(MarkeZine Day 2025 Autumn 登壇関連) https://markezine.jp/article/detail/49914?p=1 [検索のみ。403で本文未読]
+  - 本文の複製はしていない。
+
+## 5. 作品(CM)のデータベース検索性
+- 公式サイト・作品DB: [見つからず]。公式サイトやX/Instagramも検索で特定できず。
+- 検索手段: YouTubeチャンネル内の検索・タイトル(企業名・商品名・クリエイター名が入る)のみ。タイトルに作品名・企業名が含まれる回が多く、yt-dlpでタイトル一括取得→キーワード抽出は可能 [確認済み]。
+- 概要欄のリンク(関連CM動画・参考URL)の有無: 取得不可で未確認。
+
+## 見つからなかったもの
+- 開始日、各動画の投稿日、概要欄、字幕、チャンネル登録者数、運営会社名
+- 「採用/求人」タイトルの回、富士通・サイボウズの回
+- 書き起こし記事(note/ブログ)、公式サイト、作品DB
+- MarkeZine記事本文(403)
+
+## 採用コピーの事例収集に使える度合い
+- 低〜中。採用広告・採用コピーを体系的に扱う番組ではなく、一般の広告(CM・コピー賞)中心。
+- 使える点: (a) TCC賞/新人賞解説回でコピーの評価観点を学べる、(b) 広告業界の就活・面接・新入社員回(サイバーエージェント人事役員)は「採用される側の視点」資料、(c) リクルート・ユニクロ・ドンキ等のCM事例。採用コピーそのものの事例は未確認 [推論]。
+- 制約: 概要欄・字幕が取得できずテキストでの事例抽出は困難。事例収集には別資料(TCC年鑑、各社採用サイト等)の併用が必要。
+
+## 付録A: 通常動画一覧 (ID|再生数|タイトル / 投稿日=取得不可) 277本
+- qM0f1m-I-wo | 3100 | [Author Moegara on Advertising] Did this bestselling author once dream of working in advertising!...
+- iAGuwyRbIMM | 13000 | 【木村拓哉さん復活記念】マンダムギャツビーのCM特集！ピンクバックでキレッキレに踊る木村拓哉さん！過去には本木雅弘さん、松田翔太さんも出演！男が憧れる男を描いてきた歴史とは？
+- MUudiDSLu4E | 9900 | [Interview with Film Director Miwa Nishikawa] Discussing Her New Hit Film "Children I Don't Know"...
+- V-1LkD9dV6U | 2900 | [Finalists Announced! / The 2nd National Student Advertising Championship!] We're announcing the ...
+- Ynii5-q5pSs | 3300 | [Toranomon Advertising Festival 2026] Part 2: IP, Anything Goes, and PR session leads gather! Fou...
+- h82ps79V7Uw | 4200 | [Toranomon Advertising Festival 2026] It’s back again! Japan’s largest advertising celebration! F...
+- 7-gtWd1fRJg | 2000 | [Manga Artist Akiko Higashimura's Theory on Advertising] From the commercials she loved as a girl...
+- Hkkn6nZW3Ro | 3400 | [Revised Draft 2] Young Lions Cannes Return Report: Part 2
+- 5QsNE0rAOCo | 2900 | 【ヤングカンヌ帰国報告2026 】日本代表はどんな課題に、どんなプロセスで考え、どんなアイデアを提案したのか？そして世界で評価されたアイデアとは？前編は「フィルム部門」と「デジタル部門」！
+- 9G-nV7J7VhU | 89000 | 【内田也哉子さんインタビュー】樹木希林さんが出演した「富士フイルム」や「宝島社」などの広告について。共同館主をつとめる「無言館」について。その“面白がる目線”から見えてくるものとは？
+- GJ-aasu-3YY | 1800 | [Social Contribution Through Advertising] Introducing initiatives such as the "Magomimi Challenge...
+- yJ9mHiiXd9k | 1100 | Deadline Approaching! The 2nd Japan Student Advertising Awards: Don’t miss expert tips from judge...
+- tCVGx5KYJjY | 5200 | [Manga Artist Akiko Higashimura's Drama] A Master of the Manga World Takes on Directing! The Dram...
+- 9xNYSZbrmwU | 839 | [Youth Trend Report] "Sub-type Diagnostics," "Setlog," and More! What Are the New Forms of Commun...
+- eo1-ZBctr8Y | 990 | 【若者トレンド調査報告】現役大学生が調査報告！「推し活妄想」や「友情証明ペアアクセ」など！なぜそれは若者の間で流行っているのか？分析から見えてくる次のクリエイティブのヒントとは？【前編】
+- kp3OaSqtl9I | 2200 | [The Genius Kenji Yamauchi] An Intro to the Legendary Commercial Director Behind Massive Hits! Fr...
+- SyA_XyhOIvg | 3700 | 【CMディレクター岩崎裕介さん】コウメ太夫さんのサントリー「特茶」や豊川悦司さんの「キントーン」など！岩崎さんのつくるCMは他と何が違うのか？盟友のプランナー市川晴華さんも参戦！【後編】
+- 89U3LnpEJQk | 9100 | 【CMディレクター岩崎裕介さん】個性派監督が語るヒットCMのつくり方とは？明治「スーパーカップ」やサントリー「特茶」など！映画「チルド」でも大注目の監督のインタビューです！【前編】
+- yQrg0gXQ2-U | 10000 | 【ベルリン映画祭受賞！映画「チルド」】岩崎裕介監督が登場！染谷将太さん、唐田えりかさん、西村まさ彦さん、くるまさんが出演した話題のホラー映画を語る！ベルリンからいよいよ凱旋公開！
+- FuAwFscBgcA | 3000 | 【TCCグランプリ／TCC賞2026】この1年を代表する広告とは？コピーとは？グランプリのJR東日本「たみちゃんの上京」篇から、キューピー、アイフルまで！三島邦彦審査委員長が注目作を解説！
+- -l8oOrktefk | 3100 | 【TCC新人賞2026】三島邦彦審査委員長が登場！21名の受賞作の中から、注目のコピーを取り上げて解説！そのコピーのどこが評価されたのか？どこが新しかったのか？若手コピーライター必見！
+- WJQEQC7fihc | 2200 | [Orientation Announced! / The 2nd National Student Advertising Championship!] The creative battle...
+- -llkraNuLWE | 18000 | 【「新しい地図」新作映画】山内ケンジ監督が登場！稲垣吾郎さん・草彅剛さん・香取慎吾さんが主演する映画『バナ穴 BANA_ANA』をたっぷり語っていただきました！それは一体どんな映画なのか？
+- 78Ry1Iv4OdM | 5000 | 【葛西薫さんインタビュー】歴史に残る名作「ユナイテッドアローズ」「サントリー烏龍茶」「ヒロシマアピールズ」などなど！6人のADが選んだベストワークを、ご本人が解説！【永久保存版・後編】
+- cyyBc9Dl7M8 | 6800 | [Kaoru Kasai Interview] The legendary art director has finally arrived! Japan's top 6 ADs select ...
+- FLI5PpbBfl4 | 1400 | [2nd Student Advertising Championship! Confirmed] The creative battle for university students is ...
+- eyUrJQelneU | 1700 | [Special Feature: Akira Akiyama's Copywriting Exhibition] How did Takashi Nakahata portray Akiyam...
+- RKgWry4nd0c | 3300 | [Special Feature: Sho Akiyama Copywriting Exhibition] Featuring contributions from legendary copy...
+- 9MU2m6p-3As | 7000 | [Interview with Trending Actor Anna Ishii] From "GO" taxi app to Minute Maid commercials, Anna Is...
+- bnqNMCnwLyk | 1600 | [Art Director Tomoyoshi Akiyama] From writing lyrics for idols to pottery! A legendary art direct...
+- 2yk8A0AUNsk | 2600 | [Art Director Tomoyoshi Akiyama] His book "This is How Sense is Born" is a huge hit! The legendar...
+- RmeEx8zfspU | 2900 | 【「ギルティ炭酸NOPE」の広告戦略】監獄を舞台に、生田斗真さん、鈴鹿央士さん、アントニーさんが登場！CMからデジタル、OOHまで一気通貫！“ギルティ“を大肯定して大ヒット！
+- ACr4a8xtHhs | 1000 | 【「同氏婚のススメ」とは？】鈴木さん、田中さん、佐藤さんばかりが集まる婚活パーティーの理由とは？ネットでも賛否両論！自主プレからはじまって大きな話題を呼んだ施策を、企画者本人が解説！
+- 3lr6LVUGOzI | 1100 | [WBC and Advertising] A flood of Shohei Ohtani commercials! What was so great about the Kirin "Pl...
+- HDPkXTIcpt0 | 2400 | 【WBCと広告】NetflixがB'z稲葉浩志さんが歌う「タッチ」をテーマソングにした理由とは？Netflix独占中継で、NHKや民放各局と何が違ったのか？広告という視点からWBCを解説！【前編】
+- COX2fu8OJpw | 2400 | 【ヤングカンヌ日本代表2026】第3回は「フィルム部門」！クオリティの高さで他を圧倒した映像作品とは？そして6月のカンヌ本戦では何を目指して世界と戦うのか？３つの部門の日本代表が集結！
+- bOYgoxiyHWM | 2800 | 【「今日好き」と広告】恋愛リアリティ番組『今日、好きになりました。』には広告案件も殺到！女子中高生に刺さりまくる、タイアップCMの極意とは？番組広告プロデューサー本人がくわしく解説！【後編】
+- S-7ymw3jtGo | 1900 | 【ヤングカンヌ日本代表2026】第2回は「デジタル部門」！審査員をうならせたキャッチーなアイデアとは？2次審査の英語プレゼンに向けて行った入念な準備とは？３つの部門の日本代表が集結！
+- lzLMNgqgHBY | 3900 | [Young Cannes Japan Representatives 2026] Japan's representatives from all three categories gathe...
+- WrsvT2VbeJs | 26000 | [Reason for the success of "Kyou Suki"] The romance reality show "Kyou Suki Ni Narimashita" is ov...
+- myD5XnbVMT0 | 2000 | 【知られざる名CM】「瀬戸しお」のCMを知っていますか？Xを活用したすごいアイデア！FCC賞／CCN賞でグランプリ2冠！多くのクリエイターが「その手があったか」と絶賛したCMを解説！
+- 0QCHQ-xnSh0 | 1400 | 【サッポロ黒ラベル・大人エレベーター】シリーズ第49弾では松任谷由実さんが登場！妻夫木聡さんが大人を旅するロングランCM！「大人とは？」を伝え続けてきたCMの成功の秘密をくわしく解説！
+- jVAc7VOKoMc | 2000 | 【CMプランナー吉兼啓介さん】中学時代からCMをつくっていたという吉兼さんのクリエイティブを深掘り！日清食品「ラ王」や山田孝之さんのJT「鬼のゆく道」はどのように発想されたのか？【後編】
+- SOwJnKbougk | 3200 | [Open House Commercial] Commercial planner Yoshikane Keisuke appears! Why did Sakai Masato become...
+- H-o1N4SUALE | 1300 | 【両国駅の魔人力士】両国駅3番ホームに突如出現した魔人力士！その正体はPS5のグローバルキャンペーン！そのどこが新しかったのか？ネットでも大きな話題になった施策のすごさをくわしく解説！
+- k1gSTzfIGnI | 1800 | 【カロリーメイト受験生応援CM】毎年恒例のシリーズの新作「いちばんの味方」篇を深掘り！AIを活用しながら受験勉強に励む息子、その描き方の新しさとは？父親役・佐藤二朗さんの演技にも注目！
+- f_aka73X8qo | 4200 | [Top Ten Ads of 2025] This is all you need to know about the ads of 2025! Featuring commercials b...
+- x80hrMBAi4c | 4000 | [Top Ten Annual Advertisements 2025] Just look at this and you'll understand everything about adv...
+- 45X9S7Xb0iw | 6100 | [Top Ten Ads of the Year 2025] Just look at this and you'll understand everything about advertisi...
+- D2Ezlbs3Vnc | 1600 | 【コピーライター一倉宏さん】レジェンドコピーライターの名コピー10本をご本人が解説！サントリー、積水ハウス、ANAなどなど！記憶に残る広告コピーはどのようにして生まれたのか？【総集編】
+- bOgywLQzoog | 1800 | [Koikeya's President Appears!] Koikeya's President Akira Sato has been known as the "strongest ma...
+- qoVgJe9HNhs | 1300 | 【ヘラルボニーと広告】カンヌライオンズでゴールド受賞！その審査会場で起きた奇跡のような出来事とは？そしてカンヌを目指した理由とは？社長の松田崇弥さん、桑山知之さんが語る！【後編】
+- O7PQNGh--kk | 2600 | 【ヘラルボニーと広告】話題のヘラルボニーから、社長の松田崇弥さん、桑山知之さんが登場！その奇跡のような歩みを広告で振り返ります！いま世界的にも注目を集める企業の広告戦略とは？【前編】
+- qCxewX3xkfw | 48000 | 【俳優・中島歩さん】来年の大河ドラマ『豊臣兄弟！』にもご出演！人気の個性派俳優が選んだベストCMとは？謎のダンスCMやシュールなヒーロー物など！そして中島さんにとってCMとは？【後編】
+- kROxxUKUUsA | 266000 | [Actor Ayumu Nakajima] This unique actor, known for his impressive acting in numerous commercials...
+- cSHDx7uz1Kw | 4000 | 【学生広告日本一決定戦】ストラテジープラン部門で初代「学生広告日本一」に輝いた大学は？「虎ノ門広告祭」で開催された本戦の模様を大公開！審査員も感動した画期的なアイデアとは？【本戦第3弾】
+- 8S16ocMhHJE | 4000 | 【学生広告日本一決定戦】ムービー部門で初代「学生広告日本一」に輝いた大学は？「虎ノ門広告祭」で開催された本戦の模様を大公開！審査員からの支持を集めた1分間の動画広告とは？【本戦第2弾】
+- X7shaVz-uZY | 2800 | 【学生広告日本一決定戦】グラフィック部門で初代「学生広告日本一」に輝いた大学は？「虎ノ門広告祭」で開催された本戦の模様を大公開！審査員をうならせたポスターのアイデアとは？【本戦第1弾】
+- qLZhFaD4NYc | 3200 | [Art Director Ikezawa Tatsuki] Ikezawa has worked on projects for major clients, including Toyota...
+- lMV9wBUg8Fk | 4200 | [Art Director Ikezawa Tatsuki] From the origins of his creativity to the design of the Lexus boot...
+- fDIqvhq8R4U | 8900 | [Starring Tomoe Shinohara!] "Shosoin THE SHOW" - What is the dress created in collaboration with ...
+- fEy2j_mrG9I | 2200 | 【学生広告日本一決定戦】惜しくも本戦進出を逃したショートリスト作品を広告主と審査員が講評！良かった点、足りなかった点とは？そして10月18日、「虎ノ門広告祭」で行われる本戦の行方は！？
+- ZormGjtlIGY | 2400 | 【学生広告日本一決定戦】本戦に進出したファイナリストを発表！彼らはどんなクリエイティブを提案するのか？そして初代日本一になる大学は？10月18日、ぜひ「虎ノ門広告祭」で目撃してください！
+- errRr4Q4qb8 | 6000 | 【GO三浦祟宏さん参戦！】「MarkeZineDay」でのトークセッションを公開収録！あのGO三浦さんと2025年上半期のベスト広告を語り合いました！広告・マーケティングの概念を拡張する事例とは？
+- J1v5ZeQ032I | 2800 | 【虎ノ門広告祭】100を超えるセッションから特に注目のセッションを紹介！レジェンドの対談から、AIと人間のコピー対決まで！広告祭のクリエイティブディレクター菅野薫さんが熱く解説！【後編】
+- MDFSRUU40WM | 4700 | 【虎ノ門広告祭】広告祭のクリエイティブディレクターをつとめる菅野薫さん登場！史上最大とも言われる広告祭の全貌は？あえて今やる理由とは？10月17日からの8日間、虎ノ門ヒルズが熱い！【前編】
+- 0JUMlHmEVi4 | 4100 | 【SATO2531】カンヌゴールドをはじめ世界中の広告賞を席巻したクリエイティブとは？クリエイターおふたりをお招きして徹底インタビュー！自主プレからはじまった仕事はどう広がっていったのか？
+- 9p938EZEP-I | 1400 | 【学生広告日本一決定戦】オリエンに対する学生のみなさんの質問に詳しく答えます！なんと本戦（決勝）はあの話題の「虎ノ門広告祭」で開催！業界最注目の学生クリエイティブコンテストです！【後編】
+- ryRiXwBAuiM | 2000 | 【学生広告日本一決定戦】「広告ウヒョー！」が主催する学生のクリエイティブのコンペ、オリエン発表です！広告主が求めるアイデアとは？「学生広告日本一」を目指す学生のみなさん、必見です！【前編】
+- uXgltf0TEgY | 3000 | 【コピーライター安藤隆さん】「それゆけ私」「自分史上最高キレイ」「一、ニ」など！サントリー烏龍茶の名コピーの数々をご本人が徹底解説！ここでしか聞けない伝説のコピーの誕生秘話とは？【後編】
+- 8iy-MX_pUUA | 4000 | 【コピーライター安藤隆さん】祝80歳！サントリー烏龍茶の名コピーをご本人が徹底解説！「アーさんもご一緒に」「ユーはいいなあ」など！自主プレからスタートした伝説の仕事の秘密とは？【前編】
+- 0N-fI5z_PaA | 1800 | 【ヤングカンヌ・帰国報告】本戦での戦いから得られたものとは？ヤングカンヌ日本代表インタビュー！時間の使い方から審査傾向まで！すべてのクリエイターにとって貴重なアドバイス満載！【後編】
+- HFqMgZaJ1pg | 2900 | [Young Cannes - Returning Home Report] Young Cannes Japan representatives from three categories w...
+- 1u4niJuqweo | 7700 | [Taroman director Fujii Ryo] The film "Taroman: Expo Explosion" is now in theaters! The artistic ...
+- fRYg49pCpd0 | 4300 | 【タウンワークのCM】今田美桜さんがただ立っているだけ！？朝ドラ『あんぱん』主演俳優である今田さんに、ほぼ何もやらせない理由とは？シンプルすぎると話題のCMの広告戦略に迫る！
+- GrNulOeXKZc | 1300 | 【TOKIO】城島茂さんが出演した漁港を舞台にしたCMとは？そして、福島県とTOKIOの深い関係とは？残念ながら解散したTOKIOのCMでの足跡を、広告クリエイター目線で振り返ります！【後編】
+- gXOlUmnh3Lk | 1900 | 【TOKIO】TOKIOのみなさんが出演したCMを広告クリエイター目線で振り返ります！あの名曲を生み出したJR東海のCMとは？長瀬智也さんが出演した知る人ぞ知るグンゼの名作CMとは？【前編】
+- 6AFJZdcpZfI | 3300 | 【カンヌライオンズ2025】現地で大ウケだった、フィルム部門の超問題作とは？そして日本からの受賞作は？村田俊平さんがコンパクトに解説！これだけ見れば、今年のカンヌが丸わかり！【後編】
+- bGTffq9WIvI | 5600 | 【カンヌライオンズ2025】これだけ見れば、今年のカンヌが丸わかり！いま世界ではどんなクリエイティブが評価されるのか？各部門の上位作品を中心に、村田俊平さんがコンパクトに解説！【前編】
+- sxT0Dzh5M0U | 3500 | 【注目のクリエイター・明円卓さん】「いい人すぎるよ展」「ありがたいことです展」「そういうことじゃないんだよ展」などなどヒット企画連発中！そんな明円さんの発想の原点にせまる！【総集編】
+- r3ckyKXJBz4 | 141000 | [Yoshizawa Ryo appears!] A deep dive into the film "Baban Baban Bang Vampire"! Interview with lea...
+- wTv3idyCF8U | 4300 | 【TCCグランプリ2025】受賞者である栗田雅俊さんご本人が徹底解説！「最終回は気づかないうちに終わっていく。」などなど！花王メリットの泣けるコピーはどのようにして生まれたのか？必見です！
+- rv5-QWtAD_o | 4100 | 【TCC賞2025】TCC審査委員長・栗田雅俊さんが徹底解説！ダイアン津田さん出演の「通帳の人」など、一般部門の受賞作はどこが評価されたのか？今の時代を代表する広告コピーとは？必見です！
+- _oa8M5sjHC4 | 4300 | 【TCC新人賞2025】TCC審査委員長・栗田雅俊さんが徹底解説！ACジャパン「決めつけ刑事」をはじめ、新人コピーのどこが評価されたのか？若手コピーライター、CMプランナー必見です！
+- ZueT6h5dmqU | 2600 | [Proposal by Yoshihiko Kurosu] NTT Docomo, PlayStation, and more! A big reveal of the proposal by...
+- pNiTov0BSgI | 6100 | 【黒須美彦さんの企画書】CMプランナー50年！レジェンド広告クリエイター黒須さんの企画書を大公開！サントリー金麦から門外不出のビデオコンテまで！？人の心を動かす企画書の書き方とは？【前編】
+- QSGVOxqtFH8 | 11000 | [Starring Koume Tayu] A hot topic on the internet! A deep dive into Suntory Tokucha's web commerc...
+- LdibcncROo4 | 5000 | 【追悼・大宮エリーさん】今年早逝されたマルチクリエイター大宮エリーさんは、元々はCMプランナーでした。彼女のCMの代表作を振り返りながら、クリエイターとしての原点を深掘りしました。
+- zFbOb1tq0VQ | 2100 | 【劇団とCMの両立！】ダイアン津田さん出演の「通帳の人」篇などヒットCM連発！「劇団ドラマティックゆうや」の作・演出をつとめる泉田岳さんのCMを深掘り！さらに田中佑弥さんの実演も！【後編】
+- imiHyqCNJ2s | 2200 | 【CMディレクターの劇団？】人気急上昇中「劇団ドラマティックゆうや」が登場！CMディレクターと俳優のふたりでつくりあげる新感覚の舞台に迫る！いま知っておかないとやばいです！【前編】
+- KbqQLXd--lk | 2700 | 【嶋浩一郎さん】「本屋大賞」「本屋B &B」など、嶋さんの代表的なお仕事についてお話しいただきました。著書『「あたりまえ」のつくり方』も話題の嶋さんとひきつづきまったり雑談です。【後編】
+- BoBb8OaxslI | 4800 | 【嶋浩一郎さん】今回は博報堂/博報堂ケトルの嶋さんと和室でまったり雑談。ケトル創立の秘密や高崎市「絶メシリスト」の裏話。よいアイデアは雑談から生まれる。キーワードは「沖しじみ」？【前編】
+- Vi8XKoUVmrI | 3200 | 【ヤングカンヌ日本代表】ヤングカンヌで勝ち抜くコツは？いまカンヌ本戦に向けて準備していることは？来年挑戦する若手へのアドバイスは？これだけ見ればヤングカンヌのすべてがわかる！？【後編】
+- P0hHAopBbZA | 5300 | 【ヤングカンヌ日本代表】デジタル部門とPR部門でGOLDを受賞し、日本代表となった若手クリエイターが登場！ヤングカンヌ挑戦の理由や事前の対策、具体的な提案内容などすべてを語る！【前編】
+- bveFrCXJqKY | 3200 | [Creator of the Year Award Winner!] Is this the new image of the creator of the future?! What kin...
+- -gHTNIA2xCc | 5900 | [Creator of the Year Award Winner!] Hakuhodo's Mitsuaki Miyanaga's first interview since winning ...
+- JDKU7V5bvVo | 1700 | 【橋口幸生さん】話題の書『クリエイティブ・エシックスの時代』の著者が手がけた、世界をより良くするための広告とは？世界えん罪の日／世界ダウン症の日／「キミのなりたいものっ展？」など！
+- d7wkFiPkMrI | 1800 | 【眞木準のコピー展】眞木準さんの名コピーと人物像を深掘り！「駄洒落じゃなくてオシャレ」なコピーを生み出したものとは？「あんたも発展途上人。」「恋が着せ、愛が脱がせる。」など！【後編】
+- clBlX4aTvcQ | 2900 | 【眞木準のコピー展】現地レポート！レジェンドコピーライター・眞木準さんの名コピーとコピーライターたちの寄稿文をご紹介！「でっかいどお。北海道」「恋を何年、休んでますか。」など！【前編】
+- cCVSmemcJoU | 22000 | Keita Machida's starring drama series "Missing Persons Search Team" is also doing well! What are ...
+- XL7clP28vp8 | 1800 | 【クリエイター必読！】話題の書『クリエイティブ・エシックスの時代』の著者・橋口幸生さんによる事例解説！クリエイティブ・エシックス観点でいま注目すべき国内の広告・CMとは？【後編】
+- bSznPm1t7X8 | 73000 | [Machida Keita] He also stars in the TV drama "Missing Persons Search Team: The Vanished Truth"! ...
+- jdNouvQNxm0 | 2600 | 【クリエイター必読！】話題の書『クリエイティブ・エシックスの時代』を著者・橋口幸生さんが自ら解説！“炎上““コンプラ“を乗り越えるための視点とは？目からウロコが落ちるかも！？【前編】
+- Bsy89Zt3BY8 | 6000 | [Strange commercial] Akagi Nyugyo Soft's commercial "For some reason, the Lord!" A creepy thing w...
+- L3w-dqNht8c | 1700 | 【サントリー「プレモル子ちゃん」】サザエさん、ドラえもん、ちびまる子ちゃんなど！「大人になった◯◯」CMの歴史を深掘り！その企画の狙いは？成功の秘訣とは？【後編】
+- mMjxdsvKELE | 2200 | 【サントリー「プレモル子ちゃん」】広瀬すずさん、伊藤沙莉さん、オダギリジョーさん出演！ちびまる子ちゃんたちの20年後の姿とは？ニューヨークロケを敢行したCMを深掘り！【前編】
+- hZHcBytKJaM | 1700 | 【新入社員のど直球質問】緊急企画！「おもしろさと正しさ、広告にはどちらが必要？」「クライアントと世の中、どちらを向いて仕事する？」新入社員のぶっ込み質問に対する答えは？【後編】
+- ki_o6mID0dU | 2700 | 【新入社員のど直球質問】緊急企画！4月から広告会社に入社する新人が、広告クリエイターにガチ質問！「広告会社って、広告、作りたくないんですか？」ぶっ込み質問に対する答えは？【前編】
+- eB-RFaKVoMA | 2000 | 【広告業界ガチ面接】就活生必見！広告会社のリアルな面接をサイバーエージェント人事役員ソヤマンさんが徹底解説！ズバリ面接では何を見ているのか？【総集編】
+- KEbuyH4-hA4 | 3300 | [AC Commercials] AC Japan's commercials include classics and controversial works that have been t...
+- OKTC6kfc-QI | 3500 | 【ACのCM】いま何かと話題のACジャパンのCM！「なかやま検脈ん」「決めつけ刑事」など！AC審査員も務めるコピーライター谷山雅計さんと深掘り！【前編】
+- rkuePLCijKE | 2500 | 【サントリー成人の日広告】脚本家・三谷幸喜さんのユーモラスなメッセージが話題！過去には山口瞳さん、伊集院静さんらの名作も！歴史ある新聞広告を深掘り！
+- ut4KhZFR_vQ | 9900 | 【吉沢亮さんの出演継続】アイリスオーヤマのCM！CMプランナー要正直という設定が生まれた理由は？吉沢さん演じるクセ強キャラやシュールな展開にも注目！
+- 7Ka8WPfglQM | 3100 | 【あの！なかじましんやさん】日本を代表するCMディレクター登場！2010年代以降のベストCM！NTTドコモ／TOTO／リクルート「Airペイ」そして今しんやさんが伝えたいこととは？【第3回／全3回】
+- mTtsRkYI598 | 3900 | 【あの！なかじましんやさん】日本を代表するCMディレクター登場！00年代ベストCM！サントリー「伊右衛門」「DAKARA」／資生堂「新しい私になって」ここでしか聞けない話満載！【第2回／全3回】
+- iQtfkBvnUK8 | 4700 | [Hey! Shinya Nakajima] Japan's leading commercial director is here! He personally explains the be...
+- MWp1HFuaKvs | 5700 | [Suntory's Advertising Manager Appears!] Kensuke Shigeno Selects the Top Three Amazing Projects! ...
+- AYZZHmXb9O8 | 10000 | [Suntory's Advertising Manager Appears!] Kensuke Shigeno Selects the Top Three Amazing Ideas! Wha...
+- jwfKs2Trp2A | 3300 | 【年間広告ベストテン2024】これだけ見れば、2024年の広告が丸わかり！ピザハット「平日のカンパネラ」／ミスド「ディグダ」／ドン・キホーテ「ブルーノ・マーズ」【第3回／全3回】
+- f8GH4FmFVm8 | 3800 | 【年間広告ベストテン2024】これだけ見れば、2024年の広告が丸わかり！マクドナルド「ティロリミックス」「三角チョコパイの季節」／メントス／サントリープレモル【第2回／全3回】
+- 43-msWUVuYo | 4400 | 【年間広告ベストテン2024】これだけ見れば、2024年の広告が丸わかり！ゲストは市川晴華さん！花王メリット／ロート製薬「目の愛護ショー」／Netflix『地面師たち』【第1回／全3回】
+- wUzmOnOwnak | 2000 | 【谷山雅計さん】TCC会長・谷山雅計さんの13本の名コピーをご本人が徹底解説！消えたかに道楽。／Yonda?／ガス・パッ・チョ！／日本の女性は、美しい。などなど！すべてのコピーライター必見！【総集編】
+- P7ciI1GGbf8 | 4100 | 【CHOCOLATE市川晴華さん】令和を代表するプランナーとも言われる市川晴華さんが自作を解説！新作アニメには花澤香菜さん、山田孝之さんも参加！ハット首脳会談／中京テレビ／アニメ『パンの赤ちゃん』
+- UKth0QWWeso | 3100 | 【ACC受賞作2024】山田百音がウヒョー！ときたクリエイティブ3選！アイディアのヒントが満載！マイナビバイト・座ってイイッス／味の素・冷凍餃子フライパンチャレンジ／プレモル・飲みに誘うのムズすぎ問題
+- ZTCigtxKzsY | 13000 | 【マクドナルド夜マックCM】櫻坂46・谷口愛季さん出演！ネットで話題の「夜の坂道」篇を深掘り！ACCグランプリ「特別じゃない、しあわせな時間」の続編！楽曲はボカロ曲「ハロ／ハワイユ」！
+- 9hDiFxMwx0w | 4700 | 【カロリーメイト受験生応援CM】2024年の新作「それぞれの音色」篇を深掘り！ACCグランプリ4連覇中！なぜ感動できるのか？楽曲は令和の卒業ソング「僕らまた」！
+- P9XRK35qX3s | 4500 | [Copywriter Kunihiko Mishima] A Deep Dive into His Book "Freedom from Words"! Exploring His Copyw...
+- Jj-dF7pSrHE | 3000 | 【実写版『ONE PIECE』の広告】Netflix広告特集！コピーライター三島邦彦さんに聞く！尾田栄一郎先生の直筆を使った『ONE PIECE』や名コピー「再生のはじまり」など！【後編】
+- _8HaE922Ci8 | 3600 | 【大ヒット『極悪女王』の広告】Netflix広告特集！コピーライター三島邦彦さんに聞く！『極悪女王』『全裸監督』大ヒットドラマの広告の裏側！【前編】
+- lDhoqL5UcBY | 3500 | 【河合優実さんのCM】大量発生中！その理由を広告クリエイターが徹底解説！サントリー・クラフトボス／森永乳業・MOW／味の素・クノールカップスープ／さとふる／ユニクロ／などなど！
+- rYot_r66z4I | 1800 | 【顔面凶器・小沢仁志さん】広告に出てもらいたい人・小沢さんに、若手クリエイターがCM案を勝手にプレゼン！小沢さんの反応は？「笑う小沢と怒れる仁志」コラボ企画！
+- P7YMrotdL4E | 5200 | 【祝70歳！佐々木宏さん】コピーライター佐々木宏さんのベストコピーを名コピーライターがセレクト&解説！太田恵美さん／児島令子さん／岡本欣也さんが選んだのは？【後編】
+- Y1TJ2PyiBIQ | 6000 | [Celebrating 70 years old! Hiroshi Sasaki] A master copywriter selects and explains the best copy...
+- -nKHIgFcC8U | 5600 | 【森本千絵さん】最近のお仕事をご本人が解説！広告のみならず日常でかかわるすべてのことに広がっていくアートワーク！Official髭男dism／松任谷由実／ぽぅぽ／キネコ国際映画祭／保育園／霊園など！
+- Zclc7q4mpEc | 15000 | [Mr.Children Advertising Special] Behind the scenes of the latest work "miss you" and more! Art d...
+- D2qKBhAtl_w | 22000 | [Mr.Children Advertising Special] Art director Chie Morimoto explains the creative work of Mr.Chi...
+- qJ36Aj49AXs | 1500 | 【スポーツ選手の名コピー】スポーツ選手の名言はコピーとしてもすばらしい？！あなたが好きなあの選手の名言はベスト5に選ばれているか？松田丈志さん、北島康介さんの名コピーとは？【後編】
+- GYqnykQLaFE | 1400 | 【スポーツ選手の名コピー】スポーツ選手の名言はコピーとしてもすばらしい？！コピーライターが広告目線でベスト5を選びました！田村亮子さん、松坂大輔さん、イチローさんの名コピーとは？【前編】
+- 7QUQEQsc5ss | 2100 | 【イオンカードのCM】なぜか「山田孝之のカード」を推し続ける山田孝之さん。CMの監督をつとめるのも山田さん。その謎のCMの魅力とは？横浜流星さん・早見あかりさん・森田ひかるさん（櫻坂46）も出演！
+- q8aU7k64rcI | 16000 | 【大貫卓也さん】ラフォーレ原宿などの名作を自ら解説！そしていま、若手クリエイターに伝えたいこととは？世田谷美術館の展覧会場から！【永久保存版／後編】
+- 173n6RGEBNI | 15000 | 【大貫卓也さん】伝説のアートディレクターが降臨！としまえん「プール冷えてます」などの名作を自ら解説！世田谷美術館の展覧会場から！【永久保存版／前編】
+- -V7JwxwRt40 | 5300 | 【ブルーノ・マーズ出演】ドン・キホーテのCMが突然大物外タレを起用！その隠された狙いとは？さらに日本の外タレCM史を振り返る！
+- GQGgw8CSjmw | 1700 | 【話題の広告業界漫画】クリエイティブのヒント満載のリアルエピソードを漫画化してもらいました！『ゾワワの神様』コラボのすべてが詰まった【総集編】です！
+- uJSXlhjdBu8 | 10000 | 【中居正広さん】名作CMベスト3！SMAP時代から最新作まで、その魅力あふれる出演CMを広告クリエイターが深掘り！宝くじロト6／キリン氷結／ソフトバンクなど
+- Y63k4GZJ_aQ | 4600 | 【奇跡のコラボCM】乃木坂46五百城茉央さん出演！ビッグマックのCMが80年代コカコーラ伝説のCM曲と時空を超えて奇跡のコラボ！その狙いとは？
+- TnA2p24YtR0 | 2600 | 【呪術廻戦CM】過去の人気CMが復活！高羽史彦や羂索が登場するファンタ学園！Jリーグカレーでラモス瑠偉も復活！その共通点とは？
+- u9M4BZLyGYA | 11000 | 【當真あみさん】素顔に迫る！カルピスウォーター14代目CMキャラクター。好きなCMやアニメは？これから目指したい俳優像は？ここでしか見れないトークです！【後編】
+- D-u2CvM7qUs | 10000 | [Touma Ami] First appearance on YouTube! The 14th Calpis Water commercial character. What is it l...
+- aegagG45-uI | 6900 | 【永久保存版】殿堂入りコピーライター一倉宏さんの名コピーをご本人が解説！いよいよベスト3の発表！第1位に選ばれたコピーとは！？【後編】
+- rLAtJBRxOGQ | 9400 | [Ultimate Archive] Legendary Copywriter Hiroshi Ichikura Explains His Own Masterpieces! First up,...
+- QcITr-kP-Ac | 4200 | 【TCC2024】審査委員長・磯島拓矢さんと一般部門を深掘り！今年のTCCグランプリ／TCC賞受賞作の中で、磯島さんが特に高く評価した作品とは？コピーライター、プランナー必見です！
+- ib325S5Jk5k | 4900 | 【TCC2024】審査委員長・磯島拓矢さんと今年のTCC新人賞を深掘り！磯島さんが特に評価した新人の作品とは？コピーライター、プランナー必見です！
+- 1k3SHHUMqm0 | 1800 | 【コレって広告？！展】 メディア / 発信者 / 価値観 が拡張された広告の世界。ちゃんりおメーカー / 携帯ストラップ / パンテーン / ナイキベースボール
+- RMPfTd0fO98 | 2300 | 【コレって広告？！展】21世紀に広告の概念を“拡張”させた作品6選！アドミュージアム東京の会場からお届け！ヤフー防災広告／新宿東口の猫
+- Ann3aisq6qY | 2700 | 【就活生必見！】広告業界の面接を名物人事役員ソヤマンさんがガチで解説！面接官は何を知りたいのか？どの部分を評価するのか？すべてがわかる徹底解説！【後編】
+- Au11dI29LCM | 3500 | 【就活生必見！】広告業界の面接を山田百音がガチで体験！どんな雰囲気なのか？どんなことを聞かれるのか？どんな風に答えればいいのか？すべてがわかる実況中継！【前編】
+- XdholzALIh4 | 3400 | 【タローマン監督】藤井亮さんの著書『ネガティブクリエイティブ』を深掘り！タローマンを生み出したのはこんな人物だった！
+- 76EjRise05E | 8100 | 【タローマン監督】藤井亮さんの独特の作品世界を深掘り！タローマンはどのようにして生まれたのか？石田三成CM／サウンロゴしりとりなど
+- 1yMenLtosrY | 7900 | 【新しい地図】香取慎吾さん、稲垣吾郎さんCMを深掘り！「スター性がある」「本当にいい男」新しい地図の魅力をクリエイターが語る！ ジムビーム / ノンアルでワインの休日
+- AcRGSkWpV-g | 18000 | 【新しい地図】草彅剛さん「１本満足バー」のCMを深掘り！"マンマン満足"だけで14年！撮影ではとにかく踊る！草彅さんのリアルな姿をクリエイターが語る！
+- Cv11TQgatuI | 32000 | [Tear-jerking ad] Kao Merit's animated commercial/poster is a huge hit on social media! Is the re...
+- nrSVDadedAU | 3100 | 【トヨタイムズ】篠原誠さんが語る企画の裏側。トヨタ会長自らが出演する異例のCMの秘密に迫る！【第3弾】
+- Bk7dSXlNvik | 3300 | 【au三太郎シリーズ】篠原誠さんが語る企画の裏側。9年連続好感度No. 1CMの秘密に迫る！【第2弾】
+- p4mm6j9loQE | 4100 | 【広告界を離れた理由】日本を代表するクリエイティブディレクター篠原誠さんは世界一周旅行中？噂の真相は？【第1弾】
+- y0HkUGz7r7A | 9000 | 【NCT127が出演】大塚製薬ボディメンテCM「THE DAY」篇を深掘り！推し活を描いて圧倒的共感を生んだ、リアリティを追求した表現とは？推される側のリアルも描く！
+- erRPuQzmTCw | 1800 | 【緊急アンケート】話題のドラマ『不適切にもほどがある』若い世代はどう見たのか？リアルな声をもとに分析！昭和の価値観への反応は？
+- d0U79iXYGDw | 2000 | 【ご本人インタビュー】YOSHIROTTEN Radial Graphics Bioに伊藤直樹が潜入！YOSHIROTTENさんのグラフィック史を深堀り。
+- pB4aoVnVAts | 27000 | 【新しい地図】名作CMベスト3！SMAP解散後もヒットCMが生まれ続ける理由とは？サントリー／スカルプD／アテントなど
+- KACpuPVOyic | 3600 | [Must-see for young creators] Creator of the Year Award winner Takuma Takasaki's planning techniq...
+- gcskYB6Dt2Q | 4000 | 【若手クリエイター必見】広告クリエイターの頂点・クリエイターオブザイヤー受賞！高崎卓馬さんの企画術とは？【前編】 #109
+- EshQrCVdj8I | 3300 | 【カンヌライオンズ2023】村田俊平さんが選ぶウヒョー！な海外CM特集！iPhone14 / Uber Eats / IKEA #108
+- 9-Rx9VIm_wo | 3200 | 【箭内道彦さん】広告のフレームを壊し続けてきたクリエイティブの秘訣に迫る。乃木坂46×サンボマスターなど、60年記念コンサート開催！#107
+- 3LXbpl8Sv-I | 3400 | [Miraculous Performance] Nogizaka46 x Sambomaster and others. A deep dive into the 60th anniversa...
+- 1cR05g30WtQ | 2000 | 【宝島社】世間をざわつかせた新聞広告シリーズを深堀り！樹木希林さんが生前に残した想いとは？#105
+- QOQ5TN7tBI4 | 3100 | 【宝島社】世間をざわつかせた新聞広告シリーズを深堀り！全国紙に初めて載ったあの言葉とは？ #104
+- g_HGgCBqyeE | 72000 | A casual linguistics radio collaboration! Is advertising copy full of incongruities from a langua...
+- ni0YDEVDJnU | 4500 | サイバーエージェント極AIお台場スタジオに潜入！AIによるクリエイティブ予測システムを解剖！#102
+- uOz3mUZJyoo | 2100 | #101 【6秒CMの作り方】嫌われる広告は廃れる!? 就活生必見のお悩み相談会！【第100回記念】
+- ixp42dMPVpk | 2300 | #100 【AIとどう付き合う？】若手クリエイターが不安になるクリエイティブの未来とは？就活生必見のお悩み相談会！【第100回記念】
+- hUVxCC0M1fU | 5200 | #99 【ゲスト:花田礼】これだけ見れば、2023年の広告が丸わかり！(第3回/全3回）/広告クリエイター・CMプランナー必見！
+- EO2rje9rzDU | 5000 | #98 【ゲスト:花田礼】これだけ見れば、2023年の広告が丸わかり！(第2回/全3回）/広告クリエイター・CMプランナー必見！
+- 9B4yFn3qiJY | 6500 | #97【ゲスト:花田礼】これだけ見れば、2023年の広告が丸わかり！(第1回/全3回）/広告クリエイター・CMプランナー必見！
+- uPHT1-BBEuQ | 12000 | #96【高崎卓馬さんに聞く】映画『PERFECT DAYS』の様々な名シーンをじっくり解説！役所広司さん主演。広告クリエイターの経験はどう生かされた？【後編】
+- c8tgmAdDqaY | 22000 | #95【高崎卓馬さんに聞く】映画『PERFECT DAYS』はどのようにして生まれたか？役所広司さん主演。世界的に評価された名作の裏側を深掘り！【前編】
+- w2VVdXdUxgs | 2600 | #94【カロリーメイトCM特集】ACCグランプリ3連覇はここから始まった！「見えないもの」篇／「Midnight Train」篇。なぜ共感を呼ぶ受験生応援CMができるのか？【第3弾】
+- DiUz9733WgM | 3000 | #93【カロリーメイトCM特集】受験生応援シリーズ最新作！「光も影も」篇。美術と数学をそれぞれ目指す受験生のリアル。発想のきっかけを企画者に聞く！【第2弾】
+- K3flez7h3PY | 3600 | #92 [Calorie Mate CM Special] ACC Grand Prix Winner! "In a Narrow, Wide World" Edition. The brill...
+- EGN0UOR_VTE | 2600 | #91【世界でバズるCM】マクドナルド ポテナゲ webCM/イーロンマスクもいいねした広告のバズった理由は？
+- nXL6N2TkCMA | 1800 | 【ドラマ『VIVANT』で話題】堺雅人さんがゾンビやキングギドラと戦う丸紅企業CM！企画者が追求した「CMならではの面白さ」とは？【後編】
+- QSJPzqPFhE4 | 3500 | [Trending from the drama "VIVANT"] The Marubeni commercial starring Masato Sakai! Why was this ep...
+- n7-QTRu8J8Y | 1500 | #88 Sneak peek into TOKYO NODE ~ An information hub symbolizing the new Tokyo ~ [Naoki Ito's Crea...
+- TvzH8A2eEYI | 3200 | #87【時代を刻んだ名コピー】副田高行さんが語る、名コピーをより魅力的に見せるための書体選びやデザインとは？新聞広告の名作を解説！コピーライター、アートディレクター必見です！【第三弾】
+- BeRaK6GhLw0 | 3800 | #86【時代を刻んだ名コピー】副田高行さんが選ぶ、児島令子・前田知巳・眞木準の名コピーとは？新聞広告の名作を解説！コピーライター、アートディレクター必見です！【第二弾】
+- Mdk68hGaH2Y | 1300 | #85 アップデートした「清澄白河BASE」ハリウッドも使う最先端技術のバーチャルプロダクションに潜入！【伊藤直樹のクリエイティブ現場レポート】
+- VLOIMVJ-kc0 | 5200 | #84【時代を刻んだ名コピー】副田高行さんが選ぶ、安藤隆・一倉宏・岩崎俊一の名コピーとは？新聞広告の名作を解説！コピーライター、アートディレクター必見です！【第一弾】
+- UShkRHFVrj4 | 1400 | #83 "The God of Creepy-Crawlies" Collaboration [Part 2] Keita Uehara draws our episode, finally t...
+- EE-8YZIJNOc | 1900 | #82 "God of Creeps" Collaboration [Part 1] Woohoo! Members' Creep-Crunching Stories / Let's get t...
+- UC0N-vVvlKw | 1900 | #81 2022年度朝日広告賞受賞作を"さらに"語る！「デジタル連携の部」編【広告朝日コラボ】
+- UTpIlxbH-Bs | 4400 | #80 Discussing the 2022 Asahi Advertising Award Winners! "Newspaper Advertising Section" [Asahi A...
+- onSZ5h1p1PE | 3400 | #79 [TCC2023] 50 Years as a Copywriter! Who is Jury Chair Emi Ota? From Her Iconic "Yes, Let's Go...
+- oYdl91hMRRw | 4700 | #78【TCC2023】審査委員長・太田恵美さんと一般部門を深掘り！TCCグランプリ／TCC賞受賞作の中で、太田さんが特に評価した作品とは？コピーライター、プランナー必見です！
+- EFKeMSSdYSQ | 5000 | #77【TCC2023】審査委員長・太田恵美さんとTCC新人賞受賞作を深掘り！太田さんが特に評価した新人の作品とは？コピーライター、プランナー必見です！
+- pPyQ-Nn48GM | 5400 | #76 【企画のアイデアの出し方・プレゼンのやりかた教えます】若手プランナー必見！広告クリエイターのお悩み相談会
+- iPunNtPGaBk | 2300 | #75 津田健次郎さんのイケボでも話題！マクドナルド シズル文學【Tiktokで目立つクリエイティブとは？】
+- jfzba09ml4g | 1400 | #74 【クセになるCM】黒木瞳、船越英一郎、３時のヒロインが共演した、にしたんクリニック「サスペンス劇場」篇/「にしたん」を刷り込む理由とは？
+- 9dE0Zu3EJGA | 1000 | #73 Apple Vision Proの発売で広告が変わる！/参考になるAppleのブランディング戦略について
+- 9t7CO2IgDZY | 3500 | #72 【ゲスト：明円卓】明円さんってナニモノ？/やだなー展や数々のヒットCMについてご本人が語る！/後編
+- orZShXuAr-A | 9200 | #71【ゲスト：明円卓】明円さんってナニモノ？/友達がやってるカフェ、JANAI COFFEEについてご本人が解説！/前編
+- s9xZE1pK8A0 | 4600 | #70 【ゲスト：明円卓】明円さんが心を動かされたクリエイティブ5選/JANAI COFFEEや友達がやってるカフェなど幅広い企画を生み出す明円さんが選ぶクリエイティブとは？
+- U3zk_ZaEbQw | 25000 | #69【SMAP】名作CMベスト3！後編【CMプランナーが語る制作の裏側】/中居正広さん、木村拓哉さん、稲垣吾郎さん、草なぎ剛さん、香取慎吾さん、５人が出演した広告を深掘り！
+- jeRt7lCyft0 | 22000 | #68 【SMAP】名作CMベスト3！【アイドルの広告を超えた面白さ】/中居正広さん　木村拓哉さん　稲垣吾郎さん　草なぎ剛さん　香取慎吾さん　の個性が光るCMを深掘り！
+- DPI9u8TE6KU | 1600 | #67 【STOP！海賊版を訴えるWebムービー】「ありがとう、君の漫画愛。」 鬼滅の刃、ONEPEACE、キングダムなど人気漫画61作品が協力。Vaundyのオリジナル楽曲も話題！
+- 3ERHKpkS8CA | 4600 | #66【生生生】山崎賢人、上白石萌音、オズワルドさんら豪華出演の王道ビールCMを考察！【サントリー生ビールCM】
+- ohx9LvIyvHY | 1500 | #65【共感されるCMのつくり方】東京ガス 「お弁当メール」篇 などの名作シリーズを徹底考察！
+- DX5XNYzNpTE | 3200 | #64 【ONEUS出演で話題】東京ガスCM 母の推し活篇【共感を呼ぶ企画の作り方】
+- x4dOL0AbKes | 3700 | #63【C-1グランプリ発表】審査のウラ側を大公開【クリエイターはこうしてキャッチコピーを決める】
+- U63EswOIqP0 | 3000 | #62【ゲスト：いきものがかり 水野良樹さん】いきものがかりリーダー HIROBA主宰の水野さんを深掘り！【水野良樹さんってナニモノ？　後編】
+- 4dIuV0Fn3eQ | 5400 | #61【ゲスト：いきものがかり 水野良樹さん】ソングライターとして水野良樹さんを深掘り！【水野さんってナニモノ？前編】
+- reII8CsyYmc | 3000 | #60 【どうする？GOする！】印象的な広告コミュニケーションの秘訣とは...？/タクシーGOのタクシーエムを深堀り！
+- K6ceSBSsuG4 | 2600 | #59 GPT-4を使って広告クリエイターがヌートバー選手を起用したユニクロエアリズムのCMを考えてみた！
+- mZRtIpCI9Vk | 2400 | #58 【いきものがかり 水野良樹さん】水野さんがウヒョー！ときた広告 【第3回】/ヒットCMとヒットソングの共通点は「社会とタイアップ」?!/山下達郎さんのあの名曲など
+- M6V0kTfBFvA | 2300 | #57 【いきものがかり 水野良樹さん】水野さんがウヒョー！ときた広告 【第2回】/ジョージア　明日があるさシリーズ、JR東海 クリスマス・エクスプレスなど/ポッキーCMソングじょいふるのこぼれ話も!
+- fkL7xSNyiJY | 3800 | #56【いきものがかり 水野良樹さん】水野さんがウヒョー！ときた広告 【第1回】/ネスレブライト、任天堂スーパーファミコンなど
+- 6q6p_8Duskg | 3200 | #55【学生さん質問大会！】広告代理店にいま所属する意味とは？【後編】
+- UQFPYlqEdWQ | 3200 | #54【学生さん質問大会！】広告クリエイターの今後の生存戦略など、率直な質問に答えます。【前編】
+- u4tUfRI0OoA | 3900 | #53 JO1豆原さんの成人祝いで話題に！アイドルファンによるセンイル広告とは?【推しへの無償の愛が広告の意味合いを拡張する?!】
+- zhxm01l2m-k | 1600 | #52 【SNSで世界中で拡散！】”ルイ・ヴィトン×草間彌生”キャンペーンが世界で称賛された理由を話します。
+- _5xlg4udQmw | 2300 | #51 日清どん兵衛×高須クリニック パロディーCMを広告クリエイターが本気の考察！【M-1優勝お祝いセール】
+- -A5Ib5FA_OY | 4500 | #50 【笑いを生み出すCMの企画術】村田俊平さんってナニモノ？ /EMシステムズ（林遣都出演）、Airペイ（オダギリジョー出演）、Airワーク（松本人志・山田孝之出演）など
+- lfOv-_FVBFs | 3400 | #49【ゲスト:村田俊平】2022年の広告はこれで丸わかり！(第3回/全3回）
+- BJ7hyumMKlo | 3100 | #48 【ゲスト:村田俊平】2022年の広告はこれで丸わかり！(第2回/全3回）
+- a147DZOkTbQ | 4900 | #47 【ゲスト:村田俊平】2022年の広告はこれで丸わかり！(第1回/全3回）
+- UUrk9EcmZro | 2500 | #45 TCC会長 谷山雅計さんってナニモノ？【後編】/ 傑作広告コピー10本をご本人と深掘り！
+- PHgFRKeffiE | 2500 | #44 Z世代を中心にSNSで話題！ほろよいのCMはチルのトレンドをこう味方につけていた!!
+- x2069IZ8W64 | 3300 | #43 ADC賞グランプリ受賞「HIROSHIMA APPEALS 2021」 / 反戦ポスターならではのAR表現/大貫卓也の凄さとは!?
+- 5F2YxqSj2Uc | 945 | #42 【クリエイターが語る!】Twitter広告との出会い方はこう変わる!/イーロンマスクの思惑とは？
+- DyA-WZSkuRA | 1500 | #41 【新しい電車の活用法】ルールの穴を突いたNETFLIX電車広告/バズのヒントになる江モ電
+- aOUNWhTQMWI | 2800 | #40 [Part 2] JR Central's "Let's go to Kyoto." / A thorough analysis of past campaign slogans! Wh...
+- 32zLPehvvZA | 3800 | #39 【前編】JR東海「そうだ 京都、行こう。」/ 口語的なコピー誕生の裏側とは!? 30年続く名作CMを深掘り🍁
+- 7iNmdF8tVBk | 3300 | #38 【番外編】TCC会長 谷山雅計さんってナニモノ？名コピー誕生秘話に迫る！
+- jGd7-a7I7WY | 1800 | #37 Z世代のトレンドを分析！サウナはなぜ流行したのか？「ととのう」「サ活」「サ道」「サウナイキタイ」などの言葉が第3次サウナブームを巻き起こす！？マーケター必見👀
+- THFL96u31sw | 3200 | #36 ハイジで定番の家庭教師のトライ「教えて!トライさん」シリーズ / 10年目でもユニークな広告でありつづける秘訣とは?!
+- hKFD_0g1www | 5100 | #35【ついに20本すべてが決定!!】TCC会長 谷山雅計さんが選ぶ、日本のコピー20本（第5回／全5回）最近のコピーから選ばれたのは…!?
+- Fcys-HpC-t0 | 5200 | #34【いよいよ00年代コピーへ】TCC会長 谷山雅計さんが選ぶ、日本のコピー20本（第4回／全5回）秋山晶さんなどの隠れた名作を考察!!
+- tJJKe7OlVYc | 4500 | #33【90年代変化するコピー！】TCC会長 谷山雅計さんが選ぶ、日本のコピー20本（第3回／全5回）代理店所属のコピーライターが大活躍!!
+- 1Rs_X_BjGSE | 6800 | #32 [Takashi Nakahata and Shigesato Itoi's Copywriting Appear] TCC Chairman Masakazu Taniyama Sel...
+- ntd5vPgIOpY | 8900 | #31【コピーの歴史が丸わかり】TCC会長 谷山雅計さんが選ぶ、日本のコピー20本（第1回／全5回）コピーライター必見!!!
+- AyiCPl1bq88 | 1700 | #30 渋谷センター街に現れたTinderのコンビニ ”SwipeMart”/「一瞬で青春。」を体現した事件性のあるプロモーション企画のウヒョー！
+- 1y2YixDyf6w | 1700 | #29「今夜、私が頂くのは…」でお馴染みのウーバーイーツ。不思議な世界観のCMは、世界共通のフォーマット👀【黒柳徹子×小松菜奈/松嶋菜々子×Matt/安達祐実×芦田愛菜】
+- qUoLNdm3CNc | 2300 | #28【後編】漫画『ブルーピリオド』を広告クリエイターの視点で考察！”言いたいこと”と”自分らしさ”の葛藤。”自分探し”は言い換えると”ネタ探し⁈”
+- vC9wX94y9BE | 3700 | #27【前編】漫画『ブルーピリオド』が共感を呼ぶ理由とは？広告業界、若手広告クリエイターとの共通点が多くありました🎨
+- hVC3UhUrexk | 3700 | #26  岡本太郎さんの作品をモチーフとした、『TAROMAN』という架空のヒーローが登場する特撮テレビドラマについて。
+- peqiyj0Kobc | 7200 | #25 15秒CMのコツとは？ポイントは”１カット”の演出法！東京03出演の印象的なさとふるのCMについても語ります。
+- jp3XJnkHREM | 3900 | #24 瑛太＆竹原ピストルの”言えてない”決め台詞が印象的な、マクドナルド「ビックマックなんて」篇
+- m5a8VufuZIg | 1100 | #23 長澤まさみさん、北村匠海さんなど有名人が自分の言葉で政治・選挙を語る！参院選で話題化した「VOICE PROJECT 投票はあなたの声」
+- eAiFrcAUW4o | 963 | #22 悲劇的な死から15年…Kiyan PrinceがAIテクノロジーの力でFIFA21で蘇える⚽️カンヌライオンズチタニウム部門グランプリ「LONG LIVE THE PRINCE」
+- wtOMcd6lpm8 | 1700 | #21 全世界の広告が集まるカンヌライオンズ🦁審査員の間でロビー活動!?審査員の選定基準とは!?審査のウラガワに迫る👀【canneslions/カンヌ国際広告祭】
+- FS91yQ926e0 | 1000 | #20 世代を超えて愛される駄菓子”うまい棒” 値上げについての広告 / やおきん「なくなっちゃうほうが、悲しいから。」
+- XieSJQ9MXBY | 3300 | #19 コロナ禍の飲食店にエールを送る、応援広告！サントリー「人生には、飲食店がいる。」
+- lwPFOnpPYuA | 4100 | #18 [TCC2022 Final Episode] Who is Akihiro Fukube, the man behind the classic commercials everyon...
+- btxM3lvvJV8 | 2200 | #17 【第2弾】ここ10年の広告業界&社会でターニングポイントとなった作品を紹介🎥キーワードはノンフィクション / 期待の裏切り / データの可視化などなど！雑誌『Pen』の取材裏側🖋
+- A0qRkAzJ2qQ | 2500 | #16 【第1弾】雑誌『Pen』の取材裏側を公開🖋ウヒョー！な広告が持つ要素とは？バズとは？そして広告業界のトレンドについて語る！
+- 8m9n6yvM3XE | 3300 | #15 【TCC2022 第3弾】TCC審査委員長 福部明浩さん&広告ウヒョー！が選ぶTCCグランプリが誕生🥇 大切なのは企業の「らしさ」をストレートに伝える&愛しているのが伝わるコピー
+- eQBYpT-9SAo | 2800 | #14 【TCC2022 第2弾】TCC審査委員長 福部明浩さんと語る！TCC一般部門受賞作✨企画提案の裏側を予想しました👀
+- 6Rpy5m3T5Bw | 5100 | #13 【TCC2022 第1弾】TCC審査委員長 福部明浩さんと深ぼるTCC新人賞のウラガワについて👀
+- fnHs3l4EE-E | 2600 | #12 広告ウヒョー！初の海外事例！NY ADC Annual Awards 最高賞「The Lost Class」
+- bN5wqZR8jJI | 1600 | #11 POLA 母の日の広告「すべてのお母さんに、ありがとう。」/ 企業が掲げる多様性への配慮と姿勢とは？
+- 73QyqRWZ6XM | 2800 | #10 キャラクター広告のメリットとは!?愛されるキャラクターとは？ キウイブラザーズCM「ヘルシーなのにアゲリシャス篇 」
+- Xq5ThIFZP3Q | 2100 | #9 カロリーメイトCM「青いカロリーメイト」篇 / コロナ時代、若者は先輩の背中をどう捉えているのか？コピーライターの仕事はハッシュタグの設計まで!?
+- OuAu4lsOUDY | 2600 | #8 後編：「木村、混乱してます」は名台詞？TVCMとWEBCMの考え方の違いとは！？ / TVCM「タウンワーク/吊り橋 編」
+- Q_Fg7cHSl4U | 3700 | #7 前編：木村拓哉×芦田愛菜出演のTVCM「タウンワーク/吊り橋 篇」/ キャスティング発想の企画プロセスとは？
+- IJys25-7mqQ | 1400 | #6 日経新聞15段「テレビ東京 お詫びキャンペーン」 / お詫び広告の面白さとは！？
+- C116mDyvmtM | 1600 | #5 SNS / TVニュースでも話題に！3D LEDビジョン広告「新宿東口の猫」@クロス新宿ビジョン / 3Dビジョン広告には勝ちパターンが存在する？
+- nupEPxkS0A4 | 3400 | #4 セリフにウヒョー！アイフルTVCM「凛とした女将_和尚女将」篇 / TVCM提案時のポイントとは？広告コピーの役割とは？
+- xXomCSkXOJc | 3400 | #3 お正月広告の風物詩「au 三太郎シリーズ」毎年広告を続ける価値とは？【福里真一&伊藤直樹&山田百音】
+- DQBjl1jOtvk | 4500 | #2 Twitterでも話題に！渋谷センター街に掲出された「Netflix×Tinder」の比較広告について @渋谷センター街【福里真一&伊藤直樹&山田百音】
+- tiywEQQLivI | 8200 | #1 Nice to meet you, Woohoo! We'll be introducing some ads that really moved us! [Shinichi Fukusa...
+
+## 付録B: ショート 411本 (ID|再生数|タイトル)
+- 80CuyeP7E88 | 1200 | How Mandom became the company name after a massive commercial hit #Mandom #Gatsby #TakuyaKimura
+- mvUWO9tc7qI | 1200 | Masahiro Motoki's Gatsby commercial and Shingo Katori's toothbrush commercial had the same planne...
+- NpFMv32HbaY | 2300 | Takuya Kimura's New GATSBY Commercial: The Dance and Hair Volume That Stunned His Generation #Tak...
+- PwsunrbT_hM | 1200 | The inspiration behind portraying children I didn't know #MiwaNishikawa #FumiNikaido #YoYoshida
+- C_eCVTPG4Y4 | 1200 | Post-war Japanese women tucked away their colorful clothes #MiwaNishikawa #FumiNikaido #YoYoshida
+- K7k-Gugjyzs | 1300 | Director Miwa Nishikawa's latest film "Children I Don't Know" #MiwaNishikawa #FumiNikaido #AkimiK...
+- EkX6K7g4wWM | 746 | October 12 (Mon/Holiday) 10:30 AM - 12:30 PM: 2nd Annual Student Advertising Championship of Japa...
+- rQob8lqE8IM | 430 | 10月12日(月・祝)10:30 ~ 12:30 第2回 学生広告日本一決定戦！ #学生広告日本一決定戦 #虎ノ門広告祭 #28卒
+- xX4nQQxFIRM | 386 | October 12th (Mon/Holiday) 10:30 AM - 12:30 PM: The 2nd Japan Student Advertising Awards! #JapanS...
+- MIl3aQIHtVo | 1100 | Oct. 12 (Mon, Holiday) 10:30 AM – 12:30 PM: The 2nd National Student Advertising Championship! #N...
+- XoYWUcc8SL0 | 423 | 10月12日(月・祝)10:30 ~ 12:30 第2回 学生広告日本一決定戦！ #学生広告日本一決定戦 #虎ノ門広告祭 #28卒
+- 8GxpAqWw-nE | 3000 | "I want to be in a commercial for household goods!" Ayumu Nakajima's wish comes true with Ariel #...
+- RfO7TWz1QXU | 2200 | I want to add nuance to the "heat" of the handshake. Ayumu Nakajima shares behind-the-scenes stor...
+- SpsM4gZJH1g | 5500 | A Curveball From the Original Performance? Ayumu Nakajima Discusses the Behind-the-Scenes of the ...
+- wY0EtkGqucQ | 262 | Young Lions Film Competition: Planning, Casting, Shooting, and Editing in 2 Days #cannes2026 #Jap...
+- vo-AtXmMkVY | 1300 | Should those competing in Young Lions bring their own printer? #canneslions #Hakuhodo #JapanRepre...
+- beQcdddlO68 | 1000 | プレゼントCMは逆に燃えるのがアートディレクター #iPod  #アートディレクター #葛西薫
+- 9mO7sOTJSJg | 2000 | アートディレクターを動かしたポスター広告  #榎本卓朗 #葛西薫 #サントリー
+- PGQMh9IjeLg | 1600 | The Untold Story Behind Makiko Esumi's Nude Photo Book #MakikoEsumi #ESUMI #KaoruKasai
+- CSqw1HwYt7s | 1200 | みんなは覚えてる？iPod nano プレゼントCM  #ipod #葛西薫 #三蔵法師
+- TtiSBzPJtps | 3600 | Without enough space, the design ends up feeling cluttered #KaoruKasai #Suntory #SummerLove
+- hcydMSFqYkc | 1000 | 2代目 学生広告日本一が10月12日（月・祝）に決定！  #学生広告日本一 #亀田の柿の種 #広告ウヒョー
+- aNKf8tTQD00 | 1300 | デザイナーは自分の都合にだけ物事を当てはめてはいけない。 #葛西薫 #サントリー #高橋義考
+- amfAKvl7RQc | 1200 | 第2回 学生広告日本一決定戦！審査員コメント #花田礼 #学生広告日本一 #電通CreativeKANSAI
+- p2GDHsBkHBI | 1000 | 第2回 学生広告日本一決定戦！審査員コメント #森本千絵 #学生広告日本一 #goen
+- G9oUiQGolZM | 977 | 第2回 学生広告日本一決定戦！審査員コメント #太田郁子 #学生広告日本一 #Droga5
+- DvUNiUCUDzs | 1000 | 広告界の名文「人生仮免許」今ならもっとよくできる。 #葛西薫 #成人の日 #サントリー
+- bcqyU_gI-E8 | 1400 | Setlogをかいくぐる方法とは #setlog  #次世代研究所 #28卒
+- BtENwHCsitg | 1100 | ラブタイプ診断で恋愛モンスターが出たら隠した方が良い  #ラブタイプ  #サイバーエージェント #MBTI
+- 6YCkeSMcqRg | 1200 | ISTPはノンデリ？ひとまとめにされてしまうMBTI分析 #超精密MBTI診断  #サイバーエージェント  #28卒
+- y_w-NwFy1b0 | 816 | サントリー「人生仮免許」制作の裏側  #成人の日  #サントリー #葛西薫
+- fUYGWB5f3e4 | 3000 | The matching necklaces worn by TWICE's Mina and Chaeyoung are trending with Gen Z #TWICE #MINA #C...
+- OSrMqk-aoVo | 1300 | 心から友達だと思える関係を証明するアクセサリー #友情証明ペアアクセ  #サイバーエージェント  #フレネミー
+- JGMyu192KMo | 703 | サイバーエージェントの次世代研究所がトレンドを分析！ #サイバーエージェント #推し活 #28卒
+- tMIALtudMsU | 1100 | 万博終了の寂しさから一転した「おはよう、未来。」 #大阪万博2025  #三島邦彦 #みゃくみゃく
+- vHn3ViBbji0 | 1000 | 芸能人の不倫問題の中、踏ん張る男は愛である  #アイフル #三島邦彦 #消費者金融
+- 1sKm8_iZqQU | 1100 | サントリーのDNAが伝わる名コピーを解説 #三島邦彦 #tcc  #サントリー
+- B20StsON58A | 1800 | 現代人は、数字や効率を追いかけすぎているのか？ #サントリー #三島邦彦 #山崎
+- TnX4aTNtec8 | 1300 | 長崎新聞社の、想いのこもったステートメント  #長崎新聞社  #三島邦彦 #原爆
+- 01htRQyZwXY | 1600 | 香取慎吾さんのアート作品を映画に。新しい地図の新作映画「バナ穴 BANA_ANA」　 #新しい地図  #香取慎吾 #バナ穴
+- YO_K0OFf2Fc | 1800 | つまらない広告はスキップすべき？評価されるCMとは  #九州広告業協会 #三島邦彦 #TCC
+- Ub3lWaeHCa4 | 3600 | 草彅剛さん「考えるな、感じろってことですね！！」新しい地図の新作映画  #新しい地図  #バナ穴 #稲垣吾郎 #香取慎吾
+- upRNwDX4JKg | 2400 | 感情移入してしまった自分が反省してしまうCM  #三島邦彦 #トレンドマイクロ #TCC
+- ElreY_G7YG8 | 1500 | The Selection Committee Chair Explains a Shocking Copywriting Campaign on Landmine Removal! #Kuni...
+- hfYqq2wG86I | 2400 | 天才CMディレクター 山内ケンジさんが手がける新しい地図の映画「バナ穴 BANA_ANA」 #新しい地図 #稲垣吾郎 #草彅剛  #香取慎吾
+- uPxotcHxoj0 | 1500 | The 2nd Annual Japan Student Advertising Grand Prix! Confirmed! #JapanStudentAdvertisingGrandPrix...
+- KRBDwzsATlw | 966 | The 2nd Annual National Student Advertising Championship is Official! #StudentAdChamp #KakiNoTane...
+- 3bCQ73k-02g | 942 | 第2回学生広告日本一決定戦！開催決定！  #学生広告日本一  #柿の種 #広告
+- jKNh1AfXt_0 | 1500 | 短い言葉で人の感情を動かす、秋山晶コピーの凄さ #秋山晶 #コピーライター #東京デジタルホン
+- MORSo2UQd6U | 1100 | Akira Akiyama designs "emotion" using words that resonate with everyone #AkiraAkiyama #TCC #Canon
+- FqDaTHcxSU0 | 1400 | 「男は黙ってサッポロビール」に見る 秋山晶コピーの“キャンバス作り” #秋山晶 #鎌倉 #サッポロビール
+- x4ThI-ONbzI | 1700 | 山本牛臓のロゴに込められた“撮りたくなるデザイン”の考え方 #ネオスナック #山本牛臓 #ロゴデザイン
+- vbfIAATAhHY | 1500 | ファンがライブで入り込みやすいように作詞するSKE48・STU48楽曲 #STU48 #SKE48 #アイドル
+- GmE8sR8ay0I | 4200 | 蜷川実花さん×秋山具義さんが手がけたAKB48「ヘビーローテーション」のパッケージデザイン #秋山具義 #AKB48 #蜷川実花
+- T0JlTUj0HQ4 | 1600 | 石井杏奈さん出演！「ドコモ dビデオ」CMで優等生役が増えた。 #石井杏奈 #小松菜奈 #ドコモ
+- dmuPRUBhbpk | 1400 | 石井杏奈さん出演！ユーモラスな「タクシーGO」CMの反響とは？ #石井杏奈 #竹野内豊 #タクシーGO
+- hYQoIH6E2H8 | 4900 | Anna Ishii Reveals All! Behind the Scenes of the Movie "10 DANCE" #AnnaIshii #KeitaMachida #10DANCE
+- biowMDnaqKs | 1800 | 眠眠打破のキャラがキン肉マンと戦う異色CM #眠眠打破 #キン肉マン #キンケシ
+- cf_8iONJX8g | 1500 | 「マルちゃん正麺」はなぜ売れた？ 主婦目線で作られたデザインとは #秋山具義 #マルちゃん正麺 #東洋水産
+- Aqtl4rdmWB8 | 1600 | 知覚、組み替え、表現の3ステップでセンスは組み立てられる #秋山具義 #アートディレクター #宇宙人ジョーンズ
+- Lj-eaPWm2q8 | 1700 | サントリーの考える“人間らしさ”とは？ #ギルティ炭酸NOPE #伊右衛門 #サントリー
+- i4MOWBspCVM | 1500 | 原宿をNOPEがジャック！ギルティを推し出した広告戦略とは？ #ギルティ炭酸NOPE #生田斗真 #アントニー
+- EnSlqeDyAhc | 1600 | 生田斗真さんが暴飲暴食「欲望を肯定する」CM #ギルティ炭酸NOPE #生田斗真 #鈴鹿央士
+- 1VIC4spNodk | 1300 | 違和感こそが狙い？賛否両論を巻き起こした話題の企画 #選択的夫婦別姓 #婚活 #広告
+- TCVRcPidcAE | 1800 | ユーモアで社会問題を問う“同じ名字”限定の婚活プロジェクト #選択的夫婦別姓 #婚活 #IBJ
+- giJWQ8VdE4s | 1600 | 名字が同じなら解決？ユニークな切り口の「同氏婚のススメ」 #選択的夫婦別姓 #婚活 #あすには
+- _JNPFGhpvdA | 1200 | 実はノリで決めていた？大谷翔平選手のポーズ  #wbc  #大谷翔平 #北山亘基
+- GWWcWX_oXxk | 1700 | WBC日本代表のお茶点てポーズは、2日の徹夜で考えられた？ #大谷翔平  #wbc  #北山亘基
+- -n_ul6Rwlc4 | 1800 | WBCグローバルパートナー9社のうち、6社は大谷翔平選手のスポンサー #大谷翔平 #wbc  #伊藤園
+- Z0k0YrdP9t4 | 2600 | 歌詞に合わせてプレーを見せる、WBCテーマソング「タッチ」  #wbc  #タッチ  #稲葉浩志
+- dzCPNf1MC44 | 75000 | B'z's Inaba sang the WBC theme song "Touch" with a "desire to cheer on" #bz #wbc #InabaKoshi
+- PF_H5WLy_oI | 5300 | 2026年のオリンピックテーマソングは各局いろいろなアーティストが担当した #snowman  #sixtones  #backnumber
+- SxGycvW7Rc4 | 1800 | The best way to make digital project proposals stand out in Japan #YoungCannes #CANNESLIONS #27gr...
+- HcdErbhwOs4 | 1600 | 日本一のデジタル企画は「口を大きくする」 #ヤングカンヌ #CANNESLIONS #デフリンピック
+- M4sVh6LJd1Q | 1400 | 恋愛リアリティーショーは本物を見せ続けることが全てにおいて大事
+- 15AXkl4EoAw | 4400 | 今日好きプロデューサーが最も大事にするのは視聴者のコメント #今日好き #今日好きになりました #abema
+- ZU77-OjAX70 | 1400 | 今日好きプロデューサーが高校生の心をつかめる理由  #今日好き #abema  #今日好きになりました
+- oSmJddQmoCU | 2700 | リアルに仲がいい子をキャスティングするから旅行が楽しそうに映る #今日好き #多田梨音 #相塲星音  #谷村優真 #表すみれ
+- 5J-UtU7Ubt0 | 2000 | 10代女性の90％が知っている「今日好き」に広告依頼が殺到する理由  #今日好き #abema  #今日好きになりました
+- t-G3kAOnYdA | 10000 | 今日好き出演者がリアルに出てるホットペッパーのCМ #古園井寧々 #卒業式 #ホットペッパー
+- HPBWX8Kf7gI | 1800 | ヤングカンヌPR部門日本代表の企画 #ヤングカンヌ #サービスドッグ #博報堂
+- pX_93PlgJkg | 1500 | 機材やプレゼンなど細かいところの準備が勝敗を分ける。 #ヤングカンヌ  #canneslions  #プレゼン
+- KDRl0DNfiHE | 1800 | 作り手も自分をプレゼンしていく時代  #ヤングカンヌ   #電通 #28卒
+- b2mKHvSQxJc | 3800 | 良い言葉よりもらしい言葉が若者に共感を得る #酒井理央 #今日好き #テグ篇
+- foL6KHMpFbU | 3500 | 緊張する高校生が唯一リアルを出せるのがバス  #今日好き  #今日好きになりました  #abema
+- oYcG1C3-9i4 | 7500 | 今日好きプロデューサーに深堀り！77弾続く人気のリアリティーショーの正体とは #今日好き #月9 #ABEMA
+- ox_de6XRShc | 2200 | 木村拓哉さんが着ぐるみを提案してくれたCM #オープンハウス #木村拓哉  #地底人
+- MfREmDWr8Is | 1200 | 松田翔太さんと一緒に考えたキャラ「座敷童子」 #松田翔太 #オープンハウス #バカリズム
+- PPCRsbH4uL0 | 2000 | 小学生が戸建てを持つというギャップがおもしろい  #長瀬智也  #オープンハウス #SMAP
+- n7G7fWnzJkA | 3600 | 堺雅人さんがキレる「コノヤロー!!!」なCM  #オープンハウス #堺雅人 #広告
+- qJU7F5vLeCo | 1600 | ロゴを目立たせるところから逆算で、巨大な人が怪獣と戦う演出になった #オープンハウス  #堺雅人 #博報堂
+- SGZTIsxlqXs | 2000 | CMプランナーと脚本家はどう違う？ #cmプランナー #吉兼啓介 #バカリズム
+- _YOjJI1e6sU | 1100 | テリーマンをパロディした両国駅の魔人力士  #テリーマン   #魔人力士 #キン肉マン
+- fXPM-DPaN2Y | 1600 | 佐藤二朗さんがハマリ役。AIに相談するお父さん  #佐藤二朗  #カロリーメイト  #坂元愛登
+- Xc4LEvehbUo | 2200 | カロリーメイト受験生応援CMは、時代の風景を作り出している #カロリーメイト #受験 #AI
+- Nr7LH0QJhUY | 2100 | 佐藤二朗さんの演技力が光る、カロリーメイトの最新CM #カロリーメイト #佐藤二朗 #受験
+- wfjVY5z7oPw | 2000 | AIとの繋がりを描いたカロリーメイト受験生応援CMの最新作 #カロリーメイト #佐藤二朗 #坂元愛登
+- Gxgugt4Rycw | 1600 | oasis来日の広告「待ってたぜ」の裏側  #oasis  #liamgallagher  #尾上永晃
+- MJPYk6z1qHA | 1700 | 銀行が通帳の人を責め立てるＣМを作るのは正しいのか？ #通帳の人  #olive  #ダイアン津田
+- V9JsPmnaY4A | 1800 | いじめに見えないダイアン津田さん  #通帳の人 #名探偵津田 #ユニクロ
+- qMS7YygYHsw | 1400 | 駅を使ったキャンペーンは、まちおこしや名所作りに繋がる #両国駅 #恵比寿駅 #キン肉マン
+- _j-D1Tc0-o4 | 1400 | 立ち止まって注目できる駅のホームの広告は、SNSで拡散されやすい #サンクチュアリ #両国駅 #Netflix
+- OthmHdqqJ4Y | 1900 | 一日一回電車の動きと連動して動く、両国駅の魔人力士広告 #両国駅 #魔人力士 #PS5
+- Q4Ch7Lj_E7k | 1600 | CМのディティールをあげるために、現場まで働きにいく熱量  #ボディメンテ #コミケ  #CМプランナー
+- wqgpxYM-TtU | 2500 | フォントを作った人を探しています。が広告になる #ほっかほっか亭  #探偵ナイトスクープ #広告
+- iV4Zqg-gb1Y | 1500 | ACジャパンのCМは、世の中のことを考えさせられる。 #ACジャパン #島田久作 #決めつけ刑事
+- 8CU09ZZXTHU | 2200 | マクドナルドCMの新キャラが気になる話 #いまだけダブチ食べ美  #月見バーガー #マクドナルド
+- FfkUoK6vPRU | 3400 | ミャクミャクにあるちょっとした寂しさが新聞広告に  #関西万博  #ミャクミャク  #万博
+- upfeFY6bng4 | 1700 | 万博閉幕後の新聞広告が粋だった  #関西万博  #みゃくみゃく  #万博
+- eUQpJxuiOnQ | 1500 | 鳥肌が立つ確定申告が生まれた瞬間  #ヘラルボニー  #確定申告 #HERALBONY
+- la51E1CvSbo | 383 | ヘラルボニー「異彩を、放て。」秀逸なコピーを解剖！ #ヘラルボニー  #HERALBONY #自閉症
+- C7zNeI0uJes | 1300 | ヘラルボニー社名の由来  #ヘラルボニー  #HERALBONY #自閉症
+- WvUrVIMmICk | 32000 | The muttering acting style was inspired by modern colloquial theater #Nakajima Ayumu #Yakisoba #Y...
+- eEz-Leh9ais | 3600 | M-1グランプリの合間に流れる広告って気になってしまう #M1グランプリ  #どん兵衛  #高須クリニック
+- FyMmDd-gBYo | 3500 | M-1グランプリで1度だけ流れたパロディCMはなぜ話題になったのか  #m1グランプリ  #どん兵衛  #高須クリニック
+- CrSIMeNV8qs | 2200 | 思いつけそうだけど、なかなか実現しようと思わないCM  #中島歩  #ホットペッパー  #山崎隆明
+- HXvnJ1qWYz8 | 2800 | まさか消費者金融のCMだと思ってみていなかった #中島歩 #消費者金融 #武富士
+- _oLo7l7TZQo | 5900 | 大企業のCM出演、やっぱり嬉しい  #中島歩  #杉咲花  #サントリー
+- KLmztf8LWYk | 753 | 映画と比べて広告は、俳優の役割が明確 #中島歩 #イクサガミ #広告
+- QiIcPaWRIpY | 16000 | "Shibaura Machine" commercial starring actor Ayumu Nakajima and Hiroshi Abe #AbeHiroshi #Nakajima...
+- grKalPW9tcc | 1400 | 大学生が考える「クルマのある生活っていいかも」 #学生広告日本一決定戦  #z世代   #中古車
+- y6mqzQWkYpQ | 2100 | 大学生が考える「クルマのある生活っていいかも」 #学生広告日本一決定戦  #z世代   #中古車
+- lVaDtgElw88 | 9300 | 大学生が考える「クルマのある生活っていいかも」 #学生広告日本一決定戦  #z世代   #中古車
+- zQ0ATIJx1fs | 7300 | 大学生が考える「クルマのある生活っていいかも」 #学生広告日本一決定戦  #z世代   #中古車
+- OueAfmfQjGU | 24000 | 大学生が考える「クルマのある生活っていいかも」 #学生広告日本一決定戦  #z世代   #中古車
+- 9rW093YxdGc | 5500 | 大学生が考える「クルマのある生活っていいかも」 #学生広告日本一決定戦  #z世代   #中古車
+- kGJ7b0K0VX0 | 3600 | 大学生が考える「クルマのある生活っていいかも」 #学生広告日本一決定戦  #z世代   #中古車
+- F_SYbZMqd7Y | 4600 | 大学生が考える「クルマのある生活っていいかも」 #学生広告日本一決定戦  #z世代   #中古車
+- fM46c7kl3PU | 3800 | このCМはこのあとどうなっていくのか？展開が読めないタウンワークCМ  #今田美桜 #タウンワーク #広告
+- NZXjxlgMdyY | 2000 | 今田美桜さん出演タウンワークCМの誕生日秘話  #今田美桜  #タウンワーク  #花田礼
+- VSQR9jc2Z0M | 6000 | 今田美桜さん出演タウンワークCМの驚くポイントとは？ #今田美桜  #タウンワーク #広告
+- 2J2OON6wL8A | 2300 | 会議よりも、まずは見せられるデザイナーになろう  #デザイナー  #デザイン #池澤樹
+- JAw7n0Ooqt4 | 3900 | 大学に入ってからまずはデッサンをやる意味  #デッサン  #デザイナー  #池澤樹
+- 2tEA_8hL0v4 | 3200 | 車を表現するキーワードが「野性味」 #TOYOTA  #デザイナー  #GR
+- u6CFeVnEIXc | 3500 | SNSはコミュニケーションをブランドに反射神経よく映し出すこと #GO三浦 #ユニクロ  #sns広告
+- WEOILBIcYow | 1800 | 現地に足を運び、商品の本質を見つけに行くのがアートディレクション #サントリー #白州 #デザイン
+- hohwof9nw8A | 3200 | 広告はシャンパンを空けるようにのではなく、継続することが大事  #GO三浦  #広告 #ウーバーイーツ
+- MqWEjM9PbPE | 4800 | Suntory Tokucha "Stairs of Life" is a successful example of a compelling web ad. #CMPlanner #GOMi...
+- DByn9KGnEj8 | 4600 | 元アーティスト篠原ともえさん「プレゼンとライブは同じだった」#篠原ともえ #星野リゾート #プレゼン
+- QntdWalwwQI | 6800 | 元アーティスト篠原ともえさん、デザイナーに転身されて経験したクライアントワークの苦労 #篠原ともえ #デザイナー #プレゼン
+- uvwm1s_NYo0 | 5400 | Designing Yuming's live costumes was a turning point for Shinohara Tomoe #ShinoharaTomoe #Yuming ...
+- QuzXwPvwb-I | 2100 | Japan Mobility Show 2025 LEXUSブースアートディレクター 池澤樹さんのインタビュー #japanmobilityshow #池澤樹 #LEXUS
+- TtWctuOrJp4 | 785 | 日本全国の学生が、広告クリエイティブの日本一を目指して2か月間のクリエイティブに挑む。#学生広告日本一  #慶應義塾大学  #早稲田大学
+- X8ieskh3zlM | 1400 | 500年後の日本を表現するためにSFを参考にする  #CANNESLIONS  #SATO2531   #cmプランナー
+- ztyRUJgRNAE | 1900 | 10月18日 虎ノ門広告祭で本戦開催！  #学生広告日本一  #大学対抗  #27卒
+- JUIXzZkOMUk | 4500 | CANNESLIONSでゴールドを受賞した「SATO2531」 #CANNESLIONS  #SATO2531   #cmプランナー
+- YQzYcpJIzjM | 8800 | ANAやJALに対抗するために、TOKIOの泥臭さに頼ったCМ #TOKIO #SMAP #鉄腕DASH
+- oR8qaBNB8FM | 2200 | 元TOKIO長瀬智也さんのCМ現場のおおらかさ #TOKIO #長瀬智也 #フジカラー
+- j-Wtv23mJ8c | 14000 | コピーライター安藤隆さんがこだわった烏龍茶のコピー #サントリー  #烏龍茶  #広告
+- Rk4xUudWdb0 | 2900 | ゼクシィみたいな広告コピー #サントリー  #烏龍茶 #安藤隆
+- f-unW21nLcw | 9200 | 広告業界でも謎めいたコピー「アーさんもご一緒に」 #サントリー　 #安藤隆　 #烏龍茶
+- FHXPmrkPLz8 | 1700 | ヤングカンヌで調子に乗ってしまったサイバーエージェント若手プランナー  #canneslions  #CA  #企画
+- WtFaMt3wGyA | 1700 | サイバーエージェント若手プランナーの企画スケジュール  #canneslions  #CA  #26卒  #27卒
+- FqniEU7jG8s | 1600 | ヤングカンヌPR部門日本代表の案、企画とマニフェストは似てる #ヤングカンヌ  #canneslions  #サイバーエージェント
+- UWFzqaB7QcU | 2400 | 長瀬智也さんが広告の演技賞を受賞したパンツのCМ  #長瀬智也  #TOKIO  #グンゼ
+- YnTMBTv3YZI | 1300 | いろいろな職業の姿になったバービーで、子どもたちにジェンダー平等を考えてもらう企画。 #バービー #伊藤忠 #ジェンダー
+- BmYXfwDOGQY | 1700 | 新聞広告を出す前にnoteで発表することで、広告の力を強めることができる #岸田奈美 #世界ダウン症の日 #広告
+- 1I0fjojurAk | 1600 | 実話を基にしたえん罪の恐ろしさを伝える新聞広告 #えん罪 #広告 #世界えん罪の日
+- m3A6_N7dSlA | 2300 | Z空調のCMは、あえて違和感を生むことで他の広告よりも際立っている。#山本耕史 #斎藤工 #シンウルトラマン
+- IYrx3Yb2wqA | 2800 | ダイアン津田さんの演技で話題のCMは、一人も無意味な人はいない #ダイアン #ダイアン津田 #三井住友銀行
+- B7d_3mdb3UE | 1800 | 品川駅で展開された特茶のOOHは、日常に合わせてハードルを下げたブランドメッセージ #サントリー #特茶#広告
+- 3U6Dz1WzwM0 | 5100 | 自分の人生を階段のように精一杯生きている人は「チクショー！」と言わない。 #コウメ太夫 #サントリー #特茶
+- rUHAOKIrUp4 | 17000 | 2人のコウメ太夫さんの対話が惹きつける サントリー特茶「人生の階段」篇 #コウメ太夫 #サントリー #特茶
+- 2wdOWNxxkEQ | 1000 | TCC賞は歴史を作り、発見を未来に渡す作業 #TCC賞 #栗田雅俊 #コピー年鑑
+- XadarZJJemk | 4000 | 世界最大の広告祭カンヌライオンズでAIのフェイク映像の不正利用が発覚。#AI #canneslions2025 #canneslions
+- 6I4wcoCOBuU | 2200 | ボディーコピーが届きにくい、そんな時代。届くべき人に読んでもらって好きになってもらう #花王 #メリット #感動CM
+- lAW9thT6BOo | 577 | 世界で初めてDVへの保証を定めた保険会社 #AXA #ドメスティックバイオレンス #DV
+- fYQsWRQV8X0 | 3300 | The Kao Merit ad is eye-catching with its simple illustrations and handwritten text. #Kao #Merit ...
+- B51M-ryeH4o | 1300 | 字幕に自動で色が付いたり、エフェクトがつくシステムがグランプリ #captionwithintention #canneslions2025 #canneslions
+- Jji1WVUHQts | 2000 | 意識高すぎ！高杉くんシリーズの誕生秘話 #明円卓 #神木隆之介 #意識高い系
+- Ciuw0Lj2KS8 | 2000 | 意識高すぎ！高杉くんシリーズの誕生秘話 #神木隆之介 #中川大志 #西野七瀬
+- 6fyXwqK7wT8 | 1900 | 倒産寸前のカフェを救った広告じゃない”漫画” #janaicoffee #明円卓 #kakeru
+- 6pMW1RUldv0 | 3200 | 金麦のシズル感を作り出す檀れいさんの魅力 #檀れい #金麦 #サントリー
+- nACmO2iExbo | 2000 | 企画書で難しいことは書かない。流れを伝えることが大事。 #企画書 #博報堂 #黒須美彦
+- 6Wd6Z-srvp4 | 8600 | 【制作の裏側】吉沢亮さん主演 映画「ババンババンバンバンパイア」 #吉沢亮 #関口メンディー #眞栄田郷敦
+- aG76nAx6tBU | 2400 | 大宮エリーさんのキャラがにじみ出てる名作CMの数々 #大宮エリー #電通 #長瀬智也
+- RsJJj3l1X2Q | 15000 | [Behind the Scenes] The movie "Baban Baban Bang Vampire" starring Ryo Yoshizawa #Ryo Yoshizawa #M...
+- gpjNfzxZib0 | 2900 | 【制作の裏側】吉沢亮さん主演 映画「ババンババンバンバンパイア」 #吉沢亮 #関口メンディー #眞栄田郷敦
+- dUeD0wU2ChM | 3000 | 吉沢亮さん主演 映画「ババンババンバンバンパイア」制作の裏側 #吉沢亮 #関口メンディー #眞栄田郷敦
+- CcqbC1mZhxs | 2200 | 大宮エリーさんが電通を退社した理由 #笑っていいとも #電通 #大宮エリー
+- qal_1xr-dLk | 2700 | 阿部寛さんが芝浦マシーンのことを話しまくってしまうCM #阿部寛 #TCC賞 #広告
+- ix-ySynaBKs | 2500 | 「UFOが落ちてきたら呼ばれそうな会社」エンタメの中で誠実な部分を担当することが伝わる上手いコピー #リガクホールディングス #広告 #website
+- nqi278Xzd9U | 3700 | ダイアン津田さんの名演技で魅力が増してるOlive「通帳の人」篇 #ダイアン #ダイアン津田 #三井住友銀行
+- VWFMFUns4so | 1900 | あなたも「決めつけ刑事」にならないように、正しい情報の取捨選択を #広告 #ネットリテラシー   #acジャパン
+- sg8RDX8Ct4M | 2600 | すごい勢いで新しい概念を押し付けてくるCМ  #KFC  #チキンカツバーガー  #高須クリニック  #カーネルサンダース
+- rtrD7RYtN_Y | 2400 | 地面師たちのコピー「こいつら全員、土地（トチ）狂ってる」  #地面師たち  #綾野剛  #ピエール滝  #豊川悦司
+- eoJ6z-5We7k | 1600 | リアルなCМセリフはリアルに女子高生の会話が参考になっている。  #CМ  #広告 #CМプランナー
+- 7Wdmr3YXVoA | 1800 | 商品にならない言葉たちを商品にする劇団。 #劇団ドラマティックゆうや #愚痴 #CМ  #劇団四季
+- gwSywzqoppE | 1400 | クリエイターが自主制作を生み出す一つの成功例、劇団ドラマティックゆうや。  #ドラマティックゆうや #CМ #自主制作
+- vVXJoipDCmo | 451 | ＣМプランナー福里真一の前でやる「広告ってなに？」  #劇団ドラマティックゆうや #CМ #嘘の教育
+- jfv7gsAJav4 | 3000 | PRと広告の違い、分かりますか？「あたりまえの作り方」 #嶋浩一郎 あたりまえのつくり方 #博報堂ケトル
+- 6UewEAIiXgE | 2100 | 本屋の本棚はお客さんが作り上げる。 #本屋B&B #本屋大賞 #嶋浩一郎
+- NQUFfER5Kck | 1400 | 本屋大賞が誕生したきっかけ #本屋大賞 #嶋浩一郎 #博報堂ケトル
+- o7_9DyJAGdo | 2500 | ”自分でやらない”が一番凄い「あたりまえのつくり方」 #嶋浩一郎 #あたりまえの作り方 #博報堂
+- g6KgkTTB4Ig | 2100 | 「効率」ばっか求めるんじゃなくて、時には雑談をしないと #嶋浩一郎 #博報堂ケトル #雑談
+- WcaF6bzVuJ4 | 2400 | ビール飲み放題の変わったオフィス、博報堂ケトルのオフィスに潜入！ #博報堂 #嶋浩一郎 #本屋大賞
+- 0EgGqJ4VTy8 | 1200 | メディア上で影響力のある役柄は男性が多い。自然とイメージが決めつけてしまうジェンダー差  #ジェンダー #Gender  #今田美桜  #山本耕史
+- pGx_e2Wnc_U | 1400 | 人口と税収の減少で、福祉が先細りする。解決するためにクリエイティブの力で挑戦をしていく。 #ヘラルボニー #HERALBONY  #福祉  #確定申告
+- 1quXd3998hk | 1300 | 視覚障がいをもつ方は、手先が器用なのでメークも上手になる？  #Pola  #cm   #視覚障がい
+- On7J-UN7wUk | 1700 | プレゼン後は遊びまわって客観性を取り戻すのがオススメ #プレゼン #Cannes #26卒
+- oEahQYaNWZ8 | 430 | 目の前の仕事に真摯に打ち込むことが、未来の成功を手繰り寄せる。 #サイバーエージェント #canneslions #Cannes
+- 7WPpNnI6SS8 | 3000 | プレゼン前は、相手が犬派か猫派かまで調べ上げる。  #プレゼン #canneslions #Cannes
+- Xd0TfcRrDEI | 2100 | 広告界のM-1を制した若手クリエイター #M1 #cannes  #CANNESLIONS
+- m4HINIao0iI | 4100 | アイデアはスライドのクオリティをはるかに凌駕する。 #ヤングカンヌ #cannes #CANNESLIONS #スライドデザイン
+- yXzmupRZH9Q | 5700 | 1店舗ごとに商品が違うドン・キホーテでは、商品パッケージがポップみたいになっている。#ドンキ #ブランディング #ニュース
+- hLbiiZ-Y6HI | 3000 | ヤングカンヌは同じ資料でも複数部門にエントリーできる。ヤングカンヌを勝ち進むコツ #ヤングカンヌ #CANNESLIONS #広告
+- uZ_3DbsjuIU | 6500 | 大手広告代理店と仕事をしない”ドンキの禁”があった #ドンキ #博報堂 #情熱価格
+- Qkrcb8zabrw | 1600 | シャンプーCMなのにタレントを起用しない勇気。 #メリット #広告 #シャンプー
+- eHDfO7loFqg | 2900 | This Emotional Calorie Mate Commercial. Featuring Keita Machida, Who Was Moved by It Too. #KeitaM...
+- zHOYvjq4C_Q | 25000 | For some reason, this Ochazuke commercial is memorable. Here are my top 3 favorite commercials fe...
+- VxBR7ZLLNOo | 2700 | 仕事っていいなぁって思えるCM。俳優・町田啓太さんの好きなCM #町田啓太 #CM #宇宙人ジョーンズ
+- 7xIUvyehlAQ | 1500 | CM現場は短くてもかなり時間をかけている。俳優・町田啓太さんも驚いたHiGH＆LOWコラボCMの裏側 #町田啓太 #HiGH&LOW #失踪人捜索班
+- mPp46Dv-gh4 | 2300 | CMは自慢しすぎても良くない。ちょうど良い塩梅で訴求できる演技がベスト。 #町田啓太 #失踪人捜索班 #LDHJAPAN
+- 4soG9gpOgz4 | 4700 | CMアレルギーのない俳優・町田啓太さん...？ #町田啓太 #失踪人捜索班 #LDHJAPAN
+- iUyVyyeRShs | 868 | 広告のレプリゼンテーションは映画やドラマの比じゃない。 #広告 #レプリゼンテーション #26卒
+- MUGXt7uRFyU | 2300 | 日本のクリエイターだけがネガティブチェックをしている。海外はソーシャルグッドの流れ #マーベル #クリエイティブエシックス #コンプライアンス
+- 0Hctc0CUWUE | 812 | これからの日本では、倫理を基本とした資本主義が重要となる。 #倫理資本主義 #哲学 #クリエイティブエシックス #橋口幸生
+- Uf-PDvHw8RI | 1000 | サントリー「プレモル子ちゃん」ニューヨークで撮影したプレミアムなちびまる子ちゃんCM #プレモル子ちゃん #広瀬すず #さくらももこ #プレモル #サントリー
+- S1bWKJiA0P8 | 2000 | サントリー「プレモル子ちゃん」広瀬すずさん出演の実写版ちびまる子ちゃんCM #プレモル子ちゃん #広瀬すず #伊藤沙莉 #オダギリジョー  #プレモル #サントリー
+- 0klK1EvEbUA | 2000 | 「広告を作る上でのおもしろさと正しさのバランスは？」広告業界新入社員の悩みにプランナーが答える！#26卒 #27卒 #就職 #新卒 #新入社員 #CMプランナー #コピーライター #広告 #cm
+- gLh9QOusGyA | 1400 | 「新入社員は意見を言いやすい」広告業界新入社員の悩みにプランナーが答える！#26卒 #27卒 #就職 #新卒 #新入社員 #CMプランナー #コピーライター #広告 #cm
+- ccH1oV8MxG0 | 2600 | 忖度なしに意見を言った姿勢が上司に気に入られた #26卒 #27卒 #就職 #新卒 #新入社員 #CMプランナー #コピーライター #広告 #cm
+- -JAmy6h2H4E | 1000 | 「新入社員は得意分野を突き詰めるべき」広告業界新入社員の悩みにプランナーが答える！#26卒 #27卒 #就職 #新卒 #新入社員 #CMプランナー #コピーライター #広告 #cm
+- qup-X6S757w | 1500 | 「もう広告って作りたくないんですか？」広告業界新入社員の気になることをプランナーが答える！#26卒 #27卒 #就職 #新卒 #新入社員 #CMプランナー #コピーライター #広告 #cm
+- L57RJ2vempk | 314 | 「将来はどんな活躍をしている？」この質問で面接官は どこを見ているのか #26卒 #27卒 #就活 #面接対策 #サイバーエージェント #ソヤマン #新卒  #クリエイター #広告 #面接
+- AjLxLcLD-b4 | 1100 | 就活生必見！面接で自然と笑顔を見せる高等テクニック #26卒 #27卒 #就活 #面接対策 #サイバーエージェント #ソヤマン #新卒  #クリエイター #広告 #面接
+- lt5Mkdp00p4 | 2000 | トヨタ「ドラえもん」シリーズ なぜかジャン・レノさんが演じる実写版ドラえもんCM #ドラえもんちゃん #トヨタ自動車 #ジャンレノ #妻夫木聡  #水川あさみ #小川直也 #山下智久 #前田敦子
+- Cfiw2jSs53U | 1500 | オトナグリコ「25年後の磯野家」シリーズ 大人になった磯野家を実写化した懐かしいCM  #サザエさん #宮沢りえ #浅野忠信 #瑛太  #小栗旬 #グリコ #CM #広告
+- 6mkHK1IHpBA | 1800 | 阪神淡路大震災 被災地の様子をタイムリーに伝えたAC広告 #阪神淡路大震災 #電通 #acジャパン #谷山雅計 #CM #広告
+- Za2Tz75mD8g | 27000 | AC「ポポポポーン」 なぜ震災の時にたくさん放送されていたのか #ポポポポーン #ぽぽぽぽーん #東日本大震災 #acジャパン #谷山雅計 #CM #広告
+- l7Br-X-3l2Q | 2000 | Behind the Scenes of the AC "Tolerance Rap" Commercial Featuring Ryoff Karma #ToleranceRap #Ryoff...
+- nm22KSepJnw | 1000 | 話題のACジャパン 成り立ちを審査員自らが解説 #acジャパン #谷山雅計  #フジテレビ #CM #広告
+- J2obf02F84s | 777 | 話題のACジャパン コピーに込められた思いを 谷山雅計さん本人が語る！#AC #acジャパン #谷山雅計  #フジテレビ #CM #広告
+- 7nJuVo47oPE | 2100 | 芥川賞作家・開高健さんが書いた「サン・アド」創立の言葉 #サンアド #開高健 #サントリー #cm #広告
+- Sg0mb9HCyJQ | 2200 | AC「決めつけ刑事」ネットで話題のタイムリーなCM #AC #acジャパン #フジテレビ #決めつけ刑事 #谷山雅計 #CM #広告
+- xcl9gnAlxH8 | 1100 | ACのCMがなぜ流れるのか？AC広告の仕組みを解説！#AC #acジャパン #フジテレビ #谷山雅計 #CM #広告
+- rFSzzblyNPY | 1100 | 三谷幸喜さんのメッセージで話題の「サントリー」成人の日 新聞広告 #三谷幸喜 #サントリー #成人の日 #成人式 #広告 #新聞広告 #広告
+- t6LqcIiMGDg | 3500 | 吉沢亮さん出演 「アイリスオーヤマ」CM プランナーのあるあるを描いたクセ強CM #吉沢亮 #アイリスオーヤマ #CMプランナー #CM #広告
+- dD63FwF2ztc | 7100 | 吉沢亮さん起用継続！その理由にはアイリスオーヤマの社風が関係していた？ #吉沢亮 #アイリスオーヤマ #CMプランナー #CM #広告
+- WqnuxwifC0I | 2500 | ヤーレンズも使った 「じゃあいいですぅ」はなぜ生まれた？ #ヤーレンズ #M1グランプリ #M1 #なかじましんや #オダギリジョー #Airペイ #CMディレクター #広告 #cm
+- GOnfbgBLYNs | 1000 | 渡辺謙さん出演 ドコモ「ひとりと、ひとつ。」役者としての魅力を なかじましんやさんが語る #なかじましんや #ドコモ #渡辺謙 #CMディレクター #広告 #cm
+- NEkmUzeUb_8 | 1500 | ブックオフでバズる前の寺田心くんが TOTO「ベン親子」にキャスティングされた理由 #なかじましんや #TOTO #寺田心  #横田栄司 #CMディレクター #広告 #cm
+- pJvb8jncc4o | 1700 | DAKARA「小便小僧」ディレクター・なかじましんやさんが プランナーの魅力を語る #なかじましんや #サントリー #CMディレクター #CMプランナー #広告 #cm
+- Yu0dPLEd7C4 | 1100 | 大貫卓也さんの”冬ソナ愛”を なかじましんやさんが語る #大貫卓也 #なかじましんや #冬のソナタ #ADC #東京アートディレクターズクラブ #cm #広告
+- t9JzTgsgSac | 1200 | フジテレビ「ルール」CMプランナーは人が喜ぶアイデアを提案するべき #フジテレビ #なかじましんや #CM #CMプランナー #25卒 #26卒 #広告
+- OO6jrFEu9Y0 | 4300 | Nissin Cup Noodles "Hungry?" The legendary commercial in which a caveman chases a mammoth #Nissin...
+- JyUYLUdeym0 | 1900 | サントリー「角瓶」CM 独特な世界観を描いた「映像&ウイスキー」#鹿賀丈史 #角瓶 #ウイスキー #サントリー #なかじましんや #CM #広告
+- bRy_iogSSOI | 1700 | シュワちゃんが瓶の中から出てくる「アリナミンV」CM #アーノルドシュワルツェネッガー #アリナミン #なかじましんや #広告 #CM
+- 4drHPpFJDZ4 | 1300 | プレモル「無言の父たち」篇 Web広告とTVCMの違い #プレモル #サントリー #重野謙介 #web広告 #TVCM #広告 #CM
+- XrwA3Zy5Cn0 | 8000 | サントリー「角瓶」CM “マドンナ”は なぜ生まれたのか#角瓶 #角ハイボール #小雪 #菅野美穂 #井川遥 #サントリー #重野謙介 #ウイスキーがお好きでしょ #ウイスキー #広告 #CM
+- eczSdxXR6N4 | 2100 | Suntory Advertising Director on the Role of the "Advertising Department": "Advertising is a Piggy...
+- vxvZk29MHhs | 8400 | サントリー「BOSS」スタッフも驚いたコロナ禍のトミー・リー・ジョーンズさんの姿 #宇宙人ジョーンズ #トミーリージョーンズ #BOSS #サントリー #重野謙介 #広告 #CM
+- ot9S4j0RZzs | 5500 | The Don Quijote ad "Donki Ikuyo" starring Bruno Mars went viral #BrunoMars #Donki #DonQuixote #CH...
+- LXn961KRa1Y | 195 | 水曜日のカンパネラさん出演のシュールな広告「平日のカンパネラ」#ピザハット #水曜日のカンパネラ #TCC #CHOCOLATE #市川晴華 #広告 #コピーライター
+- XpUK1dGOkr0 | 637 | SNSでバズったポケモンコラボドーナツ「ポン・デ・ディグダ」#ミスタードーナツ #ミスド #ポケモン #ディグダ #CHOCOLATE #市川晴華 #広告 #コピーライター
+- vsDgF_tnr5w | 1500 | あばれる君 出演のプレモル広告 父親の共感を呼ぶ「無言の父たち」篇 #あばれる君 #サントリー #プレモル #CHOCOLATE #市川晴華 #広告 #コピーライター
+- DzgupLsKjqs | 3800 | 伊藤沙莉さんとENHYPEN NI-KIさんのキレキレダンスで話題の三角チョコパイCM #伊藤沙莉  #ENHYPEN #NI-KI #マクドナルド  #CHOCOLATE #市川晴華 #広告
+- yKyI7BxHuU4 | 764 | メントスの課題を解決したファミマ限定のアイデア商品 #メントス #ファミマ #ファミリーマート #クラシエ #CHOCOLATE #市川晴華 #広告 #コピーライター
+- kkptXd7UBqc | 2900 | YOASOBIとVaundyのマッシュアップ楽曲でも話題！マクドナルド「ティロリミックス」 #YOASOBI #Vaundy #マクドナルド #CHOCOLATE #市川晴華 #広告 #コピーライター
+- t9Q-UgPsxcY | 970 | ロート「目の愛護ショー」ドローンを300個使った目に良いドローンショー #ロート #ロート製薬 #CHOCOLATE #市川晴華 #広告 #コピーライター
+- DtDZQzGnHTQ | 685 | Netflix「地面師たち」渋谷に登場した目を引く屋外広告 #Netflix #地面師たち #CHOCOLATE #市川晴華 #広告 #コピーライター
+- zmoQXuB_Je8 | 1700 | “糸井重里さんと同じことをやって勝てない” きっかけとなった衝撃の一言 #糸井重里 #TCC #谷山雅計 #広告 #コピーライター
+- e8pzM5cfnik | 871 | JR東海「消えたかに道楽」とにかくツッコまれた制作裏話 #TCC #谷山雅計 #かに道楽 #jr東海 #広告 #コピーライター
+- Es7E0DH7ETo | 1500 | 笑っていいとも! “「見てない」ひとも、「続いてほしい」と思ってる。” 生放送中に誕生した感動のコピー #TCC #谷山雅計 #笑っていいとも #タモリ#爆笑問題 #太田光 #広告 #コピーライター
+- FYf9CvN-2eM | 871 | テレビを知らない子供たち」令和の子供たちの価値観を描いた広告 #中京テレビ #CHOCOLATE #市川晴華 #広告 #cm #テレビcm
+- fstK5RE3pNw | 825 | 「パンの赤ちゃん」“ク”だけを演じた山田孝之さん  #パン赤ちゃん #山田孝之 #CHOCOLATE #市川晴華 #アニメ #anime
+- mTnZtwDU1yM | 888 | ACCグランプリ受賞！フライパン3000個を集めた 味の素「冷凍餃子フライパンチャレンジ」 #ACC #味の素 #冷凍餃子 #フライパン#広告
+- dkAVaQ0uiDU | 725 | ACCグランプリ受賞！マイナビバイト開発のバイト専用イス #ACC #マイナビバイト #マイナビ #広告 #バイト
+- Ty_5G1xSRdo | 418 | ACCブロンズ受賞！ プレモル「飲みに誘うのムズすぎ問題」社会人の共感を呼んだWebムービー #ACC #和田まんじゅう #ネルソンズ #吉野おいなり #めぞん #サントリー #プレモル #広告
+- aPoK-RFdHDs | 1900 | 櫻坂46「夏の近道」と、マクドナルドCM「夜の坂道」がかかってる？ #谷口愛季 #欅坂46 #マクドナルド
+- BXLcwjeQp-A | 10000 | Behind the scenes of the commercial starring Sakurazaka46's Airi Taniguchi #Sakurazaka46 #AikiTan...
+- jyT_6jc-BlA | 780 | BLUE GIANT作者・石塚真一さんが手掛けたカロリーメイト グラフィック #カロリーメイト #BLUEGIANT #ブルージャイアント #石塚真一 #大塚製薬 #広告 #CM
+- G1zorGM8DvQ | 13000 | カロリーメイト「それぞれの音色」篇 ACC5連覇に期待高まる新作CM  #カロリーメイト #受験 #大塚製薬 #SG #僕らまた #広告 #CM
+- xDgVEuG-tvk | 297 | 「つまりあなたは、コピーライターに向いている」三島邦彦さん著書「言葉からの自由」に記されたメッセージ #三島邦彦 #言葉からの自由 #宣伝会議 #Netflix #コピーライター #広告 #電通
+- TuWuQO7nn2Q | 1700 | なぜコピーライターとして一人前になるには10年かかるのか #三島邦彦 #言葉からの自由 #宣伝会議 #Netflix #全裸監督 #広告 #コピーライター #電通
+- 2AbrU00VrVw | 763 | Netflix "ONE PIECE" 背景の海と音楽で不穏さを伝える“面白い広告” #ONEPIECE #ワンピース #尾田栄一郎 #Netflix #三島邦彦 #コピーライター #広告
+- u_dvGWtSzlc | 840 | Netflix "ONE PIECE" 原作ファンを気持ちを尊重した尾田先生の直筆広告 #ONEPIECE #ワンピース #尾田栄一郎 #Netflix #三島邦彦 #コピーライター #広告
+- ev3HvzQnPi4 | 693 | Netflix "ONE PIECE" 原作ファンを気持ちを尊重した尾田先生の直筆広告 #ONEPIECE #ワンピース #尾田栄一郎 #Netflix #三島邦彦 #コピーライター #広告
+- hcYLcf8gjok | 300 | Netflix "再生のはじまり" 広告を超えたメッセージを発信するクライアントの姿勢 #再生のはじまり #コロナ禍 #Netflix #三島邦彦 #コピーライター #広告
+- MEIJp0ak6wY | 3200 | Netflix "全裸監督 シーズン2"  渋谷駅に出現！SNSでバズった広告！ #全裸監督 #山田孝之 #村西とおる #Netflix #三島邦彦 #コピーライター #広告 #渋谷
+- n35COCJGRQI | 3900 | Netflix "全裸監督" 「面白いものを作る」Netflixの姿勢を示した広告 #全裸監督 #山田孝之 #村西とおる #Netflix #三島邦彦 #コピーライター #広告 #渋谷
+- mPuHOIdrfxs | 2800 | Netflix "極悪女王" 乱入乱闘の乱暴さを表現した 渋谷の「悪態広告」誕生秘話 #極悪女王 #ゆりやんレトリィバァ #ダンプ松本 #Netflix #三島邦彦 #コピーライター #広告 #渋谷
+- PpEnTxp52LI | 1000 | 「ダメ、ゼッタイ」未だに浸透している佐々木宏さんのストレートなコピー #佐々木宏 #薬物乱用防止 #コピーライター #広告
+- D9bMYUSlFyc | 852 | 小沢仁志さんのサングラスにチャーハン！ミラーを生かした企画案とは？CM本編は「笑う小沢と怒れる仁志」にて公開！#小沢仁志 #Vシネ #顔面凶器 #町中華 #チャーハン #CM #広告
+- pi-l_WSPB2A | 2800 | 小沢仁志さんの衝撃CM？幼稚園児の姿でチャーハンを一口。 CM本編は「笑う小沢と怒れる仁志」にて公開！#小沢仁志 #町中華 #チャーハン #CM #広告
+- KJ78l5HJWw0 | 1400 | 矢沢永吉さん出演 佐々木宏さんの持ち味を生かしたサントリー ボス CM #佐々木宏 #矢沢永吉 #サントリー #コピーライター #CM #広告
+- Fj5XlJu-ZgY | 1600 | ユニクロ “LifeとWear” はどのようにして生まれた？ #佐々木宏 #ユニクロ #コピーライター #CM #広告
+- xSp1gULuKDY | 24000 | Mr.Children ”miss you” は なぜロケで撮影された？#MrChildren #森本千絵 #toysfactory #goen #広告 #アートワーク #アートディレクター
+- svfNSGBY00Y | 2300 | Mr.Childrenメンバーは作品のどこに注目している？ #MrChildren #森本千絵 #toysfactory #goen #広告 #アートワーク #アートディレクター
+- 1Di8Vzmdwqo | 992 | Mr.Children “レース”でできた中吊り広告に込められた意味とは？#MrChildren #森本千絵 #toysfactory #goen #広告 #電車広告 #アートディレクター
+- qSb2xbedlOY | 2400 | Mr.Childrenベストアルバム“水滴” 新聞広告はどのようにして生まれた？#MrChildren #森本千絵 #toysfactory #goen #広告 #新聞広告 #アートディレクター
+- JF45g93KsLI | 1000 | Mr.Children “防波堤”広告制作中に感じた音楽の温かさ #MrChildren #森本千絵 #toysfactory #goen #広告 #アートディレクター
+- KY-Ws6CFHtY | 2200 | Mr.Childrenベストアルバム“防波堤”広告はどのようにして生まれた？#MrChildren #森本千絵 #toysfactory #goen #広告 #アートディレクター
+- vBb9RNmOYGA | 1800 | 山田孝之監督CM「山田孝之のカード」#山田孝之 #横浜流星 #早見あかり #イオンペイ #イオンカード #イオン #CM #広告
+- h1B0DgkbOiI | 1500 | 佐久間宣行さん監督CM 広告だから同じことを言い続ければいい？ #佐久間宣行 #川島明 #山下美月 #menu #cm #広告
+- U6uWnwFQCgE | 1100 | たった一枚でエイズの恐怖を表現したポスター #大貫卓也 #エイズ #ADC #東京アートディレクターズクラブ  #広告 #コピー
+- IGG970GoiHo | 1100 | 0.3秒で結論に辿り着く機能美の広告「鼻」 #大貫卓也 #ラフォーレ原宿 #ラフォーレグランバザール #世田谷美術館 #広告 #コピー
+- 7HDj0wD7Yvw | 831 | ラフォーレ広告は「原宿」を表現しつづけている #大貫卓也 #ラフォーレグランバザール #ラフォーレ原宿 #世田谷美術館 #広告 #コピー
+- IZzYmt4vKB8 | 1300 | ファッション広告に付けられたタメになるコピー #大貫卓也 #ラフォーレグランバザール #ラフォーレ原宿 #世田谷美術館 #広告 #コピー
+- DKKmBQmTb4g | 1200 | 口紅を煙突に置き換えた川崎西武の刺激的な広告 #大貫卓也 #川崎西武 #西武百貨店 #世田谷美術館 #新聞広告 #広告 #コピー
+- eWu0E3CxIsI | 919 | 広告の型を否定した広告。としまえんの円グラフ。#大貫卓也 #としまえん #世田谷美術館 #広告 #コピー
+- BtELClLZY3E | 1100 | 「プール冷えてます」としまえん伝説のコピーはダジャレから発想していた #大貫卓也 #としまえん #世田谷美術館 #広告 #コピー
+- Ji9IvMO7sa4 | 846 | 3分間永遠と企画を出し続ける”3分企画”
+- QdXgh_BAQ3s | 1400 | 若手プランナーはとにかくがむしゃらに。
+- xelmbt7ywI0 | 2400 | 中居正広さんの華麗なる復活 #SMAP #中居正広 #ソフトバンク #チチンペイペイ #CM #広告
+- xQeLnWldw8Y | 1600 | 「言わせとけ。」中居正広さん出演で話題となった “氷結”新聞広告コピー #SMAP #中居正広 #氷結 #キリン #CM #広告 #新聞広告
+- vAhWt6gPQI4 | 14000 | 資生堂 TSUBAKIのCMはコカ・コーラのCMをヒントに作られた #コカコーラ #TSUBAKI #資生堂 #シャンプー #cm #広告
+- xlTxpdviHF0 | 2900 | Big Mac commercial featuring Nogizaka46's Mao Ioshiro #Nogizaka46 #MaoIoshiro #McDonalds #CocaCol...
+- 7lJLp0ut3kY | 2200 | 博報堂 井村光明さんが作る広告 は必ずヒットする #井村光明 #博報堂 #広告  #cm #クリエイター
+- 6GSmntvKSrs | 18000 | 呪術廻戦CMがファンタ学園のパロディで話題 #呪術廻戦 #高羽史彦 #羂索 #ファンタ #cm #広告
+- L7u8obZzJR8 | 1200 | 當真あみさんが印象に残っている広告 #當真あみ #終りに見た街  #ランドセル #松岡茉優 #cm #広告
+- sre23t0TjY8 | 6600 | Ami Touma talks about her encounters with the popular works "Kuroko's Basketball" and "Haikyu!!" ...
+- QbIX-k_sc6Y | 2200 | 當真あみさんが好きな映画「君たちはどう生きるか」#當真あみ #ジブリ #終りに見た街  #アニメ #映画 #君たちはどう生きるか
+- aecz6ck5SZA | 1300 | 當真あみさんがカルピスCMキャラクターに決まった時の反応は？#當真あみ #カルピス #終りに見た街 #cm #広告
+- QNlaziBOHhU | 1200 | What difficulties did Touma Ami face while filming the Calpis commercial? #ToumaAmi #Calpis #TheC...
+- vmTbycXoX2Y | 1800 | Ami Touma talks about what went on behind the scenes at the commercial shoot that marked her debu...
+- rJdZnv-GCNE | 150 | 好きなものを魅力的に伝える工夫  #Abema #コンテンツマーケ #クリエイター #就活 #25卒 #26卒 #広告
+- NoE5wvIaaXw | 3400 | 6秒CMの作り方。6秒の天才が現れる。   #6秒広告 #サイバーエージェント #クリエイター #就活 #25卒 #26卒
+- bF9yMI1atMI | 924 | What kind of creators will be chosen in the age of AI? #AI #creator #jobhunting #25graduates #26g...
+- fkxbA1redrc | 287 | AIとクリエイターはどう付き合う #AI #クリエイター #就活 #25卒  #26卒 #広告
+- mKYFuglUtiE | 871 | 「きれいなおねえさん」を下品にならないように工夫した #パナソニック #美容  #コピーライター #広告 #cm
+- F69MSbEiQd0 | 1200 | The copy that led me to join ANA #ANA #YokoOno #JobHunting #2025Grad #2026Grad #Copywriter #Adver...
+- TFbeKMQY0qw | 3400 | ゲーム「MOTHER」のコピーライターが語る当時の様子 #MOTHER #糸井重里 #任天堂 #Nintendo #星野源 #羽生結弦 #コピーライター #ゲーム
+- vwTnTxgEmr0 | 3300 | 定番の表現を使わないシャンプーの広告 #メリット #シャンプー #感動cm #cm #電車広告
+- 1LSPVZYY4t0 | 822 | NCT127のために体調管理をするファンを描いたCM #NCT127 #推し活 #広告 #cm
+- 6oTZifAARzI | 792 | 万葉集がヒントになった歌CM #男女平等 #万葉集 #コピーライター #広告 #cm
+- fF9HXIUc27c | 11000 | The mysterious copy in a Washlet ad [Yuru Linguistics Radio Collaboration] #YuruLinguisticsRadio ...
+- PClbkZkC7mM | 1300 | How "When you come home, it's Sekisui House." was created #SekisuiHouse #Copywriter #Advertising #CM
+- q-b5lIYEox4 | 1700 | 「あなたと、コンビに、」に込められた本当の意味 #ファミマ #コンビニ #コピーライター #広告 #cm
+- JW7uiQ8z70k | 1000 | ”会社”という組織が日本という国の在り方 #TCC #CM #広告 #コピーライター #sansan
+- uP_5WBCwKK0 | 623 | 実写版ワンピースの本当の見どころ #ワンピース #Netflix #尾田栄一郎 #TCC #CM #広告 #コピーライター
+- WDmu6B2gDjU | 1200 | ポテチの新しい食べ方 #すしのこ #ポテチ #TCC #CM #ラジオCM #広告 #コピーライター
+- T7hcZir3J20 | 575 | 正体不明のAIラッパー？ #毎日新聞  #コロナ禍 #TCC #CM #広告 #コピーライター
+- MjMO8EeLKkU | 742 | 水曜日のカンパネラの斬新なCM #ピザハット #水曜日のカンパネラ #大谷翔平 #TCC #CM #広告 #コピーライター
+- BDcFbSXbNOw | 1100 | 選手宣誓はなぜ変わらないのか #ナイキ #ナイキベースボール #甲子園 #野球  #cm #広告 #コレって広告
+- x6SMuJOeGLI | 1000 | 内定式は黒髪じゃなきゃダメなのか #パンテーン #シャンプー #就活 #25卒 #26卒 #cm #広告 #コレって広告展
+- B6TLSnpLDxA | 841 | 津波のリアルな高さを体験するヤフー防災広告 #ヤフー #東日本大震災 #防災 #屋外広告 #コレって広告展 #広告
+- 2IbIha8F0Y8 | 572 | 新宿東口の猫は広告スペースを拡張した #猫 #新宿 #3DCG #コレって広告展 #広告
+- XkGWfPk3S1E | 669 | 経験を言語化する能力を持つ者がリーダーになる #広告業界 #面接対策 #ガクチカ #模擬面接 #サイバーエージェント #電通 #博報堂
+- 040Q6WqggDo | 416 | 最近の面接は自分の素を出す努力が必要 #広告業界 #面接対策 #ガクチカ #模擬面接 #サイバーエージェント #電通 #博報堂
+- EN2z0SvNVa0 | 6300 | Communication skills are essential to succeed in the advertising industry #advertisingindustry #i...
+- rpt-4Ds7LUw | 1100 | 【模擬面接】ガクチカは"成果"が大事 #就活 #面接対策 #ガクチカ #新卒 #サイバーエージェント #電通 #博報堂
+- 2MW33-Kw3q4 | 836 | 流行りの作品よりも同じ作品を観るべき#TAROMAN #Netflix #企画力 #新卒 #cm #クリエイター
+- W_olMumzfOA | 805 | 筋トレはポジティブになるが、クリエイティブにおいては逆効果。#TAROMAN #ネガティブ思考 #企画力 #新卒 #cm #クリエイター
+- 1z6bvSR3Le4 | 1000 | 「サウンドロゴしりとり」独特の世界観に隠された不安 #サウンドロゴしりとり #サウンドロゴ #NHK #TAROMMAN
+- rQTm-LW9BsE | 11000 | 石田三成のローカルCMはどのようにして作られたのか #石田三成 #ローカルcm #cm #TAROMAN
+- 5lgzicTA-wU | 2200 | 香取慎吾さんをジムビームのCMに起用した理由 #香取慎吾 #新しい地図 #稲垣吾郎 #草彅剛 #smap #cm #ぷっくりニュース #ぷっくり大賞
+- YJKOQrZ400c | 6300 | Goro Inagaki is charming even on the set of a commercial. #GoroInagaki #NewMap #TsuyoshiKusanagi ...
+- pLY1PskuV78 | 9800 | The one and only "Tsuyoshi Kusanagi" is a beloved figure. #TsuyoshiKusanagi #1BarManzokuBar #NewM...
+- L0DIS5-FW3o | 28000 | 草彅剛さんが１本満足バーCMに欠かせない理由 #草彅剛 #１本満足バー #新しい地図 #ぷっくりニュース #ぷっくり大賞 #smap #稲垣吾郎 #香取慎吾  #cm
+- JQaNYZR454M | 4100 | １本満足バーの印象的なフレーズが生まれたきっかけ  #草彅剛 #１本満足バー #新しい地図 #ぷっくりニュース #ぷっくり大賞 #smap #稲垣吾郎 #香取慎吾  #cm
+- upy3pWamZac | 280 | 広告界の殿堂入り、一倉宏さんと公開収録を行います。 #広告業界 #コピーライター #クリエイター #cm
+- W_AzoVk9vpo | 2800 | A shampoo ad that unexpectedly pulls at your heartstrings first thing in the morning #Merit #Sham...
+- MUXFEHvYyLk | 34000 | A contrarian commercial that goes against everything about Merit #merit #shampoo #emotionalcommer...
+- -fMAA0a7SuQ | 1200 | トヨタイムズで光る豊田章男会長のタレント性  #トヨタ #豊田章男 #香川照之 #自動運転 #cm
+- QGZAYznJT3o | 1600 | 新たなイズムを示したトヨタイムズ #トヨタ #豊田章男 #香川照之 #自動運転 #cm
+- tfP2B4iCnQw | 939 | 出演者の意見がおもしろいCMを作り出す #松田翔太 #桐谷健太 #濱田岳 #cm
+- eMjFhmmPeGk | 7000 | au三太郎に繋がるあの懐かしのCM！#Mステ #報道ステーション #TikTok #テレビCM #広告
+- 34hgXGyXs7A | 1800 | au三太郎にみるドラマCMの新たな形 #松田翔太 #桐谷健太 #濱田岳 #テレビCM #広告
+- GkN79c_euKM | 3500 | Why I decided to quit Dentsu. Creative work as an employee versus an individual is completely dif...
+- -DzRg2j7hGA | 988 | 一橋大学はもともと”東京商科大学”という名前だった。ゲスト：篠原誠さん　#電通 #就活 #25卒 #26卒
+- UAQNML0PhQU | 6500 | SMAPが解散しても、CMに起用し続けてくれた企業。おもしろいCMを目指し続けたSMAPの功績。 #SMAP #新しい地図 #香取慎吾 #草彅剛 #稲垣吾郎 #広告
+- mYBP_Es7VS0 | 748 | 福里がボーっとしていたら、福部さんがいい企画を思いついていた。 #広告 #ボディメンテ #CM #企画 #NCT127
+- JxtrERjsM5k | 1000 | NCT127出演で話題のCM。推し活のリアルな切り取り方。#NCT127 #広告 #推し活 #ボディメンテ #レビュー
+- k9iJWap11To | 691 | 新卒社員の退職が相次ぐ現代、なにをどう考えるべき？ #不適切にもほどがある #新卒 #24卒 #25卒 #就活 #退職 #パワハラ
+- xyBx76gXwyM | 703 | 昭和は人に干渉しすぎていた。今は心地よい距離感？
+- g0rivcdeljY | 9700 | In short ads, honest opinions are the most impactful. [Yuru Linguistics Radio Collaboration] #Yur...
+- o_01VufIZVU | 134000 | The quality of the sound is deliberately changed. [Yuru Linguistics Radio Collaboration] #YuruLin...
+- S_YdJbPKaik | 528 | ドラクエ エデンの戦士たちのCMで、SMAPはなにをした？ #SMAP #木村拓哉 #香取慎吾 #中居正広 #広告 #ドラクエ #エデンの戦士たち
+- nOke21oEpLU | 772 | 年齢・性別・社会的地位を捨てて、個人を大事に生きる。 #美輪明宏 #宝島社 #社会的地位 #ジェンダー #LGBT #不適切にもほどがある
+- QiUnOArvPWQ | 750 | 世間がざわついた新聞広告。お茶の間に突然現れたインパクト。 #宝島社 #広告 #新聞 #ジャーナリズム #企業広告 #レビュー
+- tj2rfIzYixY | 2800 | Does Goro Inagaki Suit Playing a Villain? #AtarashiiChizu #GoroInagaki #TsuyoshiKusanagi #ShingoK...
+- 1m0SG8qfkMs | 701 | SMAPの名作CMベスト５！ANA'S パラダイス沖縄「沖縄の歌」篇
+- IGBnNA8hlZU | 11000 | SMAP解散後も受け継がれる”新しい地図”のおもしろいCM #新しい地図 #smap #香取慎吾 #稲垣吾郎 #草彅剛
+- mFkoTsHoap8 | 8300 | Can Young Talent Actually Succeed in the Ad Industry? #Advertising #NewGrads #Classof2024 #Classo...
+- zKqp74VdMV0 | 851 | 信用してもらうためには”否定しない” #企画 #コンサル #コミュニケーション #perfectdays #高崎卓馬 #cm
+- eNjEu3F8Ib4 | 439 | 100点の企画は存在しない。60点の企画はあとから300点にもなる。#perfectdays #企画 #サイバーエージェント
+- yYq3oD3L1tA | 740 | 映画「PERFECT DAYS」共同脚本高崎さんに聞くアイデアの発想法 #perfectdays #ideas #企画
+- oMiCevWgbDI | 1100 | Second Best / IKEA カンヌライオンズでGoldに選出された名CM #広告ウヒョー #ikea #乳幼児 #ベビーベッド
+- QlG6Poui1dw | 1800 | 樹木希林さんが大事にしていたものとは？内田裕也さんへの想いなど。#広告ウヒョー #樹木希林 #富士フィルム
+- 426so8JdPps | 1300 | 乃木坂46×サンボマスター 最初で最後の対バンライブどうなる・・・？ #広告ウヒョー #梅澤美波 #サンボマスター #ひとりひとりにひとりひとりのふるさとがある
+- RuHerF-J3P0 | 696 | 「そうだ 京都、行こう。」30年つづくCMの秘訣を深掘りしてみました。
+- YnV7Tl-aXZk | 521 | サウナは人気の現象が他と違う。Z世代に流行の理由をコピーライターが考える。
+- GLMWsuPVAcU | 602 | 10年続くシリーズ広告の秘訣とは。毒っけのあるアルプスの少女 ハイジが人気、家庭教師のトライCM。
+- GMUJGIEmvxM | 551 | Tinderの"青春コンビニ"に行ってきました。リアルのハプニングから読み解く”事件性”のある仕掛けとは。
+- v4sYbA69_XY | 1200 | ウーバーイーツのCMはナンセンス。笑わせようとも思っていない不思議なキャスティングと構成に惹かれる。
+- gZtnACA2XKM | 481 | クリエイターの葛藤を描いたブルーピリオド。クリエイタータイプとノンクリエイタータイプに分かれる。
+- cNnMx_Va8_k | 400 | ”話題の漫画”ブルーピリオドを解剖！広告は手段ではなく、言いたいこと。
+- 7bkAjS--_08 | 254 | 芸術は爆発だ！を始めとする、広告の大事な３要素を兼ね備えた岡本太郎さんの作品とは。
+- oOd8pt-6TaI | 1100 | 15秒CMは１カットの方が強い、という信念。矢沢永吉のサントリー BOSSのCM。
+- JPQXnKblt9w | 877 | 「テレビCMは15秒でいこう！」の一言で 15秒CMは日本特有のモノに。
+- Bwf03In5jxk | 173 | 自分の意見を言うことは、難しいことじゃない。選挙と広告。
+- OOeXT7tpCs8 | 668 | FIFA21に隠れたストーリーが、広告として日の目を浴びる。カイヤンプリンスを知ってるか？
+- gVgTzQu0LPc | 238 | 世界最大規模の祭典、カンヌ国際広告祭の裏側。国民性の違いや、まさかのロビー活動・・・！
+- KqNMdOsPxdk | 212 | うまい棒の値上げは、駄菓子文化を守るカッコイイ広告。
+- DDbc6L62oxo | 181 | 飲食店へのエールと企業のPRを兼ね備えた最強の広告。
+- 6DDBRfI1PCc | 267 | 福里真一、伊藤直樹が考える。2009年以降でターニングポイントとなった広告たち。
+- DayQpRQ5GwY | 156 | 広告自体が批評性を帯びていることが重要。雑誌PENさん取材の一部を抜粋。
+- VgvcLC4khjM | 303 | 広告のレジェンドもサムネイルを意識する。福部明浩さんってナニモノ？
+- QC_euYSALfg | 269 | 広告賞を見ると、こんな素敵な広告がたくさんあることに気付ける
+- 2JBPcsz8XuQ | 1000 | 短い言葉で印象的、技が光ったTCC一般部門のウヒョー！
+- UzLcVSqeomU | 244 | TCC審査委員長福部明浩さんと語る新人賞のウヒョー！
+- rgWNeGwc9Hc | 348 | NY ADC最高賞受賞のドッキリ広告！日本では作れない・表彰されない
+- vj7Ki7_rBrA | 332 | 母の日広告 POLA ”We Can More” 主張とリスクの天秤
+- Zi9Lzegs17M | 195 | キウイの兄弟が歌って踊るCM、ルーツは土偶にあり。
+- Ve3o-tstlA8 | 317 | この企業は、広告そのものの捉え方が他の企業と違う。
+- F0f_d6eP2f8 | 87 | 木村拓哉さん「木村、混乱してます」は名台詞？
+- aWNw8FMmD9I | 195 | ビシっとキマッている木村拓哉さんを 10代女子芦田愛菜さんがイジる構成が面白い
+- RZQT6KbBTeE | 288 | 3D LEDビジョン広告は日本が一番面白いモノを作っている
+- x8_HaX7DHw4 | 204 | Twitterのつぶやきが新聞に載る時代？
+- yIzKtY6Ckcc | 872 | CMプランナーが選ぶテレビCMのウヒョー！としたセリフ #shorts
