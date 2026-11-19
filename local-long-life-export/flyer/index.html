@@ -1,0 +1,397 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local Long Life Flyer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+/* A4 両面チラシ v2（検証をふまえた修正案）
+   表＝何の会社か・参加後に得るもの・締切／裏＝1日の流れ（4ブロック）・先輩の声・選考との関係
+   オレンジ文字（.tbd）は未確定の仮記載。印刷前に確定情報へ差し替え */
+@page{size:210mm 297mm;margin:0}
+:root{
+  --mint:#55C5B0; --mint-d:#2f9d89; --mint-l:#DBF2E2; --mint-xl:#EEF8F1;
+  --cream:#FFFEF2; --ink:#323042; --ink-s:#6c6a7a; --orange:#F28A3C;
+  --font:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif;
+  --en:"Barlow Condensed","Zen Kaku Gothic New",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfd3d0}
+body{font-family:var(--font);color:var(--ink);font-weight:500;line-height:1.7;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+img{display:block;max-width:100%}
+.tbd{color:var(--orange);font-weight:900}
+
+/* 画面表示：面を並べ、画面幅に合わせて縮小（印刷時は等倍・表と裏の2ページ） */
+.stage{display:flex;flex-wrap:wrap;justify-content:center;gap:34px 24px;padding:26px 12px}
+.side{width:calc(210mm * var(--z,1));height:calc(297mm * var(--z,1));position:relative}
+.side>.sheet{transform:scale(var(--z,1));transform-origin:top left}
+.label{position:absolute;left:0;top:-19px;font:700 11px/1 var(--en);letter-spacing:.14em;color:#4d5a55}
+.sheet{position:relative;width:210mm;height:297mm;background:var(--cream);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+@media print{
+  html,body{background:none}
+  .stage{display:block;padding:0}
+  .side{width:210mm;height:297mm;break-after:page}
+  .side>.sheet{transform:none;box-shadow:none}
+  .label,.side.alt{display:none}
+}
+
+/* ===== 表面 ===== */
+.kv{flex:0 0 auto;height:130mm}
+.kv img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+
+.copy{flex:0 0 auto;position:relative;background:var(--mint-l);padding:5mm 12mm 6.4mm;text-align:center}
+.copy h2{font-size:6.6mm;font-weight:900;line-height:1.45;letter-spacing:.05em}
+.copy h2 em{font-style:normal}
+.copy .ind{margin-top:1.4mm;font-size:3.05mm;font-weight:700;line-height:1.7}
+.copy .ind b{color:var(--mint-d);font-weight:900}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:3mm}
+.stat{padding:0 3mm}
+.stat+.stat{border-left:.5mm dotted var(--mint-d)}
+.stat big{display:block;font-family:var(--en);font-weight:700;font-size:8mm;line-height:1;color:var(--mint-d)}
+.stat big small{font-size:3.4mm;margin-left:.8mm;font-family:var(--font);font-weight:900}
+.stat span{display:block;margin-top:.8mm;font-size:2.7mm;font-weight:700;line-height:1.45}
+.ridge{position:absolute;left:0;right:0;bottom:-.3mm;height:4.4mm;color:var(--cream)}
+.ridge svg{display:block;width:100%;height:100%}
+
+.points{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;padding:3.4mm 12mm 0}
+.pt{text-align:center}
+.pt+.pt{border-left:.5mm dotted var(--mint);padding-left:4mm}
+.pt__img{height:16mm;display:grid;place-items:center}
+.pt__img img{height:15mm;width:auto}
+.pt__no{display:inline-block;margin-top:1.2mm;font-family:var(--en);font-weight:700;font-size:2.4mm;letter-spacing:.14em;background:var(--mint);color:#fff;border-radius:99px;padding:0 3mm}
+.pt h3{font-size:3.5mm;font-weight:900;line-height:1.4;margin:.8mm 0 0}
+.pt p{font-size:2.5mm;line-height:1.6;margin:.8mm 0 0;text-align:left}
+.tease{margin:2.6mm 12mm 0;text-align:center;font-size:2.8mm;font-weight:900;color:var(--mint-d)}
+
+.foot{flex:1 1 auto;display:grid;grid-template-columns:1fr 60mm;gap:6mm;padding:3mm 12mm 0;min-height:0}
+.info dl>div{display:grid;grid-template-columns:14mm 1fr;gap:2.5mm;padding:1.2mm 0;border-bottom:.5mm dotted var(--mint);font-size:2.85mm;line-height:1.5}
+.info dl>div:first-child{border-top:.5mm dotted var(--mint)}
+.info dt{font-weight:900;color:var(--mint-d)}
+.info dd b{font-weight:900}
+.info dd small{display:block;font-size:2.1mm;color:var(--ink-s);line-height:1.45}
+.brand{display:flex;align-items:center;gap:3mm;margin-top:2.4mm}
+.brand img{height:6.4mm;width:auto}
+.brand span{font-size:2.1mm;color:var(--ink-s);line-height:1.4}
+.entry{align-self:start;background:var(--mint-l);border-radius:5mm;padding:3mm;text-align:center}
+.entry__lead{font-size:3.2mm;font-weight:900;line-height:1.4}
+.entry__lead i{font-style:normal;color:var(--orange)}
+.qr{width:24mm;height:24mm;margin:2mm auto 1.2mm;padding:1.8mm;background:#fff;border-radius:1.6mm}
+.qr img{width:100%;height:100%;image-rendering:pixelated}
+.entry__url{font-size:2.3mm;line-height:1.5}
+.bar{flex:0 0 auto;height:3.2mm;background:var(--mint);margin-top:3mm}
+
+/* 比較案B：表面のヒーローだけ「人の顔」を主役に（山並みの曲線で切り抜き） */
+.kvx{position:relative;color:#fff;overflow:hidden;background:var(--mint)}
+.kvx .kvs{position:absolute;inset:0;width:100%;height:100%;display:block}
+.kvx__tx{position:absolute;left:8mm;top:0;bottom:0;width:84mm;z-index:2;display:flex;flex-direction:column;padding:9mm 0 8mm}
+.kvx__lb{font-family:var(--en);font-weight:600;font-size:3.3mm;letter-spacing:.28em}
+.kvx__lb::after{content:"";display:block;width:12mm;height:.7mm;background:var(--orange);margin-top:2mm}
+.kvx h1{margin-top:4.5mm;font-size:10.4mm;font-weight:900;line-height:1.34;letter-spacing:-.015em;color:#fff}
+.kvx h1 em{font-style:normal;background:linear-gradient(transparent 60%,rgba(246,211,107,.95) 60%);color:var(--ink);padding:0 .6mm}
+.kvx__sub{margin-top:3.6mm;font-size:3.15mm;font-weight:700;line-height:1.7}
+.kvx__chips{display:flex;flex-wrap:wrap;gap:1.6mm;margin-top:3.4mm}
+.kvx__chips span{background:#fff;color:var(--ink);font-size:2.7mm;font-weight:700;border-radius:.8mm;padding:.5mm 2.6mm;line-height:1.7;letter-spacing:.04em}
+.kvx__d{margin-top:auto;display:flex;align-items:flex-end;gap:2.4mm}
+.kvx__d b{font-family:var(--en);font-weight:700;font-size:22mm;line-height:.82;letter-spacing:.01em}
+.kvx__d i{font-style:normal;font-weight:900;font-size:4.4mm;background:var(--orange);border-radius:1mm;display:grid;place-items:center;width:8mm;height:8mm;margin-bottom:.4mm}
+.kvx__pl{margin-top:2.2mm;font-size:3.1mm;font-weight:900;line-height:1.5}
+.kvx__pl small{display:block;font-size:2.7mm;font-weight:700;opacity:.92}
+.kv.kvx img.kvx__lg{position:absolute;right:6mm;top:6.5mm;z-index:3;height:5.8mm;width:auto;max-width:none;object-fit:contain;filter:drop-shadow(0 0 1.6mm rgba(0,0,0,.4))}
+.kvx__bd{position:absolute;z-index:3;width:29mm;height:29mm;border-radius:50%;background:#5DBB2F;color:#fff;display:grid;place-items:center;text-align:center;font-weight:900;font-size:4mm;line-height:1.3;transform:rotate(-5deg);box-shadow:0 1mm 3mm rgba(0,0,0,.28)}
+.kvx__bd small{display:block;font-size:2.3mm;font-weight:700;margin-top:1mm}
+.kvx .kvx__bd{left:84mm;bottom:9mm}
+
+/* ===== 裏面 ===== */
+.bk-head{flex:0 0 auto;position:relative;background:var(--mint);color:#fff;padding:7mm 12mm 8.4mm;display:flex;align-items:flex-end;justify-content:space-between;gap:6mm}
+.bk-head h2{font-family:var(--en);font-size:10.5mm;font-weight:700;line-height:1}
+.bk-head h2 small{display:block;font-family:var(--font);font-size:3.5mm;font-weight:900;margin-top:1.6mm;letter-spacing:.1em}
+.bk-head p{font-size:2.9mm;line-height:1.7;text-align:right;font-weight:700}
+.bk-head .ridge{color:var(--cream);height:4.6mm}
+.mission{flex:0 0 auto;margin:5mm 12mm 0;text-align:center}
+.mission small{display:block;font-family:var(--en);font-weight:700;font-size:2.4mm;letter-spacing:.22em;color:var(--orange)}
+.mission p{font-size:4.7mm;font-weight:900;line-height:1.7;margin-top:.6mm}
+.mission p span{background:linear-gradient(transparent 62%,rgba(246,211,107,.9) 62%)}
+
+.prog{flex:0 0 auto;margin:4mm 12mm 0}
+.pg{display:grid;grid-template-columns:32mm 1fr;gap:0;padding:3.4mm 0;border-bottom:.5mm dotted var(--mint);align-items:start}
+.pg:first-child{border-top:.5mm dotted var(--mint)}
+.pg time{font-family:var(--en);font-weight:700;color:var(--mint-d);font-size:4.2mm;line-height:1.25;text-align:center}
+.pg time small{display:block;font-size:2.3mm;color:var(--ink-s);margin-top:.6mm;letter-spacing:.06em}
+.pg b{display:block;font-size:3.8mm;font-weight:900;line-height:1.45}
+.pg b i{font-style:normal;font-family:var(--en);font-size:2.2mm;background:var(--orange);color:#fff;padding:.2mm 2mm;border-radius:99px;margin-left:2mm;vertical-align:.4mm}
+.pg p{font-size:2.8mm;line-height:1.6;color:#4d4b5c;margin-top:.4mm}
+.pg.w b{color:#c26a22}
+
+.voices{flex:0 0 auto;margin:5.4mm 12mm 0}
+.voices h3{display:flex;align-items:baseline;gap:3mm;font-size:3.2mm;font-weight:900;color:var(--mint-d);margin-bottom:2.4mm}
+.voices h3 b{font-family:var(--en);font-size:5mm;font-weight:700;line-height:1}
+.vs{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+.v .ph{height:66mm;border-radius:4mm;background-repeat:no-repeat;background-color:var(--mint-l)}
+.v blockquote{margin-top:2.4mm;font-size:3.4mm;font-weight:900;line-height:1.5;color:var(--ink)}
+.v cite{display:block;margin-top:1.2mm;font-style:normal;font-size:2.3mm;color:var(--ink-s);line-height:1.45}
+.v .ph.a{background-image:url(assets/photo/f1.jpg);background-size:190% auto;background-position:58% 36%}
+.v .ph.b{background-image:url(assets/photo/f2.jpg);background-size:190% auto;background-position:64% 50%}
+.v .ph.c{background-image:url(assets/photo/f3.jpg);background-size:230% auto;background-position:60% 50%}
+
+.for{flex:0 0 auto;margin:5.6mm 12mm 0}
+.for h3{display:flex;align-items:baseline;gap:3mm;font-size:3.2mm;font-weight:900;color:var(--mint-d);margin-bottom:2mm}
+.for h3 b{font-family:var(--en);font-size:5mm;font-weight:700;line-height:1}
+.for ul{list-style:none;display:grid;grid-template-columns:1fr;gap:1.6mm 6mm}
+.for li{position:relative;padding-left:6mm;font-size:3.1mm;font-weight:700;line-height:1.55}
+.for li::before{content:"✓";position:absolute;left:0;top:0;width:4.4mm;height:4.4mm;border-radius:50%;background:var(--mint);color:#fff;font-size:2.8mm;line-height:4.4mm;text-align:center;font-weight:900}
+.bk-foot{flex:0 0 auto;display:grid;grid-template-columns:1fr 36mm;gap:6mm;margin:5.4mm 12mm 0;align-items:center}
+.faq dl>div{display:grid;grid-template-columns:22mm 1fr;gap:2.5mm;padding:2mm 0;border-bottom:.5mm dotted var(--mint);font-size:2.9mm;line-height:1.5}
+.faq dl>div:first-child{border-top:.5mm dotted var(--mint)}
+.faq dt{font-weight:900;color:var(--mint-d)}
+.faq .u{color:var(--ink-s);font-size:2.3mm;word-break:break-all}
+#back .bar{margin-top:auto}
+.illus{display:flex;justify-content:flex-end;align-items:flex-end}
+.illus img{height:24mm;width:auto}
+/* 日本語の折り返し：文節（<wbr>）の途中では折らず、禁則は厳格に。見出しは均等、本文は行末に1〜2文字だけ残さない */
+body{word-break:keep-all;overflow-wrap:anywhere;line-break:strict}
+p,dd,li,blockquote{text-wrap:pretty}
+h1,h2,h3{text-wrap:balance}
+
+/* 新KV（4:3・文字入り）に合わせた高さ調整：KVを高くし、下の要素を少しずつ詰める */
+.kv{height:153mm}
+.kv img{object-position:50% 50%}
+.copy{padding:3.4mm 12mm 5mm}
+.copy h2{font-size:6mm}
+.copy .ind{margin-top:1mm}
+.stats{margin-top:2mm}
+.points{padding-top:2.2mm}
+.pt__img{height:13mm}
+.pt__img img{height:12mm}
+.tease{margin-top:1.6mm}
+.foot{padding-top:2mm}
+.info dl>div{padding:.8mm 0}
+.brand{margin-top:1.6mm}
+.bar{margin-top:1.6mm}
+.entry{padding:2.2mm 3mm}
+.entry{padding:3.4mm 3mm 3.6mm}
+.entry__lead{font-size:3.7mm}
+.entry .qr{width:28mm;height:28mm;margin:2.4mm auto 0;padding:2mm}
+.entry{background:none;border-radius:0}
+.stat big{font-size:7.4mm}
+.copy .ind{font-size:2.95mm}
+/* 裏面：項目が増えた分、写真とイラストの高さを少し詰めて1枚に収める */
+.v .ph{height:59mm}
+.illus img{height:19mm}
+.for ul{gap:1.2mm 6mm}
+.for{margin-top:4.6mm}
+.voices{margin-top:4.6mm}
+.copy .ridge{height:9mm}
+.copy{padding-bottom:8mm}
+/* 比較案B（画面のみ）：見出しのまとまりを、ラベルと日付の間の中央あたりへ下げる */
+.kvx h1{margin-top:21mm}
+.kvx__sub{margin-top:4.4mm}
+.kvx__chips{margin-top:4.4mm}
+.entry__lead{font-size:3.3mm}
+.entry .qr{width:30mm;height:30mm;margin:2mm auto 1.6mm;padding:1mm;background:#fff}
+.entry__line{font-size:2.7mm;font-weight:700;line-height:1.55}
+.entry__line b{font-weight:900;color:var(--mint-d)}
+.fare{display:flex;flex-direction:column;font-size:2.6mm;font-weight:700;line-height:1.5;margin-top:.4mm}
+.fare b{color:inherit;font-weight:900}
+.fare em{font-style:normal;color:var(--mint-d);font-weight:900}
+.info dd small{font-size:2mm;line-height:1.4}
+.info dl>div{padding:.5mm 0}
+.pt__img{height:11mm}
+.pt__img img{height:10mm}
+.tease{margin-top:1.2mm;text-align:right}
+.brand{margin-top:1.2mm}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+<!-- ================= 表面（A案） ================= -->
+<div class="side" id="frontA"><span class="label">FRONT／表面（A案：現行KVを活かす）</span>
+<main class="sheet">
+  <div class="kv"><img src="assets/hero3.jpg" alt="LOCAL LONG LIFE インターンシップ 12/12(土) @Workation + Cottage KARUIZAWA"></div>
+
+  <section class="copy">
+    <h2>このインターンシップで<em>得られること。</em></h2>
+    <p class="ind"><b>介護 × 福祉用具</b>の現場で、50年後の暮らしを考える。<br>体験して、チームで提案して、自分の「働く軸」をつくる1日。</p>
+    <div class="ridge"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0.0 100.0 L1.6 99.6 L11.6 97.0 L23.2 94.1 L86.8 77.9 L99.5 75.2 L116.9 74.1 L126.9 75.4 L173.1 84.6 L183.9 85.3 L205.7 80.2 L223.8 72.8 L316.2 31.2 L335.3 24.6 L363.5 24.4 L381.7 30.8 L468.3 71.2 L485.5 78.3 L507.3 82.7 L519.0 81.4 L571.0 68.6 L582.5 66.8 L603.5 67.9 L619.6 71.2 L700.4 90.8 L717.7 93.2 L745.9 88.4 L765.9 79.8 L864.1 30.2 L884.4 22.1 L914.4 20.8 L933.8 27.2 L1026.2 68.8 L1044.5 76.0 L1068.3 80.0 L1081.1 78.1 L1138.9 61.9 L1151.0 59.5 L1170.2 60.2 L1183.2 63.6 L1246.8 84.4 L1259.8 87.6 L1279.0 87.0 L1291.1 83.1 L1348.9 58.9 L1360.4 54.8 L1376.0 53.4 L1384.8 55.5 L1425.2 70.5 L1432.6 73.3 L1439.0 75.6 L1440.0 76.0 V120 H0Z" fill="currentColor"/></svg></div>
+  </section>
+
+  <section class="points">
+    <article class="pt"><div class="pt__img"><img src="assets/ill/line-chair.png" alt=""></div><span class="pt__no">01 FEEL</span><h3>50年後の暮らしの課題が、<br>身体でわかる</h3><p>高齢者体験ギア・車椅子・ベッドで、段差の恐怖や見下ろされる圧迫感を体感する。</p></article>
+    <article class="pt"><div class="pt__img"><img src="assets/ill/care.png" alt=""></div><span class="pt__no">02 THINK</span><h3>「暮らしのプラン」を、<br>チームで形にできる</h3><p>家に福祉用具を設置しながら提案を作り、実演を交えて発表。プロの視点でフィードバック。</p></article>
+    <article class="pt"><div class="pt__img"><img src="assets/ill/runner.png" alt=""></div><span class="pt__no">03 DESIGN</span><h3>自分の「働く軸」が、<br>言葉になる</h3><p>先輩のトークと、メンターとの壁打ちで、価値観と仕事を掛け合わせたキャリアプランを描く。</p></article>
+  </section>
+  <p class="tease">当日の流れ・先輩の声は、裏面をご覧ください →</p>
+
+  <section class="foot">
+    <div class="info">
+      <dl>
+        <div><dt>開催日</dt><dd><b>12月12日（土）</b> 10:45集合〜17:30解散</dd></div>
+        <div><dt>会場</dt><dd><b>Workation + Cottage KARUIZAWA</b>（長野県軽井沢町）<small>※駐車場あり</small></dd></div>
+        <div><dt>対象</dt><dd>専門学生、大学1年生〜4年生（文理・学部不問）</dd></div>
+        <div><dt>費用</dt><dd><b>参加無料／交通費補助あり</b>
+          <span class="fare"><span><em>公共交通機関</em>をご利用の場合 → <b>15,000円</b>支給</span><span><em>自家用車</em>をご利用の場合 → <b>10,000円</b>支給</span></span>
+          <small>※往復交通費が支給額を下回る場合は、実費を超えてのお渡しはできかねますのでご了承ください。<br>※公共交通機関での移動を推奨しております。</small></dd></div>
+        <div><dt>申込</dt><dd><b>12月9日（水）12:00締切</b>／定員：7名<small>※参加枠数上限に達した場合、上記よりも前に本エントリー受付を締め切らせていただく場合がございます。</small></dd></div>
+      </dl>
+      <div class="brand"><img src="assets/logo.png" alt="エフビー介護サービス"><span>主催：エフビー介護サービス<br>お問い合わせ：kousuke-iizuka@fb-kaigo.co.jp</span></div>
+    </div>
+    <div class="entry">
+      <div class="entry__lead">お申し込みはこちらから。</div>
+      <div class="qr"><img src="assets/qr5.png" alt="公式LINEのQRコード"></div>
+      <p class="entry__line">公式LINEの登録後、<br>「<b>タイムスリップ</b>」と送付ください。</p>
+    </div>
+  </section>
+  <div class="bar"></div>
+</main>
+</div>
+
+<!-- ================= 裏面 ================= -->
+<div class="side" id="back"><span class="label">BACK／裏面</span>
+<main class="sheet">
+  <header class="bk-head">
+    <h2>1 Day Program<small>1日の流れ</small></h2>
+    <p>前半：ご利用者様の暮らしプラン作成<br>後半：自分の地域での働き方プラン作成</p>
+    <div class="ridge"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 120V78c70-6 120-34 190-30s110 24 170 10 90-52 160-54 96 30 150 30 80-34 150-40 100 24 150 36 90-8 150-30 90-34 140-30 70 22 120 30c60 10 110 14 160 12V120z" fill="currentColor"/></svg></div>
+  </header>
+
+  <div class="mission"><small>MISSION</small><p><span>この家で、ご利用者さんが暮らせるプランを提案してください。</span></p></div>
+
+  <section class="prog">
+    <div class="pg"><time>10:45<small>〜 11:30</small></time><div><b>ご利用者の目線になる</b><p>集合・ミッション発表のあと、高齢者体験ギア（重り・視野狭窄メガネ）、車椅子、ベッドで「段差の恐怖」「手すりのない不安」を体感。</p></div></div>
+    <div class="pg w"><time>11:30<small>〜 14:00</small></time><div><b>暮らしのプランをつくる<i>WORK ①</i></b><p>昼食・社員交流のあと、チームで「この家でずっと暮らせるプラン」を作成・発表。現場社員が「プロの視点」でフィードバック。</p></div></div>
+    <div class="pg"><time>14:00<small>〜 15:25</small></time><div><b>市場価値と、この街の働き方</b><p>2040年問題とAI時代に高まる提案力（感情労働）の価値。社員トークライブ「この街での暮らしと働き方」と質疑応答。</p></div></div>
+    <div class="pg w"><time>15:25<small>〜 17:30</small></time><div><b>マイキャリアプランを描く<i>WORK ②</i></b><p>社員メンターが壁打ちで伴走。全体発表・講評・アンケートを経て、17:30解散。</p></div></div>
+  </section>
+
+  <section class="voices">
+    <h3><b>Voice</b>先輩の声</h3>
+    <div class="vs">
+      <figure class="v"><div class="ph a" role="img" aria-label="福祉用具の梱包を確認する社員"></div><blockquote>「営業、という名の、相談員です。」</blockquote><cite>新卒入社4年目・商学部出身<br>田子 茂虎さん</cite></figure>
+      <figure class="v"><div class="ph b" role="img" aria-label="笑顔の社員"></div><blockquote>「地域に密着していても、世界は無限に広がります。」</blockquote><cite>新卒入社5年目・経済学部出身<br>野沢 友哉さん</cite></figure>
+      <figure class="v"><div class="ph c" role="img" aria-label="営業所の前に立つ社員"></div><blockquote>「自分の『おばあちゃん』に会いに行く感覚なんです。」</blockquote><cite>新卒入社6年目・社会福祉学部出身<br>小柳 あずささん</cite></figure>
+    </div>
+  </section>
+
+  <section class="for">
+    <h3><b>For You</b>こんな人におすすめ</h3>
+    <ul>
+      <li>軽井沢の豊かな自然の中で、キャリアを見つめ直したい方</li>
+      <li>自己分析を深め、自分のライフプランや将来の働き方を具体化したい方</li>
+      <li>AIに代替されないスキルや「人間の価値」について深く考えてみたい方</li>
+      <li>仲間や社会人のプロフェッショナルと対話し刺激を受けたい方</li>
+      <li>地方創生、成長産業、ヘルスケア、介護、人と深く関わる仕事に興味がある方</li>
+    </ul>
+  </section>
+
+  <section class="bk-foot">
+    <div class="faq">
+      <dl>
+        <div><dt>服装・持ち物</dt><dd>動きやすい服装／筆記用具（体験ワークがあります）</dd></div>
+      </dl>
+    </div>
+    <div class="illus"><img src="assets/ill/wheelchair-run.png" alt=""></div>
+  </section>
+  <div class="bar"></div>
+</main>
+</div>
+
+</div>
+
+<script id="bx-ja">
+/* BudouX（Apache-2.0, Google）の日本語モデルとパーサーを移植：文節の切れ目に<wbr>を挿入し、文節の途中で折り返さないようにする */
+(function(){
+var M={"UW3":{"。":7360,"の":4478,"、":5467,"に":4332,"を":6132,"が":4564,"は":4640,"と":3616,"る":3294,"も":3679,"で":3691,"な":3076,"た":2637,"て":2778,"し":367,"く":2925,"う":2530,"い":2094,"へ":2778,"ら":1678,"こ":101,"や":2601,"っ":-1770,"？":4309,"，":4096,"］":2437,"?":4618,"ぐ":2995,"ば":2501,"り":1280,"！":4013,"か":2214,"ん":1050,"．":2420,"ー":-201,"]":3518,"…":3108,"つ":1382,"・":1060,"ど":1727,"お":-2039,"空":1557,"）":3352,"ッ":-2051,"」":1826,"☆":3579,"ス":-852,"だ":1043,"ン":-561,"笑":3646,"イ":-913,"♪":2798,"「":-1952,"ろ":1352,"方":896,"日":835,"中":1208,"ず":1777,"間":982,"々":2075,"部":555,"京":-1392,"ゃ":1324,"今":1149,"ご":-1299,"★":2969,"フ":-1592,"電":-1418,"プ":-1246,"分":1196,"す":1092,"あ":1173,"人":351,"大":-1213,"上":655,"ぬ":2076,"ぁ":1705,"後":1304,"せ":623,"度":1249,"０":-780,"時":115,"〜":942,"ア":-1081,"感":471,"む":1476,"観":-943,"都":-302,"ト":-111,"１":-1299,"き":487,"ぶ":1278,"え":907,"然":1179,"以":-932,"わ":-211,"新":-874,"”":1254,"超":1585,"さ":-175,"夜":1532,"ラ":-254,"体":903,"カ":-509,"ロ":-730,"変":752,"[":-1016,"択":968,"昔":1717,"ド":-549,"品":131,"シ":-711,"味":546,"『":-819,"ち":586,"光":-303,"［":-723,"ジ":-170,"水":366,"年":345,"秋":1136,"タ":-123,"段":63,"的":403,"ぞ":994,"学":-427,"皆":782,"ぱ":760,"果":343,"ま":-23,"み":213,"じ":541,"　":443,"発":-509,"最":-542,"素":-436,"自":-330,"題":789,"ｏ":-447,"区":905,"用":-431,"ね":706,"料":-380,"：":394,"場":-117,"一":-5,"よ":394,"れ":184,"番":295,"系":608,"色":484,"機":-184,"バ":-222,"技":242,"け":109,"程":512,"意":-156,"デ":-304,"行":-331,"斤":515,"所":259,"開":-195,"子":-227,"】":434,"レ":-162,"入":-184,"ニ":-125,"ク":107,"前":217,"テ":-105,"』":281,"月":126,"週":143,"不":-77,"代":-81,"モ":-107,"台":228,"選":-94,"現":-51,"５":-42,"生":-29,"始":-33,"能":-16,"別":12,"細":12,"作":-4},"UW4":{"の":-4556,"。":-7968,"に":-4649,"、":-8112,"が":-4058,"は":-3839,"て":-3946,"る":-5834,"で":-3124,"を":-5180,"と":-3261,"っ":-4819,"か":-2902,"り":-4637,"う":-2814,"な":-2150,"ま":-1685,"た":-2023,"い":-1577,"し":-1955,"お":899,"ら":-5266,"そ":410,"だ":-2236,"れ":-4479,"す":-1643,"ん":-4505,"ち":-2418,"あ":261,"ー":-2977,"き":-1845,"」":-6469,"も":-2929,"私":2012,"「":2340,"け":-3764,"や":-1388,"見":1090,"く":-3067,"ご":271,"よ":-1353,"み":-921,"大":657,"一":571,"思":1141,"さ":-1761,"？":-5676,"[":3543,"人":503,"め":-2468,"』":-5121,"行":433,"ン":-2261,"ッ":-2346,"！":-5212,"わ":-1741,"，":-4847,"じ":-2495,"・":-1449,"今":1462,"ぐ":-1874,"?":-4410,"京":357,"せ":-1944,"え":-2257,"時":460,"１":1029,"『":981,"（":2706,"使":865,"合":-1649,"言":384,"べ":-3202,"ろ":-3153,"何":744,"デ":611,"日":270,"ル":-1115,"…":-3126,"食":298,"ば":-2639,"．":-3347,"広":604,"空":1245,"場":432,"へ":-1897,"自":700,"笑":-3427,"つ":-1276,"特":1375,"２":814,"リ":-1049,"エ":312,"［":1695,"）":-4253,"煙":2247,"ず":-2063,"帯":-1161,"多":1190,"]":-1408,"ゃ":-2594,"最":981,"当":51,"効":52,"ど":-875,"良":92,"ね":-2455,"び":-1827,"綺":2417,"］":-1498,"ゆ":-835,"携":157,"ぁ":-1594,"間":-688,"来":87,"手":133,"ぶ":-1685,"タ":-314,"ト":-353,"ぎ":-1477,"ょ":-2003,"方":-480,"フ":-490,"ひ":523,"”":-1346,"こ":-540,"ス":-165,"新":376,"０":-429,"♪":-2073,"〜":-1746,"書":612,"イ":-154,"的":-952,"僕":1107,"☆":-1751,"ぼ":-998,"用":-624,"能":-710,"ュ":-782,"ざ":-1078,"無":336,"む":-1295,"公":390,"ぜ":-1511,"カ":214,"不":694,"本":-134,"回":-1178,"制":816,"　":-1386,"小":742,"物":-328,"バ":289,"街":639,"続":-658,"ぞ":-1183,"水":309,"返":-339,"ほ":-348,"二":611,"入":101,"少":281,"美":242,"臭":1205,"ｏ":-612,"機":-120,"取":-519,"誰":1033,"ロ":-237,"げ":-904,"３":429,"足":653,"換":-667,"ド":-295,"づ":-762,"東":761,"祭":563,"夏":517,"話":370,"友":83,"ク":-222,"系":249,"楽":371,"服":813,"代":-215,"込":-584,"気":73,"年":-370,"ニ":-239,"高":102,"コ":56,"表":164,"切":-361,"オ":148,"(":594,"★":-836,"真":-515,"父":496,"他":144,"聞":211,"ラ":-41,"【":531,"買":273,"グ":-136,"有":290,"ビ":-137,"全":101,"４":-171,"ム":-194,"度":-220,"狭":322,"通":-56,"四":277,"品":-182,"Ｓ":-129,"森":-444,"心":71,"海":140,"甘":152,"サ":4,"彼":60,"家":86,"鞍":121,"頑":133,"参":81,"実":46,"例":93,"秋":93,"＾":-101,"ミ":-33,"券":-54,"情":-21,"声":12,"動":-8,"住":4},"UW5":{"。":-2181,"、":-1080,"な":-670,"っ":1246,"う":445,"は":-1046,"に":-770,"で":-961,"き":1106,"と":-893,"そ":-782,"る":464,"す":-704,"い":348,"を":-766,"え":735,"の":-842,"べ":2001,"ま":-102,"じ":754,"し":-340,"ん":981,"れ":463,"動":1426,"か":192,"ラ":506,"・":-978,"あ":-405,"め":519,"帯":337,"つ":1089,"よ":-489,"さ":-314,"京":107,"日":574,"が":-572,"ル":-681,"」":-1106,"能":72,"力":489,"ト":-432,"ら":246,"せ":-426,"ぼ":1423,"供":261,"ず":803,"わ":582,"へ":-999,"く":352,"ン":-244,"年":948,"だ":-492,"り":191,"思":-353,"も":-225,"ち":524,"］":-414,"使":-1240,"器":-238,"ざ":338,"！":-301,"利":788,"上":-434,"て":206,"ス":-285,"イ":193,"体":-1459,"．":-215,"水":-438,"ろ":-34,"ぎ":321,"当":615,"び":599,"こ":67,"む":758,"電":-194,"バ":-53,"大":-252,"的":-257,"[":-400,"ュ":-267,"作":359,"先":-820,"言":-228,"寺":-276,"？":-246,"景":280,"…":-194,"本":187,"所":44,"々":242,"ャ":72,"一":-185,"Ｎ":766,"グ":-100,"丈":320,"葉":122,"顔":-185,"回":184,"ど":-9,"１":-105,"デ":-131,"見":-44,"ば":13,"オ":-74,"２":-107,"ロ":47,"目":-50,"要":25},"UW2":{"。":-1620,"の":-946,"、":-1560,"を":-2541,"し":196,"に":-1152,"か":54,"と":-1195,"も":-954,"っ":115,"が":-823,"な":-413,"れ":-84,"で":-1016,"ま":345,"て":-905,"お":-1189,"以":2487,"そ":-493,"す":437,"だ":363,"う":-614,"全":1251,"一":1233,"さ":695,"く":-712,"少":585,"い":-163,"は":-1040,"手":1430,"ん":242,"け":161,"つ":-625,"見":-308,"め":64,"結":2131,"特":666,"食":260,"あ":-181,"毎":1536,"わ":353,"ゆ":809,"法":1381,"場":220,"ラ":-521,"」":196,"ほ":743,"同":531,"関":1432,"味":551,"良":218,"る":-403,"水":746,"人":84,"選":182,"ひ":-2140,"多":534,"や":-610,"知":-972,"イ":-159,"た":-259,"ぱ":270,"ど":-209,"随":1589,"「":-319,"容":1329,"？":-613,"ご":-480,"ぜ":929,"サ":-584,"ー":210,"グ":-441,"目":-751,"み":-120,"取":-397,"パ":684,"本":588,"０":106,"我":-915,"り":-220,"境":-297,"１":176,"和":759,"能":305,"２":-244,"ね":352,"ぐ":-387,"メ":-40,"デ":-483,"大":151,"ろ":-127,"，":-501,"新":-268,"々":307,"ぶ":84,"き":-126,"世":-382,"ノ":436,"３":-336,"立":-474,"先":380,"シ":-421,"］":-260,"?":-394,"ケ":-521,"安":-95,"４":331,"バ":409,"電":275,"＾":104,"作":-51,"甘":16,"是":537,"ば":-186,"三":496,"級":667,"言":-5,"格":721,"ル":36,"Ｐ":-621,"団":645,"…":248,"下":303,"文":118,"落":-523,"最":236,"素":-401,"]":-188,"許":532,"［":-53,"奇":216,"ジ":-115,"フ":-49,"直":306,"★":-385,"早":191,"如":419,"車":70,"生":97,"Ｈ":-149,"『":-201,"昔":210,"次":-179,"家":56,"残":165,"百":-139,"レ":-86,"案":142,"敗":137,"５":-111,"ら":-17,"空":-21,"間":-12,"用":-29,"ア":-25,"介":71,"鹿":-88,"ド":12},"UW1":{"い":-150,"に":-417,"で":-297,"つ":251,"と":129,"の":65,"は":-185,"が":-211,"り":-114,"う":105,"見":239,"そ":159,"な":-218,"て":137,"す":203,"ん":206,"知":109,"携":-321,"か":-188,"始":721,"バ":395,"へ":-222,"十":-281,"上":-149,"く":145,"し":-70,"水":136,"。":-54,"新":332,"プ":-797,"［":-530,"明":877,"タ":233,"き":-16,"ス":-215,"ッ":387,"０":216,"イ":-408,"リ":340,"ち":246,"大":244,"っ":183,"た":-89,"安":-469,"３":-312,"．":-433,"ど":202,"や":-258,"日":12,"メ":420,"話":-151,"今":134,"効":608,"自":372,"こ":90,"行":-43,"ろ":321,"え":-127,"長":654,"小":240,"れ":100,"機":120,"オ":368,"間":272,"時":-185,"壊":-387,"『":-563,"・":43,"作":104,"２":127,"ャ":271,"！":58,"撮":-145,"個":-233,"」":-142,"京":-102,"何":155,"苦":-493,"認":-185,"ン":35,"る":-35,"取":88,"右":180,"人":-70,"少":-105,"進":138,"ざ":65,"も":8,"内":-158,"積":-94,"を":-12,"議":29,"ケ":-25,"ね":-29,"豊":71,"]":-16,"カ":12},"UW6":{"。":-297,"が":361,"の":157,"で":157,"さ":954,"な":244,"を":158,"う":213,"に":331,"は":216,"し":499,"や":637,"り":538,"っ":488,"ぱ":1089,"か":319,"」":-178,"い":352,"も":111,"こ":220,"お":-407,"せ":-274,"み":690,"め":913,"つ":724,"る":184,"ー":-172,"グ":770,"け":-204,"ど":62,"そ":246,"コ":198,"場":-605,"ん":380,"く":146,"ま":389,"れ":180,"０":699,"ン":-321,"タ":322,"的":371,"と":46,"電":367,"ク":-285,"空":607,"人":-95,"ろ":483,"送":-1595,"気":536,"画":467,"・":-195,"わ":306,"付":41,"見":-186,"パ":-556,"返":1159,"１":112,"水":898,"出":532,"：":616,"思":-166,"ュ":226,"学":-457,"ル":181,"込":460,"供":-392,"地":474,"遊":-296,"ぎ":651,"ば":16,"過":242,"よ":127,"カ":210,"デ":-190,"て":-54,"］":-108,"最":-221,"来":-156,"制":407,"寺":315,"言":-223,"シ":-168,"自":234,"日":37,"ょ":-238,"た":22,"、":9,"じ":112,"亭":376,"だ":-52,"ず":-140,"広":-82,"方":-86,"家":-102,"び":68,"ピ":89},"TW1":{"よいよ":3883,"またま":3804,"をもつ":1739,"もはや":2582,"ありが":-2649,"おって":3035,"という":407,"で見る":-2947,"こんに":-486,"ような":1185,"が良い":774,"・・・":1407,"ていく":1047,"んどん":1410,"ました":-1039,"ふだん":1962,"できる":415,"かなり":1974,"だんど":-1522,"その時":2276,"すきと":-3041,"いとこ":-798,"甘えが":-1204,"やはり":2006,"たちの":273,"ながら":1135,"、それ":747,"ひとつ":1322,"とんど":783,"ない、":-1562,"でかけ":-673,"かなか":740,"なんと":-1109,"ことも":-290,"持って":-1039,"ょうど":826,"十分に":-350,"たまた":-754,"しかし":731,"っかり":731,"に来て":674,"ょっと":-331,"る」と":-982,"困った":668,"として":257,"ていて":260,"もなく":124,"かった":-79,"そして":216,"は一つ":-689,"くらい":114,"は正直":331,"レベル":353,"なって":-85,"くさん":218,"入れる":242,"すごく":290,"。夕方":166,"おけば":143,"ろいろ":113,"んでも":151,"まるで":68,"のうち":131,"にして":-16,"００円":8,"のバス":29,"。ただ":29},"BW2":{"とこ":-1686,"とい":229,"ない":-3463,"せく":6067,"てい":-1517,"とお":-2649,"です":-2965,"たと":696,"であ":-3443,"へよ":3573,"ので":-1967,"いよ":-3016,"のみ":-3049,"てお":-2179,"にも":-1382,"うご":1930,"でき":-2137,"など":-2405,"、と":-1250,"でも":-1913,"たま":-1298,"たい":-2120,"くな":-1741,"るよ":-682,"くだ":-2314,"には":-774,"帯電":-1396,"のが":-1140,"でし":-1765,"のだ":-1080,"うど":-1975,"てき":-2075,"本イ":2074,"のは":-1284,"もし":-906,"の前":-1563,"てみ":-2128,"いま":-986,"はじ":-2128,"いと":-938,"いい":-947,"いた":-1285,"いも":759,"い合":-1590,"徴エ":1530,"らな":-239,"てく":-1200,"こそ":-1318,"やす":-1388,"なく":-947,"らゆ":-1072,"てあ":-2149,"なか":-623,"うや":-1084,"うこ":-178,"て行":-2221,"人い":1482,"び上":1791,"う映":885,"のか":-670,"ると":-559,"もあ":-626,"のも":-915,"した":-723,"ても":-586,"のい":248,"を返":-1650,"とも":-579,"ただ":-1366,"とき":-760,"たち":-561,"こし":414,"どこ":-711,"とか":-1047,"のご":-1168,"はい":-813,"いな":-465,"なあ":-1601,"しい":-383,"かな":-463,"もつ":-688,"でな":-1204,"すご":-942,"にし":-455,"」と":-411,"。笑":-1208,"ども":-655,"の１":-1758,"い日":405,"係な":616,"し…":1779,"くし":-697,"とめ":-360,"では":-586,"とと":-645,"」で":890,"いし":-754,"にな":-67,"そこ":-1027,"なぁ":-613,"はあ":-512,"もな":-21,"が観":-927,"すも":577,"はず":-581,"がっ":-399,"かし":-338,"、な":-261,"グと":736,"・・":-403,"いつ":-148,"にぎ":-358,"とは":-334,"気な":327,"らい":-310,"でい":-188,"］私":-583,"日と":359,"て欲":-444,"がし":91,"日本":-276,"りな":227,"るな":-245,"よう":-230,"うい":-180,"中さ":310,"な場":74,"中だ":191,"の方":108,"たも":109,"たよ":-121,"のサ":112,"たし":-207,"ルや":129,"なこ":-102,"てや":-116,"て来":-197,"るし":-132,"よい":-110,"るの":-46,"もう":-72,"れた":-55,"がの":54,"るが":-67,"たな":-46,"いで":-25,"ぱな":25,"、清":-20,"るか":-8},"BW1":{"しい":1568,"から":1712,"ない":1216,"いう":537,"よう":-1258,"のみ":3231,"んに":-1202,"こそ":2555,"れた":1290,"とか":1793,"もは":-3611,"まま":2257,"その":-1288,"るの":-1346,"こと":-1690,"少し":1862,"」と":307,"ても":793,"んだ":790,"して":-157,"のは":1265,"、真":4949,"うな":508,"つな":-1636,"たら":1220,"でも":871,"より":1691,"かも":-1779,"まも":-3432,"では":-304,"この":-1215,"たい":691,"最近":1883,"った":237,"。・":2844,"には":453,"たの":-1080,"たと":-1177,"とが":-1296,"んな":164,"白い":1283,"くれ":2274,"かし":1606,"とき":1991,"もう":1497,"やく":1326,"が、":1096,"全部":704,"。」":2211,"おで":-3868,"は、":906,"まと":-1910,"もの":-686,"なら":1173,"んで":-470,"にも":604,"とで":1553,"気に":-315,"ただ":1278,"ちが":-639,"い、":-401,"もし":1440,"晶の":2542,"思い":-1517,"なぐ":1196,"あー":1783,"同じ":1129,"のが":886,"で、":414,"まだ":793,"けど":740,"いと":-277,"りゃ":1641,"なぜ":1655,"よく":581,"の間":1512,"た．":1585,"がと":-830,"てい":-491,"かけ":-42,"人気":1243,"神社":910,"だけ":596,"まり":464,"れて":-391,"した":323,"いで":-1020,"青い":406,"、今":791,"りと":642,"くて":695,"きた":490,"の後":962,"２、":-1970,"使い":-1007,"れが":-552,"やら":972,"普段":703,"とう":85,"きの":-936,"敵な":533,"いの":-219,"買い":-766,"と、":302,"るに":-625,"れる":76,"ック":277,"いい":-406,"なく":331,"らな":-725,"ので":211,"など":629,"取り":-453,"との":400,"問い":-418,"、と":346,"か，":-1352,"べき":912,"効果":1256,"ゃあ":633,"０円":367,"ると":86,"ぶん":652,"安に":-717,"いも":-741,"是非":283,"甘味":546,"ここ":131,"寺、":-1115,"パサ":459,"か、":-422,"分け":597,"言い":-576,"かき":514,"世の":-650,"ころ":401,"お店":672,"だし":667,"現在":536,"的な":246,"えば":256,"の上":770,"うか":242,"ろう":-484,"めて":130,"で…":808,"＾＾":383,"とも":-106,"は頭":972,"馬の":-720,"てる":184,"いた":161,"さん":94,"じて":321,"待ち":-455,"ｏｒ":419,"める":-160,"わけ":340,"ねー":320,"絶対":465,"だん":143,"ため":461,"ぱり":297,"こう":-215,"うや":-171,"すい":50,"っと":-13,"うえ":413,"知る":-236,"リー":173,"いし":190,"んて":115,"舞う":250,"とは":-93,"のも":97,"すの":-100,"利な":153,"りは":-253,"すが":-69,"大変":30,"本語":142,"ては":-102,"人、":-193,"使う":90,"とい":-64,"ほぼ":110,"せん":50,"す☆":71,"空き":-50,"多く":-75,"かと":-20,"以上":12,"４日":4,"なー":8,"離宮":4},"BW3":{"こと":1223,"もの":3842,"いう":728,"いい":1168,"その":2339,"ちは":-1039,"この":2255,"まと":1857,"とき":2378,"おで":1012,"して":235,"はじ":2407,"うま":3367,"これ":2311,"ちょ":2243,"でも":1761,"なる":346,"なっ":-590,"ある":-256,"受け":930,"可能":107,"が、":1583,"なん":277,"そう":-1861,"とて":2507,"こそ":-1684,"とい":-711,"おり":-1393,"でき":929,"もら":2724,"かか":1911,"上が":1030,"メー":458,"から":-1102,"当日":2268,"かけ":2181,"たま":1025,"さん":-2131,"ため":1067,"で、":1097,"とも":1317,"しま":-333,"ゆる":-797,"かっ":-1213,"です":-889,"より":-1180,"分か":1490,"もう":2291,"よく":1387,"ない":524,"しい":-1091,"ます":-735,"もん":1025,"すぐ":1558,"すご":1479,"した":893,"いと":-60,"まし":-1029,"機器":-1637,"が観":2232,"とっ":871,"つな":1317,"・・":-1587,"さい":-882,"いて":-426,"ころ":-324,"あと":1221,"がん":1901,"とり":1121,"まぁ":1449,"つぶ":679,"いろ":400,"はま":1076,"うち":631,"しゃ":379,"なら":-450,"いか":673,"だけ":-750,"みた":-1197,"だろ":-1491,"はず":758,"わか":706,"よう":-506,"デザ":544,"なく":444,"はる":767,"いま":567,"と思":-557,"にぎ":647,"つい":580,"さあ":648,"きま":-579,"かも":-607,"もと":1131,"まだ":619,"もつ":1068,"あり":108,"始ま":235,"すか":-408,"何で":499,"おす":372,"日が":427,"きる":-892,"とこ":468,"ぼっ":-1025,"ええ":1054,"以上":-356,"なか":267,"たっ":568,"出来":-587,"どこ":439,"入れ":154,"そこ":183,"ひと":398,"はし":725,"まも":278,"みん":469,"なさ":218,"ルー":302,"一に":-657,"たい":-115,"ごと":-249,"なに":364,"つけ":474,"しか":-181,"入場":429,"いた":-45,"んで":265,"いら":303,"アプ":48,"行く":124,"もっ":318,"し、":-36,"そし":352,"まで":-274,"いる":136,"こん":-107,"最近":163,"ただ":303,"とら":352,"変え":268,"いつ":74,"とつ":-254,"電話":-39,"友人":104,"ぼれ":-408,"通り":-230,"すき":187,"つき":372,"だい":68,"など":-95,"電車":86,"かき":271,"ませ":-98,"色は":115,"書い":89,"みろ":72,"祭り":67,"そく":-97,"使っ":55,"あふ":67,"しく":-63,"こだ":50,"なき":12,"はい":8,"ほど":-4},"TW3":{"のよう":-1412,"という":537,"ている":-2523,"、そし":-3750,"のまま":-534,"ること":-370,"の本は":-1319,"らない":-1558,"すこと":874,"てしま":-1696,"になっ":-453,"ーした":1305,"へよう":8,"とした":-1321,"と言っ":-1462,"である":-886,"のよい":535,"」って":907,"てほし":-945,"ばいい":-1212,"はまっ":-1277,"として":118,"はない":-459,"と同時":-1302,"であっ":-1121,"ていう":555,"ところ":-847,"、また":-835,"ておき":-599,"る方は":-679,"ういう":-584,"といっ":-55,"ととも":-490,"はそれ":-568,"にでも":-600,"てない":-325,"といい":-491,"くして":-261,"たこと":-102,"のこの":-148,"があっ":84,"，それ":-71},"TW2":{"いとこ":-3724,"してお":-1381,"気に入":-3681,"ではな":-1979,"ちがう":-1683,"分にあ":-2585,"そのま":-1377,"んでい":-1872,"うにな":-935,"そもそ":-1862,"どんど":-915,"ではあ":-1747,"とがあ":-1027,"女の子":-1722,"れはそ":-1393,"国人が":960,"っての":1313,"らと言":-1214,"からな":-674,"てもい":-1290,"でもあ":-1380,"んなん":1011,"からし":521,"ともあ":-669,"でもな":-1022,"その後":-576,"れるこ":241,"まるで":-251,"ってこ":-358,"しかな":407,"とにな":-257,"ものす":-791,"それ以":193,"したこ":-254,"っとい":-354,"のに対":-198,"とがで":-161,"るにつ":-63},"TW4":{"ところ":3207,"ありが":2582,"ような":-2297,"もはや":3312,"どのよ":3898,"ある。":-561,"くらい":1880,"ように":-1480,"可能性":2323,"いよい":1673,"ようや":2339,"ことが":-1148,"プログ":1689,"しかし":2007,"ちがう":2340,"が、そ":1280,"とおり":2002,"うどん":2141,"した。":-1525,"かなり":2314,"あるい":-3206,"いっぱ":1964,"ことに":-1226,"ありま":-911,"だって":1343,"しゃべ":1970,"ことで":330,"で、そ":1151,"してお":1228,"できた":1468,"いろい":1037,"ない。":209,"ことも":-915,"わけで":-600,"ちなみ":1897,"おりに":-426,"なんと":1057,"だった":-1415,"やって":174,"とこが":1174,"そうで":-720,"でも、":465,"して人":-1127,"なんて":-506,"こと。":532,"おりま":1588,"いかな":449,"これは":1061,"いって":-305,"いけな":-420,"ってこ":333,"ことを":362,"の京都":402,"なんか":475,"かけら":607,"はじま":329,"そのま":357,"ようで":-694,"すると":217,"ひとつ":73,"勝手に":825,"しない":279,"ことは":-247,"ないと":225,"でもま":657,"いまし":-521,"いえば":426,"どんど":393,"とこ取":-211,"かった":-162,"メール":52,"インテ":204,"いくさ":-190,"はまっ":86,"いくら":137,"います":-106,"なかな":85,"あるも":59,"あたり":-55,"京都に":12}};
+var base=0;for(var k in M){for(var f in M[k])base+=M[k][f];}base=-base*0.5;
+function g(t,s){return (M[t]&&M[t][s])||0;}
+function parse0(s){
+  if(!s)return[];var out=[s[0]],n=s.length;
+  for(var i=1;i<n;i++){
+    var sc=base;
+    if(i>2)sc+=g('UW1',s[i-3]);
+    if(i>1)sc+=g('UW2',s[i-2]);
+    sc+=g('UW3',s[i-1])+g('UW4',s[i]);
+    if(i+1<n)sc+=g('UW5',s[i+1]);
+    if(i+2<n)sc+=g('UW6',s[i+2]);
+    if(i>1)sc+=g('BW1',s.slice(i-2,i));
+    sc+=g('BW2',s.slice(i-1,i+1));
+    if(i+1<n)sc+=g('BW3',s.slice(i,i+2));
+    if(i>2)sc+=g('TW1',s.slice(i-3,i));
+    if(i>1)sc+=g('TW2',s.slice(i-2,i+1));
+    if(i+1<n)sc+=g('TW3',s.slice(i-1,i+2));
+    if(i+2<n)sc+=g('TW4',s.slice(i,i+3));
+    if(sc>0)out.push(s[i]);else out[out.length-1]+=s[i];
+  }
+  return out;
+}
+
+var PROT=["目の付け所", "として", "この街", "ご利用者さん", "ご利用者様", "ご利用者", "マイキャリアプラン", "キャリア軸", "暮らしのプラン", "エフビー介護サービス", "福祉用具", "高齢者体験ギア", "社員メンター", "トークライブ", "アイスブレイク", "ミッション説明", "人間の価値", "1日完結", "参加無料", "交通費補助", "大学1〜4年生", "文理・学部不問"];
+var PUA={},PUR={};PROT.forEach(function(w,i){var c=String.fromCharCode(0xE000+i);PUA[w]=c;PUR[c]=w;});
+PROT.sort(function(a,b){return b.length-a.length;});
+function parse(s){
+  var Q=[],t=s.replace(/「[^」]{1,10}」/g,function(m){var c=String.fromCharCode(0xF000+Q.length);Q.push(m);return c;});/* 短い「…」は一語扱い */
+  PROT.forEach(function(w){t=t.split(w).join(PUA[w]);});
+  var ch=parse0(t).map(function(c){return c.replace(/[\uE000-\uF8FF]/g,function(x){var k=x.charCodeAt(0);return k>=0xF000?Q[k-0xF000]:(PUR[x]||x);});});
+  /* 閉じ括弧の直後の助詞は、直前の語と離さない（「…」で／と／を／は 等が行頭に来るのを防ぐ） */
+  var o=[];ch.forEach(function(x){if(o.length&&/[」』）]$/.test(o[o.length-1])&&/^[でとをにはがのもへや]/.test(x))o[o.length-1]+=x;else o.push(x);});
+  /* 閉じ括弧の直後は同じ文節内でも折り返し可能なので、文節内ではワードジョイナーで禁止 */
+  return o.map(function(x){return x.replace(/([」』）])(?=[ぁ-んァ-ヶ一-龥A-Za-z0-9])/g,'$1\u2060');});
+}
+window.bxApply=function(root){
+  root=root||document.body;
+  var re=/[\u3040-\u30ff\u3400-\u9fff]/;
+  var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+    var p=n.parentElement;
+    if(!p||/^(SCRIPT|STYLE|TEXTAREA|TITLE)$/.test(p.tagName))return NodeFilter.FILTER_REJECT;
+    if(p.closest('.poster,[data-nobx]'))return NodeFilter.FILTER_REJECT;
+    return re.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+  var nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+  nodes.forEach(function(n){
+    var c=parse(n.nodeValue);if(c.length<2)return;
+    var f=document.createDocumentFragment();
+    c.forEach(function(x,i){if(i)f.appendChild(document.createElement('wbr'));f.appendChild(document.createTextNode(x));});
+    n.parentNode.replaceChild(f,n);
+  });
+};
+})();
+</script>
+<script>
+// 比較案B1/B2：表面のヒーロー（KV）だけ差し替えた版を、A案の複製から作る（画面表示のみ・印刷には出ない）
+(function(){
+  const A=document.getElementById('frontA');
+  const txt=`<div class="kvx__tx"><div class="kvx__lb">LOCAL LONG LIFE INTERNSHIP</div>
+      <h1>AIに奪われない、<br><em>人間の価値</em>とは？</h1>
+      <p class="kvx__sub">長寿の国、長野発。<br>地方の成長産業で、キャリア軸をつくる1日。</p>
+      <div class="kvx__chips"><span>専門学生・大学1〜4年生</span><span>参加無料</span><span>交通費補助あり</span></div>
+      <div class="kvx__d"><b>12/12</b><i>土</i></div>
+      <div class="kvx__pl">@ Workation + Cottage KARUIZAWA<small>10:45 〜 17:30　軽井沢で開催</small></div></div>`;
+  const logo='<img class="kvx__lg" src="assets/logo-white.png" alt="エフビー介護サービス">';
+  const bd='<div class="kvx__bd"><span>軽井沢へ<br>ご招待！<small>交通費補助あり</small></span></div>';
+  const WAVE='M 96 0.0 C 86 21.2 104 40.0 94 63.5 C 84 87.1 100 113.0 90 153.0 L 210 153.0 L 210 0.0 Z';
+  const RIM='M 93 0.0 C 83 21.2 101 40.0 91 63.5 C 81 87.1 97 113.0 87 153.0 L 210 153.0 L 210 0.0 Z';
+  const KV={
+    b1:`<div class="kv kvx b1"><svg class="kvs" viewBox="0 0 210 153" preserveAspectRatio="none" aria-hidden="true"><defs><clipPath id="cw"><path d="${WAVE}"/></clipPath></defs><rect width="210" height="153" fill="#55C5B0"/><path d="${RIM}" fill="#DBF2E2"/><image href="assets/photo/f4w.jpg" x="90" y="0" width="120" height="153" preserveAspectRatio="xMidYMid slice" clip-path="url(#cw)"/></svg>${txt}${logo}${bd}</div>`
+  };
+  [['b1','FRONT B／比較案（山並みの曲線で切り抜き・画面のみ）']].reduce((prev,[k,label])=>{
+    const c=A.cloneNode(true); c.id='front'+k.toUpperCase(); c.classList.add('alt');
+    c.querySelector('.label').textContent=label; c.querySelector('.kv').outerHTML=KV[k];
+    prev.after(c); return c;
+  },A);
+})();
+
+bxApply(document.body);
+
+// 画面幅に合わせて縮小（印刷時はCSS側で等倍）
+function fit(){
+  const mm=96/25.4, w=210*mm, avail=Math.min(w,innerWidth-24);
+  document.documentElement.style.setProperty('--z',Math.min(1,avail/w));
+}
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
+
+</body></html>
